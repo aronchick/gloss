@@ -1,0 +1,47 @@
+schema_version: "1.0"
+id: slide-05.master-ref
+scope: slide
+slide: 5
+tier: 1
+title: Layout reference present
+description: Slide 5 must reference a slide layout (master reuse enforcement test).
+kind: master-layout
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: layout_check
+  selector: master_ref
+---
+schema_version: "1.0"
+id: slide-05.placeholder-bound
+scope: slide
+slide: 5
+tier: 1
+title: Placeholder-bound content
+description: Slide 5 content must use placeholders inherited from layout, not freestanding text boxes.
+kind: master-layout
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: layout_check
+  selector: placeholder
+  expectation:
+    min_count: 1
+---
+schema_version: "1.0"
+id: slide-05.font-policy
+scope: slide
+slide: 5
+tier: 1
+title: Font policy compliance
+description: All fonts on slide 5 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

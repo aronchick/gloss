@@ -1,0 +1,92 @@
+schema_version: "1.0"
+id: slide-20.native-chart
+scope: slide
+slide: 20
+tier: 3
+title: Native chart present
+description: Final torture slide must contain a native chart.
+kind: chart
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: chart
+  expectation:
+    exact_count: 1
+    required: true
+failure_mode:
+  automatic_fail_if:
+    - raster_image_used_as_chart
+  propagation: zero_slide
+---
+schema_version: "1.0"
+id: slide-20.native-table
+scope: slide
+slide: 20
+tier: 3
+title: Native table present
+description: Final torture slide must contain a native table.
+kind: table
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: table
+  expectation:
+    exact_count: 1
+    required: true
+failure_mode:
+  automatic_fail_if:
+    - grouped_lines_and_text_used_as_table
+  propagation: zero_slide
+---
+schema_version: "1.0"
+id: slide-20.image-present
+scope: slide
+slide: 20
+tier: 3
+title: Image present
+description: Final torture slide must contain at least one embedded image.
+kind: image-asset
+severity: major
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: picture
+  expectation:
+    min_count: 1
+    required: true
+---
+schema_version: "1.0"
+id: slide-20.groups-present
+scope: slide
+slide: 20
+tier: 3
+title: Grouped objects present
+description: Final torture slide must contain group shapes.
+kind: grouping
+severity: major
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: group
+  expectation:
+    min_count: 1
+---
+schema_version: "1.0"
+id: slide-20.font-policy
+scope: slide
+slide: 20
+tier: 3
+title: Font policy compliance
+description: All fonts on slide 20 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

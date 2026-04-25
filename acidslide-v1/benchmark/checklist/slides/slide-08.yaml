@@ -1,0 +1,49 @@
+schema_version: "1.0"
+id: slide-08.shadow-present
+scope: slide
+slide: 8
+tier: 2
+title: Shadow effects present
+description: Slide 8 must contain shapes with shadow effects (outerShdw or innerShdw).
+kind: structure
+severity: major
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: shape
+  expectation:
+    min_count: 2
+---
+schema_version: "1.0"
+id: slide-08.gradient-fill
+scope: slide
+slide: 8
+tier: 2
+title: Gradient fills present
+description: Slide 8 should contain gradient fill effects.
+kind: gradient-pattern
+severity: minor
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: shape
+  expectation:
+    min_count: 1
+---
+schema_version: "1.0"
+id: slide-08.font-policy
+scope: slide
+slide: 8
+tier: 2
+title: Font policy compliance
+description: All fonts on slide 8 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

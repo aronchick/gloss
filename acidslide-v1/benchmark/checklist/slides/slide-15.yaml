@@ -1,0 +1,33 @@
+schema_version: "1.0"
+id: slide-15.rotated-text
+scope: slide
+slide: 15
+tier: 3
+title: Rotated text boxes present
+description: Slide 15 must contain text boxes with non-zero rotation (<p:xfrm rot!=0>).
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: shape
+  expectation:
+    min_count: 1
+---
+schema_version: "1.0"
+id: slide-15.font-policy
+scope: slide
+slide: 15
+tier: 3
+title: Font policy compliance
+description: All fonts on slide 15 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

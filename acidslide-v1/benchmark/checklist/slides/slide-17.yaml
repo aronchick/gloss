@@ -1,0 +1,34 @@
+schema_version: "1.0"
+id: slide-17.deep-grouping
+scope: slide
+slide: 17
+tier: 3
+title: Nested groups present
+description: Slide 17 must contain nested group shapes (groups inside groups).
+kind: grouping
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: group
+  expectation:
+    min_count: 2
+    required: true
+---
+schema_version: "1.0"
+id: slide-17.font-policy
+scope: slide
+slide: 17
+tier: 3
+title: Font policy compliance
+description: All fonts on slide 17 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

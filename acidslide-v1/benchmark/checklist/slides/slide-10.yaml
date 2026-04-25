@@ -1,0 +1,50 @@
+schema_version: "1.0"
+id: slide-10.connectors-present
+scope: slide
+slide: 10
+tier: 2
+title: Native connectors present
+description: Slide 10 must use native connector shapes (cxnSp), not drawn lines.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: connector
+  expectation:
+    min_count: 1
+    required: true
+---
+schema_version: "1.0"
+id: slide-10.grouped-labels
+scope: slide
+slide: 10
+tier: 2
+title: Grouped labels present
+description: Diagram labels should be grouped with their associated shapes.
+kind: grouping
+severity: major
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: group
+  expectation:
+    min_count: 1
+---
+schema_version: "1.0"
+id: slide-10.font-policy
+scope: slide
+slide: 10
+tier: 2
+title: Font policy compliance
+description: All fonts on slide 10 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

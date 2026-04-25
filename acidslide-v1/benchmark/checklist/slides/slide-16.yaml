@@ -1,0 +1,33 @@
+schema_version: "1.0"
+id: slide-16.off-canvas-objects
+scope: slide
+slide: 16
+tier: 3
+title: Objects present (off-canvas bleed test)
+description: Slide 16 must contain objects, some of which intentionally extend beyond the canvas boundary.
+kind: structure
+severity: major
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: shape
+  expectation:
+    min_count: 2
+---
+schema_version: "1.0"
+id: slide-16.font-policy
+scope: slide
+slide: 16
+tier: 3
+title: Font policy compliance
+description: All fonts on slide 16 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

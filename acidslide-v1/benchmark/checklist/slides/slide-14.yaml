@@ -1,0 +1,33 @@
+schema_version: "1.0"
+id: slide-14.rtl-text
+scope: slide
+slide: 14
+tier: 3
+title: RTL text blocks present
+description: Slide 14 must contain Arabic RTL text with stronger emphasis than slide 6.
+kind: multilingual
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: shape
+  expectation:
+    min_count: 3
+---
+schema_version: "1.0"
+id: slide-14.font-policy
+scope: slide
+slide: 14
+tier: 3
+title: Font policy compliance
+description: All fonts on slide 14 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

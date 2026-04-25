@@ -1,0 +1,6 @@
+{
+  "tier": 1,
+  "name": "Foundation",
+  "slides": [1, 2, 3, 4, 5],
+  "description": "Basic constructs: placeholders, images, simple tables, master usage"
+}

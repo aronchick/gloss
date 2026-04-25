@@ -1,0 +1,33 @@
+schema_version: "1.0"
+id: slide-11.theme-consistency
+scope: slide
+slide: 11
+tier: 2
+title: Theme color references present
+description: Some elements must reference theme colors (schemeClr), testing theme vs local override behavior.
+kind: theme-consistency
+severity: major
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: shape
+  expectation:
+    min_count: 2
+---
+schema_version: "1.0"
+id: slide-11.font-policy
+scope: slide
+slide: 11
+tier: 2
+title: Font policy compliance
+description: All fonts on slide 11 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

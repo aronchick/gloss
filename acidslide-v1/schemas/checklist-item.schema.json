@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acidslide.dev/schemas/checklist-item.schema.json",
+  "title": "AcidSlide Checklist Item",
+  "description": "Schema for a single checklist item in the AcidSlide benchmark",
+  "type": "object",
+  "required": ["schema_version", "id", "scope", "tier", "title", "description", "kind", "severity", "source_of_truth", "verification"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^(slide-\\d{2}|deck)\\..+$",
+      "description": "Unique item identifier, e.g., slide-07.native-table-required or deck.master-reuse"
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["slide", "deck"]
+    },
+    "slide": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20,
+      "description": "Slide number (required when scope is 'slide')"
+    },
+    "tier": {
+      "type": "integer",
+      "enum": [1, 2, 3],
+      "description": "Minimum tier that includes this item"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "description": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["visual", "structure", "text", "typography", "master-layout", "image-asset", "chart", "table", "fields", "grouping", "z-order", "overflow", "multilingual", "theme-consistency", "bullet-paragraph", "spacing-autofit", "gradient-pattern"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["critical", "major", "minor", "informational"]
+    },
+    "source_of_truth": {
+      "type": "string",
+      "enum": ["ooxml", "render", "both"],
+      "description": "ooxml: OOXML inspection authoritative. render: reference renderer authoritative. both: both must pass."
+    },
+    "verification": {
+      "type": "object",
+      "required": ["method"],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["object_compare", "visual_ssim", "text_match", "hash_match", "field_check", "layout_check", "anti_cheat"]
+        },
+        "selector": {
+          "type": "string"
+        },
+        "expectation": {
+          "type": "object"
+        },
+        "tolerance": {
+          "type": "object",
+          "properties": {
+            "bbox_px": { "type": "integer" },
+            "units": { "type": "string", "const": "pixels_at_1920x1080" }
+          }
+        },
+        "semantic_equivalence": {
+          "type": "object"
+        }
+      }
+    },
+    "failure_mode": {
+      "type": "object",
+      "properties": {
+        "automatic_fail_if": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "propagation": {
+          "type": "string",
+          "enum": ["zero_slide", "zero_item", "zero_affected_slides"],
+          "description": "automatic_fail_if rules MUST use zero_slide or zero_affected_slides"
+        }
+      }
+    }
+  },
+  "if": {
+    "properties": { "scope": { "const": "slide" } }
+  },
+  "then": {
+    "required": ["slide"]
+  }
+}

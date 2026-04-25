@@ -1,0 +1,51 @@
+schema_version: "1.0"
+id: slide-09.dense-text
+scope: slide
+slide: 9
+tier: 2
+title: Dense text content present
+description: Slide 9 must contain high-density text content testing overflow behavior.
+kind: overflow
+severity: major
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: shape
+  expectation:
+    min_count: 3
+---
+schema_version: "1.0"
+id: slide-09.no-full-slide-raster
+scope: slide
+slide: 9
+tier: 2
+title: No full-slide raster cheat
+description: No single image may cover more than 40% of slide area.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: no_full_slide_raster
+failure_mode:
+  automatic_fail_if:
+    - full_slide_raster_detected
+  propagation: zero_slide
+---
+schema_version: "1.0"
+id: slide-09.font-policy
+scope: slide
+slide: 9
+tier: 2
+title: Font policy compliance
+description: All fonts on slide 9 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

@@ -1,0 +1,66 @@
+schema_version: "1.0"
+id: slide-12.slidenum-field
+scope: slide
+slide: 12
+tier: 2
+title: Slide number field present
+description: Slide 12 must contain a native slide number field (<a:fld> with slidenum type).
+kind: fields
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: field_check
+  expectation:
+    field_type: slidenum
+---
+schema_version: "1.0"
+id: slide-12.title-placeholder
+scope: slide
+slide: 12
+tier: 2
+title: Title placeholder present
+description: Slide 12 must use a native title placeholder.
+kind: master-layout
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: layout_check
+  selector: placeholder
+  expectation:
+    placeholder_type: title
+    min_count: 1
+---
+schema_version: "1.0"
+id: slide-12.body-placeholder
+scope: slide
+slide: 12
+tier: 2
+title: Body placeholder present
+description: Slide 12 must use a native body placeholder.
+kind: master-layout
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: layout_check
+  selector: placeholder
+  expectation:
+    placeholder_type: body
+    min_count: 1
+---
+schema_version: "1.0"
+id: slide-12.font-policy
+scope: slide
+slide: 12
+tier: 2
+title: Font policy compliance
+description: All fonts on slide 12 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide

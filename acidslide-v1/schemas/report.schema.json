@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acidslide.dev/schemas/report.schema.json",
+  "title": "AcidSlide Grade Report",
+  "description": "Schema for the AcidSlide grading pipeline output",
+  "type": "object",
+  "required": [
+    "benchmark_version", "grader_version", "environment_hash",
+    "submission", "schema_valid", "repair_triggered",
+    "fidelity_score", "passed_items", "total_items",
+    "deck_passed", "eligible", "tier_scores",
+    "slides", "deck_items", "anti_cheat_flags"
+  ],
+  "properties": {
+    "benchmark_version": { "type": "string", "pattern": "^acidslide-v\\d+\\.\\d+\\.\\d+" },
+    "grader_version": { "type": "string" },
+    "environment_hash": { "type": "string" },
+    "submission": { "type": "string" },
+    "schema_valid": { "type": "boolean" },
+    "repair_triggered": { "type": "boolean" },
+    "grading_duration_seconds": { "type": "number", "minimum": 0 },
+    "fidelity_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "passed_items": { "type": "integer", "minimum": 0 },
+    "total_items": { "type": "integer", "minimum": 0 },
+    "deck_passed": { "type": "boolean" },
+    "eligible": { "type": "boolean" },
+    "tier_scores": {
+      "type": "object",
+      "properties": {
+        "level_1": { "$ref": "#/$defs/tier_score_or_null" },
+        "level_2": { "$ref": "#/$defs/tier_score_or_null" },
+        "level_3": { "$ref": "#/$defs/tier_score_or_null" }
+      }
+    },
+    "verified_metrics": {
+      "type": "object",
+      "properties": {
+        "submission_file_size_bytes": { "type": "integer" },
+        "grading_duration_seconds": { "type": "number" },
+        "schema_valid": { "type": "boolean" }
+      }
+    },
+    "attested_metrics": {
+      "type": "object",
+      "properties": {
+        "generation_strategy": { "type": "string", "enum": ["direct", "code", "hybrid", "template-edit"] },
+        "generation_wall_clock_seconds": { "type": "number" },
+        "generation_token_count": { "type": "integer" },
+        "generation_cost_usd": { "type": "number" },
+        "retry_count": { "type": "integer" },
+        "code_language": { "type": "string" },
+        "code_line_count": { "type": "integer" }
+      }
+    },
+    "anti_cheat_flags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "slides": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/slide_result" }
+    },
+    "deck_items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/checklist_item_result" }
+    }
+  },
+  "$defs": {
+    "tier_score_or_null": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["fidelity_score", "passed", "total"],
+          "properties": {
+            "fidelity_score": { "type": "number", "minimum": 0, "maximum": 1 },
+            "passed": { "type": "integer", "minimum": 0 },
+            "total": { "type": "integer", "minimum": 0 }
+          }
+        }
+      ]
+    },
+    "slide_result": {
+      "type": "object",
+      "required": ["slide", "tier", "visual_ssim", "visual_pixel_exact", "passed_items", "total_items", "items"],
+      "properties": {
+        "slide": { "type": "integer" },
+        "tier": { "type": "integer" },
+        "visual_ssim": { "type": "number" },
+        "visual_pixel_exact": { "type": "boolean" },
+        "passed_items": { "type": "integer" },
+        "total_items": { "type": "integer" },
+        "items": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/checklist_item_result" }
+        }
+      }
+    },
+    "checklist_item_result": {
+      "type": "object",
+      "required": ["id", "passed", "severity", "source_of_truth"],
+      "properties": {
+        "id": { "type": "string" },
+        "passed": { "type": "boolean" },
+        "severity": { "type": "string", "enum": ["critical", "major", "minor", "informational"] },
+        "source_of_truth": { "type": "string", "enum": ["ooxml", "render", "both"] },
+        "details": { "type": "string" }
+      }
+    }
+  }
+}

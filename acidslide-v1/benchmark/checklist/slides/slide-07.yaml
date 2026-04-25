@@ -1,0 +1,51 @@
+schema_version: "1.0"
+id: slide-07.multiple-images
+scope: slide
+slide: 7
+tier: 2
+title: Multiple images with cropping
+description: Slide 7 must contain multiple images with different crop rectangles and/or crop-to-shape masking.
+kind: image-asset
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: object_compare
+  selector: picture
+  expectation:
+    min_count: 2
+    required: true
+---
+schema_version: "1.0"
+id: slide-07.title-placeholder
+scope: slide
+slide: 7
+tier: 2
+title: Title placeholder present
+description: Slide 7 must use a native title placeholder.
+kind: master-layout
+severity: major
+source_of_truth: ooxml
+verification:
+  method: layout_check
+  selector: placeholder
+  expectation:
+    placeholder_type: title
+    min_count: 1
+---
+schema_version: "1.0"
+id: slide-07.font-policy
+scope: slide
+slide: 7
+tier: 2
+title: Font policy compliance
+description: All fonts on slide 7 must be from the bundled set.
+kind: structure
+severity: critical
+source_of_truth: ooxml
+verification:
+  method: anti_cheat
+  selector: font_policy
+failure_mode:
+  automatic_fail_if:
+    - non_bundled_font_used
+  propagation: zero_slide
