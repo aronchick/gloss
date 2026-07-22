@@ -1,11 +1,10 @@
 """Tests for the checklist loader."""
 
-import tempfile
 from pathlib import Path
 
 import pytest
 
-from acidslide.checklist import ChecklistItem, load_checklist
+from acidslide.checklist import load_checklist
 
 
 @pytest.fixture

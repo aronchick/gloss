@@ -1,4 +1,4 @@
-"""Integration tests — run the full pipeline against AcidSlide_v1.pptx."""
+"""Integration tests against the promoted canonical AcidSlide v1 gold deck."""
 
 from __future__ import annotations
 
@@ -8,14 +8,14 @@ import pytest
 
 from acidslide.checklist import load_checklist
 from acidslide.evaluate import compute_fidelity_score, evaluate_checklist
-from acidslide.inspect_ooxml import extract_deck_graph
+from acidslide.inspect_ooxml import SceneObject, extract_deck_graph
 
-PPTX_PATH = Path(__file__).resolve().parents[2] / "AcidSlide_v1.pptx"
 BENCHMARK_DIR = Path(__file__).resolve().parents[2] / "benchmark"
+PPTX_PATH = BENCHMARK_DIR / "deck" / "gold" / "acidslide-v1-gold.pptx"
 
 pytestmark = pytest.mark.skipif(
     not PPTX_PATH.exists(),
-    reason="AcidSlide_v1.pptx not found",
+    reason="canonical AcidSlide v1 gold deck not found",
 )
 
 
@@ -144,7 +144,7 @@ class TestChecklistEvaluation:
         assert isinstance(flags, list)
 
         # Print summary for inspection
-        print(f"\n--- AcidSlide v1 Grade Summary ---")
+        print("\n--- AcidSlide v1 Grade Summary ---")
         print(f"Fidelity: {fidelity:.4f}")
         print(f"Passed: {passed}/{total}")
         print(f"Anti-cheat flags: {len(flags)}")
@@ -157,9 +157,9 @@ class TestChecklistEvaluation:
             print(f"  Deck {di.id}: {status} — {di.details}")
 
 
-def _flatten(obj) -> list:
+def _flatten(obj: SceneObject) -> list[SceneObject]:
     """Flatten object children recursively."""
-    result = []
+    result: list[SceneObject] = []
     for child in obj.children:
         result.append(child)
         result.extend(_flatten(child))

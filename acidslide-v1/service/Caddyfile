@@ -1,0 +1,18 @@
+{
+  email {$TLS_EMAIL}
+  servers {
+    metrics
+  }
+}
+{$SITE_DOMAIN}, {$API_DOMAIN} {
+  encode zstd gzip
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    -Server
+  }
+  reverse_proxy api:8000
+  log {
+    output stdout
+    format json
+  }
+}

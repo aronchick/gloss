@@ -1,0 +1,46 @@
+name: Report a grader gap
+description: Reproduce a false positive, false negative, crash, or nondeterministic result.
+title: "[grader]: "
+labels: ["grader"]
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observable behavior
+      description: What did Gloss report, and what should it have reported?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include exact `uv` commands, tier, platform, and a minimal safe fixture or repository path.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Gloss commit
+      placeholder: 40-character Git SHA
+    validations:
+      required: true
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Result
+      options:
+        - False positive
+        - False negative
+        - Crash or incomplete verification
+        - Nondeterministic result
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: This is not a security vulnerability. I will use the private process in SECURITY.md for vulnerabilities.
+          required: true

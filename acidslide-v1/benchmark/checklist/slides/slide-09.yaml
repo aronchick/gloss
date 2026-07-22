@@ -1,51 +1,446 @@
-schema_version: "1.0"
-id: slide-09.dense-text
-scope: slide
-slide: 9
-tier: 2
-title: Dense text content present
-description: Slide 9 must contain high-density text content testing overflow behavior.
-kind: overflow
-severity: major
-source_of_truth: ooxml
-verification:
-  method: object_compare
-  selector: shape
-  expectation:
-    min_count: 3
+{
+  "schema_version": "1.0",
+  "id": "slide-09.key-text",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Required key text is present",
+  "description": "The slide must preserve the exact key text `API Reference` as editable text.",
+  "kind": "text",
+  "severity": "critical",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "text_match",
+    "selector": "slide_text",
+    "expectation": {
+      "contains": "API Reference"
+    }
+  },
+  "assertion_id": "slide-09.assert-key-text",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
 ---
-schema_version: "1.0"
-id: slide-09.no-full-slide-raster
-scope: slide
-slide: 9
-tier: 2
-title: No full-slide raster cheat
-description: No single image may cover more than 40% of slide area.
-kind: structure
-severity: critical
-source_of_truth: ooxml
-verification:
-  method: anti_cheat
-  selector: no_full_slide_raster
-failure_mode:
-  automatic_fail_if:
-    - full_slide_raster_detected
-  propagation: zero_slide
+{
+  "schema_version": "1.0",
+  "id": "slide-09.native-primary",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Primary native construct is present",
+  "description": "The primary structural requirement is two dense monospaced text boxes with different autofit modes; raster or shape imitations do not qualify.",
+  "kind": "overflow",
+  "severity": "critical",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "object_compare",
+    "selector": "shape",
+    "expectation": {
+      "min_count": 2,
+      "required": true
+    }
+  },
+  "assertion_id": "slide-09.assert-native-primary",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
 ---
-schema_version: "1.0"
-id: slide-09.font-policy
-scope: slide
-slide: 9
-tier: 2
-title: Font policy compliance
-description: All fonts on slide 9 must be from the bundled set.
-kind: structure
-severity: critical
-source_of_truth: ooxml
-verification:
-  method: anti_cheat
-  selector: font_policy
-failure_mode:
-  automatic_fail_if:
-    - non_bundled_font_used
-  propagation: zero_slide
+{
+  "schema_version": "1.0",
+  "id": "slide-09.layout-binding",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Content Slide layout binding",
+  "description": "The slide must be bound to the `Content Slide` master layout and use its required inherited content.",
+  "kind": "master-layout",
+  "severity": "critical",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "layout_check",
+    "selector": "placeholder",
+    "expectation": {
+      "placeholder_type": "title",
+      "min_count": 1
+    }
+  },
+  "assertion_id": "slide-09.assert-layout-binding",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.font-policy",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Bundled font policy",
+  "description": "Every rendered text run must use a bundled Liberation, Carlito, Caladea, or Noto family.",
+  "kind": "typography",
+  "severity": "critical",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "anti_cheat",
+    "selector": "font_policy"
+  },
+  "failure_mode": {
+    "automatic_fail_if": [
+      "non_bundled_font_used"
+    ],
+    "propagation": "zero_slide",
+    "affected_slides": {
+      "status": "complete",
+      "mode": "current_slide",
+      "slides": [
+        9
+      ],
+      "selector_id": null,
+      "selector_sha256": null
+    }
+  },
+  "assertion_id": "slide-09.assert-font-policy",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.composition",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Required composition inventory",
+  "description": "The slide composition must include two code columns and their labels.",
+  "kind": "structure",
+  "severity": "major",
+  "source_of_truth": "both",
+  "verification": {
+    "method": "object_compare",
+    "selector": "shape",
+    "expectation": {
+      "min_count": 4
+    }
+  },
+  "assertion_id": "slide-09.assert-composition",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.full-slide-fidelity",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Full-slide rendered fidelity",
+  "description": "The complete 1920×1080 LibreOffice export must meet the v1 SSIM threshold against the gold export.",
+  "kind": "visual",
+  "severity": "major",
+  "source_of_truth": "render",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999
+    }
+  },
+  "assertion_id": "slide-09.assert-full-slide-fidelity",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.focal-fidelity",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Focal region rendered fidelity",
+  "description": "The full-slide SSIM gate must preserve the appearance of the paired fixed-size and auto-shrink columns; this label identifies the diagnostic focal region.",
+  "kind": "visual",
+  "severity": "major",
+  "source_of_truth": "render",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999,
+      "diagnostic_region": "the paired fixed-size and auto-shrink columns"
+    }
+  },
+  "assertion_id": "slide-09.assert-focal-fidelity",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.hierarchy-z-order",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Hierarchy and z-order semantics",
+  "description": "Preserve left clipping versus right auto-shrink semantics in native OOXML and in the rendered result.",
+  "kind": "z-order",
+  "severity": "major",
+  "source_of_truth": "both",
+  "verification": {
+    "method": "object_compare",
+    "selector": "shape",
+    "expectation": {
+      "min_count": 4
+    }
+  },
+  "assertion_id": "slide-09.assert-hierarchy-z-order",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.semantic-structure",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Semantic structure matches prompt",
+  "description": "The editable object graph must express two dense monospaced text boxes with different autofit modes while remaining visually equivalent to the reference.",
+  "kind": "overflow",
+  "severity": "major",
+  "source_of_truth": "both",
+  "verification": {
+    "method": "object_compare",
+    "selector": "shape",
+    "expectation": {
+      "min_count": 2
+    }
+  },
+  "assertion_id": "slide-09.assert-semantic-structure",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.palette",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Palette fidelity",
+  "description": "The rendered slide must use the exact deck palette values in the regions specified by the prompt.",
+  "kind": "visual",
+  "severity": "minor",
+  "source_of_truth": "render",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999,
+      "diagnostic": "palette"
+    }
+  },
+  "assertion_id": "slide-09.assert-palette",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.typography",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Typography fidelity",
+  "description": "Font family, size, weight, line breaking, and visible text color must match in the full-slide export.",
+  "kind": "typography",
+  "severity": "minor",
+  "source_of_truth": "render",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999,
+      "diagnostic": "typography"
+    }
+  },
+  "assertion_id": "slide-09.assert-typography",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.spacing",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Geometry and spacing fidelity",
+  "description": "Object bounds, alignment, padding, and spacing must match the specified geometry and the reference export.",
+  "kind": "spacing-autofit",
+  "severity": "minor",
+  "source_of_truth": "both",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999,
+      "diagnostic": "geometry"
+    }
+  },
+  "assertion_id": "slide-09.assert-spacing",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-09.decorative-detail",
+  "scope": "slide",
+  "slide": 9,
+  "tier": 2,
+  "title": "Decorative and effect details",
+  "description": "Preserve 1.15 line spacing and exact indentation as editable native detail.",
+  "kind": "gradient-pattern",
+  "severity": "minor",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "object_compare",
+    "selector": "shape",
+    "expectation": {
+      "min_count": 4
+    }
+  },
+  "assertion_id": "slide-09.assert-decorative-detail",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}

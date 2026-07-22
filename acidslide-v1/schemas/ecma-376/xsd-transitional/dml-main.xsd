@@ -2759,7 +2759,7 @@
   </xsd:simpleType>
   <xsd:complexType name="CT_TextBulletSizeFollowText"/>
   <xsd:complexType name="CT_TextBulletSizePercent">
-    <xsd:attribute name="val" type="ST_TextBulletSizePercent" use="required"/>
+<xsd:attribute name="val" type="ST_TextBulletSize" use="required"/>
   </xsd:complexType>
   <xsd:complexType name="CT_TextBulletSizePoint">
     <xsd:attribute name="val" type="ST_TextFontSize" use="required"/>

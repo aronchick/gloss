@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-import pytest
+from typing import Any
+
+from lxml import etree
 
 from acidslide.checklist import ChecklistItem, FailureMode, Verification
 from acidslide.evaluate import (
@@ -10,8 +12,8 @@ from acidslide.evaluate import (
     compute_tier_scores,
     evaluate_checklist,
 )
-from acidslide.inspect_ooxml import DeckGraph, SceneObject, SlideGraph, TextRun
-from acidslide.models import Severity, VisualComparisonResult
+from acidslide.inspect_ooxml import DeckGraph, SceneObject, SlideGraph, TextRun, _parse_shape
+from acidslide.models import VisualComparisonResult
 
 
 def _make_item(
@@ -22,7 +24,7 @@ def _make_item(
     severity: str = "critical",
     method: str = "object_compare",
     selector: str = "table",
-    expectation: dict | None = None,
+    expectation: dict[str, Any] | None = None,
     failure_mode: FailureMode | None = None,
 ) -> ChecklistItem:
     return ChecklistItem(
@@ -65,11 +67,44 @@ def _make_deck(slides: list[SlideGraph] | None = None) -> DeckGraph:
 
 
 class TestObjectCompare:
+    def test_raster_filled_native_shape_is_picture_semantic_equivalent(self) -> None:
+        shape = etree.fromstring(
+            b"""<p:sp xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"
+              xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+              <p:nvSpPr><p:cNvPr id="1" name="Masked image"/></p:nvSpPr>
+              <p:spPr><a:blipFill><a:blip/></a:blipFill></p:spPr>
+            </p:sp>"""
+        )
+        slide = _make_slide(objects=[_parse_shape(shape)])
+        item = _make_item("s7.pictures", selector="picture", expectation={"min_count": 1})
+
+        results, _, _ = evaluate_checklist(_make_deck([slide]), [item])
+
+        assert results[0].items[0].passed is True
+
+    def test_generic_shape_selector_counts_groups_and_descendants(self) -> None:
+        group = SceneObject(
+            obj_type="group",
+            children=[SceneObject(obj_type="shape"), SceneObject(obj_type="shape")],
+        )
+        item = _make_item("s17.shapes", selector="shape", expectation={"min_count": 3})
+
+        results, _, _ = evaluate_checklist(
+            _make_deck([_make_slide(objects=[group])]),
+            [item],
+        )
+
+        assert results[0].items[0].passed is True
+
     def test_table_found(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="table", is_table=True, table_rows=3, table_cols=4),
-        ])
-        item = _make_item("s3.table", selector="table", expectation={"exact_count": 1, "required": True})
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="table", is_table=True, table_rows=3, table_cols=4),
+            ]
+        )
+        item = _make_item(
+            "s3.table", selector="table", expectation={"exact_count": 1, "required": True}
+        )
         deck = _make_deck([slide])
 
         results, _, _ = evaluate_checklist(deck, [item])
@@ -77,32 +112,46 @@ class TestObjectCompare:
         assert results[0].items[0].passed is True
 
     def test_table_missing(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape"),
-        ])
-        item = _make_item("s3.table", selector="table", expectation={"exact_count": 1, "required": True})
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape"),
+            ]
+        )
+        item = _make_item(
+            "s3.table", selector="table", expectation={"exact_count": 1, "required": True}
+        )
         deck = _make_deck([slide])
 
         results, _, _ = evaluate_checklist(deck, [item])
         assert results[0].items[0].passed is False
-        assert "not found" in results[0].items[0].details.lower() or "Expected" in results[0].items[0].details
+        assert (
+            "not found" in results[0].items[0].details.lower()
+            or "Expected" in results[0].items[0].details
+        )
 
     def test_chart_found(self) -> None:
-        slide = _make_slide(slide_number=4, objects=[
-            SceneObject(obj_type="chart", is_chart=True),
-        ])
-        item = _make_item("s4.chart", slide=4, selector="chart", expectation={"exact_count": 1, "required": True})
+        slide = _make_slide(
+            slide_number=4,
+            objects=[
+                SceneObject(obj_type="chart", is_chart=True),
+            ],
+        )
+        item = _make_item(
+            "s4.chart", slide=4, selector="chart", expectation={"exact_count": 1, "required": True}
+        )
         deck = _make_deck([slide])
 
         results, _, _ = evaluate_checklist(deck, [item])
         assert results[0].items[0].passed is True
 
     def test_min_count(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape"),
-            SceneObject(obj_type="shape"),
-            SceneObject(obj_type="shape"),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape"),
+                SceneObject(obj_type="shape"),
+                SceneObject(obj_type="shape"),
+            ]
+        )
         item = _make_item("s1.shapes", selector="shape", expectation={"min_count": 2})
         deck = _make_deck([slide])
 
@@ -112,12 +161,14 @@ class TestObjectCompare:
 
 class TestTextMatch:
     def test_contains_found(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(
-                obj_type="shape",
-                text_runs=[TextRun(text="Hello World")],
-            ),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(
+                    obj_type="shape",
+                    text_runs=[TextRun(text="Hello World")],
+                ),
+            ]
+        )
         item = _make_item("s1.text", method="text_match", expectation={"contains": "Hello"})
         deck = _make_deck([slide])
 
@@ -125,9 +176,11 @@ class TestTextMatch:
         assert results[0].items[0].passed is True
 
     def test_contains_not_found(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape", text_runs=[TextRun(text="Goodbye")]),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape", text_runs=[TextRun(text="Goodbye")]),
+            ]
+        )
         item = _make_item("s1.text", method="text_match", expectation={"contains": "Hello"})
         deck = _make_deck([slide])
 
@@ -137,9 +190,11 @@ class TestTextMatch:
 
 class TestFieldCheck:
     def test_slidenum_field_found(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape", field_type="slidenum"),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape", field_type="slidenum"),
+            ]
+        )
         item = _make_item("s12.field", method="field_check", expectation={"field_type": "slidenum"})
         deck = _make_deck([slide])
 
@@ -147,9 +202,11 @@ class TestFieldCheck:
         assert results[0].items[0].passed is True
 
     def test_slidenum_field_missing(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape"),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape"),
+            ]
+        )
         item = _make_item("s12.field", method="field_check", expectation={"field_type": "slidenum"})
         deck = _make_deck([slide])
 
@@ -159,9 +216,11 @@ class TestFieldCheck:
 
 class TestLayoutCheck:
     def test_placeholder_found(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape", placeholder_type="title"),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape", placeholder_type="title"),
+            ]
+        )
         item = _make_item(
             "s1.ph",
             method="layout_check",
@@ -174,9 +233,11 @@ class TestLayoutCheck:
         assert results[0].items[0].passed is True
 
     def test_placeholder_missing(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape"),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape"),
+            ]
+        )
         item = _make_item(
             "s1.ph",
             method="layout_check",
@@ -199,12 +260,17 @@ class TestLayoutCheck:
 
 class TestAntiCheat:
     def test_font_policy_pass(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape", text_runs=[
-                TextRun(text="Hello", font_family="Carlito"),
-                TextRun(text="World", font_family="Noto Sans"),
-            ]),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(
+                    obj_type="shape",
+                    text_runs=[
+                        TextRun(text="Hello", font_family="Carlito"),
+                        TextRun(text="World", font_family="Noto Sans"),
+                    ],
+                ),
+            ]
+        )
         item = _make_item("s1.font", method="anti_cheat", selector="font_policy")
         deck = _make_deck([slide])
 
@@ -212,11 +278,16 @@ class TestAntiCheat:
         assert results[0].items[0].passed is True
 
     def test_font_policy_fail(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape", text_runs=[
-                TextRun(text="Bad", font_family="Arial"),
-            ]),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(
+                    obj_type="shape",
+                    text_runs=[
+                        TextRun(text="Bad", font_family="Arial"),
+                    ],
+                ),
+            ]
+        )
         item = _make_item(
             "s1.font",
             method="anti_cheat",
@@ -234,9 +305,11 @@ class TestAntiCheat:
         assert len(flags) > 0
 
     def test_no_full_slide_raster_pass(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="picture", bbox=(0, 0, 3000000, 2000000)),  # small image
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="picture", bbox=(0, 0, 3000000, 2000000)),  # small image
+            ]
+        )
         item = _make_item("s1.raster", method="anti_cheat", selector="no_full_slide_raster")
         deck = _make_deck([slide])
 
@@ -244,9 +317,11 @@ class TestAntiCheat:
         assert results[0].items[0].passed is True
 
     def test_no_full_slide_raster_fail(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="picture", bbox=(0, 0, 12000000, 6800000)),  # ~97% of slide
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="picture", bbox=(0, 0, 12000000, 6800000)),  # ~97% of slide
+            ]
+        )
         item = _make_item(
             "s1.raster",
             method="anti_cheat",
@@ -265,10 +340,12 @@ class TestAntiCheat:
 
 class TestZeroSlidePropagation:
     def test_auto_fail_zeroes_other_items(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape", text_runs=[TextRun(text="X", font_family="Arial")]),
-            SceneObject(obj_type="table", is_table=True, table_rows=2, table_cols=2),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape", text_runs=[TextRun(text="X", font_family="Arial")]),
+                SceneObject(obj_type="table", is_table=True, table_rows=2, table_cols=2),
+            ]
+        )
 
         font_item = _make_item(
             "s1.font",
@@ -295,13 +372,26 @@ class TestZeroSlidePropagation:
 
 class TestScoring:
     def test_perfect_score(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="table", is_table=True, table_rows=3, table_cols=4),
-            SceneObject(obj_type="shape", placeholder_type="title"),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="table", is_table=True, table_rows=3, table_cols=4),
+                SceneObject(obj_type="shape", placeholder_type="title"),
+            ]
+        )
         items = [
-            _make_item("s1.table", selector="table", severity="critical", expectation={"exact_count": 1, "required": True}),
-            _make_item("s1.ph", method="layout_check", selector="placeholder", severity="major", expectation={"placeholder_type": "title", "min_count": 1}),
+            _make_item(
+                "s1.table",
+                selector="table",
+                severity="critical",
+                expectation={"exact_count": 1, "required": True},
+            ),
+            _make_item(
+                "s1.ph",
+                method="layout_check",
+                selector="placeholder",
+                severity="major",
+                expectation={"placeholder_type": "title", "min_count": 1},
+            ),
         ]
         deck = _make_deck([slide])
 
@@ -312,12 +402,21 @@ class TestScoring:
         assert total == 2
 
     def test_partial_score(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape"),  # no table, no placeholder
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape"),  # no table, no placeholder
+            ]
+        )
         items = [
-            _make_item("s1.table", selector="table", severity="critical", expectation={"exact_count": 1, "required": True}),
-            _make_item("s1.shapes", selector="shape", severity="minor", expectation={"min_count": 1}),
+            _make_item(
+                "s1.table",
+                selector="table",
+                severity="critical",
+                expectation={"exact_count": 1, "required": True},
+            ),
+            _make_item(
+                "s1.shapes", selector="shape", severity="minor", expectation={"min_count": 1}
+            ),
         ]
         deck = _make_deck([slide])
 
@@ -332,7 +431,9 @@ class TestScoring:
     def test_informational_excluded(self) -> None:
         slide = _make_slide(objects=[])
         items = [
-            _make_item("s1.info", selector="shape", severity="informational", expectation={"min_count": 1}),
+            _make_item(
+                "s1.info", selector="shape", severity="informational", expectation={"min_count": 1}
+            ),
         ]
         deck = _make_deck([slide])
 
@@ -343,12 +444,18 @@ class TestScoring:
         assert total == 0
 
     def test_weighted_scoring(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape"),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(obj_type="shape"),
+            ]
+        )
         items = [
-            _make_item("s1.crit", selector="shape", severity="critical", expectation={"min_count": 1}),
-            _make_item("s1.fail", selector="table", severity="major", expectation={"required": True}),
+            _make_item(
+                "s1.crit", selector="shape", severity="critical", expectation={"min_count": 1}
+            ),
+            _make_item(
+                "s1.fail", selector="table", severity="major", expectation={"required": True}
+            ),
         ]
         deck = _make_deck([slide])
 
@@ -392,9 +499,13 @@ class TestDeckLevelItems:
         assert deck_items[0].passed is False
 
     def test_deck_font_policy_pass(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape", text_runs=[TextRun(text="OK", font_family="Carlito")]),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(
+                    obj_type="shape", text_runs=[TextRun(text="OK", font_family="Carlito")]
+                ),
+            ]
+        )
         deck = _make_deck([slide])
         item = _make_item(
             "deck.font",
@@ -408,9 +519,13 @@ class TestDeckLevelItems:
         assert deck_items[0].passed is True
 
     def test_deck_font_policy_fail(self) -> None:
-        slide = _make_slide(objects=[
-            SceneObject(obj_type="shape", text_runs=[TextRun(text="Bad", font_family="Courier New")]),
-        ])
+        slide = _make_slide(
+            objects=[
+                SceneObject(
+                    obj_type="shape", text_runs=[TextRun(text="Bad", font_family="Courier New")]
+                ),
+            ]
+        )
         deck = _make_deck([slide])
         item = _make_item(
             "deck.font",
@@ -430,17 +545,24 @@ class TestTierScores:
         slides = []
         items = []
         for i in range(1, 21):
-            slides.append(_make_slide(slide_number=i, objects=[
-                SceneObject(obj_type="shape"),
-            ]))
-            items.append(_make_item(
-                f"s{i}.shape",
-                slide=i,
-                tier=1 if i <= 5 else (2 if i <= 12 else 3),
-                selector="shape",
-                severity="major",
-                expectation={"min_count": 1},
-            ))
+            slides.append(
+                _make_slide(
+                    slide_number=i,
+                    objects=[
+                        SceneObject(obj_type="shape"),
+                    ],
+                )
+            )
+            items.append(
+                _make_item(
+                    f"s{i}.shape",
+                    slide=i,
+                    tier=1 if i <= 5 else (2 if i <= 12 else 3),
+                    selector="shape",
+                    severity="major",
+                    expectation={"min_count": 1},
+                )
+            )
 
         deck = _make_deck(slides)
         results, deck_items, _ = evaluate_checklist(deck, items, tier_slides=list(range(1, 21)))
@@ -449,6 +571,42 @@ class TestTierScores:
         assert "level_1" in tier_scores
         assert "level_2" in tier_scores
         assert "level_3" in tier_scores
-        assert tier_scores["level_1"]["fidelity_score"] == 1.0
-        assert tier_scores["level_2"]["fidelity_score"] == 1.0
-        assert tier_scores["level_3"]["fidelity_score"] == 1.0
+        level_1 = tier_scores["level_1"]
+        level_2 = tier_scores["level_2"]
+        level_3 = tier_scores["level_3"]
+        assert level_1 is None
+        assert level_2 is None
+        assert level_3 is not None and level_3["fidelity_score"] == 1.0
+
+
+class TestDeckVisualScoring:
+    def test_all_targeted_slides_must_meet_threshold(self) -> None:
+        item = _make_item(
+            "deck.visual",
+            scope="deck",
+            slide=None,
+            method="visual_ssim",
+            expectation={"min_ssim": 0.99},
+        )
+        visual = [
+            VisualComparisonResult(1, 1.0, True),
+            VisualComparisonResult(2, 0.98, False),
+        ]
+
+        _, deck_items, _ = evaluate_checklist(_make_deck(), [item], visual)
+
+        assert deck_items[0].passed is False
+        assert "1/2 slides" in deck_items[0].details
+
+    def test_missing_visual_results_fail_deck_visual_item(self) -> None:
+        item = _make_item(
+            "deck.visual",
+            scope="deck",
+            slide=None,
+            method="visual_ssim",
+        )
+
+        _, deck_items, _ = evaluate_checklist(_make_deck(), [item])
+
+        assert deck_items[0].passed is False
+        assert "No visual" in deck_items[0].details

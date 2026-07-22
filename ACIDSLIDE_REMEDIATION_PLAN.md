@@ -1,5 +1,9 @@
 # AcidSlide v1 — Detailed Remediation Plan
 
+> **Historical and superseded.** This plan describes the retired April draft deck. The draft is
+> recoverable from git history at `7f66d66`; it is intentionally absent from the release tree. The
+> only current gold is `acidslide-v1/benchmark/deck/gold/acidslide-v1-gold.pptx`.
+
 Goal: take `acidslide-v1/AcidSlide_v1.pptx` (currently auto-failing) and produce a fully conformant AcidSlide v1 gold deck + benchmark package per `ACIDSLIDE_OPENSPEC.md`.
 
 > **Key insight**: the spec treats the `.pptx` as only ~5% of the package — most of the work is the *surrounding* artifacts (prompts, checklist YAML, manifests, fixtures, baselines). Fixing the deck without fixing the package still leaves you ungradeable.

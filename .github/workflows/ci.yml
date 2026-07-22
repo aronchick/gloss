@@ -1,0 +1,127 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["acidslide-v*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  grader:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: acidslide-v1/grader
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.4"
+          enable-cache: true
+      - run: uv sync --extra dev --locked
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy acidslide tests
+      - run: uv run pytest --cov=acidslide --cov-report=term-missing --cov-fail-under=85
+      - run: uv build
+      - run: uv run pip-audit
+      - name: Verify self-contained wheel data
+        run: |
+          uv run python -m zipfile -l dist/acidslide-1.0.0a1-py3-none-any.whl | grep 'acidslide/data/benchmark/checklist/deck.yaml'
+          uv run python -m zipfile -l dist/acidslide-1.0.0a1-py3-none-any.whl | grep 'acidslide/data/schemas/ecma-376/xsd-transitional/pml.xsd'
+
+  corpus:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: acidslide-v1/grader
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.4"
+          enable-cache: true
+      - run: uv sync --extra dev --locked
+      - run: uv run python ../benchmark/validate_corpus.py
+      - name: Require the complete frozen release on version tags
+        if: startsWith(github.ref, 'refs/tags/acidslide-v')
+        run: |
+          test "$GITHUB_REF_NAME" = "acidslide-v1.0.0"
+          uv run python ../benchmark/validate_corpus.py --release
+
+  launch:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install launch media inspector
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+      - run: node launch/verify-launch.mjs
+
+  container:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --platform linux/amd64 --tag acidslide-ci acidslide-v1
+      - name: Verify frozen runtime and font inventory
+        run: |
+          docker run --rm --platform linux/amd64 --network none acidslide-ci --version
+          docker run --rm --platform linux/amd64 --network none \
+            --entrypoint /bin/sh acidslide-ci -ec '
+              test "$(date -u +%Y-%m-%dT%H:%M:%SZ)" = "2025-01-01T00:00:00Z"
+              libreoffice --version | grep -F "LibreOffice 7.3.7.2"
+              pdftoppm -v 2>&1 | grep -F "22.02.0"
+              test "$(fc-list -f "%{file}\n" | sort -u | wc -l)" -eq 26
+            '
+      - name: Reference deck passes quarantine and ECMA-376 validation
+        run: |
+          output=$(docker run --rm --platform linux/amd64 --network none \
+            --volume "$PWD/acidslide-v1/benchmark/deck/gold/acidslide-v1-gold.pptx:/input.pptx:ro" \
+            acidslide-ci validate /input.pptx 2>&1)
+          grep -F "Quarantine passed" <<<"$output"
+          grep -F "ECMA-376 schema: valid" <<<"$output"
+
+  service:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: acidslide-v1/service
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.4"
+          enable-cache: true
+      - run: uv sync --extra dev --locked
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy acidslide_service tests
+      - run: uv run pytest --cov=acidslide_service --cov-report=term-missing --cov-fail-under=85
+      - run: uv run pip-audit
+
+  service-images:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build canonical grader base
+        run: |
+          docker build --platform linux/amd64 --provenance=false \
+            --tag acidslide/grader:1.0.0 acidslide-v1
+      - name: Build API, worker, and quarantine images
+        run: |
+          docker build --platform linux/amd64 --provenance=false \
+            --build-context schemas=acidslide-v1/schemas \
+            --target api --tag acidslide/service-api:1.0.0 acidslide-v1/service
+          docker build --platform linux/amd64 --provenance=false \
+            --build-context schemas=acidslide-v1/schemas \
+            --target worker --tag acidslide/service-worker:1.0.0 acidslide-v1/service
+          docker build --platform linux/amd64 --provenance=false \
+            --build-context schemas=acidslide-v1/schemas \
+            --target quarantine-job --tag acidslide/quarantine:1.0.0 acidslide-v1/service

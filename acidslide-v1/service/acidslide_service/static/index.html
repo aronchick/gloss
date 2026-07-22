@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gloss is the public benchmark for grading-verified PowerPoint artifact fidelity.">
+    <title>Gloss — Generative Layout &amp; OOXML Scoring System</title>
+    <link rel="stylesheet" href="/static/site.css">
+    <script src="/static/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#leaderboard">Skip to leaderboard</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Gloss home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 27 16 3l13 24H3Z"/><path d="M9 23h14M12 17h8M15 11h2"/></svg>
+        <span>Gloss</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#method">Method</a>
+        <a href="/v1/docs">API</a>
+      </nav>
+      <span class="release-mark">v1 · open benchmark</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Generative Layout &amp; OOXML Scoring System</p>
+          <h1 id="hero-title">Can your model make <em>PowerPoint</em>—or only pictures of it?</h1>
+          <p class="lede">Twenty adversarial slides. Native tables, live charts, multilingual type, masters, groups, fields, and unforgiving geometry. Every published result is labeled exactly: <strong>grading-verified artifact score; generation-attested</strong>.</p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#submit">Submit a deck</a>
+            <a class="text-action" href="/v1/docs">Read the API contract <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="calibration-card" aria-label="How Gloss measures a deck">
+          <div class="reticle" aria-hidden="true"><span></span></div>
+          <p class="calibration-label">Gloss measurement stack</p>
+          <ol>
+            <li><span>01</span>Quarantine</li>
+            <li><span>02</span>LibreOffice render</li>
+            <li><span>03</span>OOXML inspection</li>
+            <li><span>04</span>Weighted checklist</li>
+          </ol>
+          <p class="calibration-note">No screenshots. No traces. One final <code>.pptx</code>.</p>
+        </div>
+      </section>
+
+      <section class="leaderboard-section" id="leaderboard" aria-labelledby="leaderboard-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Current field</p>
+            <h2 id="leaderboard-title">The fidelity board</h2>
+          </div>
+          <div class="updated"><span class="pulse" aria-hidden="true"></span><span id="updated-at">Loading verified runs…</span></div>
+        </div>
+
+        <div class="board-controls" aria-label="Leaderboard controls">
+          <div class="segmented-control" role="group" aria-label="Leaderboard view">
+            <button type="button" data-view="summary" aria-pressed="true">Campaigns</button>
+            <button type="button" data-view="detail" aria-pressed="false">Campaign runs</button>
+          </div>
+          <label class="search-control">
+            <span class="visually-hidden">Filter models</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+            <input id="model-filter" type="search" placeholder="Find a model" autocomplete="off">
+          </label>
+        </div>
+
+        <p class="comparability" id="comparability"></p>
+        <div class="board-status" id="board-status" role="status">Reading the latest verified runs…</div>
+        <div class="table-shell" id="board-shell" hidden>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"><span class="visually-hidden">Rank</span></th>
+                <th scope="col">Model / version</th>
+                <th scope="col">Level 1</th>
+                <th scope="col">Level 2</th>
+                <th scope="col">Level 3</th>
+                <th scope="col">Aggregate</th>
+                <th scope="col">Environment</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-rows"></tbody>
+          </table>
+        </div>
+
+        <details class="assisted-board" id="assisted-board" hidden>
+          <summary>Human-assisted runs <span id="assisted-count"></span></summary>
+          <p>These submissions disclose human editing and are kept separate from autonomous generation.</p>
+          <div class="assisted-list" id="assisted-list"></div>
+        </details>
+      </section>
+
+      <section class="method-section" id="method" aria-labelledby="method-title">
+        <div class="method-intro">
+          <p class="eyebrow">What the number means</p>
+          <h2 id="method-title">A score with receipts.</h2>
+          <p>The service stores an append-only run record and computes the official result from exactly three precommitted campaign slots. Scores are comparable only when the scoring-manifest, grader-source-tree, environment-attestation, and recomputed cohort hashes all match.</p>
+        </div>
+        <dl class="method-grid">
+          <div><dt>Level 1</dt><dd><strong>5</strong> foundation slides</dd></div>
+          <div><dt>Level 2</dt><dd><strong>12</strong> intermediate slides</dd></div>
+          <div><dt>Level 3</dt><dd><strong>20</strong> torture slides</dd></div>
+          <div><dt>Perfect</dt><dd><strong>1.0000</strong> weighted fidelity</dd></div>
+        </dl>
+      </section>
+
+      <section class="submit-section" id="submit" aria-labelledby="submit-title">
+        <div>
+          <p class="eyebrow">Enter the field</p>
+          <h2 id="submit-title">Bring the final deck.</h2>
+          <p>Organizations receive an API key from a benchmark maintainer, register immutable model and revision keys, then precommit a campaign. Each upload carries only its <code>campaign_id</code> plus generation attestation; tier, variant, benchmark, and cohort cannot be overridden.</p>
+        </div>
+        <div class="terminal" aria-label="Submission API example">
+          <div class="terminal-bar"><span></span><span></span><span></span><b>POST /v1/submissions</b></div>
+          <pre><code>curl https://your-gloss-host/v1/submissions \
+  -H "Authorization: Bearer $ACIDSLIDE_API_KEY" \
+  -F 'metadata=@submission.json;type=application/json' \
+  -F 'file=@model-output.pptx'</code></pre>
+          <a href="/v1/docs">Open interactive API docs <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="wordmark footer-mark" href="/"><span>Gloss</span></a>
+      <p>An open benchmark for native slide-generation fidelity.</p>
+      <nav aria-label="Footer navigation"><a href="/v1/openapi.json">OpenAPI</a><a href="/health/live">Status</a><a href="mailto:disputes@acidslide.dev">Disputes</a></nav>
+    </footer>
+  </body>
+</html>

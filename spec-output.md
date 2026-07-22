@@ -1,6 +1,12 @@
+# SUPERSEDED SNAPSHOT — DO NOT IMPLEMENT OR RELEASE
+
+This file is retained only as historical debate output. The canonical contract is
+`ACIDSLIDE_OPENSPEC.md`, whose current status is Draft pending adversarial consensus. Regenerate this
+snapshot only after the canonical document is freeze-ready and independently accepted.
+
 # AcidSlide v1 OpenSpec
 
-Status: Final (ECMA-376 architecture — 11 adversarial rounds, Claude Opus 4.6 + gpt-5.4)  
+Status: Superseded — stale pre-remediation contract; not freeze-ready
 Scope: Public benchmark, automated grading suite, and hosted evaluation service for slide generation fidelity  
 Primary artifact: A fully public, machine-graded PowerPoint benchmark inspired by the ACID browser tests
 

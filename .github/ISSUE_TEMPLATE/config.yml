@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/aronchick/gloss/security/advisories/new
+    about: Report security issues privately, never in a public issue.
+  - name: Contribution guide
+    url: https://github.com/aronchick/gloss/blob/main/CONTRIBUTING.md
+    about: Read the evidence and fixture requirements before opening a pull request.

@@ -4,11 +4,18 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from acidslide.affected_slides import resolve_named_selector
 from acidslide.checklist import SEVERITY_WEIGHTS, ChecklistItem
-from acidslide.inspect_ooxml import DeckGraph, SceneObject, SlideGraph
-from acidslide.models import ChecklistItemResult, Severity, SlideResult, SourceOfTruth
+from acidslide.models import (
+    AntiCheatFlag,
+    ChecklistItemResult,
+    Severity,
+    SlideResult,
+    SourceOfTruth,
+)
 
 if TYPE_CHECKING:
+    from acidslide.inspect_ooxml import DeckGraph, SceneObject, SlideGraph
     from acidslide.models import VisualComparisonResult
 
 # Allowed fonts per §3 / §4.3
@@ -41,13 +48,13 @@ def evaluate_checklist(
     items: list[ChecklistItem],
     visual_results: list[VisualComparisonResult] | None = None,
     tier_slides: list[int] | None = None,
-) -> tuple[list[SlideResult], list[ChecklistItemResult], list[str]]:
+) -> tuple[list[SlideResult], list[ChecklistItemResult], list[AntiCheatFlag]]:
     """Evaluate all checklist items against the deck graph.
 
     Returns:
         - slide_results: per-slide results with item pass/fail
         - deck_item_results: deck-scoped item results
-        - anti_cheat_flags: triggered anti-cheat rule names
+        - anti_cheat_flags: triggered anti-cheat rules and exact propagation
     """
     visual_by_slide: dict[int, VisualComparisonResult] = {}
     if visual_results:
@@ -55,8 +62,8 @@ def evaluate_checklist(
             visual_by_slide[vr.slide_number] = vr
 
     slide_graph_by_num: dict[int, SlideGraph] = {}
-    for sg in deck_graph.slides:
-        slide_graph_by_num[sg.slide_number] = sg
+    for slide_graph in deck_graph.slides:
+        slide_graph_by_num[slide_graph.slide_number] = slide_graph
 
     # Separate slide-level and deck-level items
     slide_items: dict[int, list[ChecklistItem]] = {}
@@ -67,19 +74,26 @@ def evaluate_checklist(
         elif item.slide is not None:
             slide_items.setdefault(item.slide, []).append(item)
 
+    effective_tier_slides = sorted(
+        set(tier_slides) if tier_slides is not None else set(slide_graph_by_num)
+    )
+    anti_cheat_flags: list[AntiCheatFlag] = []
+    zeroed_slides: set[int] = set()
+
     # Evaluate deck-level items
     deck_item_results: list[ChecklistItemResult] = []
     for item in deck_items:
-        result = _evaluate_deck_item(item, deck_graph)
+        result = _evaluate_deck_item(item, deck_graph, list(visual_by_slide.values()))
+        _decorate_result(result, item, effective_tier_slides)
         deck_item_results.append(result)
+        if not result.passed and item.failure_mode.automatic_fail_if:
+            affected = _failure_affected_slides(item, None, deck_graph)
+            tier_affected = sorted(set(affected) & set(effective_tier_slides))
+            zeroed_slides.update(tier_affected)
+            anti_cheat_flags.extend(_build_anti_cheat_flags(item, result, affected, tier_affected))
 
     # Evaluate slide-level items
-    anti_cheat_flags: list[str] = []
-    zeroed_slides: set[int] = set()
-
-    all_slide_nums = sorted(
-        set(slide_graph_by_num.keys()) | set(slide_items.keys())
-    )
+    all_slide_nums = sorted(set(slide_graph_by_num.keys()) | set(slide_items.keys()))
     if tier_slides is not None:
         all_slide_nums = [n for n in all_slide_nums if n in tier_slides]
 
@@ -101,13 +115,17 @@ def evaluate_checklist(
                     source_of_truth=SourceOfTruth(item.source_of_truth),
                     details=f"Slide {slide_num} not found in submission",
                 )
+            _decorate_result(result, item, [slide_num])
 
             # Check for auto-fail propagation
             if not result.passed and item.failure_mode.automatic_fail_if:
-                for flag in item.failure_mode.automatic_fail_if:
-                    anti_cheat_flags.append(f"slide-{slide_num:02d}.{flag}")
+                affected = _failure_affected_slides(item, slide_num, deck_graph)
+                tier_affected = sorted(set(affected) & set(effective_tier_slides))
+                anti_cheat_flags.extend(
+                    _build_anti_cheat_flags(item, result, affected, tier_affected)
+                )
                 if item.failure_mode.propagation == "zero_slide":
-                    zeroed_slides.add(slide_num)
+                    zeroed_slides.update(tier_affected)
 
             item_results.append(result)
 
@@ -126,11 +144,72 @@ def evaluate_checklist(
             for item_result in sr.items:
                 if item_result.passed:
                     item_result.passed = False
-                    item_result.details = (
-                        f"Zeroed by anti-cheat rule on slide {sr.slide_number}"
-                    )
+                    item_result.details = f"Zeroed by anti-cheat rule on slide {sr.slide_number}"
+                    item_result.outcome_code = "zeroed_by_anti_cheat"
 
     return slide_results, deck_item_results, anti_cheat_flags
+
+
+def _decorate_result(
+    result: ChecklistItemResult,
+    item: ChecklistItem,
+    tier_affected_slides: list[int],
+) -> None:
+    result.assertion_id = item.assertion_id or _derived_assertion_id(item.id)
+    result.weight = item.weight
+    result.outcome_code = "passed" if result.passed else "failed"
+    result.tier_affected_slides = sorted(set(tier_affected_slides))
+
+
+def _derived_assertion_id(item_id: str) -> str:
+    prefix, separator, suffix = item_id.partition(".")
+    if not separator:
+        return f"deck.assert-{item_id}"
+    return f"{prefix}.assert-{suffix}"
+
+
+def _failure_affected_slides(
+    item: ChecklistItem,
+    current_slide: int | None,
+    deck: DeckGraph,
+) -> list[int]:
+    mode = item.failure_mode.affected_slides.get("mode")
+    if mode == "named_selector":
+        selector_id = item.failure_mode.affected_slides.get("selector_id")
+        selector_sha256 = item.failure_mode.affected_slides.get("selector_sha256")
+        if not isinstance(selector_id, str) or not isinstance(selector_sha256, str):
+            raise ValueError(f"Incomplete named affected-slide selector for {item.id}")
+        return resolve_named_selector(selector_id, selector_sha256, deck, BUNDLED_FONTS)
+
+    configured = item.failure_mode.affected_slides.get("slides", [])
+    if (
+        configured
+        and isinstance(configured, list)
+        and all(isinstance(value, int) and not isinstance(value, bool) for value in configured)
+    ):
+        return sorted(set(configured))
+    return [current_slide] if current_slide is not None else []
+
+
+def _build_anti_cheat_flags(
+    item: ChecklistItem,
+    result: ChecklistItemResult,
+    affected_slides: list[int],
+    tier_affected_slides: list[int],
+) -> list[AntiCheatFlag]:
+    disposition = item.failure_mode.propagation
+    if disposition not in {"zero_slide", "zero_affected_slides"}:
+        disposition = "warning"
+    return [
+        AntiCheatFlag(
+            rule_id=rule_id,
+            disposition=disposition,
+            affected_slides=tuple(affected_slides),
+            tier_affected_slides=tuple(tier_affected_slides),
+            details=result.details,
+        )
+        for rule_id in item.failure_mode.automatic_fail_if
+    ]
 
 
 def compute_fidelity_score(
@@ -175,29 +254,25 @@ def compute_tier_scores(
     slide_results: list[SlideResult],
     deck_item_results: list[ChecklistItemResult],
     tier: int,
-) -> dict[str, dict]:
-    """Compute per-tier fidelity scores."""
+) -> dict[str, dict[str, int | float] | None]:
+    """Compute only the targeted tier score; non-targeted tiers are null."""
     tier_map: dict[int, list[int]] = {
         1: list(range(1, 6)),
         2: list(range(1, 13)),
         3: list(range(1, 21)),
     }
 
-    scores: dict[str, dict] = {}
+    scores: dict[str, dict[str, int | float] | None] = {}
     for t in range(1, 4):
-        if t > tier:
-            scores[f"level_{t}"] = None  # type: ignore[assignment]
+        if t != tier:
+            scores[f"level_{t}"] = None
             continue
 
         tier_slide_nums = set(tier_map[t])
-        tier_slide_results = [
-            sr for sr in slide_results if sr.slide_number in tier_slide_nums
-        ]
+        tier_slide_results = [sr for sr in slide_results if sr.slide_number in tier_slide_nums]
 
         # Deck items apply to all tiers
-        fidelity, passed, total = compute_fidelity_score(
-            tier_slide_results, deck_item_results
-        )
+        fidelity, passed, total = compute_fidelity_score(tier_slide_results, deck_item_results)
         scores[f"level_{t}"] = {
             "fidelity_score": round(fidelity, 4),
             "passed": passed,
@@ -244,6 +319,7 @@ def _evaluate_slide_item(
 def _evaluate_deck_item(
     item: ChecklistItem,
     deck: DeckGraph,
+    visual_results: list[VisualComparisonResult],
 ) -> ChecklistItemResult:
     """Evaluate a single deck-level checklist item."""
     method = item.verification.method
@@ -255,6 +331,8 @@ def _evaluate_deck_item(
         return _verify_deck_anti_cheat(item, deck)
     if method == "hash_match":
         return _verify_deck_hash_match(item, deck)
+    if method == "visual_ssim":
+        return _verify_deck_visual_ssim(item, visual_results)
     return ChecklistItemResult(
         id=item.id,
         passed=False,
@@ -267,9 +345,7 @@ def _evaluate_deck_item(
 # --- Verification implementations ---
 
 
-def _verify_object_compare(
-    item: ChecklistItem, slide: SlideGraph
-) -> ChecklistItemResult:
+def _verify_object_compare(item: ChecklistItem, slide: SlideGraph) -> ChecklistItemResult:
     """Verify object presence/count on a slide by type selector."""
     selector = item.verification.selector
     expectation = item.verification.expectation
@@ -304,9 +380,7 @@ def _verify_object_compare(
     )
 
 
-def _verify_text_match(
-    item: ChecklistItem, slide: SlideGraph
-) -> ChecklistItemResult:
+def _verify_text_match(item: ChecklistItem, slide: SlideGraph) -> ChecklistItemResult:
     """Verify text content exists on a slide."""
     expectation = item.verification.expectation
     expected_text = expectation.get("contains", "")
@@ -323,7 +397,7 @@ def _verify_text_match(
         details = f"Expected text containing '{expected_text}' not found"
     elif exact_text and exact_text != all_text.strip():
         passed = False
-        details = f"Text does not exactly match expected"
+        details = "Text does not exactly match expected"
     elif not_contains and not_contains in all_text:
         passed = False
         details = f"Found prohibited text '{not_contains}'"
@@ -349,7 +423,7 @@ def _verify_hash_match(
 
     # Collect picture objects on this slide
     all_objects = _collect_objects_recursive(slide.objects)
-    pictures = [o for o in all_objects if o.obj_type == "picture"]
+    pictures = [o for o in all_objects if o.is_picture]
 
     if not pictures:
         return ChecklistItemResult(
@@ -362,9 +436,7 @@ def _verify_hash_match(
 
     if expected_hash:
         # Check if any embedded media matches the expected hash
-        found = any(
-            h == expected_hash for h in deck.media_hashes.values()
-        )
+        found = any(h == expected_hash for h in deck.media_hashes.values())
         return ChecklistItemResult(
             id=item.id,
             passed=found,
@@ -382,9 +454,7 @@ def _verify_hash_match(
     )
 
 
-def _verify_field_check(
-    item: ChecklistItem, slide: SlideGraph
-) -> ChecklistItemResult:
+def _verify_field_check(item: ChecklistItem, slide: SlideGraph) -> ChecklistItemResult:
     """Verify native field presence (slidenum, datetime, etc.)."""
     expectation = item.verification.expectation
     expected_field = expectation.get("field_type", "")
@@ -426,9 +496,7 @@ def _verify_layout_check(
 
         placeholders = [o for o in all_objects if o.placeholder_type]
         if expected_type:
-            placeholders = [
-                o for o in placeholders if o.placeholder_type == expected_type
-            ]
+            placeholders = [o for o in placeholders if o.placeholder_type == expected_type]
 
         passed = len(placeholders) >= min_count
         return ChecklistItemResult(
@@ -436,7 +504,10 @@ def _verify_layout_check(
             passed=passed,
             severity=Severity(item.severity),
             source_of_truth=SourceOfTruth(item.source_of_truth),
-            details=f"Found {len(placeholders)} '{expected_type or 'any'}' placeholder(s), need {min_count}",
+            details=(
+                f"Found {len(placeholders)} '{expected_type or 'any'}' placeholder(s), "
+                f"need {min_count}"
+            ),
         )
 
     if selector == "master_ref":
@@ -516,9 +587,7 @@ def _verify_visual_ssim(
 # --- Deck-level verification ---
 
 
-def _verify_deck_object_compare(
-    item: ChecklistItem, deck: DeckGraph
-) -> ChecklistItemResult:
+def _verify_deck_object_compare(item: ChecklistItem, deck: DeckGraph) -> ChecklistItemResult:
     """Deck-level object count/presence check."""
     expectation = item.verification.expectation
     selector = item.verification.selector
@@ -543,9 +612,7 @@ def _verify_deck_object_compare(
     )
 
 
-def _verify_deck_layout_check(
-    item: ChecklistItem, deck: DeckGraph
-) -> ChecklistItemResult:
+def _verify_deck_layout_check(item: ChecklistItem, deck: DeckGraph) -> ChecklistItemResult:
     """Verify deck-level layout/master usage."""
     expectation = item.verification.expectation
     selector = item.verification.selector
@@ -581,9 +648,7 @@ def _verify_deck_layout_check(
     )
 
 
-def _verify_deck_anti_cheat(
-    item: ChecklistItem, deck: DeckGraph
-) -> ChecklistItemResult:
+def _verify_deck_anti_cheat(item: ChecklistItem, deck: DeckGraph) -> ChecklistItemResult:
     """Deck-level anti-cheat checks."""
     selector = item.verification.selector
 
@@ -598,9 +663,7 @@ def _verify_deck_anti_cheat(
                     if run.font_family and not run.font_family.startswith("+"):
                         rendered_fonts.add(run.font_family)
 
-        bad_rendered = {
-            f for f in rendered_fonts if f.lower() not in BUNDLED_FONTS
-        }
+        bad_rendered = {f for f in rendered_fonts if f.lower() not in BUNDLED_FONTS}
 
         # Also note theme fonts for informational purposes
         theme_only = deck.all_fonts - rendered_fonts
@@ -626,15 +689,17 @@ def _verify_deck_anti_cheat(
         )
 
     if selector == "no_notes":
-        # Check via deck metadata — extracted from content types during inspection
-        # For now, notes detection would require checking the ZIP directly
-        # This is handled separately in quarantine expansion
+        affected = sorted(deck.notes_slides | deck.comment_slides)
         return ChecklistItemResult(
             id=item.id,
-            passed=True,  # placeholder — will be enhanced
+            passed=not affected,
             severity=Severity(item.severity),
             source_of_truth=SourceOfTruth(item.source_of_truth),
-            details="Notes detection via ZIP inspection (see quarantine)",
+            details=(
+                f"Notes or comments found on slides: {affected}"
+                if affected
+                else "No slide notes or comments detected"
+            ),
         )
 
     return ChecklistItemResult(
@@ -646,9 +711,7 @@ def _verify_deck_anti_cheat(
     )
 
 
-def _verify_deck_hash_match(
-    item: ChecklistItem, deck: DeckGraph
-) -> ChecklistItemResult:
+def _verify_deck_hash_match(item: ChecklistItem, deck: DeckGraph) -> ChecklistItemResult:
     """Verify deck-level asset hash requirements."""
     expectation = item.verification.expectation
     expected_hashes = expectation.get("asset_hashes", {})
@@ -671,7 +734,39 @@ def _verify_deck_hash_match(
         passed=passed,
         severity=Severity(item.severity),
         source_of_truth=SourceOfTruth(item.source_of_truth),
-        details=f"Missing asset hashes: {list(missing.keys())}" if missing else "All asset hashes matched",
+        details=f"Missing asset hashes: {list(missing.keys())}"
+        if missing
+        else "All asset hashes matched",
+    )
+
+
+def _verify_deck_visual_ssim(
+    item: ChecklistItem,
+    visual_results: list[VisualComparisonResult],
+) -> ChecklistItemResult:
+    """Require every targeted slide render to meet the deck-level SSIM floor."""
+    threshold = float(item.verification.expectation.get("min_ssim", 0.9999))
+    if not visual_results:
+        return ChecklistItemResult(
+            id=item.id,
+            passed=False,
+            severity=Severity(item.severity),
+            source_of_truth=SourceOfTruth(item.source_of_truth),
+            details="No visual comparison results available",
+        )
+
+    failures = [result for result in visual_results if result.ssim < threshold]
+    minimum = min(result.ssim for result in visual_results)
+    average = sum(result.ssim for result in visual_results) / len(visual_results)
+    return ChecklistItemResult(
+        id=item.id,
+        passed=not failures,
+        severity=Severity(item.severity),
+        source_of_truth=SourceOfTruth(item.source_of_truth),
+        details=(
+            f"{len(visual_results) - len(failures)}/{len(visual_results)} slides meet "
+            f"SSIM {threshold:.4f}; minimum={minimum:.4f}, mean={average:.4f}"
+        ),
     )
 
 
@@ -695,7 +790,7 @@ def _matches_selector(obj: SceneObject, selector: str) -> bool:
     if selector == "chart":
         return obj.is_chart
     if selector == "picture":
-        return obj.obj_type == "picture"
+        return obj.is_picture
     if selector == "group":
         return obj.obj_type == "group"
     if selector == "connector":
@@ -703,7 +798,15 @@ def _matches_selector(obj: SceneObject, selector: str) -> bool:
     if selector == "placeholder":
         return bool(obj.placeholder_type)
     if selector == "shape":
-        return obj.obj_type == "shape"
+        return obj.obj_type in {
+            "shape",
+            "picture",
+            "table",
+            "chart",
+            "group",
+            "connector",
+            "graphicFrame",
+        }
     if selector == "field":
         return bool(obj.field_type)
     return obj.obj_type == selector
@@ -718,16 +821,17 @@ def _collect_all_text(slide: SlideGraph) -> str:
     return " ".join(texts)
 
 
-def _check_font_policy(
-    item: ChecklistItem, objects: list[SceneObject]
-) -> ChecklistItemResult:
+def _check_font_policy(item: ChecklistItem, objects: list[SceneObject]) -> ChecklistItemResult:
     """Check that all fonts on a slide are in the bundled set."""
     bad_fonts: set[str] = set()
     for obj in objects:
         for run in obj.text_runs:
-            if run.font_family and run.font_family.lower() not in BUNDLED_FONTS:
-                if not run.font_family.startswith("+"):
-                    bad_fonts.add(run.font_family)
+            if (
+                run.font_family
+                and run.font_family.lower() not in BUNDLED_FONTS
+                and not run.font_family.startswith("+")
+            ):
+                bad_fonts.add(run.font_family)
 
     passed = len(bad_fonts) == 0
     return ChecklistItemResult(
@@ -735,7 +839,9 @@ def _check_font_policy(
         passed=passed,
         severity=Severity(item.severity),
         source_of_truth=SourceOfTruth(item.source_of_truth),
-        details=f"Non-bundled fonts: {sorted(bad_fonts)}" if bad_fonts else "All fonts in bundled set",
+        details=f"Non-bundled fonts: {sorted(bad_fonts)}"
+        if bad_fonts
+        else "All fonts in bundled set",
     )
 
 
@@ -748,7 +854,7 @@ def _check_no_full_slide_raster(
     threshold = 0.4
 
     for obj in objects:
-        if obj.obj_type == "picture":
+        if obj.is_picture:
             _, _, cx, cy = obj.bbox
             if cx > 0 and cy > 0:
                 obj_area = cx * cy
@@ -759,7 +865,10 @@ def _check_no_full_slide_raster(
                         passed=False,
                         severity=Severity(item.severity),
                         source_of_truth=SourceOfTruth(item.source_of_truth),
-                        details=f"Image '{obj.name}' covers {ratio:.1%} of slide (>{threshold:.0%} threshold)",
+                        details=(
+                            f"Image '{obj.name}' covers {ratio:.1%} of slide "
+                            f"(>{threshold:.0%} threshold)"
+                        ),
                     )
 
     return ChecklistItemResult(

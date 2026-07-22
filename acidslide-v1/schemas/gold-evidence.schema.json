@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acidslide.dev/schemas/gold-evidence.schema.json",
+  "title": "AcidSlide Single Gold Identity Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "benchmark_version",
+    "scoring_manifest_sha256",
+    "release_index_sha256",
+    "original_authored_gold",
+    "resolved_gold",
+    "profile_hashes",
+    "canonical_package_hash_v1",
+    "validation",
+    "scene_graph_sha256",
+    "canonical_export",
+    "reference_controls",
+    "mutation_parentage"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "evidence_id": { "const": "acidslide-gold-evidence-v1" },
+    "benchmark_version": { "const": "acidslide-v1.0.0" },
+    "scoring_manifest_sha256": { "$ref": "#/$defs/hash" },
+    "release_index_sha256": { "$ref": "#/$defs/hash" },
+    "original_authored_gold": { "$ref": "#/$defs/object_identity" },
+    "resolved_gold": { "$ref": "#/$defs/object_identity" },
+    "profile_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mce_profile_sha256", "schema_root_map_sha256", "xsd_bundle_sha256", "scene_graph_profile_sha256", "canonical_package_hash_profile_sha256"],
+      "properties": {
+        "mce_profile_sha256": { "$ref": "#/$defs/hash" },
+        "schema_root_map_sha256": { "$ref": "#/$defs/hash" },
+        "xsd_bundle_sha256": { "$ref": "#/$defs/hash" },
+        "scene_graph_profile_sha256": { "$ref": "#/$defs/hash" },
+        "canonical_package_hash_profile_sha256": { "$ref": "#/$defs/hash" }
+      }
+    },
+    "canonical_package_hash_v1": { "$ref": "#/$defs/hash" },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["opc_valid", "mce_resolved", "xsd_validation_performed", "xsd_valid", "violations", "validation_report_sha256"],
+      "properties": {
+        "opc_valid": { "const": true },
+        "mce_resolved": { "const": true },
+        "xsd_validation_performed": { "const": true },
+        "xsd_valid": { "const": true },
+        "violations": { "type": "array", "maxItems": 0 },
+        "validation_report_sha256": { "$ref": "#/$defs/hash" }
+      }
+    },
+    "scene_graph_sha256": { "$ref": "#/$defs/hash" },
+    "canonical_export": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pdf_sha256", "page_count", "pages"],
+      "properties": {
+        "pdf_sha256": { "$ref": "#/$defs/hash" },
+        "page_count": { "const": 20 },
+        "pages": {
+          "type": "array",
+          "minItems": 20,
+          "maxItems": 20,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["page", "png_sha256", "media_box", "crop_box", "rotate", "png_width_px", "png_height_px", "png_mode"],
+            "properties": {
+              "page": { "type": "integer", "minimum": 1, "maximum": 20 },
+              "png_sha256": { "$ref": "#/$defs/hash" },
+              "media_box": { "$ref": "#/$defs/canonical_media_box" },
+              "crop_box": {
+                "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/canonical_media_box" }]
+              },
+              "rotate": { "type": "integer", "const": 0 },
+              "png_width_px": { "const": 1920 },
+              "png_height_px": { "const": 1080 },
+              "png_mode": { "const": "RGB" }
+            }
+          },
+          "allOf": [
+            {
+              "contains": { "properties": { "page": { "const": 1 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 2 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 3 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 4 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 5 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 6 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 7 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 8 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 9 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 10 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 11 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 12 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 13 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 14 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 15 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 16 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 17 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 18 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 19 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            },
+            {
+              "contains": { "properties": { "page": { "const": 20 } }, "required": ["page"] },
+              "minContains": 1,
+              "maxContains": 1
+            }
+          ]
+        }
+      }
+    },
+    "reference_controls": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["targeted_tier", "control_authorization_sha256", "report_sha256", "score_semantic_report_sha256", "fidelity_score", "deck_passed", "eligible"],
+        "properties": {
+          "targeted_tier": { "type": "integer", "enum": [1, 2, 3] },
+          "control_authorization_sha256": { "$ref": "#/$defs/hash" },
+          "report_sha256": { "$ref": "#/$defs/hash" },
+          "score_semantic_report_sha256": { "$ref": "#/$defs/hash" },
+          "fidelity_score": { "const": 1.0 },
+          "deck_passed": { "const": true },
+          "eligible": { "const": false }
+        }
+      },
+      "allOf": [
+        {
+          "contains": { "properties": { "targeted_tier": { "const": 1 } }, "required": ["targeted_tier"] },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": { "properties": { "targeted_tier": { "const": 2 } }, "required": ["targeted_tier"] },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": { "properties": { "targeted_tier": { "const": 3 } }, "required": ["targeted_tier"] },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "mutation_parentage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parent_resolved_package_sha256", "mutation_manifest_sha256"],
+      "properties": {
+        "parent_resolved_package_sha256": { "$ref": "#/$defs/hash" },
+        "mutation_manifest_sha256": { "$ref": "#/$defs/hash" }
+      }
+    }
+  },
+  "$defs": {
+    "hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "object_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "size_bytes", "object_key", "object_version"],
+      "properties": {
+        "sha256": { "$ref": "#/$defs/hash" },
+        "size_bytes": { "type": "integer", "minimum": 1 },
+        "object_key": { "type": "string", "minLength": 1 },
+        "object_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "canonical_media_box": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "0" },
+        { "const": "0" },
+        { "const": "960.009448818898" },
+        { "const": "540" }
+      ],
+      "minItems": 4,
+      "maxItems": 4
+    }
+  }
+}

@@ -1,0 +1,50 @@
+name: Propose a benchmark case
+description: Add a slide behavior that generated PowerPoint artifacts should prove.
+title: "[case]: "
+labels: ["benchmark-case"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for making the corpus harder. Requirements must come from a public prompt, reference, or allowed asset — never from reverse-engineering the gold deck.
+  - type: textarea
+    id: failure
+    attributes:
+      label: What fails today?
+      description: Describe the generated deck behavior a screenshot or current check misses.
+      placeholder: A chart looks correct but is stored as a picture, so its data cannot be edited.
+    validations:
+      required: true
+  - type: textarea
+    id: requirement
+    attributes:
+      label: Proposed requirement
+      description: State the observable visual and/or native artifact requirement.
+    validations:
+      required: true
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Primary layer
+      options:
+        - Native OOXML / package structure
+        - Rendered visual fidelity
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public source and evidence plan
+      description: Link the prompt/reference/asset source and describe a positive control plus a single-fault negative fixture.
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Contribution checks
+      options:
+        - label: I can share every attached artifact under the repository license or its stated compatible license.
+          required: true
+        - label: This proposal does not contain private decks, credentials, customer data, or proprietary fonts.
+          required: true
