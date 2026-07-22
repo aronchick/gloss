@@ -1,0 +1,20 @@
+AcidSlide v1 Bundled Font Licensing
+
+The files under `files/` are unmodified copies extracted from the exact Ubuntu
+22.04 packages listed in `manifest.json`. They are redistributable under the
+following licenses:
+
+- Liberation Sans, Serif, and Mono 1.07.4: GPL-2.0 with the font embedding
+  exception. See `licenses/fonts-liberation-1.07.4-11.txt`.
+- Carlito: SIL Open Font License 1.1. The Reserved Font Name is "Carlito".
+  See `licenses/fonts-crosextra-carlito-20130920-1.1.txt`.
+- Caladea: Apache License 2.0.
+  See `licenses/fonts-crosextra-caladea-20130214-2.1.txt`.
+- Noto Sans and Noto Sans Arabic: SIL Open Font License 1.1.
+  See `licenses/fonts-noto-core-20201225-1build1.txt`.
+- Noto Sans CJK: SIL Open Font License 1.1.
+  See `licenses/fonts-noto-cjk-20220127+repack1-1.txt`.
+
+The package URLs, exact package versions, package hashes, individual file
+hashes, family names, and styles are recorded in `manifest.json`. No commercial
+or operating-system-proprietary font is included.

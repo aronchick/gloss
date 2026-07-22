@@ -5,14 +5,14 @@ from __future__ import annotations
 import hashlib
 import zipfile
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from lxml import etree
 
+from acidslide.mce import preprocess_markup_compatibility
+
 if TYPE_CHECKING:
     from pathlib import Path
-
-    pass
 
 # OOXML namespaces
 NS = {
@@ -60,6 +60,7 @@ class SceneObject:
     table_rows: int = 0
     table_cols: int = 0
     is_chart: bool = False
+    is_picture: bool = False
     chart_type: str = ""
     field_type: str = ""  # slidenum, datetime, etc.
     asset_hash: str = ""
@@ -71,6 +72,10 @@ class SceneObject:
     layout_ref: str = ""
     master_ref: str = ""
 
+    def __post_init__(self) -> None:
+        if self.obj_type == "picture":
+            self.is_picture = True
+
 
 @dataclass
 class SlideGraph:
@@ -79,6 +84,7 @@ class SlideGraph:
     slide_number: int
     layout_name: str = ""
     master_name: str = ""
+    layout_ref: str = ""
     objects: list[SceneObject] = field(default_factory=list)
 
     @property
@@ -101,14 +107,18 @@ class DeckGraph:
     layout_names: list[str] = field(default_factory=list)
     media_hashes: dict[str, str] = field(default_factory=dict)
     all_fonts: set[str] = field(default_factory=set)  # all typeface refs across the package
+    notes_slides: set[int] = field(default_factory=set)
+    comment_slides: set[int] = field(default_factory=set)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         """Serialize to dict for JSON output / fixture comparison."""
         return {
             "slide_count": len(self.slides),
             "master_names": self.master_names,
             "layout_names": self.layout_names,
             "media_hashes": self.media_hashes,
+            "notes_slides": sorted(self.notes_slides),
+            "comment_slides": sorted(self.comment_slides),
             "slides": [
                 {
                     "slide_number": s.slide_number,
@@ -141,8 +151,14 @@ def extract_deck_graph(pptx_path: Path) -> DeckGraph:
         # Parse each slide
         for i, part_name in enumerate(slide_parts, 1):
             if part_name in zf.namelist():
+                has_notes, has_comments = _related_slide_content(zf, part_name, parser)
+                if has_notes:
+                    deck.notes_slides.add(i)
+                if has_comments:
+                    deck.comment_slides.add(i)
                 xml_bytes = zf.read(part_name)
                 tree = etree.fromstring(xml_bytes, parser=parser)
+                preprocess_markup_compatibility(tree)
                 slide = _parse_slide(tree, i, zf, part_name, parser)
                 deck.slides.append(slide)
 
@@ -150,6 +166,27 @@ def extract_deck_graph(pptx_path: Path) -> DeckGraph:
         deck.all_fonts = _extract_all_fonts(zf, parser)
 
     return deck
+
+
+def _related_slide_content(
+    zf: zipfile.ZipFile,
+    part_name: str,
+    parser: etree.XMLParser,
+) -> tuple[bool, bool]:
+    """Return whether a slide relationship set contains notes or comments."""
+    rels_name = part_name.replace("ppt/slides/", "ppt/slides/_rels/") + ".rels"
+    if rels_name not in zf.namelist():
+        return False, False
+    rels = etree.fromstring(zf.read(rels_name), parser=parser)
+    relationship_kinds = {
+        rel.get("Type", "").rsplit("/", 1)[-1].lower()
+        for rel in rels.iter(f"{{{NS['rel']}}}Relationship")
+    }
+    has_notes = "notesslide" in relationship_kinds
+    has_comments = bool(
+        relationship_kinds & {"comment", "comments", "moderncomment", "moderncomments"}
+    )
+    return has_notes, has_comments
 
 
 def _extract_media_hashes(zf: zipfile.ZipFile) -> dict[str, str]:
@@ -165,11 +202,7 @@ def _extract_media_hashes(zf: zipfile.ZipFile) -> dict[str, str]:
 def _extract_all_fonts(zf: zipfile.ZipFile, parser: etree.XMLParser) -> set[str]:
     """Scan all XML parts for typeface= attributes (slides, themes, masters, layouts)."""
     fonts: set[str] = set()
-    xml_parts = [
-        n
-        for n in zf.namelist()
-        if n.startswith("ppt/") and n.endswith(".xml")
-    ]
+    xml_parts = [n for n in zf.namelist() if n.startswith("ppt/") and n.endswith(".xml")]
     for part in xml_parts:
         try:
             xml_bytes = zf.read(part)
@@ -330,12 +363,14 @@ def _parse_shape(elem: etree._Element) -> SceneObject:
     obj.fill_type = _get_fill_type(elem)
     obj.has_shadow = _has_shadow(elem)
     obj.field_type = _get_field_type(elem)
+    obj.is_picture = _has_blip_fill(elem)
     return obj
 
 
 def _parse_picture(elem: etree._Element) -> SceneObject:
     """Parse a picture (pic) element."""
     obj = SceneObject(obj_type="picture")
+    obj.is_picture = True
     obj.name = _get_nv_name(elem)
     obj.bbox = _get_bbox(elem)
     obj.rotation = _get_rotation(elem)
@@ -405,9 +440,9 @@ def _get_nv_name(elem: etree._Element) -> str:
                 # Try without namespace
                 for sub in nv:
                     if etree.QName(sub.tag).localname == "cNvPr":
-                        return sub.get("name", "")
+                        return str(sub.get("name", ""))
             else:
-                return cnv_pr.get("name", "")
+                return str(cnv_pr.get("name", ""))
     return ""
 
 
@@ -474,7 +509,7 @@ def _get_text_runs(elem: etree._Element) -> list[TextRun]:
 def _get_placeholder_type(elem: etree._Element) -> str:
     """Get placeholder type (title, body, etc.)."""
     for ph in elem.iter(f"{{{NS['p']}}}ph"):
-        return ph.get("type", "body")
+        return str(ph.get("type", "body"))
     return ""
 
 
@@ -511,6 +546,11 @@ def _has_shadow(elem: etree._Element) -> bool:
     return False
 
 
+def _has_blip_fill(elem: etree._Element) -> bool:
+    """Return whether a native shape is raster-backed via DrawingML blip fill."""
+    return any(etree.QName(desc.tag).localname == "blipFill" for desc in elem.iter())
+
+
 def _get_field_type(elem: etree._Element) -> str:
     """Detect field type (slidenum, datetime, etc.)."""
     for fld in elem.iter(f"{{{NS['a']}}}fld"):
@@ -519,13 +559,13 @@ def _get_field_type(elem: etree._Element) -> str:
             return "slidenum"
         if "datetime" in fld_type.lower():
             return "datetime"
-        return fld_type
+        return str(fld_type)
     return ""
 
 
-def _obj_to_dict(obj: SceneObject) -> dict:
+def _obj_to_dict(obj: SceneObject) -> dict[str, Any]:
     """Serialize a SceneObject to dict."""
-    d: dict = {
+    d: dict[str, Any] = {
         "type": obj.obj_type,
         "name": obj.name,
         "z_index": obj.z_index,
@@ -542,6 +582,8 @@ def _obj_to_dict(obj: SceneObject) -> dict:
         d["table"] = {"rows": obj.table_rows, "cols": obj.table_cols}
     if obj.is_chart:
         d["chart_type"] = obj.chart_type
+    if obj.is_picture:
+        d["is_picture"] = True
     if obj.field_type:
         d["field_type"] = obj.field_type
     if obj.fill_type:

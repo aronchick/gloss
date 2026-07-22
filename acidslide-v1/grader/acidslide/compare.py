@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 import numpy as np
 from PIL import Image
@@ -22,7 +22,7 @@ def compare_slides(
     diff_dir: Path | None = None,
 ) -> list[VisualComparisonResult]:
     """Compare exported submission slides against gold exports."""
-    results = []
+    results: list[VisualComparisonResult] = []
 
     gold_slides = sorted(gold_dir.glob("slide-*.png"))
     for gold_path in gold_slides:
@@ -52,21 +52,34 @@ def _compare_single(
     diff_dir: Path | None,
 ) -> VisualComparisonResult:
     """Compare two slide PNGs."""
-    gold_img = np.array(Image.open(gold_path).convert("RGB"))
-    sub_img = np.array(Image.open(sub_path).convert("RGB"))
+    with Image.open(gold_path) as gold_source:
+        gold_img = np.array(gold_source.convert("RGB"))
+    with Image.open(sub_path) as submission_source:
+        sub_img = np.array(submission_source.convert("RGB"))
 
-    # Resize submission to match gold if needed
+    # Canonical exports must already have identical dimensions. Resizing would
+    # introduce a second, non-normative visual pipeline.
     if gold_img.shape != sub_img.shape:
-        sub_pil = Image.open(sub_path).convert("RGB")
-        sub_pil = sub_pil.resize((gold_img.shape[1], gold_img.shape[0]), Image.LANCZOS)
-        sub_img = np.array(sub_pil)
+        return VisualComparisonResult(
+            slide_number=slide_number,
+            ssim=0.0,
+            pixel_exact=False,
+        )
 
     # Compute SSIM (RGB, per-channel then averaged)
-    ssim_score = ssim(
-        gold_img,
-        sub_img,
-        channel_axis=2,
-        data_range=255,
+    ssim_score = cast(
+        "float",
+        ssim(  # type: ignore[no-untyped-call]
+            gold_img,
+            sub_img,
+            channel_axis=2,
+            data_range=255,
+            win_size=7,
+            gaussian_weights=False,
+            use_sample_covariance=True,
+            K1=0.01,
+            K2=0.03,
+        ),
     )
 
     # Exact pixel match
@@ -76,7 +89,7 @@ def _compare_single(
     diff_path = None
     if diff_dir and not pixel_exact:
         diff_dir.mkdir(parents=True, exist_ok=True)
-        diff_img = np.abs(gold_img.astype(np.int16) - sub_img.astype(np.int16)).astype(np.uint8)
+        diff_img = np.abs(gold_img.astype(np.int16) - sub_img.astype(np.int16))
         # Amplify differences for visibility
         diff_img = np.clip(diff_img * 10, 0, 255).astype(np.uint8)
         diff_path = diff_dir / f"diff-slide-{slide_number:02d}.png"

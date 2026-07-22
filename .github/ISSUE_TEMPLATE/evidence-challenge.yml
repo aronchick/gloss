@@ -1,0 +1,37 @@
+name: Challenge evidence or a claim
+description: Question provenance, a mutation operator, a scoring assumption, or release wording.
+title: "[evidence]: "
+labels: ["evidence"]
+body:
+  - type: input
+    id: claim
+    attributes:
+      label: Claim or evidence ID
+      placeholder: gloss-technical-preview-2026-07-22 or a repository path
+    validations:
+      required: true
+  - type: textarea
+    id: challenge
+    attributes:
+      label: What does the current evidence fail to establish?
+      description: Separate observed facts from your interpretation.
+    validations:
+      required: true
+  - type: textarea
+    id: falsify
+    attributes:
+      label: How can we test or falsify it?
+      description: Propose a fixture, review, independent reproduction, or wording change.
+    validations:
+      required: true
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Release impact
+      options:
+        - Blocks any public claim
+        - Blocks an official benchmark freeze
+        - Improves the technical preview
+        - Documentation only
+    validations:
+      required: true

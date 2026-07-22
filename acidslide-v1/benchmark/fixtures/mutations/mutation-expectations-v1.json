@@ -1,0 +1,3654 @@
+{
+  "evidence_scope": "generated operator behavior only; not independent assertion provenance, review, or evidence",
+  "expectation_set_id": "acidslide-generated-mutation-expectations-v1",
+  "expectations": [
+    {
+      "assertion_id": "deck.assert-alignment-detail",
+      "checklist_item_id": "deck.alignment-detail",
+      "expected_failed_item_ids": [
+        "deck.alignment-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.alignment-detail",
+      "mutation_operator": "lower-one-slide-ssim",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-approved-assets",
+      "checklist_item_id": "deck.approved-assets",
+      "expected_failed_item_ids": [
+        "deck.approved-assets"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.approved-assets",
+      "mutation_operator": "replace-one-approved-asset-hash",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-cross-slide-hierarchy",
+      "checklist_item_id": "deck.cross-slide-hierarchy",
+      "expected_failed_item_ids": [
+        "deck.cross-slide-hierarchy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.cross-slide-hierarchy",
+      "mutation_operator": "decrement-master-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-effect-detail",
+      "checklist_item_id": "deck.effect-detail",
+      "expected_failed_item_ids": [
+        "deck.effect-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.effect-detail",
+      "mutation_operator": "lower-one-slide-ssim",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-font-policy",
+      "checklist_item_id": "deck.font-policy",
+      "expected_failed_item_ids": [
+        "deck.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-layouts-defined",
+      "checklist_item_id": "deck.layouts-defined",
+      "expected_failed_item_ids": [
+        "deck.layouts-defined"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.layouts-defined",
+      "mutation_operator": "decrement-layout-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-line-weight-detail",
+      "checklist_item_id": "deck.line-weight-detail",
+      "expected_failed_item_ids": [
+        "deck.line-weight-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.line-weight-detail",
+      "mutation_operator": "lower-one-slide-ssim",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-master-present",
+      "checklist_item_id": "deck.master-present",
+      "expected_failed_item_ids": [
+        "deck.master-present"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.master-present",
+      "mutation_operator": "decrement-master-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-master-visual-consistency",
+      "checklist_item_id": "deck.master-visual-consistency",
+      "expected_failed_item_ids": [
+        "deck.master-visual-consistency"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.master-visual-consistency",
+      "mutation_operator": "lower-one-slide-ssim",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-native-object-coverage",
+      "checklist_item_id": "deck.native-object-coverage",
+      "expected_failed_item_ids": [
+        "deck.native-object-coverage"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.native-object-coverage",
+      "mutation_operator": "change-exact-slide-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-native-slide-numbers",
+      "checklist_item_id": "deck.native-slide-numbers",
+      "expected_failed_item_ids": [
+        "deck.native-slide-numbers"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.native-slide-numbers",
+      "mutation_operator": "decrement-master-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-no-notes",
+      "checklist_item_id": "deck.no-notes",
+      "expected_failed_item_ids": [
+        "deck.no-notes"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.no-notes",
+      "mutation_operator": "add-speaker-notes-relationship",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-ordered-tier-prefix",
+      "checklist_item_id": "deck.ordered-tier-prefix",
+      "expected_failed_item_ids": [
+        "deck.ordered-tier-prefix"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.ordered-tier-prefix",
+      "mutation_operator": "change-exact-slide-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-palette-consistency",
+      "checklist_item_id": "deck.palette-consistency",
+      "expected_failed_item_ids": [
+        "deck.palette-consistency"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.palette-consistency",
+      "mutation_operator": "lower-one-slide-ssim",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-render-consistency",
+      "checklist_item_id": "deck.render-consistency",
+      "expected_failed_item_ids": [
+        "deck.render-consistency"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.render-consistency",
+      "mutation_operator": "lower-one-slide-ssim",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-rtl-cjk-coverage",
+      "checklist_item_id": "deck.rtl-cjk-coverage",
+      "expected_failed_item_ids": [
+        "deck.rtl-cjk-coverage"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.rtl-cjk-coverage",
+      "mutation_operator": "change-exact-slide-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-slide-count",
+      "checklist_item_id": "deck.slide-count",
+      "expected_failed_item_ids": [
+        "deck.slide-count"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.slide-count",
+      "mutation_operator": "change-exact-slide-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-spacing-consistency",
+      "checklist_item_id": "deck.spacing-consistency",
+      "expected_failed_item_ids": [
+        "deck.spacing-consistency"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.spacing-consistency",
+      "mutation_operator": "lower-one-slide-ssim",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-theme-structure",
+      "checklist_item_id": "deck.theme-structure",
+      "expected_failed_item_ids": [
+        "deck.theme-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.theme-structure",
+      "mutation_operator": "decrement-master-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "deck.assert-typography-consistency",
+      "checklist_item_id": "deck.typography-consistency",
+      "expected_failed_item_ids": [
+        "deck.typography-consistency"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.deck.typography-consistency",
+      "mutation_operator": "lower-one-slide-ssim",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-composition",
+      "checklist_item_id": "slide-01.composition",
+      "expected_failed_item_ids": [
+        "slide-01.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-decorative-detail",
+      "checklist_item_id": "slide-01.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-01.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-focal-fidelity",
+      "checklist_item_id": "slide-01.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-01.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-font-policy",
+      "checklist_item_id": "slide-01.font-policy",
+      "expected_failed_item_ids": [
+        "slide-01.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-01.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-01.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-01.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-01.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-key-text",
+      "checklist_item_id": "slide-01.key-text",
+      "expected_failed_item_ids": [
+        "slide-01.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-layout-binding",
+      "checklist_item_id": "slide-01.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-01.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.layout-binding",
+      "mutation_operator": "remove-required-placeholder",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-native-primary",
+      "checklist_item_id": "slide-01.native-primary",
+      "expected_failed_item_ids": [
+        "slide-01.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.native-primary",
+      "mutation_operator": "replace-approved-asset-hash",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-palette",
+      "checklist_item_id": "slide-01.palette",
+      "expected_failed_item_ids": [
+        "slide-01.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-semantic-structure",
+      "checklist_item_id": "slide-01.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-01.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.semantic-structure",
+      "mutation_operator": "decrement-picture-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-spacing",
+      "checklist_item_id": "slide-01.spacing",
+      "expected_failed_item_ids": [
+        "slide-01.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-01.assert-typography",
+      "checklist_item_id": "slide-01.typography",
+      "expected_failed_item_ids": [
+        "slide-01.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-01.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-composition",
+      "checklist_item_id": "slide-02.composition",
+      "expected_failed_item_ids": [
+        "slide-02.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-decorative-detail",
+      "checklist_item_id": "slide-02.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-02.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-focal-fidelity",
+      "checklist_item_id": "slide-02.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-02.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-font-policy",
+      "checklist_item_id": "slide-02.font-policy",
+      "expected_failed_item_ids": [
+        "slide-02.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-02.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-02.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-02.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-02.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-key-text",
+      "checklist_item_id": "slide-02.key-text",
+      "expected_failed_item_ids": [
+        "slide-02.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-layout-binding",
+      "checklist_item_id": "slide-02.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-02.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.layout-binding",
+      "mutation_operator": "remove-required-placeholder",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-native-primary",
+      "checklist_item_id": "slide-02.native-primary",
+      "expected_failed_item_ids": [
+        "slide-02.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.native-primary",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-palette",
+      "checklist_item_id": "slide-02.palette",
+      "expected_failed_item_ids": [
+        "slide-02.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-semantic-structure",
+      "checklist_item_id": "slide-02.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-02.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.semantic-structure",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-spacing",
+      "checklist_item_id": "slide-02.spacing",
+      "expected_failed_item_ids": [
+        "slide-02.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-02.assert-typography",
+      "checklist_item_id": "slide-02.typography",
+      "expected_failed_item_ids": [
+        "slide-02.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-02.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-composition",
+      "checklist_item_id": "slide-03.composition",
+      "expected_failed_item_ids": [
+        "slide-03.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-decorative-detail",
+      "checklist_item_id": "slide-03.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-03.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-focal-fidelity",
+      "checklist_item_id": "slide-03.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-03.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-font-policy",
+      "checklist_item_id": "slide-03.font-policy",
+      "expected_failed_item_ids": [
+        "slide-03.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-03.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-03.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-03.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-03.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-key-text",
+      "checklist_item_id": "slide-03.key-text",
+      "expected_failed_item_ids": [
+        "slide-03.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-layout-binding",
+      "checklist_item_id": "slide-03.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-03.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-native-primary",
+      "checklist_item_id": "slide-03.native-primary",
+      "expected_failed_item_ids": [
+        "slide-03.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.native-primary",
+      "mutation_operator": "decrement-table-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-palette",
+      "checklist_item_id": "slide-03.palette",
+      "expected_failed_item_ids": [
+        "slide-03.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-semantic-structure",
+      "checklist_item_id": "slide-03.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-03.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.semantic-structure",
+      "mutation_operator": "decrement-table-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-spacing",
+      "checklist_item_id": "slide-03.spacing",
+      "expected_failed_item_ids": [
+        "slide-03.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-03.assert-typography",
+      "checklist_item_id": "slide-03.typography",
+      "expected_failed_item_ids": [
+        "slide-03.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-03.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-composition",
+      "checklist_item_id": "slide-04.composition",
+      "expected_failed_item_ids": [
+        "slide-04.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-decorative-detail",
+      "checklist_item_id": "slide-04.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-04.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-focal-fidelity",
+      "checklist_item_id": "slide-04.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-04.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-font-policy",
+      "checklist_item_id": "slide-04.font-policy",
+      "expected_failed_item_ids": [
+        "slide-04.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-04.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-04.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-04.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-04.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-key-text",
+      "checklist_item_id": "slide-04.key-text",
+      "expected_failed_item_ids": [
+        "slide-04.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-layout-binding",
+      "checklist_item_id": "slide-04.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-04.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.layout-binding",
+      "mutation_operator": "remove-required-placeholder",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-native-primary",
+      "checklist_item_id": "slide-04.native-primary",
+      "expected_failed_item_ids": [
+        "slide-04.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.native-primary",
+      "mutation_operator": "decrement-chart-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-palette",
+      "checklist_item_id": "slide-04.palette",
+      "expected_failed_item_ids": [
+        "slide-04.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-semantic-structure",
+      "checklist_item_id": "slide-04.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-04.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.semantic-structure",
+      "mutation_operator": "decrement-chart-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-spacing",
+      "checklist_item_id": "slide-04.spacing",
+      "expected_failed_item_ids": [
+        "slide-04.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-04.assert-typography",
+      "checklist_item_id": "slide-04.typography",
+      "expected_failed_item_ids": [
+        "slide-04.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-04.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-composition",
+      "checklist_item_id": "slide-05.composition",
+      "expected_failed_item_ids": [
+        "slide-05.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-decorative-detail",
+      "checklist_item_id": "slide-05.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-05.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-focal-fidelity",
+      "checklist_item_id": "slide-05.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-05.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-font-policy",
+      "checklist_item_id": "slide-05.font-policy",
+      "expected_failed_item_ids": [
+        "slide-05.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-05.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-05.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-05.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-05.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-key-text",
+      "checklist_item_id": "slide-05.key-text",
+      "expected_failed_item_ids": [
+        "slide-05.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-layout-binding",
+      "checklist_item_id": "slide-05.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-05.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.layout-binding",
+      "mutation_operator": "remove-required-placeholder",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-native-primary",
+      "checklist_item_id": "slide-05.native-primary",
+      "expected_failed_item_ids": [
+        "slide-05.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.native-primary",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-palette",
+      "checklist_item_id": "slide-05.palette",
+      "expected_failed_item_ids": [
+        "slide-05.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-semantic-structure",
+      "checklist_item_id": "slide-05.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-05.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.semantic-structure",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-spacing",
+      "checklist_item_id": "slide-05.spacing",
+      "expected_failed_item_ids": [
+        "slide-05.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-05.assert-typography",
+      "checklist_item_id": "slide-05.typography",
+      "expected_failed_item_ids": [
+        "slide-05.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-05.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-composition",
+      "checklist_item_id": "slide-06.composition",
+      "expected_failed_item_ids": [
+        "slide-06.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-decorative-detail",
+      "checklist_item_id": "slide-06.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-06.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-focal-fidelity",
+      "checklist_item_id": "slide-06.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-06.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-font-policy",
+      "checklist_item_id": "slide-06.font-policy",
+      "expected_failed_item_ids": [
+        "slide-06.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-06.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-06.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-06.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-06.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-key-text",
+      "checklist_item_id": "slide-06.key-text",
+      "expected_failed_item_ids": [
+        "slide-06.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-layout-binding",
+      "checklist_item_id": "slide-06.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-06.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-native-primary",
+      "checklist_item_id": "slide-06.native-primary",
+      "expected_failed_item_ids": [
+        "slide-06.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.native-primary",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-palette",
+      "checklist_item_id": "slide-06.palette",
+      "expected_failed_item_ids": [
+        "slide-06.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-semantic-structure",
+      "checklist_item_id": "slide-06.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-06.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.semantic-structure",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-spacing",
+      "checklist_item_id": "slide-06.spacing",
+      "expected_failed_item_ids": [
+        "slide-06.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-06.assert-typography",
+      "checklist_item_id": "slide-06.typography",
+      "expected_failed_item_ids": [
+        "slide-06.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-06.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-composition",
+      "checklist_item_id": "slide-07.composition",
+      "expected_failed_item_ids": [
+        "slide-07.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-decorative-detail",
+      "checklist_item_id": "slide-07.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-07.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-focal-fidelity",
+      "checklist_item_id": "slide-07.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-07.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-font-policy",
+      "checklist_item_id": "slide-07.font-policy",
+      "expected_failed_item_ids": [
+        "slide-07.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-07.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-07.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-07.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-07.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-key-text",
+      "checklist_item_id": "slide-07.key-text",
+      "expected_failed_item_ids": [
+        "slide-07.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-layout-binding",
+      "checklist_item_id": "slide-07.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-07.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-native-primary",
+      "checklist_item_id": "slide-07.native-primary",
+      "expected_failed_item_ids": [
+        "slide-07.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.native-primary",
+      "mutation_operator": "replace-approved-asset-hash",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-palette",
+      "checklist_item_id": "slide-07.palette",
+      "expected_failed_item_ids": [
+        "slide-07.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-semantic-structure",
+      "checklist_item_id": "slide-07.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-07.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.semantic-structure",
+      "mutation_operator": "decrement-picture-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-spacing",
+      "checklist_item_id": "slide-07.spacing",
+      "expected_failed_item_ids": [
+        "slide-07.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-07.assert-typography",
+      "checklist_item_id": "slide-07.typography",
+      "expected_failed_item_ids": [
+        "slide-07.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-07.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-composition",
+      "checklist_item_id": "slide-08.composition",
+      "expected_failed_item_ids": [
+        "slide-08.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-decorative-detail",
+      "checklist_item_id": "slide-08.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-08.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-focal-fidelity",
+      "checklist_item_id": "slide-08.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-08.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-font-policy",
+      "checklist_item_id": "slide-08.font-policy",
+      "expected_failed_item_ids": [
+        "slide-08.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-08.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-08.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-08.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-08.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-key-text",
+      "checklist_item_id": "slide-08.key-text",
+      "expected_failed_item_ids": [
+        "slide-08.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-layout-binding",
+      "checklist_item_id": "slide-08.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-08.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-native-primary",
+      "checklist_item_id": "slide-08.native-primary",
+      "expected_failed_item_ids": [
+        "slide-08.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.native-primary",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-palette",
+      "checklist_item_id": "slide-08.palette",
+      "expected_failed_item_ids": [
+        "slide-08.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-semantic-structure",
+      "checklist_item_id": "slide-08.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-08.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.semantic-structure",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-spacing",
+      "checklist_item_id": "slide-08.spacing",
+      "expected_failed_item_ids": [
+        "slide-08.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-08.assert-typography",
+      "checklist_item_id": "slide-08.typography",
+      "expected_failed_item_ids": [
+        "slide-08.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-08.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-composition",
+      "checklist_item_id": "slide-09.composition",
+      "expected_failed_item_ids": [
+        "slide-09.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-decorative-detail",
+      "checklist_item_id": "slide-09.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-09.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-focal-fidelity",
+      "checklist_item_id": "slide-09.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-09.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-font-policy",
+      "checklist_item_id": "slide-09.font-policy",
+      "expected_failed_item_ids": [
+        "slide-09.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-09.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-09.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-09.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-09.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-key-text",
+      "checklist_item_id": "slide-09.key-text",
+      "expected_failed_item_ids": [
+        "slide-09.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-layout-binding",
+      "checklist_item_id": "slide-09.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-09.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.layout-binding",
+      "mutation_operator": "remove-required-placeholder",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-native-primary",
+      "checklist_item_id": "slide-09.native-primary",
+      "expected_failed_item_ids": [
+        "slide-09.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.native-primary",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-palette",
+      "checklist_item_id": "slide-09.palette",
+      "expected_failed_item_ids": [
+        "slide-09.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-semantic-structure",
+      "checklist_item_id": "slide-09.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-09.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.semantic-structure",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-spacing",
+      "checklist_item_id": "slide-09.spacing",
+      "expected_failed_item_ids": [
+        "slide-09.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-09.assert-typography",
+      "checklist_item_id": "slide-09.typography",
+      "expected_failed_item_ids": [
+        "slide-09.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-09.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-composition",
+      "checklist_item_id": "slide-10.composition",
+      "expected_failed_item_ids": [
+        "slide-10.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.composition",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-decorative-detail",
+      "checklist_item_id": "slide-10.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-10.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.decorative-detail",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-focal-fidelity",
+      "checklist_item_id": "slide-10.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-10.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-font-policy",
+      "checklist_item_id": "slide-10.font-policy",
+      "expected_failed_item_ids": [
+        "slide-10.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-10.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-10.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-10.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-10.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.hierarchy-z-order",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-key-text",
+      "checklist_item_id": "slide-10.key-text",
+      "expected_failed_item_ids": [
+        "slide-10.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-layout-binding",
+      "checklist_item_id": "slide-10.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-10.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-native-primary",
+      "checklist_item_id": "slide-10.native-primary",
+      "expected_failed_item_ids": [
+        "slide-10.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.native-primary",
+      "mutation_operator": "decrement-connector-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-palette",
+      "checklist_item_id": "slide-10.palette",
+      "expected_failed_item_ids": [
+        "slide-10.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-semantic-structure",
+      "checklist_item_id": "slide-10.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-10.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.semantic-structure",
+      "mutation_operator": "decrement-connector-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-spacing",
+      "checklist_item_id": "slide-10.spacing",
+      "expected_failed_item_ids": [
+        "slide-10.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-10.assert-typography",
+      "checklist_item_id": "slide-10.typography",
+      "expected_failed_item_ids": [
+        "slide-10.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-10.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-composition",
+      "checklist_item_id": "slide-11.composition",
+      "expected_failed_item_ids": [
+        "slide-11.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-decorative-detail",
+      "checklist_item_id": "slide-11.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-11.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-focal-fidelity",
+      "checklist_item_id": "slide-11.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-11.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-font-policy",
+      "checklist_item_id": "slide-11.font-policy",
+      "expected_failed_item_ids": [
+        "slide-11.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-11.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-11.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-11.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-11.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-key-text",
+      "checklist_item_id": "slide-11.key-text",
+      "expected_failed_item_ids": [
+        "slide-11.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-layout-binding",
+      "checklist_item_id": "slide-11.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-11.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.layout-binding",
+      "mutation_operator": "remove-required-placeholder",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-native-primary",
+      "checklist_item_id": "slide-11.native-primary",
+      "expected_failed_item_ids": [
+        "slide-11.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.native-primary",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-palette",
+      "checklist_item_id": "slide-11.palette",
+      "expected_failed_item_ids": [
+        "slide-11.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-semantic-structure",
+      "checklist_item_id": "slide-11.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-11.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.semantic-structure",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-spacing",
+      "checklist_item_id": "slide-11.spacing",
+      "expected_failed_item_ids": [
+        "slide-11.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-11.assert-typography",
+      "checklist_item_id": "slide-11.typography",
+      "expected_failed_item_ids": [
+        "slide-11.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-11.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-composition",
+      "checklist_item_id": "slide-12.composition",
+      "expected_failed_item_ids": [
+        "slide-12.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-decorative-detail",
+      "checklist_item_id": "slide-12.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-12.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-focal-fidelity",
+      "checklist_item_id": "slide-12.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-12.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-font-policy",
+      "checklist_item_id": "slide-12.font-policy",
+      "expected_failed_item_ids": [
+        "slide-12.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-12.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-12.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-12.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-12.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-key-text",
+      "checklist_item_id": "slide-12.key-text",
+      "expected_failed_item_ids": [
+        "slide-12.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-layout-binding",
+      "checklist_item_id": "slide-12.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-12.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.layout-binding",
+      "mutation_operator": "remove-required-placeholder",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-native-primary",
+      "checklist_item_id": "slide-12.native-primary",
+      "expected_failed_item_ids": [
+        "slide-12.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.native-primary",
+      "mutation_operator": "decrement-field-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-palette",
+      "checklist_item_id": "slide-12.palette",
+      "expected_failed_item_ids": [
+        "slide-12.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-semantic-structure",
+      "checklist_item_id": "slide-12.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-12.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.semantic-structure",
+      "mutation_operator": "decrement-field-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-spacing",
+      "checklist_item_id": "slide-12.spacing",
+      "expected_failed_item_ids": [
+        "slide-12.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-12.assert-typography",
+      "checklist_item_id": "slide-12.typography",
+      "expected_failed_item_ids": [
+        "slide-12.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-12.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-composition",
+      "checklist_item_id": "slide-13.composition",
+      "expected_failed_item_ids": [
+        "slide-13.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.composition",
+      "mutation_operator": "decrement-table-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-decorative-detail",
+      "checklist_item_id": "slide-13.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-13.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.decorative-detail",
+      "mutation_operator": "decrement-table-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-focal-fidelity",
+      "checklist_item_id": "slide-13.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-13.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-font-policy",
+      "checklist_item_id": "slide-13.font-policy",
+      "expected_failed_item_ids": [
+        "slide-13.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-13.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-13.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-13.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-13.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.hierarchy-z-order",
+      "mutation_operator": "decrement-table-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-key-text",
+      "checklist_item_id": "slide-13.key-text",
+      "expected_failed_item_ids": [
+        "slide-13.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-layout-binding",
+      "checklist_item_id": "slide-13.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-13.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-native-primary",
+      "checklist_item_id": "slide-13.native-primary",
+      "expected_failed_item_ids": [
+        "slide-13.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.native-primary",
+      "mutation_operator": "decrement-chart-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-palette",
+      "checklist_item_id": "slide-13.palette",
+      "expected_failed_item_ids": [
+        "slide-13.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-semantic-structure",
+      "checklist_item_id": "slide-13.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-13.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.semantic-structure",
+      "mutation_operator": "decrement-chart-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-spacing",
+      "checklist_item_id": "slide-13.spacing",
+      "expected_failed_item_ids": [
+        "slide-13.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-13.assert-typography",
+      "checklist_item_id": "slide-13.typography",
+      "expected_failed_item_ids": [
+        "slide-13.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-13.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-composition",
+      "checklist_item_id": "slide-14.composition",
+      "expected_failed_item_ids": [
+        "slide-14.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-decorative-detail",
+      "checklist_item_id": "slide-14.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-14.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-focal-fidelity",
+      "checklist_item_id": "slide-14.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-14.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-font-policy",
+      "checklist_item_id": "slide-14.font-policy",
+      "expected_failed_item_ids": [
+        "slide-14.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-14.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-14.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-14.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-14.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-key-text",
+      "checklist_item_id": "slide-14.key-text",
+      "expected_failed_item_ids": [
+        "slide-14.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-layout-binding",
+      "checklist_item_id": "slide-14.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-14.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.layout-binding",
+      "mutation_operator": "remove-required-placeholder",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-native-primary",
+      "checklist_item_id": "slide-14.native-primary",
+      "expected_failed_item_ids": [
+        "slide-14.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.native-primary",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-palette",
+      "checklist_item_id": "slide-14.palette",
+      "expected_failed_item_ids": [
+        "slide-14.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-semantic-structure",
+      "checklist_item_id": "slide-14.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-14.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.semantic-structure",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-spacing",
+      "checklist_item_id": "slide-14.spacing",
+      "expected_failed_item_ids": [
+        "slide-14.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-14.assert-typography",
+      "checklist_item_id": "slide-14.typography",
+      "expected_failed_item_ids": [
+        "slide-14.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-14.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-composition",
+      "checklist_item_id": "slide-15.composition",
+      "expected_failed_item_ids": [
+        "slide-15.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-decorative-detail",
+      "checklist_item_id": "slide-15.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-15.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-focal-fidelity",
+      "checklist_item_id": "slide-15.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-15.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-font-policy",
+      "checklist_item_id": "slide-15.font-policy",
+      "expected_failed_item_ids": [
+        "slide-15.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-15.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-15.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-15.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-15.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-key-text",
+      "checklist_item_id": "slide-15.key-text",
+      "expected_failed_item_ids": [
+        "slide-15.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-layout-binding",
+      "checklist_item_id": "slide-15.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-15.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-native-primary",
+      "checklist_item_id": "slide-15.native-primary",
+      "expected_failed_item_ids": [
+        "slide-15.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.native-primary",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-palette",
+      "checklist_item_id": "slide-15.palette",
+      "expected_failed_item_ids": [
+        "slide-15.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-semantic-structure",
+      "checklist_item_id": "slide-15.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-15.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.semantic-structure",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-spacing",
+      "checklist_item_id": "slide-15.spacing",
+      "expected_failed_item_ids": [
+        "slide-15.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-15.assert-typography",
+      "checklist_item_id": "slide-15.typography",
+      "expected_failed_item_ids": [
+        "slide-15.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-15.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-composition",
+      "checklist_item_id": "slide-16.composition",
+      "expected_failed_item_ids": [
+        "slide-16.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-decorative-detail",
+      "checklist_item_id": "slide-16.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-16.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-focal-fidelity",
+      "checklist_item_id": "slide-16.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-16.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-font-policy",
+      "checklist_item_id": "slide-16.font-policy",
+      "expected_failed_item_ids": [
+        "slide-16.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-16.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-16.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-16.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-16.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-key-text",
+      "checklist_item_id": "slide-16.key-text",
+      "expected_failed_item_ids": [
+        "slide-16.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-layout-binding",
+      "checklist_item_id": "slide-16.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-16.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-native-primary",
+      "checklist_item_id": "slide-16.native-primary",
+      "expected_failed_item_ids": [
+        "slide-16.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.native-primary",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-palette",
+      "checklist_item_id": "slide-16.palette",
+      "expected_failed_item_ids": [
+        "slide-16.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-semantic-structure",
+      "checklist_item_id": "slide-16.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-16.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.semantic-structure",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-spacing",
+      "checklist_item_id": "slide-16.spacing",
+      "expected_failed_item_ids": [
+        "slide-16.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-16.assert-typography",
+      "checklist_item_id": "slide-16.typography",
+      "expected_failed_item_ids": [
+        "slide-16.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-16.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-composition",
+      "checklist_item_id": "slide-17.composition",
+      "expected_failed_item_ids": [
+        "slide-17.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-decorative-detail",
+      "checklist_item_id": "slide-17.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-17.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-focal-fidelity",
+      "checklist_item_id": "slide-17.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-17.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-font-policy",
+      "checklist_item_id": "slide-17.font-policy",
+      "expected_failed_item_ids": [
+        "slide-17.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-17.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-17.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-17.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-17.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-key-text",
+      "checklist_item_id": "slide-17.key-text",
+      "expected_failed_item_ids": [
+        "slide-17.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-layout-binding",
+      "checklist_item_id": "slide-17.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-17.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-native-primary",
+      "checklist_item_id": "slide-17.native-primary",
+      "expected_failed_item_ids": [
+        "slide-17.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.native-primary",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-palette",
+      "checklist_item_id": "slide-17.palette",
+      "expected_failed_item_ids": [
+        "slide-17.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-semantic-structure",
+      "checklist_item_id": "slide-17.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-17.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.semantic-structure",
+      "mutation_operator": "decrement-group-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-spacing",
+      "checklist_item_id": "slide-17.spacing",
+      "expected_failed_item_ids": [
+        "slide-17.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-17.assert-typography",
+      "checklist_item_id": "slide-17.typography",
+      "expected_failed_item_ids": [
+        "slide-17.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-17.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-composition",
+      "checklist_item_id": "slide-18.composition",
+      "expected_failed_item_ids": [
+        "slide-18.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-decorative-detail",
+      "checklist_item_id": "slide-18.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-18.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-focal-fidelity",
+      "checklist_item_id": "slide-18.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-18.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-font-policy",
+      "checklist_item_id": "slide-18.font-policy",
+      "expected_failed_item_ids": [
+        "slide-18.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-18.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-18.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-18.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-18.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-key-text",
+      "checklist_item_id": "slide-18.key-text",
+      "expected_failed_item_ids": [
+        "slide-18.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-layout-binding",
+      "checklist_item_id": "slide-18.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-18.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-native-primary",
+      "checklist_item_id": "slide-18.native-primary",
+      "expected_failed_item_ids": [
+        "slide-18.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.native-primary",
+      "mutation_operator": "replace-approved-asset-hash",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-palette",
+      "checklist_item_id": "slide-18.palette",
+      "expected_failed_item_ids": [
+        "slide-18.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-semantic-structure",
+      "checklist_item_id": "slide-18.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-18.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.semantic-structure",
+      "mutation_operator": "decrement-picture-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-spacing",
+      "checklist_item_id": "slide-18.spacing",
+      "expected_failed_item_ids": [
+        "slide-18.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-18.assert-typography",
+      "checklist_item_id": "slide-18.typography",
+      "expected_failed_item_ids": [
+        "slide-18.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-18.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-composition",
+      "checklist_item_id": "slide-19.composition",
+      "expected_failed_item_ids": [
+        "slide-19.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.composition",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-decorative-detail",
+      "checklist_item_id": "slide-19.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-19.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.decorative-detail",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-focal-fidelity",
+      "checklist_item_id": "slide-19.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-19.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-font-policy",
+      "checklist_item_id": "slide-19.font-policy",
+      "expected_failed_item_ids": [
+        "slide-19.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-19.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-19.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-19.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-19.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.hierarchy-z-order",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-key-text",
+      "checklist_item_id": "slide-19.key-text",
+      "expected_failed_item_ids": [
+        "slide-19.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-layout-binding",
+      "checklist_item_id": "slide-19.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-19.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.layout-binding",
+      "mutation_operator": "remove-required-placeholder",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-native-primary",
+      "checklist_item_id": "slide-19.native-primary",
+      "expected_failed_item_ids": [
+        "slide-19.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.native-primary",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-palette",
+      "checklist_item_id": "slide-19.palette",
+      "expected_failed_item_ids": [
+        "slide-19.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-semantic-structure",
+      "checklist_item_id": "slide-19.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-19.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.semantic-structure",
+      "mutation_operator": "decrement-shape-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-spacing",
+      "checklist_item_id": "slide-19.spacing",
+      "expected_failed_item_ids": [
+        "slide-19.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-19.assert-typography",
+      "checklist_item_id": "slide-19.typography",
+      "expected_failed_item_ids": [
+        "slide-19.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-19.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-composition",
+      "checklist_item_id": "slide-20.composition",
+      "expected_failed_item_ids": [
+        "slide-20.composition"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.composition",
+      "mutation_operator": "decrement-table-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-decorative-detail",
+      "checklist_item_id": "slide-20.decorative-detail",
+      "expected_failed_item_ids": [
+        "slide-20.decorative-detail"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.decorative-detail",
+      "mutation_operator": "decrement-table-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-focal-fidelity",
+      "checklist_item_id": "slide-20.focal-fidelity",
+      "expected_failed_item_ids": [
+        "slide-20.focal-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.focal-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-font-policy",
+      "checklist_item_id": "slide-20.font-policy",
+      "expected_failed_item_ids": [
+        "slide-20.font-policy"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.font-policy",
+      "mutation_operator": "substitute-non-bundled-font",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-full-slide-fidelity",
+      "checklist_item_id": "slide-20.full-slide-fidelity",
+      "expected_failed_item_ids": [
+        "slide-20.full-slide-fidelity"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.full-slide-fidelity",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-hierarchy-z-order",
+      "checklist_item_id": "slide-20.hierarchy-z-order",
+      "expected_failed_item_ids": [
+        "slide-20.hierarchy-z-order"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.hierarchy-z-order",
+      "mutation_operator": "decrement-table-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-key-text",
+      "checklist_item_id": "slide-20.key-text",
+      "expected_failed_item_ids": [
+        "slide-20.key-text"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.key-text",
+      "mutation_operator": "replace-required-text",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-layout-binding",
+      "checklist_item_id": "slide-20.layout-binding",
+      "expected_failed_item_ids": [
+        "slide-20.layout-binding"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.layout-binding",
+      "mutation_operator": "clear-layout-reference",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-native-primary",
+      "checklist_item_id": "slide-20.native-primary",
+      "expected_failed_item_ids": [
+        "slide-20.native-primary"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.native-primary",
+      "mutation_operator": "decrement-chart-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-palette",
+      "checklist_item_id": "slide-20.palette",
+      "expected_failed_item_ids": [
+        "slide-20.palette"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.palette",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-semantic-structure",
+      "checklist_item_id": "slide-20.semantic-structure",
+      "expected_failed_item_ids": [
+        "slide-20.semantic-structure"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.semantic-structure",
+      "mutation_operator": "decrement-chart-count",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-spacing",
+      "checklist_item_id": "slide-20.spacing",
+      "expected_failed_item_ids": [
+        "slide-20.spacing"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.spacing",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    },
+    {
+      "assertion_id": "slide-20.assert-typography",
+      "checklist_item_id": "slide-20.typography",
+      "expected_failed_item_ids": [
+        "slide-20.typography"
+      ],
+      "fault_count": 1,
+      "mutation_expectation_id": "mutation.slide-20.typography",
+      "mutation_operator": "lower-ssim-below-threshold",
+      "negative_expected_outcome": "failed",
+      "positive_expected_outcome": "passed",
+      "release_evidence_claimed": false
+    }
+  ],
+  "fixture_index_id": "acidslide-generated-mutation-fixture-index-v1",
+  "schema_version": "1.0",
+  "summary": {
+    "expectations": 280,
+    "single_fault_expectations": 280,
+    "unimplemented": 0
+  },
+  "unresolved": []
+}

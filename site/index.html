@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gloss is the open benchmark for generated PowerPoint files that need to look right and be built right. Inspect the evidence and contribute on GitHub.">
+    <meta name="theme-color" content="#f4f6fa">
+    <meta property="og:title" content="Gloss — a screenshot is not a PowerPoint">
+    <meta property="og:description" content="An open benchmark for visual fidelity and native OOXML structure. Built in public on GitHub.">
+    <meta property="og:image" content="https://gloss.tools/media/gloss-launch-poster.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gloss.tools">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Gloss — a screenshot is not a PowerPoint</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/site.css">
+    <script src="/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Gloss home">
+        <span class="wordmark-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Gloss</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="https://github.com/aronchick/gloss">Repository</a>
+        <a href="https://github.com/aronchick/gloss/issues">Issues</a>
+        <a href="https://github.com/aronchick/gloss/pulls">Pull requests</a>
+        <a class="nav-cta" href="https://github.com/aronchick/gloss" aria-label="Open Gloss on GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.4 11.4 0 0 0-3.6 22.2c.6.1.8-.2.8-.6v-2.2c-3.4.7-4.1-1.4-4.1-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.6-1.4-5.6-6a4.7 4.7 0 0 1 1.2-3.2 4.4 4.4 0 0 1 .1-3.2s1-.3 3.3 1.2a11.2 11.2 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2a4.4 4.4 0 0 1 .1 3.2 4.7 4.7 0 0 1 1.2 3.2c0 4.6-2.9 5.7-5.6 6 .4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.4 11.4 0 0 0 12 .8Z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Open technical preview</p>
+          <h1 id="hero-title">A screenshot is not a <span>PowerPoint.</span></h1>
+          <p class="lede">Gloss measures whether generated decks <strong>look right</strong> and are <strong>built right</strong> — native shapes, charts, tables, layouts, text, and relationships included.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://github.com/aronchick/gloss">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.4 11.4 0 0 0-3.6 22.2c.6.1.8-.2.8-.6v-2.2c-3.4.7-4.1-1.4-4.1-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.6-1.4-5.6-6a4.7 4.7 0 0 1 1.2-3.2 4.4 4.4 0 0 1 .1-3.2s1-.3 3.3 1.2a11.2 11.2 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2a4.4 4.4 0 0 1 .1 3.2 4.7 4.7 0 0 1 1.2 3.2c0 4.6-2.9 5.7-5.6 6 .4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.4 11.4 0 0 0 12 .8Z"/></svg>
+              Inspect the repository
+            </a>
+            <a class="button button-secondary" href="https://github.com/aronchick/gloss/issues/new/choose">Add a benchmark case <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-note">Generative Layout &amp; OOXML Scoring System · Apache-2.0</p>
+        </div>
+
+        <div class="xray" data-xray="canvas">
+          <div class="xray-toolbar">
+            <div class="xray-tabs" role="group" aria-label="Inspect the two layers of a PowerPoint artifact">
+              <button type="button" class="xray-tab is-active" data-xray-target="canvas" aria-pressed="true">Looks right</button>
+              <button type="button" class="xray-tab" data-xray-target="package" aria-pressed="false">Built right</button>
+            </div>
+            <span class="xray-file">submission.pptx</span>
+          </div>
+          <div class="xray-stage" aria-live="polite">
+            <div class="canvas-view xray-view" data-xray-panel="canvas">
+              <div class="slide-art" aria-label="Abstract example slide">
+                <div class="slide-kicker">Q3 / SYSTEMS</div>
+                <div class="slide-title">The artifact<br>is the product.</div>
+                <div class="slide-rule"></div>
+                <div class="slide-chart"><i style="--h: 36%"></i><i style="--h: 55%"></i><i style="--h: 48%"></i><i style="--h: 82%"></i></div>
+                <div class="slide-caption">Rendered pixels</div>
+              </div>
+              <p class="xray-caption"><b><span data-evidence="visual-checks">108</span> visual checks</b> inspect what reaches the canvas.</p>
+            </div>
+            <div class="package-view xray-view" data-xray-panel="package" hidden>
+              <div class="package-head">
+                <span>PowerPoint package</span>
+                <strong><span data-evidence="inside-file-percent">61</span>% inside the file</strong>
+              </div>
+              <ol class="package-tree">
+                <li><span class="tree-toggle">▾</span><b>ppt/</b></li>
+                <li class="tree-depth-1"><span class="tree-toggle">▾</span><b>slides/</b><em>slide relationships</em></li>
+                <li class="tree-depth-2 is-hot"><span class="file-icon">◇</span>slide1.xml <em>native shapes</em></li>
+                <li class="tree-depth-1 is-hot"><span class="file-icon">◇</span>presentation.xml <em>slide order</em></li>
+                <li class="tree-depth-1"><span class="tree-toggle">▾</span><b>slideMasters/</b><em>layout reuse</em></li>
+                <li class="tree-depth-2 is-hot"><span class="file-icon">◇</span>slideMaster1.xml <em>theme + fields</em></li>
+                <li class="tree-depth-1"><span class="tree-toggle">▾</span><b>charts/</b><em>editable data</em></li>
+                <li class="tree-depth-2 is-hot"><span class="file-icon">◇</span>chart1.xml <em>not a picture</em></li>
+              </ol>
+              <p class="xray-caption"><b><span data-evidence="inside-file-checks">172</span> package checks</b> inspect what screenshots cannot.</p>
+            </div>
+          </div>
+          <div class="xray-foot"><span>Gloss artifact X-ray</span><span>canvas ↔ package</span></div>
+        </div>
+      </section>
+
+      <section class="proof-band" aria-label="Verified technical preview evidence">
+        <a href="/evidence/preview-v1.json" class="proof-cell proof-lead">
+          <span class="proof-label">Evidence bundle</span>
+          <strong>Public JSON</strong>
+          <span>Open the receipts ↗</span>
+        </a>
+        <div class="proof-cell">
+          <span class="proof-label">Candidate checks</span>
+          <strong data-evidence="candidate-checks">280</strong>
+          <span>108 visual · 172 inside-file</span>
+        </div>
+        <div class="proof-cell">
+          <span class="proof-label">Positive controls</span>
+          <strong><span data-evidence="positive-passed">280</span>/<span data-evidence="positive-total">280</span></strong>
+          <span>passed</span>
+        </div>
+        <div class="proof-cell">
+          <span class="proof-label">Single-fault mutations</span>
+          <strong><span data-evidence="mutants-detected">280</span>/<span data-evidence="mutants-total">280</span></strong>
+          <span>detected</span>
+        </div>
+        <div class="proof-cell proof-warning">
+          <span class="proof-label">Release state</span>
+          <strong>Preview</strong>
+          <span>0 official model results</span>
+        </div>
+      </section>
+
+      <section class="launch-film section-shell" aria-labelledby="film-title">
+        <div class="section-heading">
+          <p class="eyebrow">The 21-second version</p>
+          <h2 id="film-title">The benchmark begins where the screenshot ends.</h2>
+          <p>The film is rendered from the same committed JSON bundle as this page. These are harness counts, not model scores.</p>
+        </div>
+        <div class="film-frame">
+          <video controls muted playsinline preload="metadata" poster="/media/gloss-launch-poster.png">
+            <source src="/media/gloss-launch.mp4" type="video/mp4">
+            Your browser does not support the launch video. <a href="/media/gloss-launch.mp4">Download it instead.</a>
+          </video>
+          <div class="film-meta"><span>00:21</span><span>1080 × 1080</span><span>silent</span><a href="https://github.com/aronchick/gloss/blob/main/launch/render-video.mjs">view renderer ↗</a></div>
+        </div>
+      </section>
+
+      <section class="method section-shell" aria-labelledby="method-title">
+        <div class="method-copy">
+          <p class="eyebrow">One file. Two truths.</p>
+          <h2 id="method-title">Visual fidelity is necessary. Native structure is non-negotiable.</h2>
+          <p>A generated deck can match the reference image and still collapse the moment someone edits a chart, applies a layout, changes a theme, or reads the file with another tool. Gloss grades both layers.</p>
+          <a class="text-link" href="https://github.com/aronchick/gloss/blob/main/ACIDSLIDE_OPENSPEC.md">Read the open scoring contract <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="method-list" aria-label="Candidate checks by verification method">
+          <div class="method-row method-row-visual"><span>Rendered pixels</span><i style="--value: 108"></i><b>108</b></div>
+          <div class="method-divider"><span>The artifact twist</span><em>inside the .pptx</em></div>
+          <div class="method-row"><span>Object structure</span><i style="--value: 101"></i><b>101</b></div>
+          <div class="method-row"><span>Layouts &amp; masters</span><i style="--value: 25"></i><b>25</b></div>
+          <div class="method-row"><span>Package safety</span><i style="--value: 22"></i><b>22</b></div>
+          <div class="method-row"><span>Text semantics</span><i style="--value: 20"></i><b>20</b></div>
+          <div class="method-row"><span>Asset hashes</span><i style="--value: 4"></i><b>4</b></div>
+          <p>Candidate checks by method. Counts come from <a href="/evidence/preview-v1.json">preview-v1.json</a>.</p>
+        </div>
+      </section>
+
+      <section class="collaborate" aria-labelledby="collaborate-title">
+        <div class="section-shell collaborate-inner">
+          <div class="section-heading">
+            <p class="eyebrow">The repository is the product</p>
+            <h2 id="collaborate-title">Find a weak assumption. Open a patch.</h2>
+            <p>No waitlist and no private benchmark committee. Cases, assertions, evidence, and release gates are inspectable on GitHub.</p>
+          </div>
+          <div class="contribution-grid">
+            <a class="contribution-card" href="https://github.com/aronchick/gloss/issues/new?template=benchmark-case.yml">
+              <span class="card-index">CASE</span>
+              <h3>Break the corpus</h3>
+              <p>Add the slide construct your generator gets wrong: charts, tables, masters, fields, typography, geometry, or package relationships.</p>
+              <span class="card-action">Propose a benchmark case ↗</span>
+            </a>
+            <a class="contribution-card" href="https://github.com/aronchick/gloss/issues/new?template=grader-bug.yml">
+              <span class="card-index">CODE</span>
+              <h3>Make the grader stricter</h3>
+              <p>Reproduce a false positive or false negative, then improve the assertion with a focused fixture and test.</p>
+              <span class="card-action">Report a grader gap ↗</span>
+            </a>
+            <a class="contribution-card" href="https://github.com/aronchick/gloss/issues/new?template=evidence-challenge.yml">
+              <span class="card-index">PROOF</span>
+              <h3>Challenge the evidence</h3>
+              <p>Question a provenance record, mutation operator, scoring assumption, or release gate. Every public claim should survive review.</p>
+              <span class="card-action">Challenge a claim ↗</span>
+            </a>
+          </div>
+          <div class="repo-paths" aria-label="Useful repository paths">
+            <a href="https://github.com/aronchick/gloss/tree/main/acidslide-v1/benchmark"><span>acidslide-v1/</span>benchmark</a>
+            <a href="https://github.com/aronchick/gloss/tree/main/acidslide-v1/grader"><span>acidslide-v1/</span>grader</a>
+            <a href="https://github.com/aronchick/gloss/blob/main/ACIDSLIDE_OPENSPEC.md"><span>root/</span>ACIDSLIDE_OPENSPEC.md</a>
+            <a href="https://github.com/aronchick/gloss/blob/main/CONTRIBUTING.md"><span>root/</span>CONTRIBUTING.md</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="status section-shell" aria-labelledby="status-title">
+        <div class="status-intro">
+          <p class="eyebrow">Truth before leaderboard</p>
+          <h2 id="status-title">Working harness. Unfrozen benchmark.</h2>
+          <p>Gloss is ready for public collaboration, not official model ranking. The release validator fails closed until independent evidence and frozen artifacts exist.</p>
+        </div>
+        <div class="gate-list">
+          <div class="gate gate-pass"><span class="gate-icon">✓</span><div><strong>Candidate corpus validates</strong><p>280 schema-valid checks and 381 traceable prompt clauses.</p></div><em>passing</em></div>
+          <div class="gate gate-pass"><span class="gate-icon">✓</span><div><strong>Mutation operators execute</strong><p>280 controls pass; 280 generated single-fault mutations are detected.</p></div><em>passing</em></div>
+          <div class="gate gate-open"><span class="gate-icon">○</span><div><strong>Independent evidence</strong><p>Assertion provenance and evidence remain incomplete for 280 candidate checks.</p></div><em>open</em></div>
+          <div class="gate gate-open"><span class="gate-icon">○</span><div><strong>Release freeze</strong><p>Prompt convergence, reviewer approvals, baselines, manifests, and signed release indexes remain open.</p></div><em>open</em></div>
+        </div>
+      </section>
+
+      <section class="reproduce section-shell" aria-labelledby="reproduce-title">
+        <div>
+          <p class="eyebrow">Reproduce it locally</p>
+          <h2 id="reproduce-title">Trust the command, not the claim.</h2>
+        </div>
+        <div class="command-block">
+          <div class="command-head"><span>Terminal</span><button type="button" data-copy-command>Copy</button></div>
+          <pre><code>git clone https://github.com/aronchick/gloss.git
+cd gloss/acidslide-v1/grader
+uv sync --extra dev --locked
+uv run python ../benchmark/validate_corpus.py
+uv run pytest tests/test_mutation_fixtures.py -q</code></pre>
+          <p data-copy-status aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <div class="final-mark" aria-hidden="true"><span>G</span><i></i><i></i><i></i></div>
+        <div>
+          <p class="eyebrow">Gloss is built in public</p>
+          <h2>Make generated decks worth editing.</h2>
+        </div>
+        <a class="button button-primary" href="https://github.com/aronchick/gloss">Join on GitHub <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark" href="/"><span class="wordmark-icon" aria-hidden="true"><i></i><i></i><i></i></span><span>Gloss</span></a>
+      <p>Generative Layout &amp; OOXML Scoring System</p>
+      <div><a href="https://github.com/aronchick/gloss">GitHub</a><a href="/evidence/preview-v1.json">Evidence</a><a href="https://github.com/aronchick/gloss/blob/main/LICENSE">Apache-2.0</a></div>
+    </footer>
+  </body>
+</html>

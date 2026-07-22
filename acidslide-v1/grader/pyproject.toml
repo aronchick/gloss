@@ -10,13 +10,17 @@ readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"
 dependencies = [
-    "lxml>=5.0",
-    "Pillow>=10.0",
+    "cryptography>=45.0",
+    "lxml>=6.1.0",
+    "Pillow>=12.3.0",
+    "pypdf>=6.4.0",
     "numpy>=1.26",
     "scikit-image>=0.22",
     "pydantic>=2.0",
-    "click>=8.0",
+    "click>=8.3.3",
+    "jsonschema>=4.23",
     "rich>=13.0",
+    "rfc8785>=0.1.4",
     "PyYAML>=6.0",
 ]
 
@@ -26,6 +30,9 @@ dev = [
     "pytest-cov>=5.0",
     "ruff>=0.5",
     "mypy>=1.10",
+    "lxml-stubs>=0.5.1",
+    "pip-audit>=2.10",
+    "types-jsonschema>=4.26.0.20260518",
 ]
 
 [project.scripts]
@@ -41,3 +48,17 @@ select = ["E", "F", "I", "N", "W", "UP", "B", "SIM", "TCH"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers"
+
+[tool.hatch.build.targets.sdist.force-include]
+"../benchmark" = "acidslide/data/benchmark"
+"../schemas" = "acidslide/data/schemas"
+
+[tool.hatch.build.targets.sdist.hooks.custom]
+
+[tool.hatch.build.targets.wheel]
+packages = ["acidslide"]
+
+[tool.hatch.build.targets.wheel.hooks.custom]

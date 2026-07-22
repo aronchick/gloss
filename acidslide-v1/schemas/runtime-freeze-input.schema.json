@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acidslide.dev/schemas/runtime-freeze-input.schema.json",
+  "title": "AcidSlide Runtime Freeze Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "platform",
+    "oci_image_digest",
+    "libreoffice",
+    "poppler",
+    "python",
+    "pillow",
+    "numpy",
+    "scikit_image",
+    "lxml",
+    "grader",
+    "libfaketime",
+    "fontconfig",
+    "libfaketime_library_sha256",
+    "fontconfig_config_sha256",
+    "environment_attestation_sha256"
+  ],
+  "properties": {
+    "platform": { "const": "linux/amd64" },
+    "oci_image_digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "libreoffice": { "$ref": "#/$defs/version" },
+    "poppler": { "$ref": "#/$defs/version" },
+    "python": { "$ref": "#/$defs/version" },
+    "pillow": { "$ref": "#/$defs/version" },
+    "numpy": { "$ref": "#/$defs/version" },
+    "scikit_image": { "$ref": "#/$defs/version" },
+    "lxml": { "$ref": "#/$defs/version" },
+    "grader": { "$ref": "#/$defs/version" },
+    "libfaketime": { "$ref": "#/$defs/version" },
+    "fontconfig": { "$ref": "#/$defs/version" },
+    "libfaketime_library_sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "fontconfig_config_sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "environment_attestation_sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+  },
+  "$defs": {
+    "version": { "type": "string", "minLength": 1, "not": { "enum": ["unknown", "pending", "latest"] } }
+  }
+}

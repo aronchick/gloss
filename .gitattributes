@@ -1,0 +1,10 @@
+# Binary benchmark artifacts
+*.pptx binary
+*.png binary
+*.ttf binary
+*.ttc binary
+*.mp4 binary
+
+# Preserve licensed text and prompt-significant whitespace verbatim.
+acidslide-v1/benchmark/fonts/licenses/** -whitespace
+acidslide-v1/benchmark/prompts/variants/** -whitespace

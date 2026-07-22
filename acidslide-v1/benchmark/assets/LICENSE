@@ -1,0 +1,21 @@
+AcidSlide v1 Procedural Benchmark Assets
+
+To the extent possible under law, the AcidSlide benchmark maintainers have
+waived all copyright and related or neighboring rights to the three procedural
+artworks in this directory. They are made available under CC0 1.0 Universal.
+
+License text and deed:
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Covered source files:
+- sources/hero-abstract.svg
+- sources/cityscape.svg
+- sources/texture-pattern.svg
+
+Covered rendered files:
+- mirrored/hero-abstract.png
+- mirrored/cityscape.png
+- mirrored/texture-pattern.png
+
+These artworks were authored specifically for AcidSlide v1 and do not include
+third-party photographs, logos, trademarks, or generated model output.

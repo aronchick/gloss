@@ -1,72 +1,446 @@
-schema_version: "1.0"
-id: slide-04.native-chart-required
-scope: slide
-slide: 4
-tier: 1
-title: Native chart required
-description: Slide 4 must contain exactly one native OOXML chart (<c:chart> with embedded xlsx).
-kind: chart
-severity: critical
-source_of_truth: ooxml
-verification:
-  method: object_compare
-  selector: chart
-  expectation:
-    exact_count: 1
-    required: true
-failure_mode:
-  automatic_fail_if:
-    - raster_image_used_as_chart
-    - shapes_used_as_chart
-  propagation: zero_slide
+{
+  "schema_version": "1.0",
+  "id": "slide-04.key-text",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Required key text is present",
+  "description": "The slide must preserve the exact key text `Revenue Growth` as editable text.",
+  "kind": "text",
+  "severity": "critical",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "text_match",
+    "selector": "slide_text",
+    "expectation": {
+      "contains": "Revenue Growth"
+    }
+  },
+  "assertion_id": "slide-04.assert-key-text",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
 ---
-schema_version: "1.0"
-id: slide-04.title-placeholder
-scope: slide
-slide: 4
-tier: 1
-title: Title placeholder present
-description: Slide 4 must use a native title placeholder.
-kind: master-layout
-severity: critical
-source_of_truth: ooxml
-verification:
-  method: layout_check
-  selector: placeholder
-  expectation:
-    placeholder_type: title
-    min_count: 1
+{
+  "schema_version": "1.0",
+  "id": "slide-04.native-primary",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Primary native construct is present",
+  "description": "The primary structural requirement is one native clustered horizontal bar chart with the supplied data; raster or shape imitations do not qualify.",
+  "kind": "chart",
+  "severity": "critical",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "object_compare",
+    "selector": "chart",
+    "expectation": {
+      "min_count": 1,
+      "required": true
+    }
+  },
+  "assertion_id": "slide-04.assert-native-primary",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
 ---
-schema_version: "1.0"
-id: slide-04.callout-shapes
-scope: slide
-slide: 4
-tier: 1
-title: Overlaid callout shapes
-description: Chart slide should have callout annotation shapes overlaid on or near the chart.
-kind: structure
-severity: minor
-source_of_truth: ooxml
-verification:
-  method: object_compare
-  selector: shape
-  expectation:
-    min_count: 1
+{
+  "schema_version": "1.0",
+  "id": "slide-04.layout-binding",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Content Slide layout binding",
+  "description": "The slide must be bound to the `Content Slide` master layout and use its required inherited content.",
+  "kind": "master-layout",
+  "severity": "critical",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "layout_check",
+    "selector": "placeholder",
+    "expectation": {
+      "placeholder_type": "title",
+      "min_count": 1
+    }
+  },
+  "assertion_id": "slide-04.assert-layout-binding",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
 ---
-schema_version: "1.0"
-id: slide-04.font-policy
-scope: slide
-slide: 4
-tier: 1
-title: Font policy compliance
-description: All fonts on slide 4 must be from the bundled set.
-kind: structure
-severity: critical
-source_of_truth: ooxml
-verification:
-  method: anti_cheat
-  selector: font_policy
-failure_mode:
-  automatic_fail_if:
-    - non_bundled_font_used
-  propagation: zero_slide
+{
+  "schema_version": "1.0",
+  "id": "slide-04.font-policy",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Bundled font policy",
+  "description": "Every rendered text run must use a bundled Liberation, Carlito, Caladea, or Noto family.",
+  "kind": "typography",
+  "severity": "critical",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "anti_cheat",
+    "selector": "font_policy"
+  },
+  "failure_mode": {
+    "automatic_fail_if": [
+      "non_bundled_font_used"
+    ],
+    "propagation": "zero_slide",
+    "affected_slides": {
+      "status": "complete",
+      "mode": "current_slide",
+      "slides": [
+        4
+      ],
+      "selector_id": null,
+      "selector_sha256": null
+    }
+  },
+  "assertion_id": "slide-04.assert-font-policy",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-04.composition",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Required composition inventory",
+  "description": "The slide composition must include the chart, two callouts, connectors, and takeaway block.",
+  "kind": "structure",
+  "severity": "major",
+  "source_of_truth": "both",
+  "verification": {
+    "method": "object_compare",
+    "selector": "shape",
+    "expectation": {
+      "min_count": 3
+    }
+  },
+  "assertion_id": "slide-04.assert-composition",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-04.full-slide-fidelity",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Full-slide rendered fidelity",
+  "description": "The complete 1920×1080 LibreOffice export must meet the v1 SSIM threshold against the gold export.",
+  "kind": "visual",
+  "severity": "major",
+  "source_of_truth": "render",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999
+    }
+  },
+  "assertion_id": "slide-04.assert-full-slide-fidelity",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-04.focal-fidelity",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Focal region rendered fidelity",
+  "description": "The full-slide SSIM gate must preserve the appearance of the chart plot and overlaid YoY annotations; this label identifies the diagnostic focal region.",
+  "kind": "visual",
+  "severity": "major",
+  "source_of_truth": "render",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999,
+      "diagnostic_region": "the chart plot and overlaid YoY annotations"
+    }
+  },
+  "assertion_id": "slide-04.assert-focal-fidelity",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-04.hierarchy-z-order",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Hierarchy and z-order semantics",
+  "description": "Preserve the chart-to-callout connector and overlay relationships in native OOXML and in the rendered result.",
+  "kind": "z-order",
+  "severity": "major",
+  "source_of_truth": "both",
+  "verification": {
+    "method": "object_compare",
+    "selector": "shape",
+    "expectation": {
+      "min_count": 3
+    }
+  },
+  "assertion_id": "slide-04.assert-hierarchy-z-order",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-04.semantic-structure",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Semantic structure matches prompt",
+  "description": "The editable object graph must express one native clustered horizontal bar chart with the supplied data while remaining visually equivalent to the reference.",
+  "kind": "chart",
+  "severity": "major",
+  "source_of_truth": "both",
+  "verification": {
+    "method": "object_compare",
+    "selector": "chart",
+    "expectation": {
+      "min_count": 1
+    }
+  },
+  "assertion_id": "slide-04.assert-semantic-structure",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-04.palette",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Palette fidelity",
+  "description": "The rendered slide must use the exact deck palette values in the regions specified by the prompt.",
+  "kind": "visual",
+  "severity": "minor",
+  "source_of_truth": "render",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999,
+      "diagnostic": "palette"
+    }
+  },
+  "assertion_id": "slide-04.assert-palette",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-04.typography",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Typography fidelity",
+  "description": "Font family, size, weight, line breaking, and visible text color must match in the full-slide export.",
+  "kind": "typography",
+  "severity": "minor",
+  "source_of_truth": "render",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999,
+      "diagnostic": "typography"
+    }
+  },
+  "assertion_id": "slide-04.assert-typography",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-04.spacing",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Geometry and spacing fidelity",
+  "description": "Object bounds, alignment, padding, and spacing must match the specified geometry and the reference export.",
+  "kind": "spacing-autofit",
+  "severity": "minor",
+  "source_of_truth": "both",
+  "verification": {
+    "method": "visual_ssim",
+    "selector": "full_slide",
+    "expectation": {
+      "min_ssim": 0.9999,
+      "diagnostic": "geometry"
+    }
+  },
+  "assertion_id": "slide-04.assert-spacing",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}
+---
+{
+  "schema_version": "1.0",
+  "id": "slide-04.decorative-detail",
+  "scope": "slide",
+  "slide": 4,
+  "tier": 1,
+  "title": "Decorative and effect details",
+  "description": "Preserve legend, gridline, axis-label, and transparent-background styling as editable native detail.",
+  "kind": "gradient-pattern",
+  "severity": "minor",
+  "source_of_truth": "ooxml",
+  "verification": {
+    "method": "object_compare",
+    "selector": "shape",
+    "expectation": {
+      "min_count": 3
+    }
+  },
+  "assertion_id": "slide-04.assert-decorative-detail",
+  "provenance": {
+    "status": "pending",
+    "reason": "Independent atomic source mapping, immutable hash, locator, and provenance-kind review are not complete."
+  },
+  "evidence": {
+    "status": "pending",
+    "reason": "Independent positive, single-fault negative, and mutation evidence has not been authored and reviewed.",
+    "positive_fixture_ids": [],
+    "single_fault_negative_fixture_ids": [],
+    "mutation_expectation_ids": []
+  },
+  "lifecycle_state": "candidate"
+}

@@ -1,21 +1,20 @@
-# AcidSlide v1 — Gold Deck Designer Brief
+# AcidSlide v1 — Canonical Deck Authoring Brief
 
 ## What This Document Is
 
-You are building the **gold standard PowerPoint deck** for AcidSlide, a public benchmark that tests whether AI models can generate presentation slides. Every slide you create will be compared against AI-generated submissions — pixel by pixel, object by object. Your deck IS the answer key.
+You are building the **canonical AcidSlide v1 reference deck**, a public benchmark target for presentation-generation systems. Every submitted deck is compared with this reference under the pinned LibreOffice renderer and by OOXML inspection.
 
-This document specifies exactly what each slide must contain. Follow it precisely.
+This prompt suite is the primary requirements contract and was authored before the reference deck. Reference images are supplementary visual guidance only: explicit prompt requirements take precedence. Follow this brief precisely and do not infer hidden constraints from any reference export.
 
 ---
 
 ## Critical Rules (Read Before Starting)
 
 ### Tool
-- **Author in Microsoft PowerPoint** (desktop version preferred). You may use your normal PowerPoint workflow.
-- **IMPORTANT — LibreOffice certification pass required**: The benchmark grades submissions using LibreOffice Impress (not PowerPoint). After you finish authoring, you (or we) will open your deck in LibreOffice Impress and fix anything that renders differently. The final gold deck is whatever looks correct in LibreOffice.
-- This means: build in PowerPoint for productivity, but **do not rely on any PowerPoint-specific rendering behavior** that might not carry over. Stick to the fonts, colors, and constructs specified below and it will translate cleanly.
-- Do NOT use Google Slides or Keynote.
-- You do NOT need to install LibreOffice yourself — we handle the certification pass.
+- **Author from a new document in the pinned LibreOffice Impress environment.** Save directly as `.pptx`; do not begin from or round-trip an existing PowerPoint-authored file.
+- The official render is the PNG export produced by the pinned LibreOffice environment. Inspect that export while authoring and correct any text wrapping, chart formatting, spacing, or field issues there.
+- Use only standards-based constructs that LibreOffice writes as native OOXML. Do not use Microsoft PowerPoint, Google Slides, or Keynote in the canonical authoring workflow.
+- The deck must be reproducible from these prompts, bundled assets, and bundled fonts without consulting the gold deck.
 
 ### Slide Size
 - **16:9 widescreen** (33.867 cm × 19.05 cm / 13.333" × 7.5")
@@ -33,19 +32,16 @@ You may ONLY use fonts from this exact list. Do not use ANY other fonts, not eve
 | **Caladea** | Serif headings | Metric-compatible with Cambria |
 | **Noto Sans** | Multilingual content (Latin) | |
 | **Noto Sans Arabic** | Arabic text | RTL support |
-| **Noto Sans JP** | Japanese text | CJK support |
-| **Noto Sans CJK JP** | Japanese text (alternate) | CJK support |
+| **Noto Sans CJK JP** | Japanese text | CJK support; family exposed by the bundled TTC |
 
-If a font is not installed on your system, install it before starting:
-- Carlito: https://fonts.google.com/specimen/Carlito
-- Caladea: https://fonts.google.com/specimen/Caladea
-- Noto fonts: https://fonts.google.com/noto
-- Liberation fonts: https://github.com/liberationfonts/liberation-fonts/releases
+Install these exact files from `benchmark/fonts/files/` before authoring. Do not
+download or substitute a similarly named font: `benchmark/fonts/manifest.json`
+is the authoritative family, package-version, and SHA-256 inventory.
 
 ### Images and Assets
-- Do NOT use any images not explicitly listed in this brief.
-- All images will be provided to you in the `assets/` folder.
-- Do NOT download images from the internet.
+- Use an image only when its exact repository path is named by a canonical slide prompt and the corresponding path relative to `benchmark/assets/` appears as `local_path` in `benchmark/assets/manifest.json`.
+- Do not infer an image allowance from `DESIGNER_BRIEF.md`, a reference image, or any external source.
+- Do not download images from the internet.
 
 ### What NOT To Do
 - NO SmartArt
@@ -62,6 +58,8 @@ If a font is not installed on your system, install it before starting:
 ## Deck-Level Design System
 
 The entire deck must follow a consistent design language:
+
+A more specific canonical slide clause overrides a deck-wide default only for the property it explicitly names. All other deck-wide defaults remain mandatory. This precedence rule applies to typography, color, layout, and local overrides.
 
 ### Color Palette
 | Role | Color | Hex |
@@ -104,7 +102,7 @@ The entire deck must follow a consistent design language:
 - Based on AcidSlide Master
 - Title placeholder: top-left, Carlito 36pt Bold, `#FFFFFF`
 - Body placeholder: below title, Liberation Sans 18pt, `#F5F3EE`
-- Accent bar: 4px wide vertical bar on left edge, `#E8634A`
+- Accent bar: 0.070556cm wide vertical bar on the left edge, `#E8634A`. This equals 4 pixels in the official 1920×1080 export; the physical width is the authoring requirement.
 
 #### Layout 3: "Two-Column"
 - Based on AcidSlide Master
@@ -138,10 +136,7 @@ The entire deck must follow a consistent design language:
    Benchmark for Slide Generation Fidelity
    ```
 
-4. **Hero image**: Place the image `assets/hero-abstract.png` (will be provided) in the right half of the slide.
-   - Position: x=17cm, y=2cm
-   - Size: width=15cm (height proportional)
-   - **Crop**: crop the left 20% of the image so it bleeds from mid-slide to right edge
+4. **Hero image**: Place `benchmark/assets/mirrored/hero-abstract.png` at x=18.867cm, y=2cm in a 15cm-wide frame whose height is proportional to the uncropped image. Keep that frame fixed, then crop 20% from the source image's left edge. The frame's right edge is exactly the slide's right edge.
    - The image should overlap with decorative shapes (see below)
 
 5. **Decorative shapes** (3 overlapping rounded rectangles):
@@ -195,14 +190,11 @@ The entire deck must follow a consistent design language:
    - Line spacing: 1.2× for Level 1, 1.0× for Level 2
    - Paragraph spacing: 6pt after each Level 1 item
 
-4. **Grouped icon-text rows** on the right side (create as a GROUP of objects):
-   - Three rows, each containing:
-     - A small circle (1cm diameter) filled with `#2AACB8`
-     - Text to the right: "09:00", "11:30", "14:00" in Liberation Sans 14pt Bold `#FFFFFF`
-   - Rows evenly spaced vertically, aligned to the right margin
-   - All three rows MUST be grouped as a single group object
+   Use native paragraph-bullet properties. The shown `•` and `◦` characters specify the required bullet glyphs and are not literal characters in the paragraph text runs.
 
-5. **Alignment**: the grouped time column's top should align with the first bullet item. The bottom should align with the last bullet item.
+4. **Grouped icon-text rows**: Create three icon-text rows on the right. Each row contains one 1cm teal circle and one time label. Put all six leaf objects directly in one flat group; do not create row subgroups. Align the group's top to the first bullet and bottom to the last bullet. Exact horizontal position and the two intermediate row gaps are intentionally unconstrained and unscored.
+   - The three time labels, from top to bottom, are "09:00", "11:30", and "14:00" in Liberation Sans 14pt Bold `#FFFFFF`.
+   - Each circle is filled with `#2AACB8`.
 
 **Why this slide is hard for AI:**
 - Tests bullet hierarchy (indentation, different bullet characters)
@@ -245,7 +237,7 @@ The entire deck must follow a consistent design language:
    - Data text: Liberation Sans 14pt, `#F5F3EE`, left-aligned for "Metric", centered for all others
    - Cell padding: 0.3cm on all sides
    - Borders: 0.5pt `#2AACB8` between all cells, 2pt `#2AACB8` below header row
-   - Target column: any cell meeting target should have text in `#2AACB8`, missing target in `#E8634A`
+   - Q3 column: color each Q3 value `#2AACB8` when it meets the Target-column threshold and `#E8634A` when it misses that threshold.
      - Q3: Latency p50 (9 ≤ 10 ✓), p99 (58 ≤ 75 ✓), Throughput (1890 misses 2000 ✗), Error (0.04 ≤ 0.05 ✓), Uptime (99.98 ≥ 99.95 ✓), Cache (84 ≥ 80 ✓)
 
 3. **Annotation callout** — a rounded rectangle with text, positioned next to the table:
@@ -254,9 +246,9 @@ The entire deck must follow a consistent design language:
    - Fill: `#E8634A`
    - Corner radius: 0.3cm
    - Text: "Throughput target\nmissed by 5.5%" in Liberation Sans 12pt Bold `#FFFFFF`, centered
-   - A thin line (1pt, `#E8634A`) connecting the callout to the Throughput row
+   - A thin line (1pt, `#E8634A`) connecting the callout to the Q3 Throughput cell; connector routing is otherwise unconstrained.
 
-4. **Tab stops**: the "Metric" column text should use a 0.5cm left indent (not just cell padding — actual paragraph indent within the cell).
+4. **Paragraph indent**: the Metric-column paragraphs must use a 0.5cm left paragraph indent in addition to cell padding. No tab character or tab-stop property is required.
 
 **Why this slide is hard for AI:**
 - Tests native table creation (not shapes)
@@ -294,10 +286,10 @@ The entire deck must follow a consistent design language:
    - 2023 bars: `#1B2A4A` (navy)
    - 2024 bars: `#E8634A` (coral)
    - Chart title: "Annual Revenue by Region" in Carlito 16pt Bold
-   - X-axis labels: Liberation Sans 12pt, `#2D2D2D`
-   - Y-axis labels: Liberation Sans 11pt, `#2D2D2D`, format as "$0M"
+   - X-axis value labels: Liberation Sans 11pt, `#2D2D2D`, format `$0M`.
+   - Y-axis category labels: Liberation Sans 12pt, `#2D2D2D`.
    - Legend: bottom of chart, Liberation Sans 11pt
-   - Gridlines: horizontal only, `#E0E0E0` 0.5pt
+   - Gridlines: vertical major-value gridlines only, `#E0E0E0` 0.5pt.
    - No chart border
    - Background: transparent (slide background shows through)
 
@@ -415,8 +407,8 @@ This slide's purpose is to verify that the master/layout is being used correctly
    - **CRITICAL**: This column must be set to RTL paragraph direction. The text must flow right-to-left. This is NOT just right-alignment — the paragraph direction property must be set to RTL.
 
    **Column 3 — Japanese** (right third):
-   - Title: "グローバルな視点" in Noto Sans JP 24pt Bold `#FFFFFF`
-   - Body (Noto Sans JP 14pt `#F5F3EE`, left-aligned):
+   - Title: "グローバルな視点" in Noto Sans CJK JP 24pt Bold `#FFFFFF`
+   - Body (Noto Sans CJK JP 14pt `#F5F3EE`, left-aligned):
      ```
      言語モデルの急速な進歩により、組織がドキュメント生成に
      取り組む方法が変革されました。財務報告からマーケティング
@@ -455,17 +447,17 @@ This slide's purpose is to verify that the master/layout is being used correctly
 
 1. **Three images** from the asset manifest, each cropped differently:
 
-   - **Image A**: `assets/cityscape.png`
+   - **Image A**: `benchmark/assets/mirrored/cityscape.png`
      - Size on slide: 10cm × 8cm, position (1.5cm, 2cm)
      - Crop: remove top 15% and bottom 10% of original image
      - No shape mask
 
-   - **Image B**: `assets/cityscape.png` (same image, different crop)
+   - **Image B**: `benchmark/assets/mirrored/cityscape.png` (same image, different crop)
      - Size on slide: 8cm × 8cm, position (13cm, 2cm)
      - Crop: remove left 30% of original image
      - Apply **circle crop mask** (crop to ellipse shape)
 
-   - **Image C**: `assets/texture-pattern.png`
+   - **Image C**: `benchmark/assets/mirrored/texture-pattern.png`
      - Size on slide: 10cm × 8cm, position (22.5cm, 2cm)
      - Crop: remove right 25% of original image
      - Apply **rounded rectangle crop mask** with 1cm corner radius
@@ -575,14 +567,9 @@ This slide's purpose is to verify that the master/layout is being used correctly
        "total": 142,
        "has_more": true
      )
-     
-     NOTE TO DESIGNER: The parentheses above represent
-     JSON curly braces in the actual slide text. When
-     typing this content into the slide, use standard
-     JSON curly braces, i.e., the opening and closing
-     brace characters. They are written as parentheses
-     here only because this brief avoids those characters.
      ```
+
+   Authoring instruction; do not place this note on the slide. In the left column's slide text, replace the six JSON-structural parentheses shown in the fenced example with `{` and `}`. Preserve all other characters.
 
    **Right column** — text box WITH auto-shrink enabled:
    - AutoFit: Shrink text on overflow = ON
@@ -631,16 +618,18 @@ This slide's purpose is to verify that the master/layout is being used correctly
    |-----|-------|----------|------|
    | Client | "Client App" | (2cm, 3cm) | `#2AACB8` |
    | API Gateway | "API Gateway" | (14cm, 3cm) | `#1B2A4A` |
-   | Auth | "Auth Service" | (10cm, 9cm) | `#E8634A` |
-   | Grader | "Grader" | (18cm, 9cm) | `#E8634A` |
+   | Auth | "Auth Service" | (8cm, 9cm) | `#E8634A` |
+   | Grader | "Grader" | (20cm, 9cm) | `#E8634A` |
    | Queue | "Job Queue" | (14cm, 9cm) | `#D4A843` |
    | Storage | "Object Store" | (14cm, 15cm) | `#1B2A4A` |
    | DB | "PostgreSQL" | (6cm, 15cm) | `#1B2A4A` |
    | LB | "Leaderboard" | (22cm, 15cm) | `#2AACB8` |
 
+   No pair of architecture boxes overlaps.
+
    All box text: Liberation Sans 12pt Bold `#FFFFFF`, centered.
 
-2. **Connectors** — use native connectors (Insert → Shapes → Connectors in PowerPoint, or Insert → Connector in LibreOffice), NOT plain lines:
+2. **Connectors** — use native connectors (Insert → Connector in LibreOffice), NOT plain lines:
    - Client → API Gateway (straight connector, arrow at end)
    - API Gateway → Auth (elbow connector, arrow at end)
    - API Gateway → Queue (straight connector, arrow at end)
@@ -680,7 +669,7 @@ This slide's purpose is to verify that the master/layout is being used correctly
 
 1. **Title** (placeholder): `Brand Colors`
 
-2. **Six color swatches** in a row — each is a rounded rectangle (4cm × 4cm):
+2. **Six color swatches in two rows of three** — each is a 4cm × 4cm rounded rectangle. Swatches 1–3 are the top row; Swatches 4–6 are the bottom row.
 
    **Top row — inherited from theme/master** (these must use theme color references, NOT hardcoded hex):
    - Swatch 1: Theme Primary color
@@ -721,14 +710,12 @@ This slide's purpose is to verify that the master/layout is being used correctly
 2. **Three field demonstrations** — each in its own text box:
 
    **Field 1 — Slide Number**:
-   - Text box: "Current slide: " followed by an **inserted slide number field** (PowerPoint: Insert → Slide Number; LibreOffice: Insert → Field → Page Number)
+   - Text box: "Current slide: " followed by an **inserted slide number field** (LibreOffice: Insert → Field → Page Number)
    - Do NOT type the number manually. It MUST be a live field.
    - Liberation Sans 18pt `#FFFFFF`
 
    **Field 2 — Date/Time**:
-   - Text box: "Generated: " followed by an **inserted date/time field** (PowerPoint: Insert → Date & Time; LibreOffice: Insert → Field → Date/Time, fixed format)
-   - Use fixed date format (not auto-updating)
-   - Liberation Sans 18pt `#FFFFFF`
+   - `Generated: ` followed by a fixed native date/time field with value `2025-01-15T10:30:00Z`, displayed exactly as `2025-01-15 10:30 UTC`; Liberation Sans 18pt `#FFFFFF`.
 
    **Field 3 — Footer**:
    - The slide footer (from View → Header and Footer) should contain: "AcidSlide Benchmark v1"
@@ -765,7 +752,7 @@ Multiple text boxes at different rotation angles: 0°, 45°, 90°, 135°, 270°.
 Objects deliberately extending beyond the slide canvas edges — a large circle at (-3cm, -2cm) partly visible, a rectangle extending 5cm past the right edge. These are intentional design choices, not errors.
 
 ### SLIDE 17: Deep Grouping
-3 levels of nested groups. Inner groups contain 3-4 shapes each. Middle groups contain 2-3 inner groups. Outer group wraps everything. Z-order must be exact within each nesting level.
+3 levels of nested groups. Inner groups contain exactly 3 shapes each. Middle groups contain exactly 2 inner groups. Outer group wraps everything. Z-order must be exact within each nesting level.
 
 ### SLIDE 18: Multi-Column Editorial
 3-column magazine-style layout with mixed English/Japanese text. Each column has a header image (from assets), body text, and a pull quote. Pattern fill on the background of one column.
@@ -780,24 +767,24 @@ Everything combined: chart (line chart), table (3×6), approved image (cropped),
 
 ## Asset Manifest
 
-The following images will be provided in `assets/`. Do NOT use any other images.
+The following images are bundled in `benchmark/assets/mirrored/`. Do NOT use any other images.
 
 | Filename | Description | Approximate Size |
 |----------|-------------|------------------|
 | `hero-abstract.png` | Abstract geometric art for Slide 1 cover | 1920×1080 |
-| `cityscape.png` | Urban skyline photograph for Slide 7 crops | 2400×1600 |
+| `cityscape.png` | Procedural urban skyline illustration for image-crop tests | 2400×1600 |
 | `texture-pattern.png` | Geometric texture for Slide 7 and Slide 18 | 800×800 |
 
-*Assets will be delivered separately in the `assets/mirrored/` directory.*
+*Assets are bundled in `benchmark/assets/mirrored/`; hashes and source metadata are recorded in the manifest.*
 
 ---
 
-## Delivery
+## Delivery and Validation
 
-### Step 1: Designer delivers PowerPoint file
-Deliver the completed file as `acidslide-v1-gold.pptx`
+### Step 1: Author delivers the canonical reference deck
+Deliver the prompt-authored file as `acidslide-v1-gold.pptx` from the pinned LibreOffice environment.
 
-### Step 2: Designer self-check
+### Step 2: Author self-check
 Verify before delivery:
    - [ ] All fonts are from the approved list above
    - [ ] All images are from the asset manifest above
@@ -814,20 +801,12 @@ Verify before delivery:
    - [ ] Slide number on every slide comes from the master, not manually typed
    - [ ] Groups on Slides 2, 5, 8, 10, 17 are actual group objects
 
-### Step 3: LibreOffice certification pass (we handle this)
-After delivery, we will:
-1. Open the .pptx in LibreOffice Impress 7.6+
-2. Export all slides to PNG and visually compare against what PowerPoint shows
-3. Fix any rendering differences (text wrapping, chart formatting, spacing)
-4. Save the LibreOffice-certified version as the final gold deck
-5. Re-export final reference PNGs from LibreOffice
+### Step 3: Canonical environment certification
+After delivery, the benchmark maintainer will:
+1. Open the `.pptx` in the pinned LibreOffice environment without document recovery.
+2. Export all 20 slides to PNG at 1920×1080.
+3. Run OOXML schema, structural, font, asset-hash, and anti-cheat validation.
+4. Run repeated exports to establish deterministic self-similarity.
+5. Publish grading-verified measurements separately from generation-attested metadata supplied by model submitters.
 
-**You may be asked to make revisions** if structural elements (masters, layouts, groups, tables, charts, fields) don't translate cleanly to LibreOffice. This is rare if you stick to the approved fonts and standard features above.
-
-### Known PowerPoint → LibreOffice differences to avoid
-- **Do NOT use "Calibri" or "Cambria"** — use Carlito and Caladea instead (they're metric-compatible and render identically)
-- **Do NOT use PowerPoint's "Morph" transition** — not supported
-- **Do NOT use 3D rotation or bevel effects** — render differently
-- **Do NOT use SmartArt** — already excluded above, but worth repeating since it's completely broken in LibreOffice
-- **Charts**: keep formatting simple (no 3D effects, custom leader lines, or complex axis formatting). Basic bar/line/pie charts translate well.
-- **Shadows**: basic outer shadows translate well. Avoid complex "glow" or "reflection" effects.
+The file must not contain Calibri, Cambria, SmartArt, transitions, 3D rotation, or bevel effects. Use the bundled metric-compatible fonts and native constructs defined above. Keep charts standards-based and use only basic outer shadows; avoid glow and reflection effects.

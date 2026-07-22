@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://acidslide.dev/schemas/prompt-requirements.schema.json",
+  "title": "AcidSlide Prompt-Derived Requirements Oracle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "oracle_id",
+    "benchmark_version",
+    "freeze_status",
+    "sources",
+    "independent_reviews",
+    "requirements"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "oracle_id": { "const": "acidslide-prompt-requirements-v1" },
+    "benchmark_version": { "const": "acidslide-v1.0.0" },
+    "freeze_status": {
+      "enum": ["candidate_pending_independent_review", "frozen"]
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 21,
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "independent_reviews": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/review" }
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 21,
+      "items": { "$ref": "#/$defs/requirement" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "freeze_status": { "const": "frozen" } } },
+      "then": {
+        "properties": {
+          "independent_reviews": { "minItems": 2 },
+          "requirements": {
+            "items": {
+              "properties": {
+                "review_status": { "const": "approved" },
+                "fixture_expectations": {
+                  "properties": {
+                    "positive_fixture_ids": { "minItems": 1 },
+                    "single_fault_negative_fixture_ids": { "minItems": 1 },
+                    "mutation_ids": { "minItems": 1 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "source_type", "authority", "path", "sha256"],
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^(deck|slide-\\d{2})-prompt$" },
+        "source_type": { "enum": ["prompt", "reference_image", "asset_manifest"] },
+        "authority": { "enum": ["primary", "supplementary", "inventory"] },
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewer_id", "reviewed_oracle_sha256", "decision"],
+      "properties": {
+        "reviewer_id": { "type": "string", "minLength": 1 },
+        "reviewed_oracle_sha256": {
+          "$ref": "#/$defs/sha256",
+          "description": "Lowercase hex SHA-256 of RFC 8785 JCS for the domain-separated prompt-oracle review projection defined by OpenSpec 13.1.2; independent_reviews is omitted."
+        },
+        "decision": { "const": "approved" }
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "scope",
+        "mandatory",
+        "statement",
+        "provenance",
+        "severity",
+        "source_of_truth",
+        "matching_policy",
+        "equivalence_policy",
+        "assertion",
+        "fixture_expectations",
+        "review_status"
+      ],
+      "properties": {
+        "requirement_id": {
+          "type": "string",
+          "pattern": "^(deck|slide-\\d{2})\\.prompt-r\\d{3}$"
+        },
+        "scope": { "enum": ["deck", "slide"] },
+        "slide": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "mandatory": { "const": true },
+        "statement": { "type": "string", "minLength": 1 },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_id",
+            "source_type",
+            "line_start",
+            "line_end",
+            "excerpt",
+            "excerpt_sha256"
+          ],
+          "properties": {
+            "source_id": { "type": "string", "pattern": "^(deck|slide-\\d{2})-prompt$" },
+            "source_type": { "enum": ["prompt", "reference_image", "asset_manifest"] },
+            "line_start": { "type": "integer", "minimum": 1 },
+            "line_end": { "type": "integer", "minimum": 1 },
+            "excerpt": { "type": "string", "minLength": 1 },
+            "excerpt_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "severity": { "enum": ["critical", "major", "minor"] },
+        "source_of_truth": { "enum": ["ooxml", "render", "both"] },
+        "matching_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "normalization"],
+          "properties": {
+            "mode": { "enum": ["exact", "structural_semantic"] },
+            "normalization": { "type": "string", "minLength": 1 }
+          }
+        },
+        "equivalence_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["allowed", "forbidden"],
+          "properties": {
+            "allowed": { "type": "array", "items": { "type": "string" } },
+            "forbidden": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+          }
+        },
+        "assertion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operator", "expected_clause", "automation_status"],
+          "properties": {
+            "operator": { "const": "satisfies_prompt_clause" },
+            "expected_clause": { "type": "string", "minLength": 1 },
+            "automation_status": { "enum": ["unimplemented", "implemented"] }
+          }
+        },
+        "fixture_expectations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "positive_fixture_ids",
+            "single_fault_negative_fixture_ids",
+            "mutation_ids"
+          ],
+          "properties": {
+            "positive_fixture_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+            "single_fault_negative_fixture_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+            "mutation_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+          }
+        },
+        "review_status": { "enum": ["pending", "approved"] }
+      },
+      "if": { "properties": { "scope": { "const": "slide" } } },
+      "then": { "required": ["slide"] }
+    }
+  }
+}

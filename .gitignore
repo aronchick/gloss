@@ -21,3 +21,4 @@ htmlcov/
 
 # Large reference docs (download separately)
 ECMA/
+.gstack/

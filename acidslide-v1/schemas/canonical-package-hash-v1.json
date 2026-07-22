@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "acidslide-canonical-package-hash-v1",
+  "digest": "sha256",
+  "framing": {
+    "domain_separator_utf8": "AcidSlide canonical package hash v1\u0000",
+    "name_length": "uint32",
+    "content_length": "uint64",
+    "integer_byte_order": "big"
+  },
+  "entry_policy": {
+    "order": "utf8_lexicographic_part_name",
+    "directory_entries": "ignore",
+    "duplicate_names": "error",
+    "unsafe_names": "error",
+    "encrypted_entries": "error"
+  },
+  "content_type_policy": {
+    "declaration": "required_for_every_non_relationship_part",
+    "unknown": "error",
+    "accepted": [
+      "application/vnd.ms-office.chartcolorstyle+xml",
+      "application/vnd.ms-office.chartstyle+xml",
+      "application/vnd.openxmlformats-officedocument.drawingml.chart+xml",
+      "application/vnd.openxmlformats-officedocument.drawingml.chartshapes+xml",
+      "application/vnd.openxmlformats-officedocument.extended-properties+xml",
+      "application/vnd.openxmlformats-officedocument.presentationml.notesMaster+xml",
+      "application/vnd.openxmlformats-officedocument.presentationml.notesSlide+xml",
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml",
+      "application/vnd.openxmlformats-officedocument.presentationml.presProps+xml",
+      "application/vnd.openxmlformats-officedocument.presentationml.slide+xml",
+      "application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml",
+      "application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml",
+      "application/vnd.openxmlformats-officedocument.presentationml.tableStyles+xml",
+      "application/vnd.openxmlformats-officedocument.presentationml.viewProps+xml",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "application/vnd.openxmlformats-officedocument.theme+xml",
+      "application/vnd.openxmlformats-package.core-properties+xml",
+      "application/vnd.openxmlformats-package.relationships+xml",
+      "image/jpeg",
+      "image/png"
+    ]
+  },
+  "xml_policy": {
+    "canonicalization": "c14n-1.0-inclusive",
+    "comments": "remove",
+    "dtd": "error",
+    "external_entities": "error",
+    "binary_parts": "raw_uncompressed_bytes"
+  },
+  "stage_0_5_resolution": {
+    "mce_profile": "mce-profile-v1.json",
+    "schema_root_map": "schema-root-map-v1.json",
+    "relevant_part_prefix": "ppt/",
+    "unmapped_relevant_xml": "error"
+  },
+  "relationship_policy": {
+    "content_type": "application/vnd.openxmlformats-package.relationships+xml",
+    "sort": "relationship_id_utf8",
+    "target_resolution": "opc_rfc3986_absolute_part_name",
+    "relationship_id": "preserve",
+    "external_targets": "error"
+  },
+  "reachability_policy": {
+    "root_relationship_part": "_rels/.rels",
+    "office_document_relationship_type": "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument",
+    "orphan_parts": "error"
+  },
+  "volatile_xml": {
+    "part_name": "docProps/core.xml",
+    "required_root_qname": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}coreProperties",
+    "canonicalization": "c14n-1.0-without-comments",
+    "strip_text_qnames": [
+      "{http://purl.org/dc/terms/}created",
+      "{http://purl.org/dc/terms/}modified",
+      "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}lastModifiedBy",
+      "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}revision"
+    ],
+    "strip_attribute_qnames": []
+  }
+}

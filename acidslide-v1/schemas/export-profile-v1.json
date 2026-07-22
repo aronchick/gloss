@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "acidslide-export-profile-v1",
+  "platform": "linux/amd64",
+  "pipeline": "pptx_to_pdf_to_poppler_png",
+  "execution_wrapper": "libfaketime_preload_all_subprocesses",
+  "libreoffice_command": [
+    "libreoffice",
+    "--headless",
+    "-env:UserInstallation=file://<isolated-temporary-profile>",
+    "--convert-to",
+    "pdf",
+    "--outdir",
+    "/work",
+    "/input/submission.pptx"
+  ],
+  "fresh_isolated_user_profile_per_export": true,
+  "presentation_size_emu": { "cx": 12192000, "cy": 6858000 },
+  "allowed_page_counts": [5, 12, 20],
+  "reference_datetime": "2025-01-01T00:00:00Z",
+  "pdf_page_geometry": {
+    "numeric_parser": "exact-decimal-string",
+    "media_box": ["0", "0", "960.009448818898", "540"],
+    "crop_box": "absent-or-exactly-equal-to-media-box",
+    "rotate": "absent-or-zero"
+  },
+  "renderer_diagnostics": {
+    "stdout": "informational",
+    "stderr": "reject-except-exact-allowlist",
+    "allowed_stderr_lines": [
+      "Warning: failed to launch javaldx - java may not function correctly"
+    ]
+  },
+  "failure_policy": {
+    "direct_png_export": "reject",
+    "alternate_rasterizer": "reject",
+    "page_count_mismatch": "reject",
+    "page_geometry_mismatch": "reject",
+    "renderer_warning_unclassified": "reject",
+    "resize_fallback": "reject"
+  }
+}

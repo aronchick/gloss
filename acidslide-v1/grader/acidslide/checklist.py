@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import yaml  # type: ignore[import-untyped]
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 SEVERITY_WEIGHTS: dict[str, int] = {
     "critical": 3,
@@ -30,6 +32,7 @@ class Verification:
 class FailureMode:
     automatic_fail_if: list[str] = field(default_factory=list)
     propagation: str = "zero_item"
+    affected_slides: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -48,6 +51,7 @@ class ChecklistItem:
     verification: Verification
     failure_mode: FailureMode = field(default_factory=FailureMode)
     slide: int | None = None
+    assertion_id: str = ""
 
     @property
     def weight(self) -> int:
@@ -113,6 +117,7 @@ def _parse_item(raw: dict[str, Any], source_path: Path) -> ChecklistItem:
     failure_mode = FailureMode(
         automatic_fail_if=failure_raw.get("automatic_fail_if", []),
         propagation=failure_raw.get("propagation", "zero_item"),
+        affected_slides=failure_raw.get("affected_slides", {}),
     )
 
     return ChecklistItem(
@@ -128,13 +133,14 @@ def _parse_item(raw: dict[str, Any], source_path: Path) -> ChecklistItem:
         verification=verification,
         failure_mode=failure_mode,
         slide=raw.get("slide"),
+        assertion_id=raw.get("assertion_id", ""),
     )
 
 
 def validate_checklist_schema(checklist_dir: Path, schema_path: Path) -> list[str]:
     """Validate all YAML files against the JSON schema. Returns list of errors."""
     try:
-        import jsonschema  # type: ignore[import-untyped]
+        import jsonschema
     except ImportError:
         return ["jsonschema not installed — skipping schema validation"]
 
