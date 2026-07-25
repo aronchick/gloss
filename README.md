@@ -1,39 +1,94 @@
 # Gloss
 
-**Gloss — Generative Layout & OOXML Scoring System** is a public, machine-graded benchmark for PowerPoint artifact conformance against published
-prompt, reference-image, and asset requirements. It evaluates native ECMA-376 PresentationML
-structure and rendered output in one pinned environment; v1 does not verify which model generated an
-artifact.
+**Gloss — Generative Layout & OOXML Scoring System** is an open tool for testing
+whether a generated PowerPoint is a real, editable artifact—not merely a convincing
+screenshot.
 
-**[gloss.tools](https://gloss.tools)** · [Issues](https://github.com/aronchick/gloss/issues) · [Pull requests](https://github.com/aronchick/gloss/pulls) · [Contributing](CONTRIBUTING.md)
+Gloss grades both sides of a deck:
 
-> **A screenshot is not a PowerPoint.** Gloss measures whether generated decks look right and are built right.
+- **Looks right:** rendered pixels, typography, geometry, and visual consistency.
+- **Built right:** native shapes, charts, tables, layouts, masters, text semantics,
+  relationships, and package safety.
 
-> **Pre-release status:** `ACIDSLIDE_OPENSPEC.md` is still Draft and the release gates are incomplete.
-> No deployment should be treated as the official leaderboard until a release announcement names the
-> frozen scoring cohort.
+**[gloss.tools](https://gloss.tools)** ·
+[Issues](https://github.com/aronchick/gloss/issues) ·
+[Pull requests](https://github.com/aronchick/gloss/pulls) ·
+[Contributing](CONTRIBUTING.md)
+
+> **A screenshot is not a PowerPoint.** The artifact is the product.
+
+## The ACID idea
+
+The browser ACID tests made standards failures impossible to hand-wave away: every
+browser received the same hostile, public artifact, and everyone could inspect the
+result. They targeted open web standards rather than one browser's preferred output.
+
+Gloss brings that **ACID-test philosophy** to generated presentations:
+
+- publish the torture cases instead of hiding them;
+- grade the final `.pptx`, not a generation trace or a screenshot;
+- test both visible output and standards-based OOXML structure;
+- make every assertion, fixture, score, and failure reproducible;
+- fail closed when required evidence or rendering stages are missing;
+- invite the community to add cases and make the grader stricter.
+
+Here, **ACID refers to the public browser conformance-test tradition, not database
+transactions**.
+
+## Gloss is not AcidSlide
+
+Gloss is a separate tool and public project. It owns the scoring model, evidence
+surface, comparative results, hosted verification direction, and collaboration
+workflow.
+
+**AcidSlide v1 is the first ACID-style PowerPoint conformance suite bundled with
+Gloss.** It supplies the current prompt corpus, hostile deck cases, assertions, gold
+fixture, mutation tests, and protocol-specific grader. The names serve different
+purposes:
+
+| Name | Role |
+| --- | --- |
+| **Gloss** | The tool and public project |
+| **ACID tests** | The open conformance-testing philosophy |
+| **AcidSlide v1** | One bundled benchmark protocol and corpus |
+
+Literal paths such as `acidslide-v1/` and the `acidslide` CLI remain protocol
+identifiers. They do not rename Gloss.
+
+> **Technical-preview status:** the bundled
+> [`ACIDSLIDE_OPENSPEC.md`](ACIDSLIDE_OPENSPEC.md) contract is still Draft and its
+> official-release gates remain incomplete. Gloss is live for public collaboration,
+> but no result should be treated as an official model leaderboard until a release
+> announcement names a frozen scoring cohort.
 
 ## Technical preview evidence
 
-The current candidate harness contains 280 schema-valid checks across rendered pixels and native package structure. Its generated operator suite passes 280/280 positive controls and detects 280/280 generated single-fault mutations. This proves configured operator behavior only; it is not independent assertion evidence and it is not a model leaderboard.
+The current AcidSlide v1 candidate suite contains 280 schema-valid checks across
+rendered pixels and native package structure. Its generated operator suite passes
+280/280 positive controls and detects 280/280 generated single-fault mutations.
+This proves configured operator behavior only; it is not independent assertion
+evidence and it is not a model leaderboard.
 
-Every launch count is recorded in [`site/evidence/preview-v1.json`](site/evidence/preview-v1.json) and checked against the committed mutation reports by:
+Every public count is recorded in
+[`site/evidence/preview-v1.json`](site/evidence/preview-v1.json) and checked against
+the committed mutation reports:
 
 ```bash
 node launch/verify-launch.mjs
 ```
 
-## Frozen comparative bundle
+## Frozen Gloss comparison
 
-[`acidslide-v1/benchmark/comparative-v1`](acidslide-v1/benchmark/comparative-v1)
-contains four repository-owned generation paths, three public seeds per path,
+Gloss includes a frozen comparative bundle produced against AcidSlide v1:
+[`acidslide-v1/benchmark/comparative-v1`](acidslide-v1/benchmark/comparative-v1).
+It contains four repository-owned generation paths, three public seeds per path,
 and 12 editable 20-slide decks. The canonical Linux/amd64 grader completed all
 240 slide renders.
 
-The current local artifact scores are 67.68% for the native paths and 62.32%
-for the visual paths. These are reproducible workflow baselines, not model
-rankings. Every report says `local artifact score; self-reported` and carries no
-model attribution.
+The current local artifact scores are 67.68% for the native paths and 62.32% for
+the visual paths. These are reproducible workflow baselines, not model rankings.
+Every report says `local artifact score; self-reported` and carries no model
+attribution.
 
 Reproduce every deck, report, hash, and public bar:
 
@@ -41,36 +96,43 @@ Reproduce every deck, report, hash, and public bar:
 ./acidslide-v1/benchmark/comparative-v1/reproduce.sh
 ```
 
-Release mode intentionally fails until independent prompt convergence, assertion provenance and evidence, reviewer approvals, baselines, environment manifests, and signed release indexes are complete.
+Release mode intentionally fails until independent prompt convergence, assertion
+provenance and evidence, reviewer approvals, baselines, environment manifests, and
+signed release indexes are complete.
 
 ## Score provenance
 
-- **Local grading** measures a deck on the caller's machine. Local results are self-reported and are not official leaderboard verification.
-- **Hosted grading** runs the same grader inside the controlled Gloss environment. Every public
-  submission score must carry the exact label
+- **Local grading** measures a deck on the caller's machine. Local results are
+  self-reported and are not official leaderboard verification.
+- **Hosted grading** runs the same protocol adapter inside the controlled Gloss
+  environment. Every public submission score must carry the exact label
   `grading-verified artifact score; generation-attested`.
-- Generation strategy, token count, cost, retries, and generation time are supplied by submitters. They remain **generation-attested** even when the deck itself was grading-verified.
-- A report is not eligible when schema validation did not run or failed, the canonical renderer or
-  reference exports were unavailable, required slides were not compared, or any required stage was
-  incomplete.
+- Generation strategy, token count, cost, retries, and generation time are supplied
+  by submitters. They remain **generation-attested** even when the deck itself was
+  grading-verified.
+- A report is not eligible when schema validation did not run or failed, the
+  canonical renderer or reference exports were unavailable, required slides were
+  not compared, or any required stage was incomplete.
 
 ## Repository layout
 
 ```text
-ACIDSLIDE_OPENSPEC.md       Normative v1 contract
+site/                       Static gloss.tools source and public evidence
+launch/                     Gloss film renderer, verifier, and launch copy
+ACIDSLIDE_OPENSPEC.md       Draft contract for the bundled AcidSlide v1 suite
 acidslide-v1/
-  benchmark/                Prompts, assets, candidate checks, gold fixture, and mutation evidence
-  grader/                   Local Python grader and CLI
+  benchmark/                ACID-style prompts, cases, checks, fixtures, and evidence
+  grader/                   AcidSlide v1 protocol adapter and local CLI
   schemas/                  Bundled ECMA-376 Transitional XSD and report schemas
-  service/                  Pre-release hosted API, worker, and leaderboard implementation
+  service/                  Pre-release hosted grading components
   Dockerfile                Canonical Ubuntu 22.04 grading environment
-site/                       Static gloss.tools source and launch evidence
-launch/                     Deterministic film renderer and launch copy
 ```
 
-## Local development
+## Run the bundled suite locally
 
-Requirements: [uv](https://docs.astral.sh/uv/), Python 3.12, LibreOffice Impress, and `pdftoppm` from Poppler.
+Gloss currently exercises its first suite through the protocol-specific `acidslide`
+CLI. Requirements: [uv](https://docs.astral.sh/uv/), Python 3.12, LibreOffice
+Impress, and `pdftoppm` from Poppler.
 
 ```bash
 cd acidslide-v1/grader
@@ -78,9 +140,10 @@ uv sync --extra dev --locked
 uv run acidslide validate ../benchmark/deck/gold/acidslide-v1-gold.pptx
 ```
 
-Full grading is fail-closed until a frozen release supplies signed cohort provenance and the caller
-supplies a complete artifact-context handoff. During development, use `validate` for the runnable
-quarantine/XSD smoke above. After the v1 release artifacts are published:
+Full grading is fail-closed until a frozen release supplies signed cohort provenance
+and the caller supplies a complete artifact-context handoff. During development,
+use `validate` for the runnable quarantine/XSD smoke above. After the v1 release
+artifacts are published:
 
 ```bash
 uv run acidslide grade ../submission.pptx \
@@ -89,7 +152,7 @@ uv run acidslide grade ../submission.pptx \
   --format json
 ```
 
-Write a standalone report and private visual diffs with:
+Write a standalone report and private visual diffs:
 
 ```bash
 uv run acidslide grade ../submission.pptx \
@@ -100,15 +163,17 @@ uv run acidslide grade ../submission.pptx \
   --artifacts private-diffs/
 ```
 
-The CLI exits with status `2` when verification could not be completed. A normally graded deck may receive a failing score without making the grading command itself fail.
+The protocol CLI exits with status `2` when verification could not be completed.
+A normally graded deck may receive a failing score without making the grading
+command itself fail.
 
 ## Canonical container
 
 ```bash
-docker build -t acidslide-v1 acidslide-v1
+docker build -t gloss-acidslide-v1 acidslide-v1
 docker run --rm \
   --volume "$PWD:/workspace:ro" \
-  acidslide-v1 grade /workspace/submission.pptx --tier 3 \
+  gloss-acidslide-v1 grade /workspace/submission.pptx --tier 3 \
   --artifact-context /workspace/artifact-context.json --format json
 ```
 
@@ -124,9 +189,14 @@ uv build
 uv run pip-audit
 ```
 
-The bundled validator applies deterministic ECMA-376 Markup Compatibility preprocessing before validating against the bundled Part 1 Transitional XSD set. RELAX NG validation is outside the v1 contract.
+The bundled validator applies deterministic ECMA-376 Markup Compatibility
+preprocessing before validating against the bundled Part 1 Transitional XSD set.
+RELAX NG validation is outside the AcidSlide v1 contract.
 
 ## Build it with us
+
+The ACID tradition works because hard cases are public. Help Gloss make generated
+decks worth editing:
 
 - [Propose a benchmark case](https://github.com/aronchick/gloss/issues/new?template=benchmark-case.yml)
 - [Report a grader gap](https://github.com/aronchick/gloss/issues/new?template=grader-bug.yml)
@@ -135,4 +205,6 @@ The bundled validator applies deterministic ECMA-376 Markup Compatibility prepro
 
 ## License
 
-Code and benchmark materials are released under the [Apache License 2.0](LICENSE), except third-party or asset files that carry their own license notices.
+Code and benchmark materials are released under the
+[Apache License 2.0](LICENSE), except third-party or asset files that carry their
+own license notices.
