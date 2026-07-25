@@ -8,10 +8,16 @@ import { fileURLToPath } from "node:url";
 
 const launchDir = dirname(fileURLToPath(import.meta.url));
 const root = resolve(launchDir, "..");
-const evidencePath = join(root, "site/evidence/preview-v1.json");
+const summaryPath = join(root, "acidslide-v1/benchmark/comparative-v1/summary.json");
 const outputPath = join(root, "site/media/gloss-launch.mp4");
 const posterPath = join(root, "site/media/gloss-launch-poster.png");
-const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+const summary = JSON.parse(readFileSync(summaryPath, "utf8"));
+const nativePaths = summary.paths.filter((path) => path.path_id.startsWith("native-"));
+const visualPaths = summary.paths.filter((path) => path.path_id.startsWith("visual-"));
+const mean = (paths, metric) => paths.reduce((total, path) => total + path.mean_metrics[metric], 0) / paths.length;
+const nativePass = mean(nativePaths, "native_weighted_pass_percent");
+const visualPass = mean(visualPaths, "native_weighted_pass_percent");
+const nativeGap = nativePass - visualPass;
 
 const width = 1080;
 const height = 1080;
@@ -112,32 +118,30 @@ function frameIntro(t) {
 function frameTwoLayers(t) {
   const local = t - 2;
   const opacity = fadeInOut(t, 2, 9.2, 0.35);
-  const total = evidence.candidate_checks.total;
-  const visual = evidence.candidate_checks.visual_render;
-  const inside = evidence.candidate_checks.inside_file;
-  const progress = ease(local / 4.8);
-  const rows = [
-    { label: "INSIDE THE FILE", count: inside, color: colors.blue, y: 478 },
-    { label: "ON THE CANVAS", count: visual, color: colors.orange, y: 682 },
-  ];
+  const rows = summary.paths.map((path, index) => ({
+    label: path.label.toUpperCase(),
+    value: path.mean_metrics.local_fidelity_percent,
+    color: path.path_id.startsWith("native-") ? colors.blue : colors.orange,
+    y: 430 + index * 130,
+  }));
   const rowMarkup = rows.map((row, index) => {
     const stagger = ease((local - index * 0.32) / 3.4);
-    const barWidth = (row.count / inside) * 760 * stagger;
-    const count = Math.round(row.count * progress);
+    const barWidth = row.value / 100 * 720 * stagger;
+    const score = (row.value * stagger).toFixed(2);
     return `
       ${mono(row.label, 78, row.y - 28, { fill: colors.muted, size: 19 })}
-      <rect x="78" y="${row.y}" width="760" height="88" fill="#e2e6ed"/>
-      <rect x="78" y="${row.y}" width="${barWidth}" height="88" fill="${row.color}"/>
-      ${svgText(String(count), 952, row.y + 67, { size: 62, weight: 760, anchor: "end" })}
+      <rect x="78" y="${row.y}" width="720" height="62" fill="#e2e6ed"/>
+      <rect x="78" y="${row.y}" width="${barWidth}" height="62" fill="${row.color}"/>
+      ${svgText(score, 950, row.y + 51, { size: 48, weight: 760, anchor: "end" })}
     `;
   }).join("");
   return baseSvg(`
     <g opacity="${opacity}">
-      ${mono("GLOSS / CANDIDATE HARNESS", 78, 90, { fill: colors.orange })}
-      ${svgText(`${total} ways to ask`, 78, 230, { size: 100, weight: 760 })}
-      ${svgText("if a deck is real.", 78, 332, { size: 100, weight: 760 })}
+      ${mono("GLOSS / FROZEN COMPARATIVE V1", 78, 90, { fill: colors.orange })}
+      ${svgText("Local artifact", 78, 220, { size: 100, weight: 760 })}
+      ${svgText("fidelity.", 78, 320, { size: 100, weight: 760 })}
       ${rowMarkup}
-      ${mono("CANDIDATE CHECK COUNTS · NOT MODEL SCORES", 78, 966, { fill: colors.muted, size: 18 })}
+      ${mono(summary.disclosure.verification_label.toUpperCase(), 78, 1002, { fill: colors.muted, size: 17 })}
     </g>
   `);
 }
@@ -146,16 +150,16 @@ function frameTwist(t) {
   const local = t - 9.2;
   const opacity = fadeInOut(t, 9.2, 11, 0.2);
   const p = ease(local / 1.2);
-  const percent = Math.round(evidence.candidate_checks.inside_file_percent * p);
+  const gap = (nativeGap * p).toFixed(2);
   return baseSvg(`
     <g opacity="${opacity}">
       <rect x="0" y="0" width="${width}" height="${height}" fill="${colors.ink}"/>
       <rect x="68" y="68" width="944" height="944" fill="none" stroke="#49505d" stroke-width="2"/>
       ${mono("THE ARTIFACT TWIST", 92, 130, { fill: colors.proof })}
-      ${svgText(`${percent}%`, 540, 550, { size: 310, weight: 790, fill: colors.paper, anchor: "middle" })}
-      ${svgText("of candidate checks", 540, 680, { size: 70, weight: 700, fill: colors.paper, anchor: "middle" })}
-      ${svgText("live inside the file.", 540, 760, { size: 70, weight: 700, fill: colors.blueSoft, anchor: "middle" })}
-      ${mono("LOOKING RIGHT ISN’T BEING EDITABLE", 540, 927, { fill: "#aab2c0", anchor: "middle", size: 19 })}
+      ${svgText(`+${gap}`, 540, 535, { size: 280, weight: 790, fill: colors.paper, anchor: "middle" })}
+      ${svgText("points of native structure", 540, 670, { size: 62, weight: 700, fill: colors.paper, anchor: "middle" })}
+      ${svgText("from native construction.", 540, 744, { size: 62, weight: 700, fill: colors.blueSoft, anchor: "middle" })}
+      ${mono("SIMILAR PIXELS · DIFFERENT POWERPOINT", 540, 927, { fill: "#aab2c0", anchor: "middle", size: 19 })}
     </g>
   `, colors.ink);
 }
@@ -163,26 +167,28 @@ function frameTwist(t) {
 function frameMethods(t) {
   const local = t - 11;
   const opacity = fadeInOut(t, 11, 18.2, 0.3);
-  const methods = evidence.verification_methods.filter((method) => method.id !== "visual_ssim");
-  const max = Math.max(...methods.map((method) => method.count));
-  const rows = methods.map((method, index) => {
-    const y = 390 + index * 120;
-    const p = ease((local - index * 0.2) / 3.5);
-    const barWidth = (method.count / max) * 670 * p;
+  const rows = summary.paths.map((path, index) => {
+    const y = 400 + index * 135;
+    const p = ease((local - index * 0.22) / 3.5);
+    const visual = path.mean_metrics.mean_visual_ssim_percent;
+    const native = path.mean_metrics.native_weighted_pass_percent;
     return `
-      ${mono(`${String(index + 1).padStart(2, "0")}  ${method.public_label.toUpperCase()}`, 76, y - 18, { fill: colors.muted, size: 18 })}
-      <rect x="76" y="${y}" width="670" height="58" fill="#e0e4ec"/>
-      <rect x="76" y="${y}" width="${barWidth}" height="58" fill="${index === 0 ? colors.blue : "#5c7edd"}"/>
-      ${svgText(String(Math.round(method.count * p)), 944, y + 48, { size: 48, weight: 760, anchor: "end" })}
+      ${mono(path.label.toUpperCase(), 76, y - 22, { fill: colors.muted, size: 18 })}
+      <rect x="76" y="${y}" width="720" height="30" fill="#e0e4ec"/>
+      <rect x="76" y="${y}" width="${visual / 100 * 720 * p}" height="30" fill="${colors.orange}"/>
+      <rect x="76" y="${y + 42}" width="720" height="30" fill="#e0e4ec"/>
+      <rect x="76" y="${y + 42}" width="${native / 100 * 720 * p}" height="30" fill="${colors.blue}"/>
+      ${mono(visual.toFixed(2), 952, y + 25, { anchor: "end", fill: colors.orange, size: 17 })}
+      ${mono(native.toFixed(2), 952, y + 67, { anchor: "end", fill: colors.blue, size: 17 })}
     `;
   }).join("");
   return baseSvg(`
     <g opacity="${opacity}">
-      ${mono("BUILT RIGHT / INSIDE-FILE CHECKS", 76, 82, { fill: colors.blue })}
-      ${svgText("What the screenshot", 76, 202, { size: 88, weight: 760 })}
-      ${svgText("cannot tell you.", 76, 292, { size: 88, weight: 760 })}
+      ${mono("ORANGE = VISUAL SSIM  ·  BLUE = NATIVE PASS", 76, 82, { fill: colors.blue })}
+      ${svgText("Pixels cluster.", 76, 202, { size: 88, weight: 760 })}
+      ${svgText("Structure splits.", 76, 292, { size: 88, weight: 760 })}
       ${rows}
-      ${mono(`${evidence.candidate_checks.inside_file} CANDIDATE CHECKS · ${evidence.operator_evidence.operators} MUTATION OPERATORS`, 76, 1020, { fill: colors.muted, size: 17 })}
+      ${mono(`${summary.totals.runs} RUNS · ${summary.totals.slides} GRADED SLIDES · THREE PUBLIC SEEDS`, 76, 1020, { fill: colors.muted, size: 17 })}
     </g>
   `);
 }
@@ -199,8 +205,8 @@ function frameEnd(t) {
       ${svgText("Generative Layout &", 76, 545, { size: 50, weight: 690, fill: "#cdd3df" })}
       ${svgText("OOXML Scoring System", 76, 607, { size: 50, weight: 690, fill: "#cdd3df" })}
       <line x1="76" y1="700" x2="1004" y2="700" stroke="#4b5361" stroke-width="2"/>
-      ${svgText(`${evidence.operator_evidence.single_fault_mutations_detected} / ${evidence.operator_evidence.single_fault_mutations}`, 76, 795, { size: 78, weight: 780, fill: colors.proof })}
-      ${mono("GENERATED SINGLE-FAULT MUTATIONS DETECTED", 76, 837, { fill: "#aeb6c4", size: 17 })}
+      ${svgText(`${summary.totals.runs} decks / ${summary.totals.slides} slides`, 76, 795, { size: 62, weight: 780, fill: colors.proof })}
+      ${mono(summary.disclosure.attribution.toUpperCase(), 76, 837, { fill: "#aeb6c4", size: 15 })}
       ${svgText("gloss.tools", 76, 982, { size: 72, weight: 760, fill: colors.paper })}
       ${mono("BUILD IT WITH US ON GITHUB  ↗", 1004, 982, { fill: colors.orange, anchor: "end", size: 17 })}
     </g>
@@ -253,8 +259,8 @@ try {
     "-crf", "18",
     "-pix_fmt", "yuv420p",
     "-movflags", "+faststart",
-    "-metadata", `title=Gloss — ${evidence.product_retronym}`,
-    "-metadata", `comment=Rendered from ${evidence.evidence_id}`,
+    "-metadata", "title=Gloss — Generative Layout & OOXML Scoring System",
+    "-metadata", `comment=Rendered from ${summary.cohort.scoring_cohort_id}`,
     "-an",
     outputPath,
   ]);

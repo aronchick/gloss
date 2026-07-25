@@ -7,6 +7,7 @@ Gloss improves when a benchmark claim becomes easier to inspect, reproduce, or c
 - Add a PowerPoint construct the corpus does not cover.
 - Reproduce a grader false positive or false negative.
 - Improve a candidate assertion and its mutation fixture.
+- Improve a deterministic comparative generation path and prove the score change.
 - Review a prompt requirement, evidence record, or release gate.
 - Make the documentation easier to run from a clean checkout.
 
@@ -29,7 +30,7 @@ Install [uv](https://docs.astral.sh/uv/), Python 3.12, LibreOffice Impress, and 
 git clone https://github.com/aronchick/gloss.git
 cd gloss/acidslide-v1/grader
 uv sync --extra dev --locked
-uv run python ../benchmark/validate_corpus.py
+uv run ../benchmark/validate_corpus.py
 uv run pytest tests/test_mutation_fixtures.py -q
 ```
 
@@ -84,7 +85,10 @@ CI must pass. Maintainers may ask for a smaller fixture, clearer provenance, or 
 
 ## Launch surface
 
-The static site lives in `site/`. Its public counts come from `site/evidence/preview-v1.json`, which is verified against the generated mutation fixture reports by:
+The static site lives in `site/`. Harness counts come from
+`site/evidence/preview-v1.json`; comparative bars come from the byte-equivalent
+public copy of `acidslide-v1/benchmark/comparative-v1/summary.json`. Verify both
+sources, local assets, copy, and media metadata with:
 
 ```bash
 node launch/verify-launch.mjs
@@ -96,7 +100,8 @@ Rebuild the silent 21-second launch film with:
 node launch/render-video.mjs
 ```
 
-The renderer requires `rsvg-convert` and `ffmpeg`. Do not hand-edit a published number in the site or video without updating the evidence bundle and its verification source.
+The renderer requires `rsvg-convert` and `ffmpeg`. It reads the comparative
+summary directly. Do not hand-edit a published number in the site or video.
 
 ## Conduct and security
 

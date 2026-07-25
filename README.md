@@ -23,6 +23,24 @@ Every launch count is recorded in [`site/evidence/preview-v1.json`](site/evidenc
 node launch/verify-launch.mjs
 ```
 
+## Frozen comparative bundle
+
+[`acidslide-v1/benchmark/comparative-v1`](acidslide-v1/benchmark/comparative-v1)
+contains four repository-owned generation paths, three public seeds per path,
+and 12 editable 20-slide decks. The canonical Linux/amd64 grader completed all
+240 slide renders.
+
+The current local artifact scores are 67.68% for the native paths and 62.32%
+for the visual paths. These are reproducible workflow baselines, not model
+rankings. Every report says `local artifact score; self-reported` and carries no
+model attribution.
+
+Reproduce every deck, report, hash, and public bar:
+
+```bash
+./acidslide-v1/benchmark/comparative-v1/reproduce.sh
+```
+
 Release mode intentionally fails until independent prompt convergence, assertion provenance and evidence, reviewer approvals, baselines, environment manifests, and signed release indexes are complete.
 
 ## Score provenance

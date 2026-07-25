@@ -1,0 +1,314 @@
+{
+  "cohort": {
+    "environment_attestation_sha256": "sha256:62695d02ec683aa3680f2db72ff6c17fcce14fccfb0b5367c75704d92db04602",
+    "grader_source_tree_sha256": "sha256:685ce0505346cf3e844d49ab25c51e906ec917d2bf6b6ea6bdb95e65d4e23d28",
+    "scoring_cohort_id": "sha256:13b3015b9e346d8eb4cd7f26fd13f3c551941a8b64a5bbd7e483063567bfff1f",
+    "scoring_manifest_sha256": "sha256:97a4df0aa45d198e0a1494d6c2501d8c9fb375c617aff1012588d843da2b20b8"
+  },
+  "disclosure": {
+    "attribution": "repository-owned path; no model attribution",
+    "comparison_scope": "reproducible workflow baselines, not model rankings",
+    "verification_label": "local artifact score; self-reported"
+  },
+  "metric_definitions": {
+    "local_fidelity_percent": "AcidSlide weighted artifact score multiplied by 100",
+    "mean_visual_ssim_percent": "mean slide SSIM against gold renders multiplied by 100",
+    "native_weighted_pass_percent": "severity-weighted checklist pass rate excluding visual_ssim checks"
+  },
+  "paths": [
+    {
+      "label": "Native precise",
+      "mean_metrics": {
+        "local_fidelity_percent": 67.68,
+        "mean_visual_ssim_percent": 84.96,
+        "native_weighted_pass_percent": 93.12
+      },
+      "path_id": "native-precise",
+      "runs": [
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:cff425a07faae7d62ccaed0eff024148ce653da8c6de09e31a8f6e4f8cf3af4b",
+            "deck.pptx": "sha256:0e6a0785641d5fb902e96babc1ba2c94f4e1d9498651744c92e4b5a18102ba15",
+            "generation.json": "sha256:e6c484b01cdebf049c692e9bb0f2e491b8338cfc0e5a6ee324c953117f501464",
+            "report.json": "sha256:2ba243d6579dd1801b8cc99dcea24401ecbbcac6be4de751dc4bf02a23c89014"
+          },
+          "metrics": {
+            "local_fidelity_percent": 67.68,
+            "mean_visual_ssim_percent": 84.96,
+            "native_weight_passed": 379,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 93.12,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "native-precise",
+          "run": 1,
+          "seed": 1103
+        },
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:f6fe5cdd6f13bdca7b079716bf21aaa143d2fdfc1a73cce0ada05fbaf1c459ba",
+            "deck.pptx": "sha256:3716fa3bb950f2c8457b46e7b4b7cfd92bd28c9ddad20d3e370487666baf49be",
+            "generation.json": "sha256:affdd966a87e28ba5855112ffd284e3dc465de838f7b46c10611f67e7e6f4414",
+            "report.json": "sha256:33122b9974a8342ff037ea318cc3c8d0c77ab11b2c595ceb77a73fd4d5ae9120"
+          },
+          "metrics": {
+            "local_fidelity_percent": 67.68,
+            "mean_visual_ssim_percent": 84.96,
+            "native_weight_passed": 379,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 93.12,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "native-precise",
+          "run": 2,
+          "seed": 2207
+        },
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:e8880489fac4302cb865d762c6d0535ddaf851457fd85a9b5a317f673241da13",
+            "deck.pptx": "sha256:d670d5f2bb9c27e9a98a9c4a53785ab7c8e985344cc2d38163c447476a142c31",
+            "generation.json": "sha256:6274fb3454ff5ba46658d2ad566c51c9fc7f3b71c2f31b7b0ad0a8e6171d6fe9",
+            "report.json": "sha256:54138c064964efc53d03158adf55fec0e37968d67cb145ed4658e2ec6aee05f1"
+          },
+          "metrics": {
+            "local_fidelity_percent": 67.68,
+            "mean_visual_ssim_percent": 84.96,
+            "native_weight_passed": 379,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 93.12,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "native-precise",
+          "run": 3,
+          "seed": 3301
+        }
+      ]
+    },
+    {
+      "label": "Native fast",
+      "mean_metrics": {
+        "local_fidelity_percent": 67.68,
+        "mean_visual_ssim_percent": 84.95,
+        "native_weighted_pass_percent": 93.12
+      },
+      "path_id": "native-fast",
+      "runs": [
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:624125cddbfd0be43b588b7a609fb7e260dd03d1a13e2b1e586d5d3016b6f339",
+            "deck.pptx": "sha256:15d3c4c216beaac91c99f620ae0cb00cda3122f079dae01b370de43d9d91793d",
+            "generation.json": "sha256:02a4a6979a4e76e3a47799546a81122ef789c61a2861afd8e425e57d7cbf448f",
+            "report.json": "sha256:39510c532c67b6f2747dd805fc76192e28c23ea0a51ba73b2d583375e37f0a2c"
+          },
+          "metrics": {
+            "local_fidelity_percent": 67.68,
+            "mean_visual_ssim_percent": 84.95,
+            "native_weight_passed": 379,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 93.12,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "native-fast",
+          "run": 1,
+          "seed": 1103
+        },
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:a3e929e64626b4e0948fb92dda99c3682d93df50edd0911e86c6b658e4533a3d",
+            "deck.pptx": "sha256:8891cdafda52fba8c4c995af8654775783ee06b7b8a7ca6d443d5567636eda4d",
+            "generation.json": "sha256:fa50118325c2de1d08f4f475deb7a87fba9965d9228398362ae7d7c5fd72d57d",
+            "report.json": "sha256:567f14b3dd2d6ef5796b6255f121e3565ef7a23eb8fbe90e61e2908352fbe552"
+          },
+          "metrics": {
+            "local_fidelity_percent": 67.68,
+            "mean_visual_ssim_percent": 84.95,
+            "native_weight_passed": 379,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 93.12,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "native-fast",
+          "run": 2,
+          "seed": 2207
+        },
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:d27609dc4c894210d4ff1a9a21b857b59856389f02efee8d32ec4ba1abe2aa0a",
+            "deck.pptx": "sha256:ce294e486f30cb38f70b0134da1d290eca21e1975fc9ac932c347252034f843a",
+            "generation.json": "sha256:80fdf8daf2b4bf91ee84cf23ddcdbe9df7714ba72f0acd2c022ba705fbd18483",
+            "report.json": "sha256:101fc4365073e7ad10658d4de0ad179c67686d715a6fe23dadca36066ef313d3"
+          },
+          "metrics": {
+            "local_fidelity_percent": 67.68,
+            "mean_visual_ssim_percent": 84.95,
+            "native_weight_passed": 379,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 93.12,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "native-fast",
+          "run": 3,
+          "seed": 3301
+        }
+      ]
+    },
+    {
+      "label": "Visual precise",
+      "mean_metrics": {
+        "local_fidelity_percent": 62.32,
+        "mean_visual_ssim_percent": 85.14,
+        "native_weighted_pass_percent": 85.75
+      },
+      "path_id": "visual-precise",
+      "runs": [
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:d303cf7d835c41fae261dd50cd014e69328a74426a4afa065f5f8982affcc6da",
+            "deck.pptx": "sha256:b2a714b92dc2de09f186ecec21a5969efa2eb7a02317c9fae47c0ad06848d95b",
+            "generation.json": "sha256:2d40b52a9418540076a7d5e961b5c9ac881a9ef6313f87a9ddf7c647d54bfc43",
+            "report.json": "sha256:a42004dc24ff575ce436e1de0e4293abe28d8c5cb767c434aac30585b8f94acd"
+          },
+          "metrics": {
+            "local_fidelity_percent": 62.32,
+            "mean_visual_ssim_percent": 85.14,
+            "native_weight_passed": 349,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 85.75,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "visual-precise",
+          "run": 1,
+          "seed": 1103
+        },
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:6378035e95191a48fe3f2885b31d6224bf95974a0d85586de7df42e2589dafa1",
+            "deck.pptx": "sha256:fa2173ea20374f27a2f464a7881eb12adf5fe774ddc027ee1cab4feeb74945a4",
+            "generation.json": "sha256:d7ade6a6c8bba2bf3cc219e705978f2295e0eb281029f41e6a28143eabc7ed10",
+            "report.json": "sha256:bf4f811438a96844210533d14c0160add6f7dd64726e17be488f8437bb12f982"
+          },
+          "metrics": {
+            "local_fidelity_percent": 62.32,
+            "mean_visual_ssim_percent": 85.14,
+            "native_weight_passed": 349,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 85.75,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "visual-precise",
+          "run": 2,
+          "seed": 2207
+        },
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:5f5a317fdc4ca3acf04ed304c90a227f12097274af3c018a34b41bc6dc32f6b3",
+            "deck.pptx": "sha256:c4e9ead5f6b485c35d1a7022f8e90ae40dfe0a8fa129baf6aecfddcebfb6e47e",
+            "generation.json": "sha256:1afbd5f7bf72ab7d507aa732b1a24de92068025afa8baed101cea5c261d51a9f",
+            "report.json": "sha256:4b5bc3444f00c6a06874eb5096437076c08fd4e722c060965b310b619cb093ea"
+          },
+          "metrics": {
+            "local_fidelity_percent": 62.32,
+            "mean_visual_ssim_percent": 85.14,
+            "native_weight_passed": 349,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 85.75,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "visual-precise",
+          "run": 3,
+          "seed": 3301
+        }
+      ]
+    },
+    {
+      "label": "Visual fast",
+      "mean_metrics": {
+        "local_fidelity_percent": 62.32,
+        "mean_visual_ssim_percent": 85.25,
+        "native_weighted_pass_percent": 85.75
+      },
+      "path_id": "visual-fast",
+      "runs": [
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:c6af50efd29b1c2f92bc19a52d0fcc651b451a0416067085e4a6e2a360ac96eb",
+            "deck.pptx": "sha256:4de0f7adc60ebef9e236b889fac5fc0393de0a7876c673e1e3ed8621afab7549",
+            "generation.json": "sha256:57113fd1d7eec455972059e24fb41bb5a6020300f7b238c37ac32aa15195d2a9",
+            "report.json": "sha256:ca09550788c65d8ba023d7d45338e5260d7ca82b96be9b106267f8b8dd4364fc"
+          },
+          "metrics": {
+            "local_fidelity_percent": 62.32,
+            "mean_visual_ssim_percent": 85.25,
+            "native_weight_passed": 349,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 85.75,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "visual-fast",
+          "run": 1,
+          "seed": 1103
+        },
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:f8607e1b94683884d178e0859b71035051110d533fc59af843521031b6dffbd7",
+            "deck.pptx": "sha256:cbc64ef5b68b856974258ffbbb5df4c1c909c3f1f582111312e2a7e3ba2b738b",
+            "generation.json": "sha256:5edf8c9018f429f52cc42526b2b14cfc1e0ec8d3f486b0fc5c3fcaffdcad1215",
+            "report.json": "sha256:19735c115c89e3b15e7c8280296707d8a3d90452c041049ce58c652b88404ce9"
+          },
+          "metrics": {
+            "local_fidelity_percent": 62.32,
+            "mean_visual_ssim_percent": 85.25,
+            "native_weight_passed": 349,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 85.75,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "visual-fast",
+          "run": 2,
+          "seed": 2207
+        },
+        {
+          "artifacts": {
+            "artifact-context.json": "sha256:c596022af0ea95e0e54ac119d443e06774d48c338134533d0d189fbf7bd0e2db",
+            "deck.pptx": "sha256:b93f48328e3c0289e95c623b59084998c202f7713f448b40f4408acea2c101f2",
+            "generation.json": "sha256:c92454b4a11d898b6f66d88e8df4a0440a3ae56854baf7b20ff856d2e147a276",
+            "report.json": "sha256:b2c57d3b920b29f58dc691c2a0229719d015879073321d3f9ebf256db7711bca"
+          },
+          "metrics": {
+            "local_fidelity_percent": 62.32,
+            "mean_visual_ssim_percent": 85.25,
+            "native_weight_passed": 349,
+            "native_weight_total": 407,
+            "native_weighted_pass_percent": 85.75,
+            "scoring_completed": true,
+            "verification_complete": true
+          },
+          "path_id": "visual-fast",
+          "run": 3,
+          "seed": 3301
+        }
+      ]
+    }
+  ],
+  "schema_version": "1.0",
+  "totals": {
+    "runs": 12,
+    "seeds": [
+      1103,
+      2207,
+      3301
+    ],
+    "slides": 240
+  }
+}

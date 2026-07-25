@@ -22,3 +22,7 @@ benchmark/release-index.json
 benchmark/release-index-chain.json
 benchmark/baselines/*.json
 benchmark/control-handoffs/*.json
+
+# Comparative decks and local self-reported grading outputs are mounted inputs,
+# never part of the renderer image they identify.
+benchmark/comparative-v1/
