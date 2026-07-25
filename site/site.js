@@ -54,6 +54,96 @@ fetch("/evidence/preview-v1.json")
     document.documentElement.dataset.evidenceId = "fallback-copy";
   });
 
+const comparativeChart = document.querySelector("[data-comparative-chart]");
+const comparativeMetrics = [
+  ["local_fidelity_percent", "Local fidelity"],
+  ["mean_visual_ssim_percent", "Visual SSIM"],
+  ["native_weighted_pass_percent", "Native pass"],
+];
+
+function comparativeCell(value, label) {
+  const cell = document.createElement("div");
+  cell.className = "comparison-metric";
+  cell.setAttribute("aria-label", `${label}: ${value.toFixed(2)} percent`);
+
+  const number = document.createElement("strong");
+  number.textContent = value.toFixed(2);
+  const percent = document.createElement("sup");
+  percent.textContent = "%";
+  number.append(percent);
+
+  const track = document.createElement("span");
+  track.className = "comparison-track";
+  const bar = document.createElement("i");
+  bar.style.setProperty("--score", String(value));
+  track.append(bar);
+  cell.append(number, track);
+  return cell;
+}
+
+function renderComparative(data) {
+  if (!comparativeChart) return;
+  comparativeChart.replaceChildren();
+
+  const header = document.createElement("div");
+  header.className = "comparison-row comparison-row-head";
+  const pathHeading = document.createElement("span");
+  pathHeading.textContent = "Generation path";
+  header.append(pathHeading);
+  for (const [, label] of comparativeMetrics) {
+    const metricHeading = document.createElement("span");
+    metricHeading.textContent = label;
+    header.append(metricHeading);
+  }
+  comparativeChart.append(header);
+
+  for (const path of data.paths) {
+    const row = document.createElement("div");
+    row.className = `comparison-row comparison-row-${path.path_id.split("-")[0]}`;
+
+    const identity = document.createElement("div");
+    identity.className = "comparison-identity";
+    const label = document.createElement("strong");
+    label.textContent = path.label;
+    const runCount = document.createElement("span");
+    runCount.textContent = `${path.runs.length} seeded runs`;
+    identity.append(label, runCount);
+    row.append(identity);
+
+    for (const [key, metricLabel] of comparativeMetrics) {
+      row.append(comparativeCell(path.mean_metrics[key], metricLabel));
+    }
+    comparativeChart.append(row);
+  }
+
+  for (const node of document.querySelectorAll("[data-comparative-label]")) {
+    node.textContent = data.disclosure.verification_label;
+  }
+  const cohort = data.cohort.scoring_cohort_id.replace("sha256:", "");
+  for (const node of document.querySelectorAll("[data-cohort-short]")) {
+    node.textContent = cohort.slice(0, 12);
+    node.setAttribute("title", data.cohort.scoring_cohort_id);
+  }
+  for (const node of document.querySelectorAll("[data-comparative-runs]")) {
+    node.textContent = String(data.totals.runs);
+  }
+  for (const node of document.querySelectorAll("[data-comparative-slides]")) {
+    node.textContent = String(data.totals.slides);
+  }
+}
+
+fetch("/evidence/comparative-v1-summary.json")
+  .then((response) => {
+    if (!response.ok) throw new Error(`Comparative summary request failed: ${response.status}`);
+    return response.json();
+  })
+  .then(renderComparative)
+  .catch(() => {
+    if (comparativeChart) {
+      comparativeChart.textContent = "Comparative summary unavailable. Open the public JSON evidence.";
+    }
+  });
+
 const copyButton = document.querySelector("[data-copy-command]");
 const copyStatus = document.querySelector("[data-copy-status]");
 const command = document.querySelector(".command-block code");

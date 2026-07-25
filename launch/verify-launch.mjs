@@ -5,12 +5,17 @@ import { existsSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { isDeepStrictEqual } from "node:util";
 
 const launchDir = dirname(fileURLToPath(import.meta.url));
 const root = resolve(launchDir, "..");
 const site = join(root, "site");
 const evidencePath = join(site, "evidence/preview-v1.json");
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
+const comparativePath = join(root, "acidslide-v1/benchmark/comparative-v1/summary.json");
+const publicComparativePath = join(site, "evidence/comparative-v1-summary.json");
+const comparative = JSON.parse(readFileSync(comparativePath, "utf8"));
+const publicComparative = JSON.parse(readFileSync(publicComparativePath, "utf8"));
 const reportPath = join(root, "acidslide-v1/benchmark/fixtures/mutations/execution-report-v1.json");
 const indexPath = join(root, "acidslide-v1/benchmark/fixtures/mutations/fixture-index-v1.json");
 const expectationsPath = join(root, "acidslide-v1/benchmark/fixtures/mutations/mutation-expectations-v1.json");
@@ -22,6 +27,8 @@ const html = readFileSync(join(site, "index.html"), "utf8");
 const headers = readFileSync(join(site, "_headers"), "utf8");
 const robots = readFileSync(join(site, "robots.txt"), "utf8");
 const sitemap = readFileSync(join(site, "sitemap.xml"), "utf8");
+const siteScript = readFileSync(join(site, "site.js"), "utf8");
+const videoRenderer = readFileSync(join(root, "launch/render-video.mjs"), "utf8");
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -56,6 +63,18 @@ assert(evidence.prompt_requirements.deck === requirementCounts.deck, "Deck requi
 assert(evidence.prompt_requirements.slide === requirementCounts.slide, "Slide requirement count drifted from oracle");
 assert(evidence.operator_evidence.positive_controls_passed === positivePassed, "Positive-control count drifted from execution report");
 assert(evidence.operator_evidence.single_fault_mutations_detected === mutantsDetected, "Mutation count drifted from execution report");
+assert(isDeepStrictEqual(comparative, publicComparative), "Public comparative summary drifted from frozen source");
+assert(comparative.totals.runs === 12, "Comparative summary must freeze 12 runs");
+assert(comparative.totals.slides === 240, "Comparative summary must freeze 240 slides");
+assert(comparative.paths.length === 4, "Comparative summary must contain four generation paths");
+assert(
+  comparative.disclosure.verification_label === "local artifact score; self-reported",
+  "Comparative summary must retain the local score label",
+);
+assert(
+  comparative.disclosure.attribution === "repository-owned path; no model attribution",
+  "Comparative summary must not acquire model attribution",
+);
 
 for (const method of evidence.verification_methods) {
   assert(method.count === methodCounts[method.id], `Verification method ${method.id} drifted from fixture index`);
@@ -81,12 +100,17 @@ const requiredCopy = [
   "0 official model results",
   "The repository is the product",
   "Working harness. Unfrozen benchmark.",
+  "Four public baselines. Zero model claims.",
+  "Inspect every deck and report",
 ];
 for (const copy of requiredCopy) assert(html.includes(copy), `Homepage is missing required copy: ${copy}`);
 assert(!/official leaderboard[^<]{0,80}(live|launched|ready)/i.test(html), "Homepage overclaims official leaderboard readiness");
 assert(html.includes("https://github.com/aronchick/gloss"), "Homepage must lead to GitHub");
 assert(html.includes('<link rel="canonical" href="https://gloss.tools/">'), "Homepage canonical URL is missing");
 assert(html.includes('"codeRepository": "https://github.com/aronchick/gloss"'), "Homepage structured data must lead to GitHub");
+assert(siteScript.includes('fetch("/evidence/comparative-v1-summary.json")'), "Homepage chart must load the frozen comparative summary");
+assert(videoRenderer.includes("acidslide-v1/benchmark/comparative-v1/summary.json"), "Launch video must load the frozen comparative summary");
+assert(!videoRenderer.includes("site/evidence/preview-v1.json"), "Launch video must not source comparative claims from preview evidence");
 assert(robots.includes("Allow: /") && robots.includes("Sitemap: https://gloss.tools/sitemap.xml"), "robots.txt must expose the public site map");
 assert(sitemap.includes("<loc>https://gloss.tools/</loc>"), "sitemap.xml must contain the production homepage");
 for (const header of [
