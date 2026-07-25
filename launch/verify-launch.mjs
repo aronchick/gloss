@@ -19,6 +19,9 @@ const report = JSON.parse(readFileSync(reportPath, "utf8"));
 const index = JSON.parse(readFileSync(indexPath, "utf8"));
 const requirements = JSON.parse(readFileSync(requirementsPath, "utf8"));
 const html = readFileSync(join(site, "index.html"), "utf8");
+const headers = readFileSync(join(site, "_headers"), "utf8");
+const robots = readFileSync(join(site, "robots.txt"), "utf8");
+const sitemap = readFileSync(join(site, "sitemap.xml"), "utf8");
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -82,6 +85,18 @@ const requiredCopy = [
 for (const copy of requiredCopy) assert(html.includes(copy), `Homepage is missing required copy: ${copy}`);
 assert(!/official leaderboard[^<]{0,80}(live|launched|ready)/i.test(html), "Homepage overclaims official leaderboard readiness");
 assert(html.includes("https://github.com/aronchick/gloss"), "Homepage must lead to GitHub");
+assert(html.includes('<link rel="canonical" href="https://gloss.tools/">'), "Homepage canonical URL is missing");
+assert(html.includes('"codeRepository": "https://github.com/aronchick/gloss"'), "Homepage structured data must lead to GitHub");
+assert(robots.includes("Allow: /") && robots.includes("Sitemap: https://gloss.tools/sitemap.xml"), "robots.txt must expose the public site map");
+assert(sitemap.includes("<loc>https://gloss.tools/</loc>"), "sitemap.xml must contain the production homepage");
+for (const header of [
+  "X-Content-Type-Options: nosniff",
+  "Referrer-Policy: strict-origin-when-cross-origin",
+  "Permissions-Policy: camera=(), microphone=(), geolocation=()",
+  "X-Frame-Options: DENY",
+]) {
+  assert(headers.includes(header), `Cloudflare Pages header is missing: ${header}`);
+}
 
 const localAssetPattern = /(?:href|src)="\/(?!\/)([^"?#]*)/g;
 for (const match of html.matchAll(localAssetPattern)) {
