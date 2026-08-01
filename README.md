@@ -35,35 +35,31 @@ Gloss brings that **ACID-test philosophy** to generated presentations:
 Here, **ACID refers to the public browser conformance-test tradition, not database
 transactions**.
 
-## Gloss is not AcidSlide
+## Product and suite
 
-Gloss is a separate tool and public project. It owns the scoring model, evidence
+**Gloss** is the tool and public project. It owns the scoring model, evidence
 surface, comparative results, hosted verification direction, and collaboration
 workflow.
 
-**AcidSlide v1 is the first ACID-style PowerPoint conformance suite bundled with
+**Gloss v1 is the first ACID-style PowerPoint conformance suite bundled with
 Gloss.** It supplies the current prompt corpus, hostile deck cases, assertions, gold
-fixture, mutation tests, and protocol-specific grader. The names serve different
-purposes:
+fixture, mutation tests, and protocol adapter:
 
 | Name | Role |
 | --- | --- |
 | **Gloss** | The tool and public project |
 | **ACID tests** | The open conformance-testing philosophy |
-| **AcidSlide v1** | One bundled benchmark protocol and corpus |
-
-Literal paths such as `acidslide-v1/` and the `acidslide` CLI remain protocol
-identifiers. They do not rename Gloss.
+| **Gloss v1** | One bundled benchmark protocol and corpus |
 
 > **Technical-preview status:** the bundled
-> [`ACIDSLIDE_OPENSPEC.md`](ACIDSLIDE_OPENSPEC.md) contract is still Draft and its
+> [`GLOSS_OPENSPEC.md`](GLOSS_OPENSPEC.md) contract is still Draft and its
 > official-release gates remain incomplete. Gloss is live for public collaboration,
 > but no result should be treated as an official model leaderboard until a release
 > announcement names a frozen scoring cohort.
 
 ## Technical preview evidence
 
-The current AcidSlide v1 candidate suite contains 280 schema-valid checks across
+The current Gloss v1 candidate suite contains 280 schema-valid checks across
 rendered pixels and native package structure. Its generated operator suite passes
 280/280 positive controls and detects 280/280 generated single-fault mutations.
 This proves configured operator behavior only; it is not independent assertion
@@ -79,8 +75,8 @@ node launch/verify-launch.mjs
 
 ## Frozen Gloss comparison
 
-Gloss includes a frozen comparative bundle produced against AcidSlide v1:
-[`acidslide-v1/benchmark/comparative-v1`](acidslide-v1/benchmark/comparative-v1).
+Gloss includes a frozen comparative bundle produced against Gloss v1:
+[`gloss-v1/benchmark/comparative-v1`](gloss-v1/benchmark/comparative-v1).
 It contains four repository-owned generation paths, three public seeds per path,
 and 12 editable 20-slide decks. The canonical Linux/amd64 grader completed all
 240 slide renders.
@@ -93,7 +89,7 @@ attribution.
 Reproduce every deck, report, hash, and public bar:
 
 ```bash
-./acidslide-v1/benchmark/comparative-v1/reproduce.sh
+./gloss-v1/benchmark/comparative-v1/reproduce.sh
 ```
 
 Release mode intentionally fails until independent prompt convergence, assertion
@@ -119,10 +115,10 @@ signed release indexes are complete.
 ```text
 site/                       Static gloss.tools source and public evidence
 launch/                     Gloss film renderer, verifier, and launch copy
-ACIDSLIDE_OPENSPEC.md       Draft contract for the bundled AcidSlide v1 suite
-acidslide-v1/
+GLOSS_OPENSPEC.md           Draft contract for the bundled Gloss v1 suite
+gloss-v1/
   benchmark/                ACID-style prompts, cases, checks, fixtures, and evidence
-  grader/                   AcidSlide v1 protocol adapter and local CLI
+  grader/                   Gloss v1 protocol adapter and local CLI
   schemas/                  Bundled ECMA-376 Transitional XSD and report schemas
   service/                  Pre-release hosted grading components
   Dockerfile                Canonical Ubuntu 22.04 grading environment
@@ -130,14 +126,14 @@ acidslide-v1/
 
 ## Run the bundled suite locally
 
-Gloss currently exercises its first suite through the protocol-specific `acidslide`
-CLI. Requirements: [uv](https://docs.astral.sh/uv/), Python 3.12, LibreOffice
-Impress, and `pdftoppm` from Poppler.
+Gloss currently exercises its first suite through the `gloss` CLI. Requirements:
+[uv](https://docs.astral.sh/uv/), Python 3.12, LibreOffice Impress, and `pdftoppm`
+from Poppler.
 
 ```bash
-cd acidslide-v1/grader
+cd gloss-v1/grader
 uv sync --extra dev --locked
-uv run acidslide validate ../benchmark/deck/gold/acidslide-v1-gold.pptx
+uv run gloss validate ../benchmark/deck/gold/gloss-v1-gold.pptx
 ```
 
 Full grading is fail-closed until a frozen release supplies signed cohort provenance
@@ -146,7 +142,7 @@ use `validate` for the runnable quarantine/XSD smoke above. After the v1 release
 artifacts are published:
 
 ```bash
-uv run acidslide grade ../submission.pptx \
+uv run gloss grade ../submission.pptx \
   --tier 3 \
   --artifact-context ./artifact-context.json \
   --format json
@@ -155,7 +151,7 @@ uv run acidslide grade ../submission.pptx \
 Write a standalone report and private visual diffs:
 
 ```bash
-uv run acidslide grade ../submission.pptx \
+uv run gloss grade ../submission.pptx \
   --tier 3 \
   --artifact-context ./artifact-context.json \
   --format html \
@@ -170,28 +166,28 @@ command itself fail.
 ## Canonical container
 
 ```bash
-docker build -t gloss-acidslide-v1 acidslide-v1
+docker build -t gloss-v1 gloss-v1
 docker run --rm \
   --volume "$PWD:/workspace:ro" \
-  gloss-acidslide-v1 grade /workspace/submission.pptx --tier 3 \
+  gloss-v1 grade /workspace/submission.pptx --tier 3 \
   --artifact-context /workspace/artifact-context.json --format json
 ```
 
 ## Quality gates
 
 ```bash
-cd acidslide-v1/grader
+cd gloss-v1/grader
 uv run ruff check .
 uv run ruff format --check .
-uv run mypy acidslide tests
-uv run pytest --cov=acidslide --cov-fail-under=85
+uv run mypy gloss tests
+uv run pytest --cov=gloss --cov-fail-under=85
 uv build
 uv run pip-audit
 ```
 
 The bundled validator applies deterministic ECMA-376 Markup Compatibility
 preprocessing before validating against the bundled Part 1 Transitional XSD set.
-RELAX NG validation is outside the AcidSlide v1 contract.
+RELAX NG validation is outside the Gloss v1 contract.
 
 ## Build it with us
 

@@ -1,10 +1,10 @@
 # SUPERSEDED SNAPSHOT — DO NOT IMPLEMENT OR RELEASE
 
 This file is retained only as historical debate output. The canonical contract is
-`ACIDSLIDE_OPENSPEC.md`, whose current status is Draft pending adversarial consensus. Regenerate this
+`GLOSS_OPENSPEC.md`, whose current status is Draft pending adversarial consensus. Regenerate this
 snapshot only after the canonical document is freeze-ready and independently accepted.
 
-# AcidSlide v1 OpenSpec
+# Gloss v1 OpenSpec
 
 Status: Superseded — stale pre-remediation contract; not freeze-ready
 Scope: Public benchmark, automated grading suite, and hosted evaluation service for slide generation fidelity  
@@ -12,7 +12,7 @@ Primary artifact: A fully public, machine-graded PowerPoint benchmark inspired b
 
 ## 1. Summary
 
-`AcidSlide` is a benchmark for evaluating whether a model can generate a `.pptx` deck from natural-language prompt inputs while preserving both:
+`Gloss` is a benchmark for evaluating whether a model can generate a `.pptx` deck from natural-language prompt inputs while preserving both:
 
 - rendered visual fidelity under a fixed reference renderer (LibreOffice Impress headless)
 - user-visible structural fidelity inside the PowerPoint deck
@@ -26,7 +26,7 @@ Reference images are provided as supplementary guidance, not as the sole source 
 
 The benchmark is intentionally gameable in v1. The goal is not secrecy. The goal is to create a brutal, public, tunable target that forces frontier models to get meaningfully better at producing real slides instead of image-backed fakes.
 
-`AcidSlide` ships in three difficulty tiers:
+`Gloss` ships in three difficulty tiers:
 
 - **Level 1** (5 slides): basic constructs — placeholders, images, simple tables, master usage
 - **Level 2** (12 slides): intermediate — multilingual text, charts, grouping, overlap, z-order
@@ -34,10 +34,10 @@ The benchmark is intentionally gameable in v1. The goal is not secrecy. The goal
 
 Each tier is scored independently. A submission targets a specific tier and is graded only on that tier's slides. The leaderboard tracks per-tier scores. A **full-deck perfect pass** requires submitting for Level 3 and achieving `deck_passed == true` (see §10.1 for the precise definition) — this is the ceiling achievement, not a prerequisite for leaderboard presence.
 
-`AcidSlide` is available in two modes:
+`Gloss` is available in two modes:
 
 - **Local mode**: download the benchmark package, run the grader locally using Docker (Linux/macOS/Windows). Scores are self-reported and unverified.
-- **Hosted mode**: submit via API to the AcidSlide service, which grades in a controlled Linux Docker environment and publishes verified scores to the leaderboard. Only hosted-mode scores appear on the official leaderboard.
+- **Hosted mode**: submit via API to the Gloss service, which grades in a controlled Linux Docker environment and publishes verified scores to the leaderboard. Only hosted-mode scores appear on the official leaderboard.
 
 Submissions are graded only from the final submitted `.pptx`. No tool traces, reasoning logs, or intermediate artifacts affect the score.
 
@@ -83,7 +83,7 @@ The benchmark tests whether a model can:
 
 ### 2.4 External validity disclaimer
 
-AcidSlide v1 is a ceiling test using deliberately hostile torture slides, not a measure of general slide-generation utility. A model that fails AcidSlide may still be useful in production. A model that passes AcidSlide by overfitting to the public benchmark may still be poor at novel slide generation. Realistic multi-slide story decks are planned for v2.
+Gloss v1 is a ceiling test using deliberately hostile torture slides, not a measure of general slide-generation utility. A model that fails Gloss may still be useful in production. A model that passes Gloss by overfitting to the public benchmark may still be poor at novel slide generation. Realistic multi-slide story decks are planned for v2.
 
 ## 3. Locked v1 Decisions
 
@@ -279,7 +279,7 @@ A model may submit for any tier independently.
 The public package ships as a versioned directory with a stable layout.
 
 ```text
-acidslide-v1/
+gloss-v1/
   README.md
   SPEC.md
   VERSION
@@ -307,7 +307,7 @@ acidslide-v1/
         slides.json
     deck/
       gold/
-        acidslide-v1-gold.pptx
+        gloss-v1-gold.pptx
       exports/
         slide-01.png
         slide-02.png
@@ -352,7 +352,7 @@ acidslide-v1/
   grader/
     README.md
     pyproject.toml
-    acidslide/
+    gloss/
       cli.py
       runtime/
       export/
@@ -1288,11 +1288,11 @@ Automated mutators that alter gold deck structure and verify expected checklist 
 
 ### 25.1 Service overview
 
-The AcidSlide hosted service accepts `.pptx` submissions via API, grades them in a controlled environment, and publishes verified scores to a public leaderboard. Only hosted-mode scores appear on the official leaderboard.
+The Gloss hosted service accepts `.pptx` submissions via API, grades them in a controlled environment, and publishes verified scores to a public leaderboard. Only hosted-mode scores appear on the official leaderboard.
 
 ### 25.2 Submission API
 
-**Base URL**: `https://api.acidslide.dev/v1`
+**Base URL**: `https://api.gloss.dev/v1`
 
 #### POST /submissions
 
@@ -1304,7 +1304,7 @@ Request:
   "model_id": "string (required) — unique model identifier",
   "model_version": "string (required) — model version string",
   "tier": "integer (required) — 1, 2, or 3",
-  "benchmark_version": "string (required) — e.g. acidslide-v1.0.0",
+  "benchmark_version": "string (required) — e.g. gloss-v1.0.0",
   "prompt_variant": "string (optional) — canonical (default), paraphrase-a, paraphrase-b",
   "efficiency_metrics": {
     "generation_strategy": "string (required) — direct | code | hybrid | template-edit",
@@ -1384,7 +1384,7 @@ Include `webhook_url` in the POST /submissions request to receive a POST callbac
 
 Webhook delivery:
 - HTTP POST to `webhook_url` with JSON body matching the GET /submissions/{id} response
-- Header `X-AcidSlide-Signature`: HMAC-SHA256 hex digest of the raw request body using `webhook_secret` as key
+- Header `X-Gloss-Signature`: HMAC-SHA256 hex digest of the raw request body using `webhook_secret` as key
 - Retry on 5xx: 3 attempts with exponential backoff (1s, 4s, 16s)
 - Timeout: 10 seconds per attempt
 - **SSRF prevention**: `webhook_url` must use `https://` scheme only. URLs resolving to private IP ranges (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 127.0.0.0/8, ::1), link-local addresses, or non-routable addresses are rejected at registration time. DNS resolution is re-validated at delivery time to prevent DNS rebinding. **HTTP redirects are not followed** — if the webhook endpoint returns 3xx, the delivery is treated as failed.
@@ -1401,7 +1401,7 @@ Query parameters:
 ```json
 Response (summary view):
 {
-  "benchmark_version": "acidslide-v1.0.0",
+  "benchmark_version": "gloss-v1.0.0",
   "updated_at": "ISO 8601",
   "entries": [
     {
@@ -1479,7 +1479,7 @@ Each grading job runs in a fresh, ephemeral Docker container:
 Each grading run produces an immutable record containing:
 
 - submission_id
-- benchmark_version (e.g., `acidslide-v1.0.0`)
+- benchmark_version (e.g., `gloss-v1.0.0`)
 - grader_version (git hash)
 - libreoffice_version (exact build string)
 - docker_image_hash (canonical Docker image hash)
@@ -1559,7 +1559,7 @@ Pricing model:
 
 ### 26.1 Version scheme
 
-`acidslide-vMAJOR.MINOR.PATCH`
+`gloss-vMAJOR.MINOR.PATCH`
 
 - **MAJOR**: new slide set, new tiers, scoring model changes, breaking changes. Scores across major versions are not comparable.
 - **MINOR**: new prompt variants, documentation clarifications, new informational fields in reports. Scores are comparable within a major version. **MINOR versions MUST NOT add, remove, or re-weight checklist items or change pass/fail thresholds** — any such change requires a MAJOR version bump.
@@ -1590,7 +1590,7 @@ When a new major version is released:
 - **Proposing new slides or checklist items**: public GitHub issue + PR against the benchmark package
 - **Reporting false positives**: public GitHub issue with reproduction steps
 - **Challenging checklist items**: public discussion thread; resolution requires maintainer review
-- **Dispute resolution for hosted-mode scores**: email to disputes@acidslide.dev; reviewed within 10 business days; resolution published publicly (anonymized)
+- **Dispute resolution for hosted-mode scores**: email to disputes@gloss.dev; reviewed within 10 business days; resolution published publicly (anonymized)
 - **New version ratification**: major versions require public RFC period (30 days minimum)
 
 ## 27. Reporting Format
@@ -1599,7 +1599,7 @@ When a new major version is released:
 
 ```json
 {
-  "benchmark_version": "acidslide-v1.0.0",
+  "benchmark_version": "gloss-v1.0.0",
   "grader_version": "abc123",
   "environment_hash": "def456",
   "submission": "submission.pptx",
@@ -1732,7 +1732,7 @@ Deliverables: versioned benchmark release, grader CLI, benchmark README, submiss
 
 ## 29. Acceptance Criteria for v1
 
-`AcidSlide v1` is complete when all of the following are true:
+`Gloss v1` is complete when all of the following are true:
 
 - benchmark package is fully public and self-contained
 - all bundled fonts are libre/open-source with clear licensing

@@ -6,5 +6,5 @@
 *.mp4 binary
 
 # Preserve licensed text and prompt-significant whitespace verbatim.
-acidslide-v1/benchmark/fonts/licenses/** -whitespace
-acidslide-v1/benchmark/prompts/variants/** -whitespace
+gloss-v1/benchmark/fonts/licenses/** -whitespace
+gloss-v1/benchmark/prompts/variants/** -whitespace

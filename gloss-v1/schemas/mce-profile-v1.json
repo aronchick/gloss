@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "gloss-mce-profile-v1",
+  "markup_compatibility_namespace": "http://schemas.openxmlformats.org/markup-compatibility/2006",
+  "understood_namespaces": [
+    "http://schemas.openxmlformats.org/drawingml/2006/chart",
+    "http://schemas.openxmlformats.org/drawingml/2006/chartDrawing",
+    "http://schemas.openxmlformats.org/drawingml/2006/diagram",
+    "http://schemas.openxmlformats.org/drawingml/2006/main",
+    "http://schemas.openxmlformats.org/markup-compatibility/2006",
+    "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
+    "http://schemas.openxmlformats.org/presentationml/2006/main"
+  ],
+  "rules": {
+    "undeclared_prefix": "error",
+    "malformed_qname": "error",
+    "unsupported_must_understand": "error",
+    "alternate_content_without_branch": "error",
+    "unsupported_ignorable_element": "remove",
+    "unsupported_ignorable_attribute": "remove",
+    "process_content": "splice_children",
+    "preserve_elements": "record_then_remove",
+    "preserve_attributes": "record_then_remove",
+    "preserved_evidence": "original_part_bytes_with_xpath"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gloss.dev/schemas/control-handoff.schema.json",
+  "title": "Gloss Signed Control Authorization Envelope",
+  "description": "Reference and baseline controls require this single-use purpose-scoped maintainer authorization. The Ed25519 signature covers RFC 8785 canonical JSON with signature omitted.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "authorization_id",
+    "canonicalization",
+    "run_kind",
+    "purpose",
+    "artifact_identity",
+    "evidence_binding",
+    "scoring_manifest_sha256",
+    "scoring_cohort_id",
+    "profile_hashes",
+    "requested_tier",
+    "campaign_id",
+    "campaign_slot",
+    "submitter_id",
+    "model_key",
+    "model_revision_key",
+    "no_campaign_no_slot",
+    "duplicate_disposition",
+    "issuer_key_id",
+    "issued_at",
+    "expires_at",
+    "single_use_nonce",
+    "signature"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "authorization_id": { "$ref": "#/$defs/uuid" },
+    "canonicalization": { "const": "RFC8785-JCS" },
+    "run_kind": { "enum": ["reference_control", "baseline_control"] },
+    "purpose": { "enum": ["release_reference", "drift_canary", "descriptive_baseline"] },
+    "artifact_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "original_submission_sha256",
+        "mce_resolved_package_sha256",
+        "mce_resolved_package_size_bytes",
+        "canonical_package_hash_profile_sha256",
+        "canonical_package_hash_v1"
+      ],
+      "properties": {
+        "original_submission_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "mce_resolved_package_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "mce_resolved_package_size_bytes": { "type": "integer", "minimum": 1 },
+        "canonical_package_hash_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "canonical_package_hash_v1": { "$ref": "#/$defs/prefixed_sha256" }
+      }
+    },
+    "evidence_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "evidence_sha256"],
+      "properties": {
+        "evidence_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$" },
+        "evidence_sha256": { "$ref": "#/$defs/prefixed_sha256" }
+      }
+    },
+    "scoring_manifest_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "scoring_cohort_id": { "$ref": "#/$defs/prefixed_sha256" },
+    "profile_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "grader_source_tree_sha256",
+        "environment_attestation_sha256",
+        "mce_profile_sha256",
+        "xsd_bundle_sha256",
+        "schema_root_map_sha256",
+        "canonical_package_hash_profile_sha256",
+        "scored_assertion_inventory_sha256",
+        "checklist_bundle_sha256"
+      ],
+      "properties": {
+        "grader_source_tree_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "environment_attestation_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "mce_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "xsd_bundle_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "schema_root_map_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "canonical_package_hash_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "scored_assertion_inventory_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "checklist_bundle_sha256": { "$ref": "#/$defs/prefixed_sha256" }
+      }
+    },
+    "requested_tier": { "type": "integer", "enum": [1, 2, 3] },
+    "campaign_id": { "type": "null" },
+    "campaign_slot": { "type": "null" },
+    "submitter_id": { "type": "null" },
+    "model_key": { "type": "null" },
+    "model_revision_key": { "type": "null" },
+    "no_campaign_no_slot": { "const": true },
+    "duplicate_disposition": { "enum": ["allow_reference_only", "record_then_continue_diagnostic"] },
+    "issuer_key_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$" },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "single_use_nonce": { "type": "string", "minLength": 32, "maxLength": 256 },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "signature_base64"],
+      "properties": {
+        "algorithm": { "const": "Ed25519" },
+        "signature_base64": { "type": "string", "pattern": "^[A-Za-z0-9+/]{86}==$" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "run_kind": { "const": "reference_control" } }, "required": ["run_kind"] },
+      "then": {
+        "properties": {
+          "purpose": { "enum": ["release_reference", "drift_canary"] },
+          "duplicate_disposition": { "const": "allow_reference_only" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "run_kind": { "const": "baseline_control" } }, "required": ["run_kind"] },
+      "then": {
+        "properties": {
+          "purpose": { "const": "descriptive_baseline" },
+          "duplicate_disposition": { "const": "record_then_continue_diagnostic" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "prefixed_sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+  }
+}

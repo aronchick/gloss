@@ -1,0 +1,33 @@
+{
+  "disclosure": {
+    "attribution": "repository-owned path; no model attribution",
+    "comparison_scope": "reproducible workflow baselines, not model rankings",
+    "verification_label": "local artifact score; self-reported"
+  },
+  "grader_revision": "unavailable",
+  "provenance": {
+    "environment_attestation_sha256": "sha256:343be52916e17b64dedb57e4975641e07d87c328666ad17bca12d18befd3aae7",
+    "grader_source_tree_sha256": "sha256:e07dee11eaec82eed021fcea2d9048552b3052e4aaf426cf66012e2aa804b422",
+    "scoring_cohort_id": "sha256:783dff67c40867c1091d52c73fac8b4fb6c3164e3c62a6dbefb188d4d3cc8808",
+    "scoring_manifest_sha256": "sha256:25d211020e39ece5ca4a9f8a5b78356391bee6f70281f75948e1498fcddc4111"
+  },
+  "scoring_manifest": {
+    "bundle_hashes": {
+      "asset_manifest_sha256": "sha256:ef7cf071026f30bd5631231bb03918d541bb05766d980f4150374b4a5f392ea9",
+      "checklist_bundle_sha256": "sha256:fd316e148ac05b5b2d06244e2f03dc4d79824b906f0604a5b5f6960d4e674287",
+      "font_manifest_sha256": "sha256:a770fe1f2a127a532da82dd8f9063c43dcc51523b91575c676db4fac80bc7c55",
+      "grader_source_tree_sha256": "sha256:e07dee11eaec82eed021fcea2d9048552b3052e4aaf426cf66012e2aa804b422",
+      "prompt_bundle_sha256": "sha256:39370107180d15c2de613597eb7cc34328381def2b0a1fd809cd2c220ecf344d",
+      "schema_bundle_sha256": "sha256:f124053d1e8d9ec2ec7ed3ba9a96048a1203575501e931707d66d675513b67ac",
+      "scored_assertion_inventory_sha256": "sha256:91b4d45850c68676698ab361281531542569d37b43fdd905909de0e2f83f8ed3"
+    },
+    "disclosure": {
+      "attribution": "repository-owned path; no model attribution",
+      "comparison_scope": "reproducible workflow baselines, not model rankings",
+      "verification_label": "local artifact score; self-reported"
+    },
+    "environment_attestation_sha256": "sha256:343be52916e17b64dedb57e4975641e07d87c328666ad17bca12d18befd3aae7",
+    "image_digest": "sha256:5697ac422f8d31d1689fe0f56059b90d7b08ae15f701a6424b6c1664b1811cd4",
+    "schema_version": "1.0"
+  }
+}

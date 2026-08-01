@@ -3,7 +3,7 @@
   "evidence_id": "gloss-technical-preview-2026-07-22",
   "product_name": "Gloss",
   "product_retronym": "Generative Layout & OOXML Scoring System",
-  "protocol_id": "acidslide-v1",
+  "protocol_id": "gloss-v1",
   "status": "technical_preview",
   "status_label": "Technical preview — not an official leaderboard",
   "claim": "The public candidate harness can execute 280 positive controls and detect 280 generated single-fault mutations. Independent assertion evidence and release approval remain incomplete.",
@@ -93,20 +93,20 @@
   },
   "sources": [
     {
-      "path": "acidslide-v1/benchmark/fixtures/mutations/execution-report-v1.json",
-      "sha256": "9e53e25f7f18c9db8043c7dac096aa1b937d75876865a990140874b8750e074a"
+      "path": "gloss-v1/benchmark/fixtures/mutations/execution-report-v1.json",
+      "sha256": "ab1899765433ecb42100a81aef55f44ddfd6975bb772d962e339604aea01fd8f"
     },
     {
-      "path": "acidslide-v1/benchmark/fixtures/mutations/fixture-index-v1.json",
-      "sha256": "eb495d31e25596e5eab170e3ab1742110516f90fe3619d5a2b68ab041606b672"
+      "path": "gloss-v1/benchmark/fixtures/mutations/fixture-index-v1.json",
+      "sha256": "7298a4d0d77a81e7d9cf274af794208af98efcdb5da2fa38630ccfffa0f247a1"
     },
     {
-      "path": "acidslide-v1/benchmark/fixtures/mutations/mutation-expectations-v1.json",
-      "sha256": "e829ef3bc0d9b017559258817de35562095b2a07d47dc41f4830dea5f0cd3f75"
+      "path": "gloss-v1/benchmark/fixtures/mutations/mutation-expectations-v1.json",
+      "sha256": "13668be67d4ba042166122a08704695db647b309047530c1fb3d0946edbadf06"
     },
     {
-      "path": "acidslide-v1/benchmark/requirements/prompt-requirements.json",
-      "sha256": "1f21fab0b81052e67e9eb60d29fe22ab2c9af9c90653bcae4c9f368ba31f7f88"
+      "path": "gloss-v1/benchmark/requirements/prompt-requirements.json",
+      "sha256": "58195dc3db2489a60a79786e27ab2392ad2f617f11d4ca619247389ac9124367"
     }
   ]
 }

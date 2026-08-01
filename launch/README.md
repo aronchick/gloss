@@ -5,7 +5,7 @@ The launch page and film are static, repository-owned, and derived from committe
 ## Evidence
 
 `site/evidence/preview-v1.json` records candidate-harness counts.
-`acidslide-v1/benchmark/comparative-v1/summary.json` records the frozen
+`gloss-v1/benchmark/comparative-v1/summary.json` records the frozen
 generation-path scores used by the central chart and film. Its public copy at
 `site/evidence/comparative-v1-summary.json` must remain semantically identical.
 

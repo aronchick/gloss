@@ -33,4 +33,4 @@ Square, silent launch film on a clean light background. It introduces Gloss, the
 
 Attach `site/media/gloss-launch.mp4`. If a platform strips video metadata or
 recompresses the file, keep the public post copy unchanged; the source evidence
-remains `acidslide-v1/benchmark/comparative-v1/summary.json`.
+remains `gloss-v1/benchmark/comparative-v1/summary.json`.

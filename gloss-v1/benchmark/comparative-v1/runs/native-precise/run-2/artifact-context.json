@@ -1,0 +1,67 @@
+{
+  "asset_manifest_sha256": "sha256:ef7cf071026f30bd5631231bb03918d541bb05766d980f4150374b4a5f392ea9",
+  "assistance_class": "human-assisted",
+  "attestation": {
+    "attribution": "repository-owned path; no model attribution",
+    "generator_kind": "deterministic_repository_baseline",
+    "generator_sha256": "sha256:a4b9a1bfc282ff9d64a6416e0df3f6219646b595e81f8b8037f5a967fdd582cb"
+  },
+  "attested_metrics": {
+    "external_resources_used": false,
+    "human_intervention": false,
+    "post_processing": false
+  },
+  "campaign_id": null,
+  "campaign_slot": null,
+  "canonical_package_hash_profile_sha256": "sha256:3f6985c6498c2aeb4822898250d83f51a6279d4c664b5a500021ebbb95943b85",
+  "canonical_package_hash_v1": "sha256:736e32e97c6842ce6e6612e5ce42719cdc4f7a9edcd17cc0672260b5e29e48d3",
+  "checklist_bundle_sha256": "sha256:fd316e148ac05b5b2d06244e2f03dc4d79824b906f0604a5b5f6960d4e674287",
+  "environment_attestation": {
+    "container_image_digest": "sha256:5697ac422f8d31d1689fe0f56059b90d7b08ae15f701a6424b6c1664b1811cd4",
+    "local_cohort": true,
+    "render_runtime": {
+      "dependencies": {
+        "Pillow": "12.3.0",
+        "lxml": "6.1.1",
+        "numpy": "2.4.4",
+        "scikit-image": "0.26.0"
+      },
+      "export_height": 1080,
+      "export_width": 1920,
+      "grader_version": "1.0.0a1",
+      "libreoffice": "LibreOffice 7.3.7.2 30(Build:2)",
+      "locale": "LC_CTYPE=en_US.UTF-8;LC_NUMERIC=C;LC_TIME=C;LC_COLLATE=C;LC_MONETARY=C;LC_MESSAGES=C;LC_PAPER=C;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=C;LC_IDENTIFICATION=C",
+      "machine": "x86_64",
+      "platform": "Linux-6.12.76-linuxkit-x86_64-with-glibc2.35",
+      "python": "3.12.11",
+      "python_implementation": "CPython",
+      "timezone": "UTC"
+    },
+    "schema_version": "1.0"
+  },
+  "font_manifest_sha256": "sha256:a770fe1f2a127a532da82dd8f9063c43dcc51523b91575c676db4fac80bc7c55",
+  "generation_profile_sha256": "sha256:89c52949a2e1a9519831bb9b8236a2c9ba72576c5a3e8f226f336a174712289d",
+  "generation_seed": "2207",
+  "gold_canonical_package_hash_v1": "sha256:ab74e5b4985945b09b7a55d31d7b03cff204a84250342ef1b9f923ec8497e2b9",
+  "gold_duplicate_check": "clear",
+  "gold_mce_resolved_package_sha256": "sha256:165ff5a5cf61b3d910d94cae2876a2d88f92cb725491752cddbdd66a6990da1b",
+  "gold_submission_sha256": "sha256:165ff5a5cf61b3d910d94cae2876a2d88f92cb725491752cddbdd66a6990da1b",
+  "grader_package_sha256": "sha256:e07dee11eaec82eed021fcea2d9048552b3052e4aaf426cf66012e2aa804b422",
+  "grading_mode": "local",
+  "mce_profile_sha256": "sha256:99928e2122004986dcd2cb4ce898a95045d8cde558d3d0084b0ce19fa712aa33",
+  "mce_resolved_package_sha256": null,
+  "model_key": null,
+  "model_revision_key": null,
+  "oci_image_digest": "sha256:5697ac422f8d31d1689fe0f56059b90d7b08ae15f701a6424b6c1664b1811cd4",
+  "prompt_bundle_sha256": "sha256:39370107180d15c2de613597eb7cc34328381def2b0a1fd809cd2c220ecf344d",
+  "prompt_variant": "canonical",
+  "robustness_group_id": null,
+  "run_kind": "submission",
+  "schema_bundle_sha256": "sha256:f124053d1e8d9ec2ec7ed3ba9a96048a1203575501e931707d66d675513b67ac",
+  "schema_root_map_sha256": "sha256:af07a14656a958046f8ac42347de3fea77536ec793aff537586a1a817abae2e3",
+  "scored_assertion_inventory_sha256": "sha256:91b4d45850c68676698ab361281531542569d37b43fdd905909de0e2f83f8ed3",
+  "submission_id": null,
+  "submission_sha256": "sha256:34d4ffe47bfbe3269e576404c9fa628545ca1ffa0d92f8e97c1415978aedae29",
+  "submitter_id": null,
+  "targeted_tier": 3
+}
