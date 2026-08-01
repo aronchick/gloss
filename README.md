@@ -2,15 +2,16 @@
 
 **A deliberately complicated presentation that AI struggles to make natively.**
 
-Gloss is an open, 20-slide challenge for presentation-generating AI. The goal is
-not to make screenshots that happen to look like slides. The goal is to make a
-real presentation: editable text, native charts and tables, working masters and
-layouts, live fields, connected shapes, correct reading order, and intentional
-grouping all the way down.
+Gloss is the presentation itself: an open, deliberately complicated 20-slide
+challenge for presentation-generating AI. The goal is not to make screenshots
+that happen to look like slides. The goal is to make a real presentation:
+editable text, native charts and tables, working masters and layouts, live
+fields, connected shapes, correct reading order, and intentional grouping all
+the way down.
 
-The deck is the challenge. Gloss also includes a small checker that makes native
-object changes easy to see, plus deeper measurement tools for people developing
-generators and evaluation systems.
+Gloss is not primarily a measurement tool. The deck is the challenge. A small
+checker and deeper measurement tools are bundled with it to make native quality
+easy to inspect, compare, and improve.
 
 The name expands to **Generative Layout & Object Structure Standard**: a reminder
 that layout is visible, while object structure is what keeps a presentation real.
@@ -265,13 +266,14 @@ possible today. Google Slides and Keynote coverage should use the same public,
 artifact-first philosophy as their reliable inspection surfaces mature. Help us
 define those adapters in [Issues](https://github.com/aronchick/gloss/issues).
 
-## Measurement is the support layer
+## The tools make measurement easy
 
-The simple check answers the first question: *what native objects changed?* The
-bundled advanced grader can also inspect rendered pixels, typography, geometry,
-charts, tables, layouts, masters, text semantics, relationships, and package
-safety. Those tools exist to make this hard presentation easier to understand and
-improve; they are not the product’s identity.
+The presentation is Gloss. The tools are its measuring instruments. The simple
+check answers the first question: *what native objects changed?* The bundled
+advanced grader can also inspect rendered pixels, typography, geometry, charts,
+tables, layouts, masters, text semantics, relationships, and package safety.
+They make the hard presentation easier to understand and improve; they are not
+the product’s identity.
 
 The current candidate suite contains 280 schema-valid checks and generated
 operator fixtures. That evidence proves configured checker behavior, not an

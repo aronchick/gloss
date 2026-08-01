@@ -17,9 +17,9 @@ exactly two findings. Then give the exact prompt, reference images, and approved
 assets to your presentation-generating AI and see whether it can make the real
 thing.
 
-The deck is the challenge. The checker and deeper measurement tools are the
-support layer. PowerPoint is first; Google Slides and Keynote are part of the
-mission.
+The deck is the challenge. The presentation is Gloss. It is not primarily a
+measurement tool. The checker and deeper tools simply make native quality easy
+to measure. PowerPoint is first; Google Slides and Keynote are part of the mission.
 
 https://gloss.tools
 https://github.com/aronchick/gloss

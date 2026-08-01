@@ -3,9 +3,9 @@
   "authors": [],
   "pairwise_similarity_diagnostics": [],
   "prompt_hashes": {
-    "canonical": "sha256:ba8e51e1becddfd40e2f2a02c5161a1caa09481255fcb9ff586f6b32ff866245",
-    "paraphrase-a": "sha256:c00f3398a053de3f9ac2b9a34697a8cb4eebefaf90ee1e73bc878ba24cd58081",
-    "paraphrase-b": "sha256:e37739606bb0dd690de9ac19cd76c51d2a95f3310d46c2c4e1c4b18d00474ac4"
+    "canonical": "sha256:285a00376bd518bef4125df2166023099fe8bc3aefa7def2828ce7484897268e",
+    "paraphrase-a": "sha256:5762ef4e1caaaa84204c9e7b6bb0c505a1a7aea99bbe035b9683e5a8efc0e9ca",
+    "paraphrase-b": "sha256:621455b4003dd2da7207bfb1349ce1f94f772f8ff24ed30e70a88d6a21cea7c4"
   },
   "record_id": "gloss-prompt-validation-slide-20",
   "round_id": null,
@@ -18,9 +18,9 @@
 
 - Prompt contract status: complete
 - Canonical/paraphrase hard-constraint parity: pass
-- Canonical SHA-256: `ba8e51e1becddfd40e2f2a02c5161a1caa09481255fcb9ff586f6b32ff866245`
-- Paraphrase A SHA-256: `c00f3398a053de3f9ac2b9a34697a8cb4eebefaf90ee1e73bc878ba24cd58081`
-- Paraphrase B SHA-256: `e37739606bb0dd690de9ac19cd76c51d2a95f3310d46c2c4e1c4b18d00474ac4`
+- Canonical SHA-256: `285a00376bd518bef4125df2166023099fe8bc3aefa7def2828ce7484897268e`
+- Paraphrase A SHA-256: `5762ef4e1caaaa84204c9e7b6bb0c505a1a7aea99bbe035b9683e5a8efc0e9ca`
+- Paraphrase B SHA-256: `621455b4003dd2da7207bfb1349ce1f94f772f8ff24ed30e70a88d6a21cea7c4`
 - Independent-author convergence: not run
 - Required blinded author count: 3
 - Mandatory assertion pass status: pending for all 3 implementations

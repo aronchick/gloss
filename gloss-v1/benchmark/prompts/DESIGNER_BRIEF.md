@@ -737,92 +737,104 @@ This slide's purpose is to verify that the master/layout is being used correctly
 
 ---
 
-## Slides 13-20 (Level 3) — Brief Specifications
+## Slides 13-20 (Level 3) — Exact Specifications
 
 ### SLIDE 13: Composite Stress
 Combines: native chart (pie chart, 6 segments), native table (4×3), one approved image, Arabic text annotation, repeated layout elements, dense callout annotations.
 
-## Explicit v1 constraints
+## Exact v1 constraints
 
 - Use the **Blank with Footer** layout and title the slide `Composite Stress` in Carlito 36pt Bold at (1.5cm, 0.5cm).
 - Add one native pie chart at (1.5cm, 3cm), size 10cm × 8cm. Use six labeled values: `Structure 28`, `Text 22`, `Visual 18`, `Assets 14`, `Fields 10`, `Other 8`; show percentage labels and no legend.
 - Add one native 4-row × 3-column table at (13cm, 3cm), size 9cm × 7cm. Header: `Check`, `Status`, `Weight`. Rows: `Schema | Pass | 3`, `Rendering | Pass | 2`, `Assets | Review | 1`.
 - Insert `cityscape.png` at (23cm, 3cm), size 8cm × 6cm, cropping 15% from the left. Use only asset ID `cityscape` from the manifest.
-- Add the Arabic annotation `الهيكل والمحتوى والعرض في اختبار واحد` in Noto Sans Arabic 14pt with native RTL direction.
-- Add three dense rounded callouts labeled `NATIVE CHART`, `NATIVE TABLE`, and `APPROVED ASSET`; connect each to its target and keep all data labels visible.
+- Add the Arabic annotation `الهيكل والمحتوى والعرض في اختبار واحد` at (12.5cm, 11cm), size 19cm × 1.3cm, in Noto Sans Arabic 14pt with native RTL direction and right alignment.
+- Add three rounded callouts at y=12.5cm: `NATIVE CHART` at (2.5cm, 12.5cm), size 7cm × 1.8cm, teal; `NATIVE TABLE` at (13cm, 12.5cm), size 7cm × 1.8cm, coral; and `APPROVED ASSET` at (23.5cm, 12.5cm), size 7.5cm × 1.8cm, gold. Center each label in Liberation Sans 12pt Bold.
+- Connect the chart, table, and image to their callouts with 1pt vertical lines at x=6cm from y=11cm to 12.5cm, x=16.5cm from y=10cm to 12.5cm, and x=27cm from y=9cm to 12.5cm. Keep all chart data labels visible.
 
 ### SLIDE 14: RTL-Heavy Comparison
 Two-column layout with heavy Arabic text on left (5+ paragraphs with mixed Arabic/English), English summary on right. Bidirectional text within single paragraphs (e.g., "The الذكاء الاصطناعي revolution"). Mirrored alignment: Arabic column is right-aligned, English column is left-aligned.
 
-## Explicit v1 constraints
+## Exact v1 constraints
 
 - Use the **Two-Column** layout with title `RTL Systems Review`.
-- The left column contains at least five separate Arabic paragraphs in Noto Sans Arabic 14pt with native RTL paragraph direction. Include these exact phrases: `مراجعة الأنظمة الموزعة`, `دقة العرض`, `سلامة البنية`, `The الذكاء الاصطناعي revolution`, and `الإصدار Gloss v1`.
-- The right column contains five English summary paragraphs in Liberation Sans 14pt, beginning with `A structural benchmark must preserve meaning and direction.`
-- Right-align the Arabic column and left-align the English column. Mirror their inner padding and keep a 1pt teal divider centered between them.
+- Put the Arabic column at (1.5cm, 3.2cm), size 14cm × 12cm, in Noto Sans Arabic 14pt with native RTL paragraph direction and right alignment. Use six paragraphs exactly: `مراجعة الأنظمة الموزعة`; `دقة العرض هي أساس المقارنة بين الأنظمة.`; `سلامة البنية تحافظ على المعنى والتفاعل.`; `The الذكاء الاصطناعي revolution تتطلب نصاً ثنائي الاتجاه.`; `الإصدار Gloss v1 يختبر التوافق.`; and `يجب الحفاظ على علامات الترقيم وترتيب Unicode.`
+- Put the English column at (18.5cm, 3.2cm), size 13.5cm × 12cm, in Liberation Sans 14pt with left alignment. Use five paragraphs exactly: `A structural benchmark must preserve meaning and direction.`; `Rendering alone cannot prove native editability.`; `Bidirectional runs must retain their Unicode order.`; `Mirrored padding makes the comparison deliberate.`; and `The benchmark records both artifact and visual fidelity.`
+- Keep a 1pt teal divider at x=16.9cm from y=3cm through y=15.5cm. Mirror the columns’ inner padding around that divider.
 - Mixed Arabic/English runs must preserve Unicode character order and visible punctuation without converting text to outlines.
 
 ### SLIDE 15: Rotated Text
 Multiple text boxes at different rotation angles: 0°, 45°, 90°, 135°, 270°. Supporting shapes aligned to the rotated text. Tests exact anchor points for rotated elements.
 
-## Explicit v1 constraints
+## Exact v1 constraints
 
 - Use the **Blank with Footer** layout with title `Rotation Atlas`.
 - Create five text boxes labeled exactly `Baseline 0°`, `Diagonal 45°`, `Vertical 90°`, `Reverse 135°`, and `Vertical 270°`.
-- Apply rotations of 0°, 45°, 90°, 135°, and 270° respectively. Each text box is 5cm × 1.5cm, uses Liberation Sans 16pt Bold, and has a matching 6cm × 2cm supporting rectangle sharing its center and rotation.
-- Distribute the five pairs evenly from x=2cm through x=28cm on a common y=8cm anchor line. Keep text editable and store rotations in native OOXML transforms.
+- Draw a 0.5pt teal alignment rule from (1.5cm, 8cm) to (32cm, 8cm), behind every object.
+- Apply rotations of 0°, 45°, 90°, 135°, and 270° respectively. Each text box is 5cm × 1.5cm at y=7.25cm and uses centered Liberation Sans 16pt Bold. Set their x positions to 1.5cm, 7.5cm, 13.5cm, 19.5cm, and 25.5cm.
+- Place a matching 6cm × 2cm supporting rectangle behind each text box at y=7cm and x=1cm, 7cm, 13cm, 19cm, and 25cm. Use navy, teal, coral, gold, and navy fills respectively at 70% opacity. Each rectangle shares its text box’s center and rotation. Keep text editable and store rotations in native transforms.
 
 ### SLIDE 16: Intentional Off-Canvas Bleed
-Objects deliberately extending beyond the slide canvas edges — a large circle at (-3cm, -2cm) partly visible, a rectangle extending 5cm past the right edge. These are intentional design choices, not errors.
+Objects deliberately extending beyond the slide canvas edges — a large circle at (-3cm, -2cm) partly visible, a rectangle extending 7cm past the right edge. These are intentional design choices, not errors.
 
-## Explicit v1 constraints
+## Exact v1 constraints
 
 - Use the **Blank with Footer** layout with title `Beyond the Frame`.
-- Place a 10cm diameter coral circle at (-3cm, -2cm), a 12cm × 6cm teal rectangle at (28.867cm, 6cm) so it extends 5cm beyond the right edge, and a 16cm × 3cm gold strip at (8cm, -1cm).
-- Add on-canvas labels `INTENTIONAL BLEED` and `Negative coordinates are part of the composition.`
+- Place a 10cm diameter coral circle at (-3cm, -2cm), a 12cm × 6cm teal rectangle at (28.867cm, 6cm) so it extends 7cm beyond the right edge, and a 16cm × 3cm gold strip at (8cm, -1cm).
+- Put `INTENTIONAL BLEED` at (9cm, 6.5cm), size 15cm × 1.8cm, in centered Carlito 28pt Bold. Put `Negative coordinates are part of the composition.` at (7.5cm, 9cm), size 18cm × 1.4cm, in centered Liberation Sans 18pt.
 - Preserve negative and over-bound coordinates in OOXML. Do not replace the composition with a screenshot, hide content under opaque shapes, or move the objects fully on-canvas.
 
 ### SLIDE 17: Deep Grouping
 3 levels of nested groups. Inner groups contain exactly 3 shapes each. Middle groups contain exactly 2 inner groups. Outer group wraps everything. Z-order must be exact within each nesting level.
 
-## Explicit v1 constraints
+## Exact v1 constraints
 
 - Use the **Blank with Footer** layout with title `Nested Systems`.
-- Build one outer group containing three middle groups. Each middle group contains two inner groups; each inner group contains three leaf shapes (18 leaf shapes total).
+- Build one outer group at (3cm, 3cm), size 27cm × 13cm, containing three middle groups: `INPUT` at (3cm, 3cm), `PROCESS` at (13.219cm, 3cm), and `OUTPUT` at (23.438cm, 3cm). Each middle group is 6.562cm × 13cm and contains two inner groups.
+- Place the six 6.562cm × 4.333cm inner groups at (3cm, 3cm), (3cm, 11.667cm), (13.219cm, 3cm), (13.219cm, 11.667cm), (23.438cm, 3cm), and (23.438cm, 11.667cm), labeled `A1`, `A2`, `B1`, `B2`, `C1`, and `C2` respectively.
+- Each inner group contains exactly three leaf objects: a 45%-opaque colored circle at the bottom of z-order, an 85%-opaque rounded panel above it, and a centered Carlito 18pt Bold editable label on top. Use navy for A1/B1/C1 and teal for A2/B2/C2. Keep the middle-group label (`INPUT`, `PROCESS`, or `OUTPUT`) inside each panel.
 - Use native group objects at all three levels. Label the middle groups `INPUT`, `PROCESS`, and `OUTPUT`; label inner groups `A1`, `A2`, `B1`, `B2`, `C1`, and `C2`.
-- Within every inner group, z-order is circle below rounded rectangle below label. The full outer group's bounding box has top-left position (3cm, 3cm) and size 27cm × 13cm.
+- Within every inner group, z-order is circle below rounded rectangle below label. Preserve the exact outer, middle, and inner group transforms instead of flattening the composition.
 
 ### SLIDE 18: Multi-Column Editorial
 3-column magazine-style layout with mixed English/Japanese text. Each column has a header image (from assets), body text, and a pull quote. Pattern fill on the background of one column.
 
-## Explicit v1 constraints
+## Exact v1 constraints
 
 - Use the **Blank with Footer** layout with title `Three Cities / 三つの都市`.
-- Build three equal 9.5cm-wide editorial columns with 0.9cm gutters. Each column contains a 9.5cm × 3.5cm approved header image, a heading, body copy, and a pull quote.
+- Build three 9.5cm-wide columns at x=1.784cm, 12.184cm, and 22.584cm, leaving 0.9cm gutters. In every column, put a 9.5cm × 3.5cm header image at y=3cm, a 9.5cm × 1.1cm heading at y=6.9cm, 9.5cm × 4.6cm body copy at y=8.2cm, and a 9.5cm × 2.5cm centered pull quote at y=13.2cm.
 - Column images, left to right: `cityscape.png`, `texture-pattern.png`, `cityscape.png`. Center the crop of each image and do not use unlisted media.
-- Headings: `Systems`, `システム`, `Shared Futures`. Include the exact Japanese line `生成されたスライドは構造と意味を保持します。`
-- Apply the approved `texture-pattern.png` as a tiled background only to the center column at 20% opacity. Use 0.9cm gutters consistently.
+- Use this exact content: left heading `Systems`, body `Cities expose the systems beneath daily life: transport, energy, data, and the people who connect them.`, quote `“Structure makes the invisible legible.”`; center heading `システム`, body `生成されたスライドは構造と意味を保持します。\n編集可能な構造が共有された理解を支えます。`, quote `“構造は意味を運びます。”`; right heading `Shared Futures`, body `A common visual language lets teams compare evidence, preserve intent, and build toward shared futures.`, quote `“Consistency is a form of trust.”`
+- Apply `texture-pattern.png` as a tiled background only to the center column at (12.184cm, 2.5cm), size 9.5cm × 14.5cm, at 20% opacity. Set each pull quote on a navy rectangle at 80% opacity.
 
 ### SLIDE 19: Repetition and Consistency
 Visually identical to the design system — every element must match the master's font sizes, colors, spacing, and line weights exactly. Tests deck-wide consistency. Internal hyperlinks to Slides 1 and 5 (not external URLs).
 
-## Explicit v1 constraints
+## Exact v1 constraints
 
 - Use the **Content Slide** layout with title `Design System Audit`.
-- Show five samples labeled `Typography`, `Palette`, `Spacing`, `Line Weight`, and `Navigation`. Each sample must use the deck-level tokens exactly: Carlito 36pt, Liberation Sans 18pt, navy `#1B2A4A`, coral `#E8634A`, teal `#2AACB8`, and a 0.5pt teal rule.
-- Create two native internal hyperlinks: `Return to Cover` targets Slide 1 and `Meet the Team` targets Slide 5. Do not use external URLs.
+- Put the five 5.5cm × 0.9cm sample labels at x=1.8cm and y=3cm, 5.7cm, 8.4cm, 11.1cm, and 13.8cm: `Typography`, `Palette`, `Spacing`, `Line Weight`, and `Navigation`.
+- For Typography, put `Carlito 36` at (8.5cm, 2.7cm), size 9cm × 1.52cm, in Carlito 36pt, and `Liberation Sans 18` at (20.5cm, 2.9cm), size 10cm × 1.1cm, in Liberation Sans 18pt.
+- For Palette, place 5cm × 1.4cm navy `#1B2A4A`, coral `#E8634A`, and teal `#2AACB8` swatches at x=8.5cm, 14.5cm, and 20.5cm, all at y=5.4cm.
+- For Spacing, place two navy 4cm × 1.2cm blocks at (8.5cm, 8.2cm) and (13cm, 8.2cm), leaving exactly 0.5cm between them, and put `0.5cm token` at (18cm, 8.2cm), size 8cm × 1.2cm.
+- For Line Weight, draw a 0.5pt teal rule from (8.5cm, 11.5cm) to (25.5cm, 11.5cm) and put `0.5pt teal rule` at (26.5cm, 10.95cm), size 5cm × 1.1cm.
+- For Navigation, create two native internal hyperlinks: `Return to Cover` at (8.5cm, 13.5cm), size 9cm × 1.3cm, targets Slide 1; `Meet the Team` at (20.5cm, 13.5cm), size 9cm × 1.3cm, targets Slide 5. Do not use external URLs.
 - Footer line, company name, accent bar, and slide number remain inherited from the master/layout; do not duplicate them as slide-local shapes.
 
 ### SLIDE 20: Final Torture Slide
 Everything combined: chart (line chart), table (3×6), approved image (cropped), Arabic + Japanese text, rotated text box at 45°, overlapping semi-transparent shapes, nested group, master-inherited footer, gradient fill, bullet list, slide number field — all on one slide.
 
-## Explicit v1 constraints
+## Exact v1 constraints
 
 - Use the **Blank with Footer** layout with title `Gloss Synthesis`.
-- Add one native line chart with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.
-- Add one native 3-row × 6-column table. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.
-- Insert `hero-abstract.png` with a 20% left crop. Add Arabic `اختبار شامل` with native RTL direction and Japanese `総合テスト` in Noto Sans CJK JP.
-- Include a 45° text box labeled `ROTATED`, three overlapping semi-transparent shapes inside a two-level group, a navy-to-teal gradient, a three-item bullet list, a live slide-number field, and the inherited master footer.
+- Add one native line chart at (1.5cm, 3cm), size 10.5cm × 5.5cm, with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.
+- Add one native 3-row × 6-column table at (13cm, 3cm), size 19cm × 4.5cm. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.
+- Insert `hero-abstract.png` at (13cm, 8cm), size 6.5cm × 4.2cm, with a 20% left crop. Put Arabic `اختبار شامل` at (20.5cm, 7.9cm), size 5cm × 1.44cm, in Noto Sans Arabic 18pt with native RTL direction. Put Japanese `総合テスト` at (20.5cm, 9.2cm), size 5cm × 1.1cm, in Noto Sans CJK JP 18pt.
+- Put the editable text `ROTATED` at (1.6cm, 10.1cm), size 5cm × 1.3cm, in Liberation Sans 16pt Bold with a native 45° rotation.
+- Build a two-level outer group at (6cm, 9.8cm), size 6.5cm × 3.6cm. Its inner group is at (6cm, 9.8cm), size 6.5cm × 3.1cm, and contains three 65%-opaque shapes in z-order: a 3cm navy circle at (6cm, 9.8cm), a 3.5cm × 2.6cm coral rounded rectangle at (7.6cm, 10.3cm), and a 3cm teal circle at (9.5cm, 9.8cm). Put `2-LEVEL GROUP` at (6.9cm, 12.6cm), size 5.2cm × 0.8cm, inside the outer group.
+- Add a navy-to-teal native gradient rectangle at (25cm, 11.2cm), size 7cm × 2.2cm, with `NATIVE GRADIENT` centered at (25.3cm, 11.6cm), size 6.4cm × 1.4cm.
+- Add a native three-item bullet list at (1.5cm, 14cm), size 12.5cm × 2.5cm, with exactly `Native structure retained`, `Multilingual meaning preserved`, and `Rendered fidelity verified`.
+- Add `Live slide: ` followed by a live slide-number field at (22.5cm, 14.3cm), size 14.5cm × 1.5cm. Keep the inherited master footer and slide-number field as well.
 
 ---
 
