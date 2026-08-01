@@ -1,10 +1,11 @@
 # Gloss
 
-**Gloss — Generative Layout & OOXML Scoring System** is an open tool for testing
-whether a generated PowerPoint is a real, editable artifact—not merely a convincing
-screenshot.
+**Gloss — Generative Layout & OOXML Scoring System** is an open, deliberately
+difficult PowerPoint deck that AI struggles to render and build as a real, editable
+artifact. Its accompanying measurement tools make the failure modes easy to inspect,
+reproduce, and improve.
 
-Gloss grades both sides of a deck:
+The tools inspect both sides of a deck:
 
 - **Looks right:** rendered pixels, typography, geometry, and visual consistency.
 - **Built right:** native shapes, charts, tables, layouts, masters, text semantics,
@@ -41,9 +42,9 @@ transactions**.
 
 ## Product and suite
 
-**Gloss** is the tool and public project. It owns the scoring model, evidence
-surface, comparative results, hosted verification direction, and collaboration
-workflow.
+**Gloss** is the public challenge deck and collaboration project. Its companion
+measurement tools make failure modes, evidence, and comparative results easy to
+inspect and reproduce.
 
 **Gloss v1 is the first ACID-style PowerPoint conformance suite bundled with
 Gloss.** It supplies the current prompt corpus, hostile deck cases, assertions, gold
@@ -51,7 +52,7 @@ fixture, mutation tests, and protocol adapter:
 
 | Name | Role |
 | --- | --- |
-| **Gloss** | The tool and public project |
+| **Gloss** | The deliberately difficult presentation deck and public project |
 | **ACID tests** | The open conformance-testing philosophy |
 | **Gloss v1** | One bundled benchmark protocol and corpus |
 
