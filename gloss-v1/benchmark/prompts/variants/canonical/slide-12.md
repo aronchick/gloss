@@ -39,4 +39,4 @@ The natural-language requirements below are the primary directive. Use the refer
 
 ---
 
-## Slides 13-20 (Level 3) — Brief Specifications
+## Slides 13-20 (Level 3) — Exact Specifications

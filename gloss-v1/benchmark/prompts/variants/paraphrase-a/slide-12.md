@@ -39,4 +39,4 @@ The natural-language requirements that follow are the primary directive. Treat t
 
 ---
 
-## Slides 13-20 (Level 3) — Brief Specifications
+## Slides 13-20 (Level 3) — Exact Specifications

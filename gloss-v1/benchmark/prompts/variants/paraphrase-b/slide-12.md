@@ -39,4 +39,4 @@ The primary directive is the following set of natural-language requirements. Con
 
 ---
 
-## Slides 13-20 (Level 3) — Brief Specifications
+## Slides 13-20 (Level 3) — Exact Specifications

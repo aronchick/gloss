@@ -16,9 +16,9 @@
     "derivation": "inside_file = total candidate checks minus visual_ssim checks"
   },
   "prompt_requirements": {
-    "total": 381,
+    "total": 393,
     "deck": 67,
-    "slide": 314,
+    "slide": 326,
     "freeze_status": "candidate"
   },
   "verification_methods": [
@@ -106,7 +106,7 @@
     },
     {
       "path": "gloss-v1/benchmark/requirements/prompt-requirements.json",
-      "sha256": "ef238f041afe52e913a66694a335b3959064c23ec1100c703365a314dbd7b37e"
+      "sha256": "0120abfbcea99d4e6dc98461fecc30073cd2b0a9668554591e1eeafebb52361e"
     }
   ]
 }

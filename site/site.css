@@ -193,7 +193,8 @@ h2 { margin: 0; font-size: clamp(3.5rem, 6.3vw, 7rem); font-weight: 780; line-he
   .site-header { min-height: 4.5rem; }
   .site-header nav > a:not(.github-link) { display: none; }
   .hero { min-height: auto; padding-top: 4rem; }
-  h1 { font-size: clamp(4rem, 19vw, 6.5rem); }
+  .hero-copy { min-width: 0; }
+  h1 { max-width: 100%; font-size: clamp(3.4rem, 17vw, 5.8rem); }
   .editor { width: calc(100% - .5rem); box-shadow: 8px 8px 0 var(--ink); }
   .editor-body { grid-template-columns: 1fr; min-height: 0; }
   .editor-canvas { padding: 1rem; }

@@ -93,63 +93,63 @@
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-12.md",
-      "sha256": "8c8fbe1a7ca1f5f4af7eaab91884cb28165531b11d41246e58caa9fed6659dbe"
+      "sha256": "f3f58d4dcefac89e165b5280f1a77628acd801f7d2b7b8d0dece0e2fec81b336"
     },
     {
       "source_id": "slide-13-prompt",
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-13.md",
-      "sha256": "10a757d7989017806ebeb0c38c420982354a889e47af266e048c37c9fb20399d"
+      "sha256": "382821283a568690e30b6ffa51916a7ad61229593e7f58391488519629991278"
     },
     {
       "source_id": "slide-14-prompt",
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-14.md",
-      "sha256": "539c484fcf6c333a2d94ac808415702f1161d394f290b9b18dafff4a6b5616e5"
+      "sha256": "30d72528b5c55c9875dbc27f083dd96c100227895659f492fb662bb9b0e03c16"
     },
     {
       "source_id": "slide-15-prompt",
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-15.md",
-      "sha256": "e114750708bb759b186732535c60e893d34eb3dac4b420930218e1536292686b"
+      "sha256": "46bb8770a220a60a0bb4b9a8a1262463ef635b06680fe4c507b87d7e1ab3631f"
     },
     {
       "source_id": "slide-16-prompt",
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-16.md",
-      "sha256": "fd9ca84995214fab8981ee570120b943184312c1a4d217a011d1e2966b425193"
+      "sha256": "55ca0d63d13be5ca86db79eaafb04e56ccc82994a4018dc2b1bf250ab44d5f4c"
     },
     {
       "source_id": "slide-17-prompt",
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-17.md",
-      "sha256": "d70b572f05883784463f07e5a7d6fcdba76b222f8ce0f8b102df2eea6f2cd659"
+      "sha256": "4616dafa273ff38e505a39387f0fa32618e549593d6209e5a8d6571c4a30f63e"
     },
     {
       "source_id": "slide-18-prompt",
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-18.md",
-      "sha256": "3a466f16ec13919f6009bb9c938b96b7b18b4950127856d38669e4a9584f5d95"
+      "sha256": "5f55790f0cc830703216a5031ea6cc5040efbbb45b9207c7e83ed67f620edf60"
     },
     {
       "source_id": "slide-19-prompt",
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-19.md",
-      "sha256": "ed99ade6772a7ff66bc99437abda1951ccf8ee0763cd9d6013fe80b783b46c9d"
+      "sha256": "418adf962d94466a9c9a0e2257ef6f17b83fee6964b017dd3d9ae757b39a6fce"
     },
     {
       "source_id": "slide-20-prompt",
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-20.md",
-      "sha256": "ba8e51e1becddfd40e2f2a02c5161a1caa09481255fcb9ff586f6b32ff866245"
+      "sha256": "285a00376bd518bef4125df2166023099fe8bc3aefa7def2828ce7484897268e"
     }
   ],
   "independent_reviews": [],
@@ -13731,17 +13731,17 @@
       "requirement_id": "slide-13.prompt-r006",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Add the Arabic annotation `الهيكل والمحتوى والعرض في اختبار واحد` in Noto Sans Arabic 14pt with native RTL direction.",
+      "statement": "Add the Arabic annotation `الهيكل والمحتوى والعرض في اختبار واحد` at (12.5cm, 11cm), size 19cm × 1.3cm, in Noto Sans Arabic 14pt with native RTL direction and right alignment.",
       "provenance": {
         "source_id": "slide-13-prompt",
         "source_type": "prompt",
         "line_start": 13,
         "line_end": 13,
-        "excerpt": "- Add the Arabic annotation `الهيكل والمحتوى والعرض في اختبار واحد` in Noto Sans Arabic 14pt with native RTL direction.",
-        "excerpt_sha256": "4b7f0a0ae1b3c153286c3789de94301a0e0dcf7ea570d0a519e377f0b3c9adfb"
+        "excerpt": "- Add the Arabic annotation `الهيكل والمحتوى والعرض في اختبار واحد` at (12.5cm, 11cm), size 19cm × 1.3cm, in Noto Sans Arabic 14pt with native RTL direction and right alignment.",
+        "excerpt_sha256": "587f04d4839a3e59bf576853e3f9c4efb4ca3145252ea1231347ef199d4bf6ad"
       },
       "severity": "critical",
-      "source_of_truth": "ooxml",
+      "source_of_truth": "both",
       "matching_policy": {
         "mode": "exact",
         "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
@@ -13756,7 +13756,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Add the Arabic annotation `الهيكل والمحتوى والعرض في اختبار واحد` in Noto Sans Arabic 14pt with native RTL direction.",
+        "expected_clause": "Add the Arabic annotation `الهيكل والمحتوى والعرض في اختبار واحد` at (12.5cm, 11cm), size 19cm × 1.3cm, in Noto Sans Arabic 14pt with native RTL direction and right alignment.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -13771,17 +13771,17 @@
       "requirement_id": "slide-13.prompt-r007",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Add three dense rounded callouts labeled `NATIVE CHART`, `NATIVE TABLE`, and `APPROVED ASSET`; connect each to its target and keep all data labels visible.",
+      "statement": "Add three rounded callouts at y=12.5cm: `NATIVE CHART` at (2.5cm, 12.5cm), size 7cm × 1.8cm, teal; `NATIVE TABLE` at (13cm, 12.5cm), size 7cm × 1.8cm, coral; and `APPROVED ASSET` at (23.5cm, 12.5cm), size 7.5cm × 1.8cm, gold. Center each label in Liberation Sans 12pt Bold.",
       "provenance": {
         "source_id": "slide-13-prompt",
         "source_type": "prompt",
         "line_start": 14,
         "line_end": 14,
-        "excerpt": "- Add three dense rounded callouts labeled `NATIVE CHART`, `NATIVE TABLE`, and `APPROVED ASSET`; connect each to its target and keep all data labels visible.",
-        "excerpt_sha256": "0daa740941a6263f850b06fa96fd6ebd9dad4a2e68f6df5f53a46773fffcbdcf"
+        "excerpt": "- Add three rounded callouts at y=12.5cm: `NATIVE CHART` at (2.5cm, 12.5cm), size 7cm × 1.8cm, teal; `NATIVE TABLE` at (13cm, 12.5cm), size 7cm × 1.8cm, coral; and `APPROVED ASSET` at (23.5cm, 12.5cm), size 7.5cm × 1.8cm, gold. Center each label in Liberation Sans 12pt Bold.",
+        "excerpt_sha256": "7fa1db4f1967f08a239b089951fbb0e129de3e5ec6145f4ab206a733a8cd824a"
       },
       "severity": "critical",
-      "source_of_truth": "ooxml",
+      "source_of_truth": "both",
       "matching_policy": {
         "mode": "exact",
         "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
@@ -13796,7 +13796,47 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Add three dense rounded callouts labeled `NATIVE CHART`, `NATIVE TABLE`, and `APPROVED ASSET`; connect each to its target and keep all data labels visible.",
+        "expected_clause": "Add three rounded callouts at y=12.5cm: `NATIVE CHART` at (2.5cm, 12.5cm), size 7cm × 1.8cm, teal; `NATIVE TABLE` at (13cm, 12.5cm), size 7cm × 1.8cm, coral; and `APPROVED ASSET` at (23.5cm, 12.5cm), size 7.5cm × 1.8cm, gold. Center each label in Liberation Sans 12pt Bold.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 13
+    },
+    {
+      "requirement_id": "slide-13.prompt-r008",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Connect the chart, table, and image to their callouts with 1pt vertical lines at x=6cm from y=11cm to 12.5cm, x=16.5cm from y=10cm to 12.5cm, and x=27cm from y=9cm to 12.5cm. Keep all chart data labels visible.",
+      "provenance": {
+        "source_id": "slide-13-prompt",
+        "source_type": "prompt",
+        "line_start": 15,
+        "line_end": 15,
+        "excerpt": "- Connect the chart, table, and image to their callouts with 1pt vertical lines at x=6cm from y=11cm to 12.5cm, x=16.5cm from y=10cm to 12.5cm, and x=27cm from y=9cm to 12.5cm. Keep all chart data labels visible.",
+        "excerpt_sha256": "882ac03a4687a7470858e49ad321da3e309fe004f1c1b46812f041e4a474303c"
+      },
+      "severity": "major",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Connect the chart, table, and image to their callouts with 1pt vertical lines at x=6cm from y=11cm to 12.5cm, x=16.5cm from y=10cm to 12.5cm, and x=27cm from y=9cm to 12.5cm. Keep all chart data labels visible.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -13891,17 +13931,17 @@
       "requirement_id": "slide-14.prompt-r003",
       "scope": "slide",
       "mandatory": true,
-      "statement": "The left column contains at least five separate Arabic paragraphs in Noto Sans Arabic 14pt with native RTL paragraph direction. Include these exact phrases: `مراجعة الأنظمة الموزعة`, `دقة العرض`, `سلامة البنية`, `The الذكاء الاصطناعي revolution`, and `الإصدار Gloss v1`.",
+      "statement": "Put the Arabic column at (1.5cm, 3.2cm), size 14cm × 12cm, in Noto Sans Arabic 14pt with native RTL paragraph direction and right alignment. Use six paragraphs exactly: `مراجعة الأنظمة الموزعة`; `دقة العرض هي أساس المقارنة بين الأنظمة.`; `سلامة البنية تحافظ على المعنى والتفاعل.`; `The الذكاء الاصطناعي revolution تتطلب نصاً ثنائي الاتجاه.`; `الإصدار Gloss v1 يختبر التوافق.`; and `يجب الحفاظ على علامات الترقيم وترتيب Unicode.`",
       "provenance": {
         "source_id": "slide-14-prompt",
         "source_type": "prompt",
         "line_start": 10,
         "line_end": 10,
-        "excerpt": "- The left column contains at least five separate Arabic paragraphs in Noto Sans Arabic 14pt with native RTL paragraph direction. Include these exact phrases: `مراجعة الأنظمة الموزعة`, `دقة العرض`, `سلامة البنية`, `The الذكاء الاصطناعي revolution`, and `الإصدار Gloss v1`.",
-        "excerpt_sha256": "d873c28a02af9227037b527ce7dd5a849a998326c5bfc4d0835a54a86f25f82b"
+        "excerpt": "- Put the Arabic column at (1.5cm, 3.2cm), size 14cm × 12cm, in Noto Sans Arabic 14pt with native RTL paragraph direction and right alignment. Use six paragraphs exactly: `مراجعة الأنظمة الموزعة`; `دقة العرض هي أساس المقارنة بين الأنظمة.`; `سلامة البنية تحافظ على المعنى والتفاعل.`; `The الذكاء الاصطناعي revolution تتطلب نصاً ثنائي الاتجاه.`; `الإصدار Gloss v1 يختبر التوافق.`; and `يجب الحفاظ على علامات الترقيم وترتيب Unicode.`",
+        "excerpt_sha256": "82a435b22cd06b20eb51f8d1418d89489b3ef4c56e63640e1d9cf3374fac6188"
       },
       "severity": "critical",
-      "source_of_truth": "ooxml",
+      "source_of_truth": "both",
       "matching_policy": {
         "mode": "exact",
         "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
@@ -13916,7 +13956,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "The left column contains at least five separate Arabic paragraphs in Noto Sans Arabic 14pt with native RTL paragraph direction. Include these exact phrases: `مراجعة الأنظمة الموزعة`, `دقة العرض`, `سلامة البنية`, `The الذكاء الاصطناعي revolution`, and `الإصدار Gloss v1`.",
+        "expected_clause": "Put the Arabic column at (1.5cm, 3.2cm), size 14cm × 12cm, in Noto Sans Arabic 14pt with native RTL paragraph direction and right alignment. Use six paragraphs exactly: `مراجعة الأنظمة الموزعة`; `دقة العرض هي أساس المقارنة بين الأنظمة.`; `سلامة البنية تحافظ على المعنى والتفاعل.`; `The الذكاء الاصطناعي revolution تتطلب نصاً ثنائي الاتجاه.`; `الإصدار Gloss v1 يختبر التوافق.`; and `يجب الحفاظ على علامات الترقيم وترتيب Unicode.`",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -13931,16 +13971,16 @@
       "requirement_id": "slide-14.prompt-r004",
       "scope": "slide",
       "mandatory": true,
-      "statement": "The right column contains five English summary paragraphs in Liberation Sans 14pt, beginning with `A structural benchmark must preserve meaning and direction.`",
+      "statement": "Put the English column at (18.5cm, 3.2cm), size 13.5cm × 12cm, in Liberation Sans 14pt with left alignment. Use five paragraphs exactly: `A structural benchmark must preserve meaning and direction.`; `Rendering alone cannot prove native editability.`; `Bidirectional runs must retain their Unicode order.`; `Mirrored padding makes the comparison deliberate.`; and `The benchmark records both artifact and visual fidelity.`",
       "provenance": {
         "source_id": "slide-14-prompt",
         "source_type": "prompt",
         "line_start": 11,
         "line_end": 11,
-        "excerpt": "- The right column contains five English summary paragraphs in Liberation Sans 14pt, beginning with `A structural benchmark must preserve meaning and direction.`",
-        "excerpt_sha256": "f0defa03b28072a7ff591559fa7b742458c416c4bff4b3a2c78af01a206b20f7"
+        "excerpt": "- Put the English column at (18.5cm, 3.2cm), size 13.5cm × 12cm, in Liberation Sans 14pt with left alignment. Use five paragraphs exactly: `A structural benchmark must preserve meaning and direction.`; `Rendering alone cannot prove native editability.`; `Bidirectional runs must retain their Unicode order.`; `Mirrored padding makes the comparison deliberate.`; and `The benchmark records both artifact and visual fidelity.`",
+        "excerpt_sha256": "d6aa64c7063aab9b22f564558bd9a2715b64a80562bfe65452281fd013ebf4a6"
       },
-      "severity": "major",
+      "severity": "critical",
       "source_of_truth": "both",
       "matching_policy": {
         "mode": "exact",
@@ -13956,7 +13996,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "The right column contains five English summary paragraphs in Liberation Sans 14pt, beginning with `A structural benchmark must preserve meaning and direction.`",
+        "expected_clause": "Put the English column at (18.5cm, 3.2cm), size 13.5cm × 12cm, in Liberation Sans 14pt with left alignment. Use five paragraphs exactly: `A structural benchmark must preserve meaning and direction.`; `Rendering alone cannot prove native editability.`; `Bidirectional runs must retain their Unicode order.`; `Mirrored padding makes the comparison deliberate.`; and `The benchmark records both artifact and visual fidelity.`",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -13971,14 +14011,14 @@
       "requirement_id": "slide-14.prompt-r005",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Right-align the Arabic column and left-align the English column. Mirror their inner padding and keep a 1pt teal divider centered between them.",
+      "statement": "Keep a 1pt teal divider at x=16.9cm from y=3cm through y=15.5cm. Mirror the columns’ inner padding around that divider.",
       "provenance": {
         "source_id": "slide-14-prompt",
         "source_type": "prompt",
         "line_start": 12,
         "line_end": 12,
-        "excerpt": "- Right-align the Arabic column and left-align the English column. Mirror their inner padding and keep a 1pt teal divider centered between them.",
-        "excerpt_sha256": "2fa0228291762e155c047278f02bed9dbc2ea7bb190d9665387ab79844fe09ef"
+        "excerpt": "- Keep a 1pt teal divider at x=16.9cm from y=3cm through y=15.5cm. Mirror the columns’ inner padding around that divider.",
+        "excerpt_sha256": "24d1e60e87b8603241d9f48138698607e7a569722a7805d59b0058d5cb9fdb43"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -13996,7 +14036,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Right-align the Arabic column and left-align the English column. Mirror their inner padding and keep a 1pt teal divider centered between them.",
+        "expected_clause": "Keep a 1pt teal divider at x=16.9cm from y=3cm through y=15.5cm. Mirror the columns’ inner padding around that divider.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14171,14 +14211,14 @@
       "requirement_id": "slide-15.prompt-r004",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Apply rotations of 0°, 45°, 90°, 135°, and 270° respectively. Each text box is 5cm × 1.5cm, uses Liberation Sans 16pt Bold, and has a matching 6cm × 2cm supporting rectangle sharing its center and rotation.",
+      "statement": "Draw a 0.5pt teal alignment rule from (1.5cm, 8cm) to (32cm, 8cm), behind every object.",
       "provenance": {
         "source_id": "slide-15-prompt",
         "source_type": "prompt",
         "line_start": 11,
         "line_end": 11,
-        "excerpt": "- Apply rotations of 0°, 45°, 90°, 135°, and 270° respectively. Each text box is 5cm × 1.5cm, uses Liberation Sans 16pt Bold, and has a matching 6cm × 2cm supporting rectangle sharing its center and rotation.",
-        "excerpt_sha256": "8c351f043e728e61a5b6e1ca6f2b9e2c7bdea01f1d3c95bc91c5acfc0b7ba45c"
+        "excerpt": "- Draw a 0.5pt teal alignment rule from (1.5cm, 8cm) to (32cm, 8cm), behind every object.",
+        "excerpt_sha256": "9ec274674fa359a438a228bfa9098707efa15f97c51722fbbac1b93dfef79898"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -14196,7 +14236,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Apply rotations of 0°, 45°, 90°, 135°, and 270° respectively. Each text box is 5cm × 1.5cm, uses Liberation Sans 16pt Bold, and has a matching 6cm × 2cm supporting rectangle sharing its center and rotation.",
+        "expected_clause": "Draw a 0.5pt teal alignment rule from (1.5cm, 8cm) to (32cm, 8cm), behind every object.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14211,17 +14251,17 @@
       "requirement_id": "slide-15.prompt-r005",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Distribute the five pairs evenly from x=2cm through x=28cm on a common y=8cm anchor line. Keep text editable and store rotations in native OOXML transforms.",
+      "statement": "Apply rotations of 0°, 45°, 90°, 135°, and 270° respectively. Each text box is 5cm × 1.5cm at y=7.25cm and uses centered Liberation Sans 16pt Bold. Set their x positions to 1.5cm, 7.5cm, 13.5cm, 19.5cm, and 25.5cm.",
       "provenance": {
         "source_id": "slide-15-prompt",
         "source_type": "prompt",
         "line_start": 12,
         "line_end": 12,
-        "excerpt": "- Distribute the five pairs evenly from x=2cm through x=28cm on a common y=8cm anchor line. Keep text editable and store rotations in native OOXML transforms.",
-        "excerpt_sha256": "bfa0c1dcf6d4eec2c08549577121643bd69e0a5f5e13f867a28c57dceb246291"
+        "excerpt": "- Apply rotations of 0°, 45°, 90°, 135°, and 270° respectively. Each text box is 5cm × 1.5cm at y=7.25cm and uses centered Liberation Sans 16pt Bold. Set their x positions to 1.5cm, 7.5cm, 13.5cm, 19.5cm, and 25.5cm.",
+        "excerpt_sha256": "8cbf30345c94c0a0abb5e87d71591edf3efc39ec5b83a145218ffa720f6973ac"
       },
-      "severity": "critical",
-      "source_of_truth": "ooxml",
+      "severity": "major",
+      "source_of_truth": "both",
       "matching_policy": {
         "mode": "exact",
         "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
@@ -14236,7 +14276,47 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Distribute the five pairs evenly from x=2cm through x=28cm on a common y=8cm anchor line. Keep text editable and store rotations in native OOXML transforms.",
+        "expected_clause": "Apply rotations of 0°, 45°, 90°, 135°, and 270° respectively. Each text box is 5cm × 1.5cm at y=7.25cm and uses centered Liberation Sans 16pt Bold. Set their x positions to 1.5cm, 7.5cm, 13.5cm, 19.5cm, and 25.5cm.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 15
+    },
+    {
+      "requirement_id": "slide-15.prompt-r006",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Place a matching 6cm × 2cm supporting rectangle behind each text box at y=7cm and x=1cm, 7cm, 13cm, 19cm, and 25cm. Use navy, teal, coral, gold, and navy fills respectively at 70% opacity. Each rectangle shares its text box’s center and rotation. Keep text editable and store rotations in native transforms.",
+      "provenance": {
+        "source_id": "slide-15-prompt",
+        "source_type": "prompt",
+        "line_start": 13,
+        "line_end": 13,
+        "excerpt": "- Place a matching 6cm × 2cm supporting rectangle behind each text box at y=7cm and x=1cm, 7cm, 13cm, 19cm, and 25cm. Use navy, teal, coral, gold, and navy fills respectively at 70% opacity. Each rectangle shares its text box’s center and rotation. Keep text editable and store rotations in native transforms.",
+        "excerpt_sha256": "87567923944a8e1bf758341f52142bdf791dd3d1fbfb12cfafc8676a068851aa"
+      },
+      "severity": "critical",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Place a matching 6cm × 2cm supporting rectangle behind each text box at y=7cm and x=1cm, 7cm, 13cm, 19cm, and 25cm. Use navy, teal, coral, gold, and navy fills respectively at 70% opacity. Each rectangle shares its text box’s center and rotation. Keep text editable and store rotations in native transforms.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14251,14 +14331,14 @@
       "requirement_id": "slide-16.prompt-r001",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Objects deliberately extending beyond the slide canvas edges — a large circle at (-3cm, -2cm) partly visible, a rectangle extending 5cm past the right edge. These are intentional design choices, not errors.",
+      "statement": "Objects deliberately extending beyond the slide canvas edges — a large circle at (-3cm, -2cm) partly visible, a rectangle extending 7cm past the right edge. These are intentional design choices, not errors.",
       "provenance": {
         "source_id": "slide-16-prompt",
         "source_type": "prompt",
         "line_start": 5,
         "line_end": 5,
-        "excerpt": "Objects deliberately extending beyond the slide canvas edges — a large circle at (-3cm, -2cm) partly visible, a rectangle extending 5cm past the right edge. These are intentional design choices, not errors.",
-        "excerpt_sha256": "846b1614e19e85f7cbde947569edc0d970e519b719e26da710ed4611d3f9e3f2"
+        "excerpt": "Objects deliberately extending beyond the slide canvas edges — a large circle at (-3cm, -2cm) partly visible, a rectangle extending 7cm past the right edge. These are intentional design choices, not errors.",
+        "excerpt_sha256": "f73a2c478e35f26d91bdddd75f1ca0163338b8cf09db08ffcc0c3eb5cc2e3d2b"
       },
       "severity": "major",
       "source_of_truth": "ooxml",
@@ -14276,7 +14356,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Objects deliberately extending beyond the slide canvas edges — a large circle at (-3cm, -2cm) partly visible, a rectangle extending 5cm past the right edge. These are intentional design choices, not errors.",
+        "expected_clause": "Objects deliberately extending beyond the slide canvas edges — a large circle at (-3cm, -2cm) partly visible, a rectangle extending 7cm past the right edge. These are intentional design choices, not errors.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14331,14 +14411,14 @@
       "requirement_id": "slide-16.prompt-r003",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Place a 10cm diameter coral circle at (-3cm, -2cm), a 12cm × 6cm teal rectangle at (28.867cm, 6cm) so it extends 5cm beyond the right edge, and a 16cm × 3cm gold strip at (8cm, -1cm).",
+      "statement": "Place a 10cm diameter coral circle at (-3cm, -2cm), a 12cm × 6cm teal rectangle at (28.867cm, 6cm) so it extends 7cm beyond the right edge, and a 16cm × 3cm gold strip at (8cm, -1cm).",
       "provenance": {
         "source_id": "slide-16-prompt",
         "source_type": "prompt",
         "line_start": 10,
         "line_end": 10,
-        "excerpt": "- Place a 10cm diameter coral circle at (-3cm, -2cm), a 12cm × 6cm teal rectangle at (28.867cm, 6cm) so it extends 5cm beyond the right edge, and a 16cm × 3cm gold strip at (8cm, -1cm).",
-        "excerpt_sha256": "5b12cc6fdc332d494db00d9dbdec7c5d4caae72b7da62536a8e37e325595335d"
+        "excerpt": "- Place a 10cm diameter coral circle at (-3cm, -2cm), a 12cm × 6cm teal rectangle at (28.867cm, 6cm) so it extends 7cm beyond the right edge, and a 16cm × 3cm gold strip at (8cm, -1cm).",
+        "excerpt_sha256": "1a625a140c20705d213d9d51fc355d87e4694786c02e7e8a866ecf4e420e750a"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -14356,7 +14436,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Place a 10cm diameter coral circle at (-3cm, -2cm), a 12cm × 6cm teal rectangle at (28.867cm, 6cm) so it extends 5cm beyond the right edge, and a 16cm × 3cm gold strip at (8cm, -1cm).",
+        "expected_clause": "Place a 10cm diameter coral circle at (-3cm, -2cm), a 12cm × 6cm teal rectangle at (28.867cm, 6cm) so it extends 7cm beyond the right edge, and a 16cm × 3cm gold strip at (8cm, -1cm).",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14371,14 +14451,14 @@
       "requirement_id": "slide-16.prompt-r004",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Add on-canvas labels `INTENTIONAL BLEED` and `Negative coordinates are part of the composition.`",
+      "statement": "Put `INTENTIONAL BLEED` at (9cm, 6.5cm), size 15cm × 1.8cm, in centered Carlito 28pt Bold. Put `Negative coordinates are part of the composition.` at (7.5cm, 9cm), size 18cm × 1.4cm, in centered Liberation Sans 18pt.",
       "provenance": {
         "source_id": "slide-16-prompt",
         "source_type": "prompt",
         "line_start": 11,
         "line_end": 11,
-        "excerpt": "- Add on-canvas labels `INTENTIONAL BLEED` and `Negative coordinates are part of the composition.`",
-        "excerpt_sha256": "a720b6de38bf66147c2d83a7f6d6176b17ff657c94faf380bb0a9f52968cb6c2"
+        "excerpt": "- Put `INTENTIONAL BLEED` at (9cm, 6.5cm), size 15cm × 1.8cm, in centered Carlito 28pt Bold. Put `Negative coordinates are part of the composition.` at (7.5cm, 9cm), size 18cm × 1.4cm, in centered Liberation Sans 18pt.",
+        "excerpt_sha256": "c46b144bac0e885edabb34510f2e5e179445db9d7105adfec56640bc735583de"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -14396,7 +14476,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Add on-canvas labels `INTENTIONAL BLEED` and `Negative coordinates are part of the composition.`",
+        "expected_clause": "Put `INTENTIONAL BLEED` at (9cm, 6.5cm), size 15cm × 1.8cm, in centered Carlito 28pt Bold. Put `Negative coordinates are part of the composition.` at (7.5cm, 9cm), size 18cm × 1.4cm, in centered Liberation Sans 18pt.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14531,20 +14611,20 @@
       "requirement_id": "slide-17.prompt-r003",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Build one outer group containing three middle groups. Each middle group contains two inner groups; each inner group contains three leaf shapes (18 leaf shapes total).",
+      "statement": "Build one outer group at (3cm, 3cm), size 27cm × 13cm, containing three middle groups: `INPUT` at (3cm, 3cm), `PROCESS` at (13.219cm, 3cm), and `OUTPUT` at (23.438cm, 3cm). Each middle group is 6.562cm × 13cm and contains two inner groups.",
       "provenance": {
         "source_id": "slide-17-prompt",
         "source_type": "prompt",
         "line_start": 10,
         "line_end": 10,
-        "excerpt": "- Build one outer group containing three middle groups. Each middle group contains two inner groups; each inner group contains three leaf shapes (18 leaf shapes total).",
-        "excerpt_sha256": "eccf67fc2187317245a8c6dd36f3cf22044075a2cabac4de66f4a5c1ac7d4ad5"
+        "excerpt": "- Build one outer group at (3cm, 3cm), size 27cm × 13cm, containing three middle groups: `INPUT` at (3cm, 3cm), `PROCESS` at (13.219cm, 3cm), and `OUTPUT` at (23.438cm, 3cm). Each middle group is 6.562cm × 13cm and contains two inner groups.",
+        "excerpt_sha256": "05816ded7b6e2a121a4566a3f537c457bd1f5bcd23407161efa20d72b29d0f5b"
       },
       "severity": "major",
-      "source_of_truth": "ooxml",
+      "source_of_truth": "both",
       "matching_policy": {
-        "mode": "structural_semantic",
-        "normalization": "Match every named visible and structural property; do not infer from gold."
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
       },
       "equivalence_policy": {
         "allowed": [
@@ -14556,7 +14636,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Build one outer group containing three middle groups. Each middle group contains two inner groups; each inner group contains three leaf shapes (18 leaf shapes total).",
+        "expected_clause": "Build one outer group at (3cm, 3cm), size 27cm × 13cm, containing three middle groups: `INPUT` at (3cm, 3cm), `PROCESS` at (13.219cm, 3cm), and `OUTPUT` at (23.438cm, 3cm). Each middle group is 6.562cm × 13cm and contains two inner groups.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14571,12 +14651,92 @@
       "requirement_id": "slide-17.prompt-r004",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Use native group objects at all three levels. Label the middle groups `INPUT`, `PROCESS`, and `OUTPUT`; label inner groups `A1`, `A2`, `B1`, `B2`, `C1`, and `C2`.",
+      "statement": "Place the six 6.562cm × 4.333cm inner groups at (3cm, 3cm), (3cm, 11.667cm), (13.219cm, 3cm), (13.219cm, 11.667cm), (23.438cm, 3cm), and (23.438cm, 11.667cm), labeled `A1`, `A2`, `B1`, `B2`, `C1`, and `C2` respectively.",
       "provenance": {
         "source_id": "slide-17-prompt",
         "source_type": "prompt",
         "line_start": 11,
         "line_end": 11,
+        "excerpt": "- Place the six 6.562cm × 4.333cm inner groups at (3cm, 3cm), (3cm, 11.667cm), (13.219cm, 3cm), (13.219cm, 11.667cm), (23.438cm, 3cm), and (23.438cm, 11.667cm), labeled `A1`, `A2`, `B1`, `B2`, `C1`, and `C2` respectively.",
+        "excerpt_sha256": "c9692372cde2c6e21428b2298954b0df6ee28f224bf33e0eb57fcca3a957450d"
+      },
+      "severity": "major",
+      "source_of_truth": "ooxml",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Place the six 6.562cm × 4.333cm inner groups at (3cm, 3cm), (3cm, 11.667cm), (13.219cm, 3cm), (13.219cm, 11.667cm), (23.438cm, 3cm), and (23.438cm, 11.667cm), labeled `A1`, `A2`, `B1`, `B2`, `C1`, and `C2` respectively.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 17
+    },
+    {
+      "requirement_id": "slide-17.prompt-r005",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Each inner group contains exactly three leaf objects: a 45%-opaque colored circle at the bottom of z-order, an 85%-opaque rounded panel above it, and a centered Carlito 18pt Bold editable label on top. Use navy for A1/B1/C1 and teal for A2/B2/C2. Keep the middle-group label (`INPUT`, `PROCESS`, or `OUTPUT`) inside each panel.",
+      "provenance": {
+        "source_id": "slide-17-prompt",
+        "source_type": "prompt",
+        "line_start": 12,
+        "line_end": 12,
+        "excerpt": "- Each inner group contains exactly three leaf objects: a 45%-opaque colored circle at the bottom of z-order, an 85%-opaque rounded panel above it, and a centered Carlito 18pt Bold editable label on top. Use navy for A1/B1/C1 and teal for A2/B2/C2. Keep the middle-group label (`INPUT`, `PROCESS`, or `OUTPUT`) inside each panel.",
+        "excerpt_sha256": "eaeb48522bbfe8abc680ca52c6bfb63738f554bbcb4a3a86e1dfcd8480a551ac"
+      },
+      "severity": "major",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Each inner group contains exactly three leaf objects: a 45%-opaque colored circle at the bottom of z-order, an 85%-opaque rounded panel above it, and a centered Carlito 18pt Bold editable label on top. Use navy for A1/B1/C1 and teal for A2/B2/C2. Keep the middle-group label (`INPUT`, `PROCESS`, or `OUTPUT`) inside each panel.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 17
+    },
+    {
+      "requirement_id": "slide-17.prompt-r006",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Use native group objects at all three levels. Label the middle groups `INPUT`, `PROCESS`, and `OUTPUT`; label inner groups `A1`, `A2`, `B1`, `B2`, `C1`, and `C2`.",
+      "provenance": {
+        "source_id": "slide-17-prompt",
+        "source_type": "prompt",
+        "line_start": 13,
+        "line_end": 13,
         "excerpt": "- Use native group objects at all three levels. Label the middle groups `INPUT`, `PROCESS`, and `OUTPUT`; label inner groups `A1`, `A2`, `B1`, `B2`, `C1`, and `C2`.",
         "excerpt_sha256": "9088578163b0705d3801651fe6eb5796c0a19ad92a3075529c3aeff75a2a7e2e"
       },
@@ -14608,17 +14768,17 @@
       "slide": 17
     },
     {
-      "requirement_id": "slide-17.prompt-r005",
+      "requirement_id": "slide-17.prompt-r007",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Within every inner group, z-order is circle below rounded rectangle below label. The full outer group's bounding box has top-left position (3cm, 3cm) and size 27cm × 13cm.",
+      "statement": "Within every inner group, z-order is circle below rounded rectangle below label. Preserve the exact outer, middle, and inner group transforms instead of flattening the composition.",
       "provenance": {
         "source_id": "slide-17-prompt",
         "source_type": "prompt",
-        "line_start": 12,
-        "line_end": 12,
-        "excerpt": "- Within every inner group, z-order is circle below rounded rectangle below label. The full outer group's bounding box has top-left position (3cm, 3cm) and size 27cm × 13cm.",
-        "excerpt_sha256": "f4e0405d122f3cc8a6450bcfac2a1d04ae34bb13d1824a2396a6107928ab03df"
+        "line_start": 14,
+        "line_end": 14,
+        "excerpt": "- Within every inner group, z-order is circle below rounded rectangle below label. Preserve the exact outer, middle, and inner group transforms instead of flattening the composition.",
+        "excerpt_sha256": "7c13acca6e266fc06f97e04740ea033c64ebe730058abcd3e37e563a698ccc74"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -14636,7 +14796,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Within every inner group, z-order is circle below rounded rectangle below label. The full outer group's bounding box has top-left position (3cm, 3cm) and size 27cm × 13cm.",
+        "expected_clause": "Within every inner group, z-order is circle below rounded rectangle below label. Preserve the exact outer, middle, and inner group transforms instead of flattening the composition.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14731,14 +14891,14 @@
       "requirement_id": "slide-18.prompt-r003",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Build three equal 9.5cm-wide editorial columns with 0.9cm gutters. Each column contains a 9.5cm × 3.5cm approved header image, a heading, body copy, and a pull quote.",
+      "statement": "Build three 9.5cm-wide columns at x=1.784cm, 12.184cm, and 22.584cm, leaving 0.9cm gutters. In every column, put a 9.5cm × 3.5cm header image at y=3cm, a 9.5cm × 1.1cm heading at y=6.9cm, 9.5cm × 4.6cm body copy at y=8.2cm, and a 9.5cm × 2.5cm centered pull quote at y=13.2cm.",
       "provenance": {
         "source_id": "slide-18-prompt",
         "source_type": "prompt",
         "line_start": 10,
         "line_end": 10,
-        "excerpt": "- Build three equal 9.5cm-wide editorial columns with 0.9cm gutters. Each column contains a 9.5cm × 3.5cm approved header image, a heading, body copy, and a pull quote.",
-        "excerpt_sha256": "40467f10cf56ca1e41dad9b55fb98bac84556dbfe5e9c88f3a513f9024032e02"
+        "excerpt": "- Build three 9.5cm-wide columns at x=1.784cm, 12.184cm, and 22.584cm, leaving 0.9cm gutters. In every column, put a 9.5cm × 3.5cm header image at y=3cm, a 9.5cm × 1.1cm heading at y=6.9cm, 9.5cm × 4.6cm body copy at y=8.2cm, and a 9.5cm × 2.5cm centered pull quote at y=13.2cm.",
+        "excerpt_sha256": "893b4628a554d6eabde096b238897e9efc9838453848baa837fd890267def3ef"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -14756,7 +14916,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Build three equal 9.5cm-wide editorial columns with 0.9cm gutters. Each column contains a 9.5cm × 3.5cm approved header image, a heading, body copy, and a pull quote.",
+        "expected_clause": "Build three 9.5cm-wide columns at x=1.784cm, 12.184cm, and 22.584cm, leaving 0.9cm gutters. In every column, put a 9.5cm × 3.5cm header image at y=3cm, a 9.5cm × 1.1cm heading at y=6.9cm, 9.5cm × 4.6cm body copy at y=8.2cm, and a 9.5cm × 2.5cm centered pull quote at y=13.2cm.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14811,14 +14971,14 @@
       "requirement_id": "slide-18.prompt-r005",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Headings: `Systems`, `システム`, `Shared Futures`. Include the exact Japanese line `生成されたスライドは構造と意味を保持します。`",
+      "statement": "Use this exact content: left heading `Systems`, body `Cities expose the systems beneath daily life: transport, energy, data, and the people who connect them.`, quote `“Structure makes the invisible legible.”`; center heading `システム`, body `生成されたスライドは構造と意味を保持します。\\n編集可能な構造が共有された理解を支えます。`, quote `“構造は意味を運びます。”`; right heading `Shared Futures`, body `A common visual language lets teams compare evidence, preserve intent, and build toward shared futures.`, quote `“Consistency is a form of trust.”`",
       "provenance": {
         "source_id": "slide-18-prompt",
         "source_type": "prompt",
         "line_start": 12,
         "line_end": 12,
-        "excerpt": "- Headings: `Systems`, `システム`, `Shared Futures`. Include the exact Japanese line `生成されたスライドは構造と意味を保持します。`",
-        "excerpt_sha256": "204501620aef9f35807cc995e95417d6b39495d8eb92c950b0167bd3d865ce70"
+        "excerpt": "- Use this exact content: left heading `Systems`, body `Cities expose the systems beneath daily life: transport, energy, data, and the people who connect them.`, quote `“Structure makes the invisible legible.”`; center heading `システム`, body `生成されたスライドは構造と意味を保持します。\\n編集可能な構造が共有された理解を支えます。`, quote `“構造は意味を運びます。”`; right heading `Shared Futures`, body `A common visual language lets teams compare evidence, preserve intent, and build toward shared futures.`, quote `“Consistency is a form of trust.”`",
+        "excerpt_sha256": "6bbc453df2db48f8375d63cf9e07c82368fe1ee3c7ca018d5b1decfe81b6ffd1"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -14836,7 +14996,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Headings: `Systems`, `システム`, `Shared Futures`. Include the exact Japanese line `生成されたスライドは構造と意味を保持します。`",
+        "expected_clause": "Use this exact content: left heading `Systems`, body `Cities expose the systems beneath daily life: transport, energy, data, and the people who connect them.`, quote `“Structure makes the invisible legible.”`; center heading `システム`, body `生成されたスライドは構造と意味を保持します。\\n編集可能な構造が共有された理解を支えます。`, quote `“構造は意味を運びます。”`; right heading `Shared Futures`, body `A common visual language lets teams compare evidence, preserve intent, and build toward shared futures.`, quote `“Consistency is a form of trust.”`",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14851,14 +15011,14 @@
       "requirement_id": "slide-18.prompt-r006",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Apply the approved `texture-pattern.png` as a tiled background only to the center column at 20% opacity. Use 0.9cm gutters consistently.",
+      "statement": "Apply `texture-pattern.png` as a tiled background only to the center column at (12.184cm, 2.5cm), size 9.5cm × 14.5cm, at 20% opacity. Set each pull quote on a navy rectangle at 80% opacity.",
       "provenance": {
         "source_id": "slide-18-prompt",
         "source_type": "prompt",
         "line_start": 13,
         "line_end": 13,
-        "excerpt": "- Apply the approved `texture-pattern.png` as a tiled background only to the center column at 20% opacity. Use 0.9cm gutters consistently.",
-        "excerpt_sha256": "b1e4f254adebf966ac5cb8dd91e9f71c0c9bf0c9ea889d4988ab7ca0abd8e58c"
+        "excerpt": "- Apply `texture-pattern.png` as a tiled background only to the center column at (12.184cm, 2.5cm), size 9.5cm × 14.5cm, at 20% opacity. Set each pull quote on a navy rectangle at 80% opacity.",
+        "excerpt_sha256": "6480247ade6fcc1f06bb94b486923da8a75df6f43157311f8f79bc341b4b043a"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -14876,7 +15036,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Apply the approved `texture-pattern.png` as a tiled background only to the center column at 20% opacity. Use 0.9cm gutters consistently.",
+        "expected_clause": "Apply `texture-pattern.png` as a tiled background only to the center column at (12.184cm, 2.5cm), size 9.5cm × 14.5cm, at 20% opacity. Set each pull quote on a navy rectangle at 80% opacity.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -14971,14 +15131,14 @@
       "requirement_id": "slide-19.prompt-r003",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Show five samples labeled `Typography`, `Palette`, `Spacing`, `Line Weight`, and `Navigation`. Each sample must use the deck-level tokens exactly: Carlito 36pt, Liberation Sans 18pt, navy `#1B2A4A`, coral `#E8634A`, teal `#2AACB8`, and a 0.5pt teal rule.",
+      "statement": "Put the five 5.5cm × 0.9cm sample labels at x=1.8cm and y=3cm, 5.7cm, 8.4cm, 11.1cm, and 13.8cm: `Typography`, `Palette`, `Spacing`, `Line Weight`, and `Navigation`.",
       "provenance": {
         "source_id": "slide-19-prompt",
         "source_type": "prompt",
         "line_start": 10,
         "line_end": 10,
-        "excerpt": "- Show five samples labeled `Typography`, `Palette`, `Spacing`, `Line Weight`, and `Navigation`. Each sample must use the deck-level tokens exactly: Carlito 36pt, Liberation Sans 18pt, navy `#1B2A4A`, coral `#E8634A`, teal `#2AACB8`, and a 0.5pt teal rule.",
-        "excerpt_sha256": "c66f5647197b8988b7601e59373d92f9a8d5d5b8a5e49c102d4a4ca176907555"
+        "excerpt": "- Put the five 5.5cm × 0.9cm sample labels at x=1.8cm and y=3cm, 5.7cm, 8.4cm, 11.1cm, and 13.8cm: `Typography`, `Palette`, `Spacing`, `Line Weight`, and `Navigation`.",
+        "excerpt_sha256": "88eacfda669935beee09e86381db45ebd7ac3a3ce3dffcfd1e7d7492153ead2e"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -14996,7 +15156,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Show five samples labeled `Typography`, `Palette`, `Spacing`, `Line Weight`, and `Navigation`. Each sample must use the deck-level tokens exactly: Carlito 36pt, Liberation Sans 18pt, navy `#1B2A4A`, coral `#E8634A`, teal `#2AACB8`, and a 0.5pt teal rule.",
+        "expected_clause": "Put the five 5.5cm × 0.9cm sample labels at x=1.8cm and y=3cm, 5.7cm, 8.4cm, 11.1cm, and 13.8cm: `Typography`, `Palette`, `Spacing`, `Line Weight`, and `Navigation`.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -15011,17 +15171,17 @@
       "requirement_id": "slide-19.prompt-r004",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Create two native internal hyperlinks: `Return to Cover` targets Slide 1 and `Meet the Team` targets Slide 5. Do not use external URLs.",
+      "statement": "For Typography, put `Carlito 36` at (8.5cm, 2.7cm), size 9cm × 1.52cm, in Carlito 36pt, and `Liberation Sans 18` at (20.5cm, 2.9cm), size 10cm × 1.1cm, in Liberation Sans 18pt.",
       "provenance": {
         "source_id": "slide-19-prompt",
         "source_type": "prompt",
         "line_start": 11,
         "line_end": 11,
-        "excerpt": "- Create two native internal hyperlinks: `Return to Cover` targets Slide 1 and `Meet the Team` targets Slide 5. Do not use external URLs.",
-        "excerpt_sha256": "807869dabb006a6b3b0f41fa79dc92766f59f1a4695107af79051f0856a9540a"
+        "excerpt": "- For Typography, put `Carlito 36` at (8.5cm, 2.7cm), size 9cm × 1.52cm, in Carlito 36pt, and `Liberation Sans 18` at (20.5cm, 2.9cm), size 10cm × 1.1cm, in Liberation Sans 18pt.",
+        "excerpt_sha256": "5f6f77f32a7bd91f9c08af34502d78def569bd3e72ea79fa12ef02e99e902619"
       },
-      "severity": "critical",
-      "source_of_truth": "ooxml",
+      "severity": "major",
+      "source_of_truth": "both",
       "matching_policy": {
         "mode": "exact",
         "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
@@ -15036,7 +15196,7 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Create two native internal hyperlinks: `Return to Cover` targets Slide 1 and `Meet the Team` targets Slide 5. Do not use external URLs.",
+        "expected_clause": "For Typography, put `Carlito 36` at (8.5cm, 2.7cm), size 9cm × 1.52cm, in Carlito 36pt, and `Liberation Sans 18` at (20.5cm, 2.9cm), size 10cm × 1.1cm, in Liberation Sans 18pt.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -15051,12 +15211,172 @@
       "requirement_id": "slide-19.prompt-r005",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Footer line, company name, accent bar, and slide number remain inherited from the master/layout; do not duplicate them as slide-local shapes.",
+      "statement": "For Palette, place 5cm × 1.4cm navy `#1B2A4A`, coral `#E8634A`, and teal `#2AACB8` swatches at x=8.5cm, 14.5cm, and 20.5cm, all at y=5.4cm.",
       "provenance": {
         "source_id": "slide-19-prompt",
         "source_type": "prompt",
         "line_start": 12,
         "line_end": 12,
+        "excerpt": "- For Palette, place 5cm × 1.4cm navy `#1B2A4A`, coral `#E8634A`, and teal `#2AACB8` swatches at x=8.5cm, 14.5cm, and 20.5cm, all at y=5.4cm.",
+        "excerpt_sha256": "b52490eb74c5e3a6ed5062379824dca15dbbd506349ce539b8e953392c5ba544"
+      },
+      "severity": "major",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "For Palette, place 5cm × 1.4cm navy `#1B2A4A`, coral `#E8634A`, and teal `#2AACB8` swatches at x=8.5cm, 14.5cm, and 20.5cm, all at y=5.4cm.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 19
+    },
+    {
+      "requirement_id": "slide-19.prompt-r006",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "For Spacing, place two navy 4cm × 1.2cm blocks at (8.5cm, 8.2cm) and (13cm, 8.2cm), leaving exactly 0.5cm between them, and put `0.5cm token` at (18cm, 8.2cm), size 8cm × 1.2cm.",
+      "provenance": {
+        "source_id": "slide-19-prompt",
+        "source_type": "prompt",
+        "line_start": 13,
+        "line_end": 13,
+        "excerpt": "- For Spacing, place two navy 4cm × 1.2cm blocks at (8.5cm, 8.2cm) and (13cm, 8.2cm), leaving exactly 0.5cm between them, and put `0.5cm token` at (18cm, 8.2cm), size 8cm × 1.2cm.",
+        "excerpt_sha256": "227c6289c126f52e3c1eef5a2e34cc73d4b181ab0e9ca5e65779cfe14a1fc556"
+      },
+      "severity": "major",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "For Spacing, place two navy 4cm × 1.2cm blocks at (8.5cm, 8.2cm) and (13cm, 8.2cm), leaving exactly 0.5cm between them, and put `0.5cm token` at (18cm, 8.2cm), size 8cm × 1.2cm.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 19
+    },
+    {
+      "requirement_id": "slide-19.prompt-r007",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "For Line Weight, draw a 0.5pt teal rule from (8.5cm, 11.5cm) to (25.5cm, 11.5cm) and put `0.5pt teal rule` at (26.5cm, 10.95cm), size 5cm × 1.1cm.",
+      "provenance": {
+        "source_id": "slide-19-prompt",
+        "source_type": "prompt",
+        "line_start": 14,
+        "line_end": 14,
+        "excerpt": "- For Line Weight, draw a 0.5pt teal rule from (8.5cm, 11.5cm) to (25.5cm, 11.5cm) and put `0.5pt teal rule` at (26.5cm, 10.95cm), size 5cm × 1.1cm.",
+        "excerpt_sha256": "357ea543aa315d5d48e9cd64883cd89b6db0467460b5ec7786c4e2288e869703"
+      },
+      "severity": "major",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "For Line Weight, draw a 0.5pt teal rule from (8.5cm, 11.5cm) to (25.5cm, 11.5cm) and put `0.5pt teal rule` at (26.5cm, 10.95cm), size 5cm × 1.1cm.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 19
+    },
+    {
+      "requirement_id": "slide-19.prompt-r008",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "For Navigation, create two native internal hyperlinks: `Return to Cover` at (8.5cm, 13.5cm), size 9cm × 1.3cm, targets Slide 1; `Meet the Team` at (20.5cm, 13.5cm), size 9cm × 1.3cm, targets Slide 5. Do not use external URLs.",
+      "provenance": {
+        "source_id": "slide-19-prompt",
+        "source_type": "prompt",
+        "line_start": 15,
+        "line_end": 15,
+        "excerpt": "- For Navigation, create two native internal hyperlinks: `Return to Cover` at (8.5cm, 13.5cm), size 9cm × 1.3cm, targets Slide 1; `Meet the Team` at (20.5cm, 13.5cm), size 9cm × 1.3cm, targets Slide 5. Do not use external URLs.",
+        "excerpt_sha256": "a2a92749e62770b4162afb1e63e84f96167414fb63ae9937bf8acadc855d66db"
+      },
+      "severity": "critical",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "For Navigation, create two native internal hyperlinks: `Return to Cover` at (8.5cm, 13.5cm), size 9cm × 1.3cm, targets Slide 1; `Meet the Team` at (20.5cm, 13.5cm), size 9cm × 1.3cm, targets Slide 5. Do not use external URLs.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 19
+    },
+    {
+      "requirement_id": "slide-19.prompt-r009",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Footer line, company name, accent bar, and slide number remain inherited from the master/layout; do not duplicate them as slide-local shapes.",
+      "provenance": {
+        "source_id": "slide-19-prompt",
+        "source_type": "prompt",
+        "line_start": 16,
+        "line_end": 16,
         "excerpt": "- Footer line, company name, accent bar, and slide number remain inherited from the master/layout; do not duplicate them as slide-local shapes.",
         "excerpt_sha256": "0c629b54e3bfeb7b2f3e4e28a3c578ec2b673488c29561acbd21bc10ae750e81"
       },
@@ -15171,94 +15491,14 @@
       "requirement_id": "slide-20.prompt-r003",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Add one native line chart with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.",
+      "statement": "Add one native line chart at (1.5cm, 3cm), size 10.5cm × 5.5cm, with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.",
       "provenance": {
         "source_id": "slide-20-prompt",
         "source_type": "prompt",
         "line_start": 10,
         "line_end": 10,
-        "excerpt": "- Add one native line chart with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.",
-        "excerpt_sha256": "c9290c0038e5213fd6ae2aec7690f705665911923945219b13544c29ce36c99b"
-      },
-      "severity": "critical",
-      "source_of_truth": "ooxml",
-      "matching_policy": {
-        "mode": "exact",
-        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
-      },
-      "equivalence_policy": {
-        "allowed": [
-          "Alternative native OOXML serialization preserving every property named by this clause."
-        ],
-        "forbidden": [
-          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
-        ]
-      },
-      "assertion": {
-        "operator": "satisfies_prompt_clause",
-        "expected_clause": "Add one native line chart with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.",
-        "automation_status": "unimplemented"
-      },
-      "fixture_expectations": {
-        "positive_fixture_ids": [],
-        "single_fault_negative_fixture_ids": [],
-        "mutation_ids": []
-      },
-      "review_status": "pending",
-      "slide": 20
-    },
-    {
-      "requirement_id": "slide-20.prompt-r004",
-      "scope": "slide",
-      "mandatory": true,
-      "statement": "Add one native 3-row × 6-column table. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.",
-      "provenance": {
-        "source_id": "slide-20-prompt",
-        "source_type": "prompt",
-        "line_start": 11,
-        "line_end": 11,
-        "excerpt": "- Add one native 3-row × 6-column table. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.",
-        "excerpt_sha256": "002dfc07ea3b536a91fb863588727de959fe95f3c9020ca0e766d2b0df28c028"
-      },
-      "severity": "critical",
-      "source_of_truth": "ooxml",
-      "matching_policy": {
-        "mode": "exact",
-        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
-      },
-      "equivalence_policy": {
-        "allowed": [
-          "Alternative native OOXML serialization preserving every property named by this clause."
-        ],
-        "forbidden": [
-          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
-        ]
-      },
-      "assertion": {
-        "operator": "satisfies_prompt_clause",
-        "expected_clause": "Add one native 3-row × 6-column table. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.",
-        "automation_status": "unimplemented"
-      },
-      "fixture_expectations": {
-        "positive_fixture_ids": [],
-        "single_fault_negative_fixture_ids": [],
-        "mutation_ids": []
-      },
-      "review_status": "pending",
-      "slide": 20
-    },
-    {
-      "requirement_id": "slide-20.prompt-r005",
-      "scope": "slide",
-      "mandatory": true,
-      "statement": "Insert `hero-abstract.png` with a 20% left crop. Add Arabic `اختبار شامل` with native RTL direction and Japanese `総合テスト` in Noto Sans CJK JP.",
-      "provenance": {
-        "source_id": "slide-20-prompt",
-        "source_type": "prompt",
-        "line_start": 12,
-        "line_end": 12,
-        "excerpt": "- Insert `hero-abstract.png` with a 20% left crop. Add Arabic `اختبار شامل` with native RTL direction and Japanese `総合テスト` in Noto Sans CJK JP.",
-        "excerpt_sha256": "393f213352644b945cbf5a9bd8587806259012cc36eca0c162e1322a26579589"
+        "excerpt": "- Add one native line chart at (1.5cm, 3cm), size 10.5cm × 5.5cm, with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.",
+        "excerpt_sha256": "043915ab51173ee30831e8d7e590db7fd396fc046155ef18dc9803ba66fd68ef"
       },
       "severity": "critical",
       "source_of_truth": "both",
@@ -15276,7 +15516,87 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Insert `hero-abstract.png` with a 20% left crop. Add Arabic `اختبار شامل` with native RTL direction and Japanese `総合テスト` in Noto Sans CJK JP.",
+        "expected_clause": "Add one native line chart at (1.5cm, 3cm), size 10.5cm × 5.5cm, with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 20
+    },
+    {
+      "requirement_id": "slide-20.prompt-r004",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Add one native 3-row × 6-column table at (13cm, 3cm), size 19cm × 4.5cm. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.",
+      "provenance": {
+        "source_id": "slide-20-prompt",
+        "source_type": "prompt",
+        "line_start": 11,
+        "line_end": 11,
+        "excerpt": "- Add one native 3-row × 6-column table at (13cm, 3cm), size 19cm × 4.5cm. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.",
+        "excerpt_sha256": "709fa20c240b9d424e640d4225c0622e1e4e5023d762c3b4457aaf2181876433"
+      },
+      "severity": "critical",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Add one native 3-row × 6-column table at (13cm, 3cm), size 19cm × 4.5cm. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 20
+    },
+    {
+      "requirement_id": "slide-20.prompt-r005",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Insert `hero-abstract.png` at (13cm, 8cm), size 6.5cm × 4.2cm, with a 20% left crop. Put Arabic `اختبار شامل` at (20.5cm, 7.9cm), size 5cm × 1.44cm, in Noto Sans Arabic 18pt with native RTL direction. Put Japanese `総合テスト` at (20.5cm, 9.2cm), size 5cm × 1.1cm, in Noto Sans CJK JP 18pt.",
+      "provenance": {
+        "source_id": "slide-20-prompt",
+        "source_type": "prompt",
+        "line_start": 12,
+        "line_end": 12,
+        "excerpt": "- Insert `hero-abstract.png` at (13cm, 8cm), size 6.5cm × 4.2cm, with a 20% left crop. Put Arabic `اختبار شامل` at (20.5cm, 7.9cm), size 5cm × 1.44cm, in Noto Sans Arabic 18pt with native RTL direction. Put Japanese `総合テスト` at (20.5cm, 9.2cm), size 5cm × 1.1cm, in Noto Sans CJK JP 18pt.",
+        "excerpt_sha256": "14c23f766a15d79aeefc5f61644fb2cfee96f9cb34c3f23c6c4c5f7cadf9490c"
+      },
+      "severity": "critical",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Insert `hero-abstract.png` at (13cm, 8cm), size 6.5cm × 4.2cm, with a 20% left crop. Put Arabic `اختبار شامل` at (20.5cm, 7.9cm), size 5cm × 1.44cm, in Noto Sans Arabic 18pt with native RTL direction. Put Japanese `総合テスト` at (20.5cm, 9.2cm), size 5cm × 1.1cm, in Noto Sans CJK JP 18pt.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
@@ -15291,14 +15611,54 @@
       "requirement_id": "slide-20.prompt-r006",
       "scope": "slide",
       "mandatory": true,
-      "statement": "Include a 45° text box labeled `ROTATED`, three overlapping semi-transparent shapes inside a two-level group, a navy-to-teal gradient, a three-item bullet list, a live slide-number field, and the inherited master footer.",
+      "statement": "Put the editable text `ROTATED` at (1.6cm, 10.1cm), size 5cm × 1.3cm, in Liberation Sans 16pt Bold with a native 45° rotation.",
       "provenance": {
         "source_id": "slide-20-prompt",
         "source_type": "prompt",
         "line_start": 13,
         "line_end": 13,
-        "excerpt": "- Include a 45° text box labeled `ROTATED`, three overlapping semi-transparent shapes inside a two-level group, a navy-to-teal gradient, a three-item bullet list, a live slide-number field, and the inherited master footer.",
-        "excerpt_sha256": "641b7b5911d4964ef11e26e7ce454de8d7e7a0ca3cfd51785b79aca194f6aa64"
+        "excerpt": "- Put the editable text `ROTATED` at (1.6cm, 10.1cm), size 5cm × 1.3cm, in Liberation Sans 16pt Bold with a native 45° rotation.",
+        "excerpt_sha256": "ff337eb8095c56d7286dc447d7a188d7909e048f2789cdd3e7452a4398648745"
+      },
+      "severity": "critical",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Put the editable text `ROTATED` at (1.6cm, 10.1cm), size 5cm × 1.3cm, in Liberation Sans 16pt Bold with a native 45° rotation.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 20
+    },
+    {
+      "requirement_id": "slide-20.prompt-r007",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Build a two-level outer group at (6cm, 9.8cm), size 6.5cm × 3.6cm. Its inner group is at (6cm, 9.8cm), size 6.5cm × 3.1cm, and contains three 65%-opaque shapes in z-order: a 3cm navy circle at (6cm, 9.8cm), a 3.5cm × 2.6cm coral rounded rectangle at (7.6cm, 10.3cm), and a 3cm teal circle at (9.5cm, 9.8cm). Put `2-LEVEL GROUP` at (6.9cm, 12.6cm), size 5.2cm × 0.8cm, inside the outer group.",
+      "provenance": {
+        "source_id": "slide-20-prompt",
+        "source_type": "prompt",
+        "line_start": 14,
+        "line_end": 14,
+        "excerpt": "- Build a two-level outer group at (6cm, 9.8cm), size 6.5cm × 3.6cm. Its inner group is at (6cm, 9.8cm), size 6.5cm × 3.1cm, and contains three 65%-opaque shapes in z-order: a 3cm navy circle at (6cm, 9.8cm), a 3.5cm × 2.6cm coral rounded rectangle at (7.6cm, 10.3cm), and a 3cm teal circle at (9.5cm, 9.8cm). Put `2-LEVEL GROUP` at (6.9cm, 12.6cm), size 5.2cm × 0.8cm, inside the outer group.",
+        "excerpt_sha256": "31bf969ba5e6d215873936dc9769499f112b18f57f08405f02352bbaa8378e22"
       },
       "severity": "major",
       "source_of_truth": "both",
@@ -15316,7 +15676,127 @@
       },
       "assertion": {
         "operator": "satisfies_prompt_clause",
-        "expected_clause": "Include a 45° text box labeled `ROTATED`, three overlapping semi-transparent shapes inside a two-level group, a navy-to-teal gradient, a three-item bullet list, a live slide-number field, and the inherited master footer.",
+        "expected_clause": "Build a two-level outer group at (6cm, 9.8cm), size 6.5cm × 3.6cm. Its inner group is at (6cm, 9.8cm), size 6.5cm × 3.1cm, and contains three 65%-opaque shapes in z-order: a 3cm navy circle at (6cm, 9.8cm), a 3.5cm × 2.6cm coral rounded rectangle at (7.6cm, 10.3cm), and a 3cm teal circle at (9.5cm, 9.8cm). Put `2-LEVEL GROUP` at (6.9cm, 12.6cm), size 5.2cm × 0.8cm, inside the outer group.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 20
+    },
+    {
+      "requirement_id": "slide-20.prompt-r008",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Add a navy-to-teal native gradient rectangle at (25cm, 11.2cm), size 7cm × 2.2cm, with `NATIVE GRADIENT` centered at (25.3cm, 11.6cm), size 6.4cm × 1.4cm.",
+      "provenance": {
+        "source_id": "slide-20-prompt",
+        "source_type": "prompt",
+        "line_start": 15,
+        "line_end": 15,
+        "excerpt": "- Add a navy-to-teal native gradient rectangle at (25cm, 11.2cm), size 7cm × 2.2cm, with `NATIVE GRADIENT` centered at (25.3cm, 11.6cm), size 6.4cm × 1.4cm.",
+        "excerpt_sha256": "9e70d813c073c647586f1ee5ea9a5a35a49cec241ed6b81a14230de980a332fe"
+      },
+      "severity": "critical",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Add a navy-to-teal native gradient rectangle at (25cm, 11.2cm), size 7cm × 2.2cm, with `NATIVE GRADIENT` centered at (25.3cm, 11.6cm), size 6.4cm × 1.4cm.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 20
+    },
+    {
+      "requirement_id": "slide-20.prompt-r009",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Add a native three-item bullet list at (1.5cm, 14cm), size 12.5cm × 2.5cm, with exactly `Native structure retained`, `Multilingual meaning preserved`, and `Rendered fidelity verified`.",
+      "provenance": {
+        "source_id": "slide-20-prompt",
+        "source_type": "prompt",
+        "line_start": 16,
+        "line_end": 16,
+        "excerpt": "- Add a native three-item bullet list at (1.5cm, 14cm), size 12.5cm × 2.5cm, with exactly `Native structure retained`, `Multilingual meaning preserved`, and `Rendered fidelity verified`.",
+        "excerpt_sha256": "0d7fc0feaa08fbea847aff19677429b96d7f4e0bca297d03bd3b4a2fb5b5bc2d"
+      },
+      "severity": "critical",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Add a native three-item bullet list at (1.5cm, 14cm), size 12.5cm × 2.5cm, with exactly `Native structure retained`, `Multilingual meaning preserved`, and `Rendered fidelity verified`.",
+        "automation_status": "unimplemented"
+      },
+      "fixture_expectations": {
+        "positive_fixture_ids": [],
+        "single_fault_negative_fixture_ids": [],
+        "mutation_ids": []
+      },
+      "review_status": "pending",
+      "slide": 20
+    },
+    {
+      "requirement_id": "slide-20.prompt-r010",
+      "scope": "slide",
+      "mandatory": true,
+      "statement": "Add `Live slide: ` followed by a live slide-number field at (22.5cm, 14.3cm), size 14.5cm × 1.5cm. Keep the inherited master footer and slide-number field as well.",
+      "provenance": {
+        "source_id": "slide-20-prompt",
+        "source_type": "prompt",
+        "line_start": 17,
+        "line_end": 17,
+        "excerpt": "- Add `Live slide: ` followed by a live slide-number field at (22.5cm, 14.3cm), size 14.5cm × 1.5cm. Keep the inherited master footer and slide-number field as well.",
+        "excerpt_sha256": "ff77fa49875976621731fa701840446a8ff37b7be94da8b36e5139ca7c7ac403"
+      },
+      "severity": "major",
+      "source_of_truth": "both",
+      "matching_policy": {
+        "mode": "exact",
+        "normalization": "Exact Unicode, numeric values, units, and named OOXML construct after only prompt-declared unit conversion."
+      },
+      "equivalence_policy": {
+        "allowed": [
+          "Alternative native OOXML serialization preserving every property named by this clause."
+        ],
+        "forbidden": [
+          "Gold-derived expectations, raster substitutes, or omission of a property named by this clause."
+        ]
+      },
+      "assertion": {
+        "operator": "satisfies_prompt_clause",
+        "expected_clause": "Add `Live slide: ` followed by a live slide-number field at (22.5cm, 14.3cm), size 14.5cm × 1.5cm. Keep the inherited master footer and slide-number field as well.",
         "automation_status": "unimplemented"
       },
       "fixture_expectations": {
