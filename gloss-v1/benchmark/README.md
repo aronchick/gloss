@@ -6,6 +6,11 @@ Prompt-derived structural requirements are frozen before gold authoring.
 Reference exports later become authoritative only for explicitly provenance-
 linked visual assertions; gold OOXML never creates a scored requirement.
 
+Start with [`prompts/DESIGNER_BRIEF.md`](prompts/DESIGNER_BRIEF.md): it is the
+exact, copyable master prompt containing the deck-wide rules and all twenty slide instructions. Provide
+it with the reference PNGs in `deck/exports/`, the approved assets, and the bundled
+fonts. Do not provide the native gold deck to the system being tested.
+
 ## Integrity validation
 
 From `gloss-v1/grader/` using the locked grader environment:

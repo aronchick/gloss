@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "evidence_id": "gloss-technical-preview-2026-07-22",
   "product_name": "Gloss",
-  "product_retronym": "Generative Layout & OOXML Scoring System",
+  "product_retronym": "Generative Layout & Object Structure Standard",
   "protocol_id": "gloss-v1",
   "status": "technical_preview",
   "status_label": "Technical preview — not an official leaderboard",
@@ -106,7 +106,7 @@
     },
     {
       "path": "gloss-v1/benchmark/requirements/prompt-requirements.json",
-      "sha256": "58195dc3db2489a60a79786e27ab2392ad2f617f11d4ca619247389ac9124367"
+      "sha256": "ef238f041afe52e913a66694a335b3959064c23ec1100c703365a314dbd7b37e"
     }
   ]
 }

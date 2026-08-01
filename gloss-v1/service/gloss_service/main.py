@@ -205,8 +205,9 @@ def create_app(
         title="Gloss hosted service",
         version="1.0.0",
         description=(
-            "Gloss — Generative Layout & OOXML Scoring System. Controlled grading and "
-            "public grading-verified leaderboard."
+            "Supporting measurement service for Gloss — the Generative Layout & "
+            "Object Structure Standard presentation challenge. Provides controlled "
+            "grading and a public grading-verified leaderboard."
         ),
         docs_url="/v1/docs",
         redoc_url="/v1/redoc",

@@ -29,6 +29,10 @@ const robots = readFileSync(join(site, "robots.txt"), "utf8");
 const sitemap = readFileSync(join(site, "sitemap.xml"), "utf8");
 const siteScript = readFileSync(join(site, "site.js"), "utf8");
 const videoRenderer = readFileSync(join(root, "launch/render-video.mjs"), "utf8");
+const launchPost = readFileSync(join(root, "launch/launch-post.md"), "utf8");
+const goldDeckPath = join(root, "gloss-v1/benchmark/deck/gold/gloss-v1-gold.pptx");
+const masterPromptPath = join(root, "gloss-v1/benchmark/prompts/DESIGNER_BRIEF.md");
+const exportDir = join(root, "gloss-v1/benchmark/deck/exports");
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -54,6 +58,10 @@ const requirementCounts = requirements.requirements.reduce((counts, requirement)
 }, {});
 
 assert(evidence.status === "technical_preview", "Launch evidence must remain labeled technical_preview");
+assert(
+  evidence.product_retronym === "Generative Layout & Object Structure Standard",
+  "Gloss retronym drifted",
+);
 assert(evidence.operator_evidence.release_evidence_claimed === 0, "Preview must not claim release evidence");
 assert(evidence.candidate_checks.total === index.entries.length, "Candidate-check count drifted from fixture index");
 assert(evidence.candidate_checks.visual_render === visual, "Visual-check count drifted from fixture index");
@@ -78,8 +86,6 @@ assert(
 
 for (const method of evidence.verification_methods) {
   assert(method.count === methodCounts[method.id], `Verification method ${method.id} drifted from fixture index`);
-  const htmlLabel = method.public_label.replaceAll("&", "&amp;");
-  assert(html.includes(`<span>${htmlLabel}</span>`) && html.includes(`<b>${method.count}</b>`), `Homepage method count is missing for ${method.id}`);
 }
 
 const sourcePaths = new Map([
@@ -95,22 +101,40 @@ for (const source of evidence.sources) {
 }
 
 const requiredCopy = [
-  "A screenshot is not a",
-  "Open technical preview",
-  "0 official model results",
-  "The repository is the product",
-  "Working harness. Unfrozen benchmark.",
-  "Four public baselines. Zero model claims.",
-  "Inspect every deck and report",
+  "Make the deck.",
+  "Not a screenshot.",
+  "Gloss is ACID for presentation decks made by AI.",
+  "Move two things.",
+  "Twenty ways to fake a slide.",
+  "One exact prompt.",
+  "Native presentations, everywhere.",
+  "This deck may become training data.",
+  "Gloss lives on GitHub",
 ];
 for (const copy of requiredCopy) assert(html.includes(copy), `Homepage is missing required copy: ${copy}`);
 assert(!/official leaderboard[^<]{0,80}(live|launched|ready)/i.test(html), "Homepage overclaims official leaderboard readiness");
 assert(html.includes("https://github.com/aronchick/gloss"), "Homepage must lead to GitHub");
 assert(html.includes('<link rel="canonical" href="https://gloss.tools/">'), "Homepage canonical URL is missing");
 assert(html.includes('"codeRepository": "https://github.com/aronchick/gloss"'), "Homepage structured data must lead to GitHub");
-assert(siteScript.includes('fetch("/evidence/comparative-v1-summary.json")'), "Homepage chart must load the frozen comparative summary");
-assert(videoRenderer.includes("gloss-v1/benchmark/comparative-v1/summary.json"), "Launch video must load the frozen comparative summary");
-assert(!videoRenderer.includes("site/evidence/preview-v1.json"), "Launch video must not source comparative claims from preview evidence");
+assert(siteScript.includes("inspectorContent"), "Homepage native-object inspector is missing");
+assert(siteScript.includes("IntersectionObserver"), "Homepage slide navigation observer is missing");
+assert(!siteScript.includes("comparative-v1-summary.json"), "Homepage must not lead with comparative scoring data");
+assert(videoRenderer.includes("THE CHALLENGE IS THE PRESENTATION"), "Launch film must lead with the presentation challenge");
+assert(videoRenderer.includes("THE CHECKER IS THE SUPPORT LAYER"), "Launch film must keep measurement in a supporting role");
+assert(videoRenderer.includes("slide-13.png"), "Launch film must use the real composite-stress slide");
+assert(!videoRenderer.includes("comparative-v1/summary.json"), "Launch film must not be driven by comparative scores");
+assert(launchPost.includes("Make the deck. Not a screenshot."), "Launch post is missing the presentation-first message");
+assert(launchPost.includes("The deck is the challenge."), "Launch post must state the product hierarchy");
+assert(existsSync(goldDeckPath), "Downloadable Gloss v1 deck is missing");
+assert(existsSync(masterPromptPath), "Exact master prompt is missing");
+assert(html.includes("gloss-v1-gold.pptx"), "Homepage deck download is missing");
+assert(html.includes("prompts/DESIGNER_BRIEF.md"), "Homepage exact-prompt link is missing");
+for (let slide = 1; slide <= 20; slide += 1) {
+  const number = String(slide).padStart(2, "0");
+  assert(existsSync(join(exportDir, `slide-${number}.png`)), `Reference render ${number} is missing`);
+  assert(html.includes(`deck/exports/slide-${number}.png`), `Homepage image ${number} is missing`);
+  assert(html.includes(`canonical/slide-${number}.md`), `Homepage instructions ${number} are missing`);
+}
 assert(robots.includes("Allow: /") && robots.includes("Sitemap: https://gloss.tools/sitemap.xml"), "robots.txt must expose the public site map");
 assert(sitemap.includes("<loc>https://gloss.tools/</loc>"), "sitemap.xml must contain the production homepage");
 for (const header of [
@@ -136,7 +160,7 @@ assert(statSync(posterPath).size > 20_000, "Launch poster is missing or unexpect
 
 const probe = spawnSync("ffprobe", [
   "-v", "error",
-  "-show_entries", "stream=codec_type,width,height,avg_frame_rate:format=duration",
+  "-show_entries", "stream=codec_type,width,height,avg_frame_rate:format=duration:format_tags=title,comment",
   "-of", "json",
   videoPath,
 ], { encoding: "utf8" });
@@ -148,5 +172,6 @@ assert(video?.width === 1080 && video?.height === 1080, "Launch video must be 10
 assert(video?.avg_frame_rate === "30/1", "Launch video must be 30 fps");
 assert(Math.abs(Number(metadata.format.duration) - 21) < 0.05, "Launch video must be 21 seconds");
 assert(!audio, "Launch video must be silent and contain no audio stream");
+assert(metadata.format.tags?.title === "Gloss — Make the deck, not a screenshot", "Launch video title metadata drifted");
 
 process.stdout.write(`Launch verification: PASS\n- evidence: ${evidence.evidence_id}\n- candidate checks: ${index.entries.length}\n- positive controls: ${positivePassed}/${report.results.length}\n- mutants detected: ${mutantsDetected}/${report.results.length}\n- site assets: present\n- video: 1080x1080, 30 fps, 21 seconds, silent\n`);

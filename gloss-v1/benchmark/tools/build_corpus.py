@@ -368,79 +368,6 @@ SPECS: dict[int, SlideSpec] = {
 }
 
 
-LEVEL3_DETAILS = {
-    13: """
-## Explicit v1 constraints
-
-- Use the **Blank with Footer** layout and title the slide `Composite Stress` in Carlito 36pt Bold at (1.5cm, 0.5cm).
-- Add one native pie chart at (1.5cm, 3cm), size 10cm × 8cm. Use six labeled values: `Structure 28`, `Text 22`, `Visual 18`, `Assets 14`, `Fields 10`, `Other 8`; show percentage labels and no legend.
-- Add one native 4-row × 3-column table at (13cm, 3cm), size 9cm × 7cm. Header: `Check`, `Status`, `Weight`. Rows: `Schema | Pass | 3`, `Rendering | Pass | 2`, `Assets | Review | 1`.
-- Insert `cityscape.png` at (23cm, 3cm), size 8cm × 6cm, cropping 15% from the left. Use only asset ID `cityscape` from the manifest.
-- Add the Arabic annotation `الهيكل والمحتوى والعرض في اختبار واحد` in Noto Sans Arabic 14pt with native RTL direction.
-- Add three dense rounded callouts labeled `NATIVE CHART`, `NATIVE TABLE`, and `APPROVED ASSET`; connect each to its target and keep all data labels visible.
-""",
-    14: """
-## Explicit v1 constraints
-
-- Use the **Two-Column** layout with title `RTL Systems Review`.
-- The left column contains at least five separate Arabic paragraphs in Noto Sans Arabic 14pt with native RTL paragraph direction. Include these exact phrases: `مراجعة الأنظمة الموزعة`, `دقة العرض`, `سلامة البنية`, `The الذكاء الاصطناعي revolution`, and `الإصدار Gloss v1`.
-- The right column contains five English summary paragraphs in Liberation Sans 14pt, beginning with `A structural benchmark must preserve meaning and direction.`
-- Right-align the Arabic column and left-align the English column. Mirror their inner padding and keep a 1pt teal divider centered between them.
-- Mixed Arabic/English runs must preserve Unicode character order and visible punctuation without converting text to outlines.
-""",
-    15: """
-## Explicit v1 constraints
-
-- Use the **Blank with Footer** layout with title `Rotation Atlas`.
-- Create five text boxes labeled exactly `Baseline 0°`, `Diagonal 45°`, `Vertical 90°`, `Reverse 135°`, and `Vertical 270°`.
-- Apply rotations of 0°, 45°, 90°, 135°, and 270° respectively. Each text box is 5cm × 1.5cm, uses Liberation Sans 16pt Bold, and has a matching 6cm × 2cm supporting rectangle sharing its center and rotation.
-- Distribute the five pairs evenly from x=2cm through x=28cm on a common y=8cm anchor line. Keep text editable and store rotations in native OOXML transforms.
-""",
-    16: """
-## Explicit v1 constraints
-
-- Use the **Blank with Footer** layout with title `Beyond the Frame`.
-- Place a 10cm diameter coral circle at (-3cm, -2cm), a 12cm × 6cm teal rectangle at (28.867cm, 6cm) so it extends 5cm beyond the right edge, and a 16cm × 3cm gold strip at (8cm, -1cm).
-- Add on-canvas labels `INTENTIONAL BLEED` and `Negative coordinates are part of the composition.`
-- Preserve negative and over-bound coordinates in OOXML. Do not replace the composition with a screenshot, hide content under opaque shapes, or move the objects fully on-canvas.
-""",
-    17: """
-## Explicit v1 constraints
-
-- Use the **Blank with Footer** layout with title `Nested Systems`.
-- Build one outer group containing three middle groups. Each middle group contains two inner groups; each inner group contains three leaf shapes (18 leaf shapes total).
-- Use native group objects at all three levels. Label the middle groups `INPUT`, `PROCESS`, and `OUTPUT`; label inner groups `A1`, `A2`, `B1`, `B2`, `C1`, and `C2`.
-- Within every inner group, z-order is circle below rounded rectangle below label. The full outer group's bounding box has top-left position (3cm, 3cm) and size 27cm × 13cm.
-""",
-    18: """
-## Explicit v1 constraints
-
-- Use the **Blank with Footer** layout with title `Three Cities / 三つの都市`.
-- Build three equal 9.5cm-wide editorial columns with 0.9cm gutters. Each column contains a 9.5cm × 3.5cm approved header image, a heading, body copy, and a pull quote.
-- Column images, left to right: `cityscape.png`, `texture-pattern.png`, `cityscape.png`. Center the crop of each image and do not use unlisted media.
-- Headings: `Systems`, `システム`, `Shared Futures`. Include the exact Japanese line `生成されたスライドは構造と意味を保持します。`
-- Apply the approved `texture-pattern.png` as a tiled background only to the center column at 20% opacity. Use 0.9cm gutters consistently.
-""",
-    19: """
-## Explicit v1 constraints
-
-- Use the **Content Slide** layout with title `Design System Audit`.
-- Show five samples labeled `Typography`, `Palette`, `Spacing`, `Line Weight`, and `Navigation`. Each sample must use the deck-level tokens exactly: Carlito 36pt, Liberation Sans 18pt, navy `#1B2A4A`, coral `#E8634A`, teal `#2AACB8`, and a 0.5pt teal rule.
-- Create two native internal hyperlinks: `Return to Cover` targets Slide 1 and `Meet the Team` targets Slide 5. Do not use external URLs.
-- Footer line, company name, accent bar, and slide number remain inherited from the master/layout; do not duplicate them as slide-local shapes.
-""",
-    20: """
-## Explicit v1 constraints
-
-- Use the **Blank with Footer** layout with title `Gloss Synthesis`.
-- Add one native line chart with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.
-- Add one native 3-row × 6-column table. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.
-- Insert `hero-abstract.png` with a 20% left crop. Add Arabic `اختبار شامل` with native RTL direction and Japanese `総合テスト` in Noto Sans CJK JP.
-- Include a 45° text box labeled `ROTATED`, three overlapping semi-transparent shapes inside a two-level group, a navy-to-teal gradient, a three-item bullet list, a live slide-number field, and the inherited master footer.
-""",
-}
-
-
 PARAPHRASE_A = {
     "What to build": "Required construction",
     "must contain": "is required to include",
@@ -555,8 +482,6 @@ def canonical_sections() -> dict[int, str]:
             "Use the reference image only as supplementary visual guidance.\n\n"
         )
         content = heading + intro + body
-        if number in LEVEL3_DETAILS:
-            content += "\n\n" + LEVEL3_DETAILS[number].strip() + "\n"
         sections[number] = content.strip() + "\n"
     if set(sections) != set(range(1, 21)):
         raise RuntimeError(f"expected slide sections 1-20, found {sorted(sections)}")
