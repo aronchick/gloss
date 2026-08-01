@@ -149,7 +149,7 @@
       "source_type": "prompt",
       "authority": "primary",
       "path": "benchmark/prompts/variants/canonical/slide-20.md",
-      "sha256": "69711e77502102776aae817c7417faad5d3ae0ea8e29c823554cbc27c5b989d9"
+      "sha256": "ba8e51e1becddfd40e2f2a02c5161a1caa09481255fcb9ff586f6b32ff866245"
     }
   ],
   "independent_reviews": [],
@@ -15135,8 +15135,8 @@
       "provenance": {
         "source_id": "slide-20-prompt",
         "source_type": "prompt",
-        "line_start": 11,
-        "line_end": 11,
+        "line_start": 9,
+        "line_end": 9,
         "excerpt": "- Use the **Blank with Footer** layout with title `Gloss Synthesis`.",
         "excerpt_sha256": "879c1e2c7eb467566cfda47f1b0c44f6f1e75e73e865c059a25c437ddbe2a857"
       },
@@ -15175,8 +15175,8 @@
       "provenance": {
         "source_id": "slide-20-prompt",
         "source_type": "prompt",
-        "line_start": 12,
-        "line_end": 12,
+        "line_start": 10,
+        "line_end": 10,
         "excerpt": "- Add one native line chart with series `Structural`, `Visual`, and `Combined` across categories `L1`, `L2`, `L3`; values are `72, 84, 96`, `68, 82, 95`, and `70, 83, 97`.",
         "excerpt_sha256": "c9290c0038e5213fd6ae2aec7690f705665911923945219b13544c29ce36c99b"
       },
@@ -15215,8 +15215,8 @@
       "provenance": {
         "source_id": "slide-20-prompt",
         "source_type": "prompt",
-        "line_start": 13,
-        "line_end": 13,
+        "line_start": 11,
+        "line_end": 11,
         "excerpt": "- Add one native 3-row × 6-column table. Header: `Tier`, `Slides`, `Checks`, `SSIM`, `Schema`, `Status`; rows: `L1 | 5 | 70 | 0.9999 | Pass | Ready` and `L3 | 20 | 280 | 0.9999 | Pass | Ready`.",
         "excerpt_sha256": "002dfc07ea3b536a91fb863588727de959fe95f3c9020ca0e766d2b0df28c028"
       },
@@ -15255,8 +15255,8 @@
       "provenance": {
         "source_id": "slide-20-prompt",
         "source_type": "prompt",
-        "line_start": 14,
-        "line_end": 14,
+        "line_start": 12,
+        "line_end": 12,
         "excerpt": "- Insert `hero-abstract.png` with a 20% left crop. Add Arabic `اختبار شامل` with native RTL direction and Japanese `総合テスト` in Noto Sans CJK JP.",
         "excerpt_sha256": "393f213352644b945cbf5a9bd8587806259012cc36eca0c162e1322a26579589"
       },
@@ -15295,8 +15295,8 @@
       "provenance": {
         "source_id": "slide-20-prompt",
         "source_type": "prompt",
-        "line_start": 15,
-        "line_end": 15,
+        "line_start": 13,
+        "line_end": 13,
         "excerpt": "- Include a 45° text box labeled `ROTATED`, three overlapping semi-transparent shapes inside a two-level group, a navy-to-teal gradient, a three-item bullet list, a live slide-number field, and the inherited master footer.",
         "excerpt_sha256": "641b7b5911d4964ef11e26e7ce454de8d7e7a0ca3cfd51785b79aca194f6aa64"
       },

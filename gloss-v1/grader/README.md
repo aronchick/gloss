@@ -1,11 +1,27 @@
-# Gloss Grader
+# Gloss Checker
 
-The Gloss CLI performs quarantine checks, deterministic ECMA-376 Markup Compatibility preprocessing, Part 1 Transitional XSD validation, LibreOffice export, SSIM comparison, native object inspection, checklist evaluation, and report generation.
+The friendly front door is a native-object check against the public Gloss deck:
+
+```bash
+uv sync --extra dev --locked
+uv run gloss check ../benchmark/deck/gold/gloss-v1-gold.pptx
+uv run gloss check /path/to/edited.pptx
+```
+
+An untouched deck returns zero findings. Change the position, size, text, type,
+rotation, field, chart, table, image, fill, shadow, group, or z-order of one native
+object and `gloss check` returns one aggregated finding for that object. Use
+`--format json` for machine-readable output or `--reference other.pptx` to compare
+against another deck.
+
+The same CLI also contains the deeper Gloss v1 grading protocol: quarantine checks,
+deterministic ECMA-376 Markup Compatibility preprocessing, Part 1 Transitional XSD
+validation, LibreOffice export, SSIM comparison, native inspection, checklist
+evaluation, and release-grade reports.
 
 The wheel contains the benchmark corpus and schemas. Source and Docker layouts are also discovered automatically; `--benchmark-dir` or `GLOSS_BENCHMARK_DIR` can select an explicit corpus.
 
 ```bash
-uv sync --extra dev --locked
 uv run gloss validate ../benchmark/deck/gold/gloss-v1-gold.pptx
 uv run gloss grade ../submission.pptx --tier 3 \
   --artifact-context ./local-artifact-context.json --format json
@@ -13,7 +29,9 @@ uv run gloss grade ../submission.pptx --tier 3 \
   --artifact-context ./local-artifact-context.json --format html -o report.html
 ```
 
-Output formats are `text`, `json`, and standalone `html`. Use `--artifacts DIR` to retain `diff-slide-NN.png` visual diagnostics. Incomplete verification exits with status `2` and is always reported as `eligible: false`.
+Advanced `grade` output formats are `text`, `json`, and standalone `html`. Use
+`--artifacts DIR` to retain `diff-slide-NN.png` visual diagnostics. Incomplete
+verification exits with status `2` and is always reported as `eligible: false`.
 
 `--artifact-context` is required and must name a complete JSON serialization of
 `ArtifactReportContext`, including explicit `null` values. Missing or unknown fields are rejected. The

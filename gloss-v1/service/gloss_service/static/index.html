@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Gloss is the public benchmark for grading-verified PowerPoint artifact fidelity.">
-    <title>Gloss — Generative Layout &amp; OOXML Scoring System</title>
+    <meta name="description" content="Hosted checking and comparison for the Gloss native presentation challenge.">
+    <title>Gloss hosted checker and leaderboard</title>
     <link rel="stylesheet" href="/static/site.css">
     <script src="/static/site.js" defer></script>
   </head>
@@ -26,7 +26,7 @@
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">Generative Layout &amp; OOXML Scoring System</p>
+          <p class="eyebrow">Supporting measurement for the Gloss challenge</p>
           <h1 id="hero-title">Can your model make <em>PowerPoint</em>—or only pictures of it?</h1>
           <p class="lede">Twenty adversarial slides. Native tables, live charts, multilingual type, masters, groups, fields, and unforgiving geometry. Every published result is labeled exactly: <strong>grading-verified artifact score; generation-attested</strong>.</p>
           <div class="hero-actions">
@@ -34,9 +34,9 @@
             <a class="text-action" href="/v1/docs">Read the API contract <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-        <div class="calibration-card" aria-label="How Gloss measures a deck">
+        <section class="calibration-card" aria-label="How the Gloss service checks a deck">
           <div class="reticle" aria-hidden="true"><span></span></div>
-          <p class="calibration-label">Gloss measurement stack</p>
+          <p class="calibration-label">Hosted checker stack</p>
           <ol>
             <li><span>01</span>Quarantine</li>
             <li><span>02</span>LibreOffice render</li>
@@ -44,7 +44,7 @@
             <li><span>04</span>Weighted checklist</li>
           </ol>
           <p class="calibration-note">No screenshots. No traces. One final <code>.pptx</code>.</p>
-        </div>
+        </section>
       </section>
 
       <section class="leaderboard-section" id="leaderboard" aria-labelledby="leaderboard-title">
@@ -56,7 +56,7 @@
           <div class="updated"><span class="pulse" aria-hidden="true"></span><span id="updated-at">Loading verified runs…</span></div>
         </div>
 
-        <div class="board-controls" aria-label="Leaderboard controls">
+        <div class="board-controls" role="group" aria-label="Leaderboard controls">
           <div class="segmented-control" role="group" aria-label="Leaderboard view">
             <button type="button" data-view="summary" aria-pressed="true">Campaigns</button>
             <button type="button" data-view="detail" aria-pressed="false">Campaign runs</button>
@@ -114,20 +114,20 @@
           <h2 id="submit-title">Bring the final deck.</h2>
           <p>Organizations receive an API key from a benchmark maintainer, register immutable model and revision keys, then precommit a campaign. Each upload carries only its <code>campaign_id</code> plus generation attestation; tier, variant, benchmark, and cohort cannot be overridden.</p>
         </div>
-        <div class="terminal" aria-label="Submission API example">
+        <section class="terminal" aria-label="Submission API example">
           <div class="terminal-bar"><span></span><span></span><span></span><b>POST /v1/submissions</b></div>
           <pre><code>curl https://your-gloss-host/v1/submissions \
   -H "Authorization: Bearer $GLOSS_API_KEY" \
   -F 'metadata=@submission.json;type=application/json' \
   -F 'file=@model-output.pptx'</code></pre>
           <a href="/v1/docs">Open interactive API docs <span aria-hidden="true">→</span></a>
-        </div>
+        </section>
       </section>
     </main>
 
     <footer>
       <a class="wordmark footer-mark" href="/"><span>Gloss</span></a>
-      <p>An open benchmark for native slide-generation fidelity.</p>
+      <p>The measurement layer for the open Gloss presentation challenge.</p>
       <nav aria-label="Footer navigation"><a href="/v1/openapi.json">OpenAPI</a><a href="/health/live">Status</a><a href="mailto:disputes@gloss.dev">Disputes</a></nav>
     </footer>
   </body>

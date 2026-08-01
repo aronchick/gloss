@@ -1,5 +1,5 @@
-name: Propose a benchmark case
-description: Add a slide behavior that generated PowerPoint artifacts should prove.
+name: Propose a challenge case
+description: Add a native presentation behavior that generated artifacts should prove.
 title: "[case]: "
 labels: ["benchmark-case"]
 body:

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import replace
+from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
 from click.testing import CliRunner
@@ -21,8 +22,6 @@ from gloss.models import (
 )
 
 if TYPE_CHECKING:
-    from pathlib import Path
-
     import pytest
 
 
@@ -275,3 +274,14 @@ def test_validate_exits_two_when_schema_cannot_run(
     assert result.exit_code == 2
     assert "not performed" in result.output
     assert "schemas unavailable" in result.output
+
+
+def test_check_reports_exact_gold_deck() -> None:
+    root = Path(__file__).resolve().parents[2]
+    gold = root / "benchmark" / "deck" / "gold" / "gloss-v1-gold.pptx"
+
+    result = CliRunner().invoke(main, ["check", str(gold)])
+
+    assert result.exit_code == 0
+    assert "Exact match" in result.output
+    assert "No native objects changed" in result.output

@@ -1,211 +1,315 @@
 # Gloss
 
-**Gloss — Generative Layout & OOXML Scoring System** is an open, deliberately
-difficult PowerPoint deck that AI struggles to render and build as a real, editable
-artifact. Its accompanying measurement tools make the failure modes easy to inspect,
-reproduce, and improve.
+**A deliberately complicated presentation that AI struggles to make natively.**
 
-The tools inspect both sides of a deck:
+Gloss is an open, 20-slide challenge for presentation-generating AI. The goal is
+not to make screenshots that happen to look like slides. The goal is to make a
+real presentation: editable text, native charts and tables, working masters and
+layouts, live fields, connected shapes, correct reading order, and intentional
+grouping all the way down.
 
-- **Looks right:** rendered pixels, typography, geometry, and visual consistency.
-- **Built right:** native shapes, charts, tables, layouts, masters, text semantics,
-  relationships, and package safety.
+The deck is the challenge. Gloss also includes a small checker that makes native
+object changes easy to see, plus deeper measurement tools for people developing
+generators and evaluation systems.
 
-**[gloss.tools](https://gloss.tools)** ·
-[Issues](https://github.com/aronchick/gloss/issues) ·
-[Pull requests](https://github.com/aronchick/gloss/pulls) ·
-[Contributing](CONTRIBUTING.md)
+The name expands to **Generative Layout & Object Structure Standard**: a reminder
+that layout is visible, while object structure is what keeps a presentation real.
 
-> **A screenshot is not a PowerPoint.** The artifact is the product.
+**[Open gloss.tools](https://gloss.tools)** ·
+**[Download the deck](https://github.com/aronchick/gloss/raw/refs/heads/main/gloss-v1/benchmark/deck/gold/gloss-v1-gold.pptx)** ·
+**[Copy the exact prompt](gloss-v1/benchmark/prompts/DESIGNER_BRIEF.md)** ·
+**[Join the work](https://github.com/aronchick/gloss/issues)**
 
-## The ACID idea
+> **A screenshot is not a presentation. The artifact is the product.**
 
-The browser ACID tests made standards failures impossible to hand-wave away: every
-browser received the same hostile, public artifact, and everyone could inspect the
-result. They targeted open web standards rather than one browser's preferred output.
+## Remember ACID?
 
-Gloss brings that **ACID-test philosophy** to generated presentations:
+[Acid1](https://www.w3.org/Style/CSS/Test/CSS1/current/sec53.htm),
+[Acid2](https://www.webstandards.org/action/acid2/), and
+[Acid3](https://acid3.acidtests.org/) gave every browser the same hostile public
+artifact. You did not need a white paper to see what the browser understood and
+what it did not.
 
-- publish the torture cases instead of hiding them;
-- grade the final `.pptx`, not a generation trace or a screenshot;
-- test both visible output and standards-based OOXML structure;
-- make every assertion, fixture, score, and failure reproducible;
-- fail closed when required evidence or rendering stages are missing;
-- invite the community to add cases and make the grader stricter.
+**Gloss is ACID for presentation decks made by AI.** It publishes the hard
+artifact, the exact instructions, the reference renders, and the checks so anyone
+can inspect a result, find a failure, and improve the ecosystem.
 
-> **Remember [Acid1](https://www.w3.org/Style/CSS/Test/CSS1/current/sec53.htm) and
-> [Acid2](https://www.webstandards.org/action/acid2/)? Gloss is ACID for AI-made
-> presentation decks.**
+Here, ACID refers to the browser conformance-test tradition—not database
+transactions. **Gloss** is the public project. **Gloss v1** is its first bundled
+challenge suite.
 
-Here, **ACID refers to the public browser conformance-test tradition, not database
-transactions**.
+## Try it in three minutes
 
-## Product and suite
-
-**Gloss** is the public challenge deck and collaboration project. Its companion
-measurement tools make failure modes, evidence, and comparative results easy to
-inspect and reproduce.
-
-**Gloss v1 is the first ACID-style PowerPoint conformance suite bundled with
-Gloss.** It supplies the current prompt corpus, hostile deck cases, assertions, gold
-fixture, mutation tests, and protocol adapter:
-
-| Name | Role |
-| --- | --- |
-| **Gloss** | The deliberately difficult presentation deck and public project |
-| **ACID tests** | The open conformance-testing philosophy |
-| **Gloss v1** | One bundled benchmark protocol and corpus |
-
-> **Technical-preview status:** the bundled
-> [`GLOSS_OPENSPEC.md`](GLOSS_OPENSPEC.md) contract is still Draft and its
-> official-release gates remain incomplete. Gloss is live for public collaboration,
-> but no result should be treated as an official model leaderboard until a release
-> announcement names a frozen scoring cohort.
-
-## Technical preview evidence
-
-The current Gloss v1 candidate suite contains 280 schema-valid checks across
-rendered pixels and native package structure. Its generated operator suite passes
-280/280 positive controls and detects 280/280 generated single-fault mutations.
-This proves configured operator behavior only; it is not independent assertion
-evidence and it is not a model leaderboard.
-
-Every public count is recorded in
-[`site/evidence/preview-v1.json`](site/evidence/preview-v1.json) and checked against
-the committed mutation reports:
+1. [Download the native Gloss v1 deck](https://github.com/aronchick/gloss/raw/refs/heads/main/gloss-v1/benchmark/deck/gold/gloss-v1-gold.pptx).
+2. Move one object on one slide and a second object on another slide. Save it as
+   `edited.pptx`.
+3. Run the checker. It reports those two native objects—one finding per object.
 
 ```bash
-node launch/verify-launch.mjs
+git clone https://github.com/aronchick/gloss.git
+cd gloss/gloss-v1/grader
+uv sync --extra dev --locked
+uv run gloss check /path/to/edited.pptx
 ```
 
-## Frozen Gloss comparison
-
-Gloss includes a frozen comparative bundle produced against Gloss v1:
-[`gloss-v1/benchmark/comparative-v1`](gloss-v1/benchmark/comparative-v1).
-It contains four repository-owned generation paths, three public seeds per path,
-and 12 editable 20-slide decks. The canonical Linux/amd64 grader completed all
-240 slide renders.
-
-The current local artifact scores are 67.68% for the native paths and 62.32% for
-the visual paths. These are reproducible workflow baselines, not model rankings.
-Every report says `local artifact score; self-reported` and carries no model
-attribution.
-
-Reproduce every deck, report, hash, and public bar:
-
-```bash
-./gloss-v1/benchmark/comparative-v1/reproduce.sh
-```
-
-Release mode intentionally fails until independent prompt convergence, assertion
-provenance and evidence, reviewer approvals, baselines, environment manifests, and
-signed release indexes are complete.
-
-## Score provenance
-
-- **Local grading** measures a deck on the caller's machine. Local results are
-  self-reported and are not official leaderboard verification.
-- **Hosted grading** runs the same protocol adapter inside the controlled Gloss
-  environment. Every public submission score must carry the exact label
-  `grading-verified artifact score; generation-attested`.
-- Generation strategy, token count, cost, retries, and generation time are supplied
-  by submitters. They remain **generation-attested** even when the deck itself was
-  grading-verified.
-- A report is not eligible when schema validation did not run or failed, the
-  canonical renderer or reference exports were unavailable, required slides were
-  not compared, or any required stage was incomplete.
-
-## Repository layout
+An untouched copy returns:
 
 ```text
-site/                       Static gloss.tools source and public evidence
-launch/                     Gloss film renderer, verifier, and launch copy
-GLOSS_OPENSPEC.md           Draft contract for the bundled Gloss v1 suite
-gloss-v1/
-  benchmark/                ACID-style prompts, cases, checks, fixtures, and evidence
-  grader/                   Gloss v1 protocol adapter and local CLI
-  schemas/                  Bundled ECMA-376 Transitional XSD and report schemas
-  service/                  Pre-release hosted grading components
-  Dockerfile                Canonical Ubuntu 22.04 grading environment
+Exact match. No native objects changed.
 ```
 
-## Run the bundled suite locally
+Move two objects and it returns only two findings:
 
-Gloss currently exercises its first suite through the `gloss` CLI. Requirements:
-[uv](https://docs.astral.sh/uv/), Python 3.12, LibreOffice Impress, and `pdftoppm`
-from Poppler.
-
-```bash
-cd gloss-v1/grader
-uv sync --extra dev --locked
-uv run gloss validate ../benchmark/deck/gold/gloss-v1-gold.pptx
+```text
+2 native objects changed:
+  Slide 02 · placeholder “Agenda” · changed: position
+  Slide 12 · placeholder “Document Fields” · changed: position
 ```
 
-Full grading is fail-closed until a frozen release supplies signed cohort provenance
-and the caller supplies a complete artifact-context handoff. During development,
-use `validate` for the runnable quarantine/XSD smoke above. After the v1 release
-artifacts are published:
+`gloss check` is the friendly front door: a strict native-object diff against the
+public deck. The deeper `gloss grade` protocol remains available for rendered
+comparison, semantic assertions, provenance, and release work.
 
-```bash
-uv run gloss grade ../submission.pptx \
-  --tier 3 \
-  --artifact-context ./artifact-context.json \
-  --format json
-```
+## The deck
 
-Write a standalone report and private visual diffs:
+Each slide isolates something that can look correct while being built incorrectly.
+Open any reference image, then inspect the corresponding
+[canonical slide instructions](gloss-v1/benchmark/prompts/variants/canonical).
 
-```bash
-uv run gloss grade ../submission.pptx \
-  --tier 3 \
-  --artifact-context ./artifact-context.json \
-  --format html \
-  --output report.html \
-  --artifacts private-diffs/
-```
+### 01 — Cover / Title Stress Test
 
-The protocol CLI exits with status `2` when verification could not be completed.
-A normally graded deck may receive a failing score without making the grading
-command itself fail.
+![Slide 01: Gloss v1 cover](gloss-v1/benchmark/deck/exports/slide-01.png)
 
-## Canonical container
+**Demonstrates:** a cinematic title composition with an image, translucent shapes,
+and a master-driven footer. **Tests natively:** layout placeholders, image crop,
+z-order, opacity, shadow, and inherited slide numbers.
 
-```bash
-docker build -t gloss-v1 gloss-v1
-docker run --rm \
-  --volume "$PWD:/workspace:ro" \
-  gloss-v1 grade /workspace/submission.pptx --tier 3 \
-  --artifact-context /workspace/artifact-context.json --format json
-```
+### 02 — Dense Agenda with Layout Semantics
 
-## Quality gates
+![Slide 02: dense agenda](gloss-v1/benchmark/deck/exports/slide-02.png)
 
-```bash
-cd gloss-v1/grader
-uv run ruff check .
-uv run ruff format --check .
-uv run mypy gloss tests
-uv run pytest --cov=gloss --cov-fail-under=85
-uv build
-uv run pip-audit
-```
+**Demonstrates:** a dense agenda that still reads cleanly. **Tests natively:**
+placeholder use, real bullet levels, paragraph spacing and indentation, flat
+grouping, and exact alignment.
 
-The bundled validator applies deterministic ECMA-376 Markup Compatibility
-preprocessing before validating against the bundled Part 1 Transitional XSD set.
-RELAX NG validation is outside the Gloss v1 contract.
+### 03 — Native Table Stress Test
+
+![Slide 03: performance metrics table](gloss-v1/benchmark/deck/exports/slide-03.png)
+
+**Demonstrates:** a formatted performance table with a connected annotation.
+**Tests natively:** a real table—not a pile of rectangles—plus cell styling,
+mixed border weights, paragraph indents, and connector placement.
+
+### 04 — Native Chart Stress Test
+
+![Slide 04: revenue chart](gloss-v1/benchmark/deck/exports/slide-04.png)
+
+**Demonstrates:** a data-rich chart with annotations and takeaways. **Tests
+natively:** an editable chart with correct source data, chart type, labels,
+gridlines, legend, overlay shapes, and arrow connectors.
+
+### 05 — Master Reuse Enforcement
+
+![Slide 05: team cards](gloss-v1/benchmark/deck/exports/slide-05.png)
+
+**Demonstrates:** a repeatable card system. **Tests natively:** master and layout
+inheritance, grouped card objects, equal distribution, placeholders, and a footer
+that is inherited instead of manually copied.
+
+### 06 — Multilingual Editorial
+
+![Slide 06: multilingual editorial layout](gloss-v1/benchmark/deck/exports/slide-06.png)
+
+**Demonstrates:** English, Arabic, and Japanese sharing one editorial canvas.
+**Tests natively:** RTL paragraph direction, CJK line breaking, script-specific
+fonts, exact Unicode text, and an intentional cross-column overlap.
+
+### 07 — Image Crop and Mask
+
+![Slide 07: image handling](gloss-v1/benchmark/deck/exports/slide-07.png)
+
+**Demonstrates:** three treatments of approved source imagery. **Tests natively:**
+independent crop rectangles, circle and rounded-rectangle masks, asset identity,
+and a translucent overlay in the right z-order.
+
+### 08 — Overlap, Shadow, and Transparency
+
+![Slide 08: depth and layering](gloss-v1/benchmark/deck/exports/slide-08.png)
+
+**Demonstrates:** a cascading stack with convincing depth. **Tests natively:**
+precise z-order, five opacity levels, shadows, selective grouping, and a real
+gradient fill.
+
+### 09 — Dense Text Overflow
+
+![Slide 09: API reference](gloss-v1/benchmark/deck/exports/slide-09.png)
+
+**Demonstrates:** two code-heavy columns with deliberately different overflow
+behavior. **Tests natively:** fixed-size clipping versus auto-shrink, preserved
+whitespace, monospaced runs, exact indentation, and line spacing.
+
+### 10 — Connector and Alignment Diagram
+
+![Slide 10: system architecture](gloss-v1/benchmark/deck/exports/slide-10.png)
+
+**Demonstrates:** a legible systems diagram. **Tests natively:** connectors that
+remain attached to shapes, elbow routing, arrowheads, grid alignment, labels, and
+nested backend groups.
+
+### 11 — Theme vs. Local Override
+
+![Slide 11: brand colors](gloss-v1/benchmark/deck/exports/slide-11.png)
+
+**Demonstrates:** two rows of nearly identical swatches. **Tests natively:** the
+invisible semantic difference between theme-linked colors and explicit RGB
+overrides—the kind of distinction a screenshot cannot prove.
+
+### 12 — Native Field Slide
+
+![Slide 12: document fields](gloss-v1/benchmark/deck/exports/slide-12.png)
+
+**Demonstrates:** live document metadata next to a static lookalike. **Tests
+natively:** slide-number and fixed-date fields, a master footer field, and the
+difference between a live field and typed text.
+
+### 13 — Composite Stress
+
+![Slide 13: composite stress](gloss-v1/benchmark/deck/exports/slide-13.png)
+
+**Demonstrates:** chart, table, image, Arabic annotation, and dense callouts in one
+composition. **Tests natively:** multiple editable object types and their
+relationships surviving together.
+
+### 14 — RTL-Heavy Comparison
+
+![Slide 14: RTL systems review](gloss-v1/benchmark/deck/exports/slide-14.png)
+
+**Demonstrates:** a mirrored Arabic/English comparison. **Tests natively:**
+right-to-left paragraphs, mixed bidirectional runs, script-aware fonts, and
+mirrored alignment without flattening text.
+
+### 15 — Rotated Text
+
+![Slide 15: rotation atlas](gloss-v1/benchmark/deck/exports/slide-15.png)
+
+**Demonstrates:** typography at 0°, 45°, 90°, 135°, and 270°. **Tests natively:**
+real rotation values, anchor points, bounding boxes, and shapes aligned to rotated
+text.
+
+### 16 — Intentional Off-Canvas Bleed
+
+![Slide 16: beyond the frame](gloss-v1/benchmark/deck/exports/slide-16.png)
+
+**Demonstrates:** design elements that deliberately continue beyond the canvas.
+**Tests natively:** negative coordinates and overhanging geometry without clipping,
+normalizing, or “fixing” intentional overflow.
+
+### 17 — Deep Grouping
+
+![Slide 17: nested systems](gloss-v1/benchmark/deck/exports/slide-17.png)
+
+**Demonstrates:** a composition built from nested visual systems. **Tests natively:**
+three levels of groups, exact membership, child transforms, and z-order inside each
+nesting level.
+
+### 18 — Multi-Column Editorial
+
+![Slide 18: three cities editorial](gloss-v1/benchmark/deck/exports/slide-18.png)
+
+**Demonstrates:** a three-column English/Japanese magazine layout. **Tests
+natively:** column structure, repeated image treatments, pull quotes, mixed-script
+text, and a patterned background.
+
+### 19 — Repetition and Consistency
+
+![Slide 19: design system audit](gloss-v1/benchmark/deck/exports/slide-19.png)
+
+**Demonstrates:** the deck’s design language as a consistency audit. **Tests
+natively:** master-derived typography, colors, spacing, line weights, and reusable
+layout behavior across the full document.
+
+### 20 — Final Torture Slide
+
+![Slide 20: Gloss synthesis](gloss-v1/benchmark/deck/exports/slide-20.png)
+
+**Demonstrates:** the whole challenge in one dense synthesis. **Tests natively:** a
+chart, table, cropped image, Arabic and Japanese text, rotated type, transparent
+layers, connectors, fields, groups, and master inheritance at once.
+
+## Give the exact challenge to an AI
+
+The complete prompt is already assembled in one copyable file:
+
+**[Open the exact Gloss v1 authoring prompt →](gloss-v1/benchmark/prompts/DESIGNER_BRIEF.md)**
+
+Give the AI that prompt together with:
+
+- the [20 reference images](gloss-v1/benchmark/deck/exports);
+- the [approved assets](gloss-v1/benchmark/assets);
+- the [bundled font set](gloss-v1/benchmark/fonts).
+
+Do not give it the native gold deck. Ask for an editable native presentation,
+save the result as `.pptx`, and run `gloss check` against it. The experiment is
+intentionally reproducible: every instruction, reference, asset, and check is in
+this repository.
+
+## Native presentations, not one app
+
+Gloss is about native presentations across PowerPoint, Google Slides, and Keynote.
+The principle is format-independent: a chart should remain a chart, text should
+remain text, and layout behavior should survive editing.
+
+Gloss v1 is honestly **PPTX-first**. OOXML is a published standard with an
+inspectable package and object structure, which makes independent local checking
+possible today. Google Slides and Keynote coverage should use the same public,
+artifact-first philosophy as their reliable inspection surfaces mature. Help us
+define those adapters in [Issues](https://github.com/aronchick/gloss/issues).
+
+## Measurement is the support layer
+
+The simple check answers the first question: *what native objects changed?* The
+bundled advanced grader can also inspect rendered pixels, typography, geometry,
+charts, tables, layouts, masters, text semantics, relationships, and package
+safety. Those tools exist to make this hard presentation easier to understand and
+improve; they are not the product’s identity.
+
+The current candidate suite contains 280 schema-valid checks and generated
+operator fixtures. That evidence proves configured checker behavior, not an
+official model leaderboard. See [GLOSS_OPENSPEC.md](GLOSS_OPENSPEC.md) for the
+draft protocol and [the public evidence bundle](site/evidence/preview-v1.json) for
+the receipts.
+
+## Public today, harder tomorrow
+
+Gloss v1 is public by design. That also means it may become training data for the
+systems it tests. This release is the starting line, not a permanent secret exam.
+
+Future generations need automated ways to create difficult decks, hold cases back,
+delay disclosure, rotate prompts, and publish them after evaluation. The public
+suite remains valuable as a shared conformance target; hidden generations will
+measure generalization.
 
 ## Build it with us
 
-The ACID tradition works because hard cases are public. Help Gloss make generated
-decks worth editing:
+The browser ACID tests mattered because standards failures became visible and the
+community could make the tests better. Gloss should work the same way.
 
-- [Propose a benchmark case](https://github.com/aronchick/gloss/issues/new?template=benchmark-case.yml)
-- [Report a grader gap](https://github.com/aronchick/gloss/issues/new?template=grader-bug.yml)
+- [Propose a difficult presentation behavior](https://github.com/aronchick/gloss/issues/new?template=benchmark-case.yml)
+- [Report a checker gap](https://github.com/aronchick/gloss/issues/new?template=grader-bug.yml)
 - [Challenge evidence or a public claim](https://github.com/aronchick/gloss/issues/new?template=evidence-challenge.yml)
-- Read [CONTRIBUTING.md](CONTRIBUTING.md) before sending a patch
+- [Send a pull request](https://github.com/aronchick/gloss/pulls)
+- Read [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## License
+## Repository map
+
+```text
+gloss-v1/benchmark/deck/       Native challenge deck + 20 reference renders
+gloss-v1/benchmark/prompts/    One exact brief + per-slide prompt variants
+gloss-v1/benchmark/assets/     Approved source assets
+gloss-v1/grader/               Simple checker + advanced grading protocol
+site/                          Static gloss.tools source
+GLOSS_OPENSPEC.md              Draft protocol for the bundled v1 suite
+```
 
 Code and benchmark materials are released under the
-[Apache License 2.0](LICENSE), except third-party or asset files that carry their
-own license notices.
+[Apache License 2.0](LICENSE), except third-party assets with their own notices.

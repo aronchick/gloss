@@ -1,11 +1,13 @@
 # Contributing to Gloss
 
-Gloss improves when a benchmark claim becomes easier to inspect, reproduce, or challenge. Small, evidence-backed pull requests are welcome.
+Gloss improves when the challenge presentation becomes harder to fake and easier to
+understand. Small, evidence-backed pull requests are welcome.
 
 ## Good first contributions
 
-- Add a PowerPoint construct the corpus does not cover.
+- Add a native presentation behavior the deck does not cover.
 - Reproduce a grader false positive or false negative.
+- Make one of the twenty slide explanations or prompts clearer.
 - Improve a candidate assertion and its mutation fixture.
 - Improve a deterministic comparative generation path and prove the score change.
 - Review a prompt requirement, evidence record, or release gate.
@@ -30,6 +32,7 @@ Install [uv](https://docs.astral.sh/uv/), Python 3.12, LibreOffice Impress, and 
 git clone https://github.com/aronchick/gloss.git
 cd gloss/gloss-v1/grader
 uv sync --extra dev --locked
+uv run gloss check ../benchmark/deck/gold/gloss-v1-gold.pptx
 uv run ../benchmark/validate_corpus.py
 uv run pytest tests/test_mutation_fixtures.py -q
 ```
@@ -57,9 +60,9 @@ uv run pytest --cov=gloss_service --cov-fail-under=85
 uv run pip-audit
 ```
 
-## Adding a benchmark case
+## Adding a challenge case
 
-A benchmark change should identify:
+A deck change should identify:
 
 - the natural-language requirement;
 - the intended visual and native artifact behavior;
@@ -83,12 +86,11 @@ Keep a pull request focused enough to review. In the description, include:
 
 CI must pass. Maintainers may ask for a smaller fixture, clearer provenance, or an explicit release-state caveat before merging.
 
-## Launch surface
+## Website
 
-The static site lives in `site/`. Harness counts come from
-`site/evidence/preview-v1.json`; comparative bars come from the byte-equivalent
-public copy of `gloss-v1/benchmark/comparative-v1/summary.json`. Verify both
-sources, local assets, copy, and media metadata with:
+The static site lives in `site/` and should lead with the real deck, the exact
+prompt, and GitHub contribution paths. Verify links, assets, copy, evidence, and
+media metadata with:
 
 ```bash
 node launch/verify-launch.mjs

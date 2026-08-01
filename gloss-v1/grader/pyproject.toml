@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "gloss"
 version = "1.0.0a1"
-description = "Gloss benchmark grader — ECMA-376 slide generation fidelity testing"
+description = "The open challenge and checker for native AI-made presentations"
 readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"

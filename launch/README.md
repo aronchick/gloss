@@ -1,15 +1,19 @@
-# Gloss launch assets
+# Gloss launch surface
 
-The launch page and film are static, repository-owned, and derived from committed evidence.
+The launch page is static, repository-owned, and centered on the public 20-slide
+challenge deck. Every slide image links to its exact instructions, and the primary
+calls to action download the native deck, open the single master prompt, or join
+the GitHub project.
 
 ## Evidence
 
-`site/evidence/preview-v1.json` records candidate-harness counts.
-`gloss-v1/benchmark/comparative-v1/summary.json` records the frozen
-generation-path scores used by the central chart and film. Its public copy at
-`site/evidence/comparative-v1-summary.json` must remain semantically identical.
+`site/evidence/preview-v1.json` records candidate-harness counts for the
+supporting measurement layer. The launch film is presentation-first: it uses
+real Gloss v1 slide renders, the two-object checker example, the ACID lineage,
+and the GitHub call to action. It does not lead with comparative scores.
 
-Verify the evidence, local links, caveats, and media metadata:
+Verify the deck, all twenty renders and prompt links, supporting evidence, local
+assets, claims, and media metadata:
 
 ```bash
 node launch/verify-launch.mjs

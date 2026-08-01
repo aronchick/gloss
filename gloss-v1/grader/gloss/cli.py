@@ -1,4 +1,4 @@
-"""Gloss CLI — benchmark grading tool."""
+"""Gloss CLI — native presentation challenge and checker."""
 
 import json
 from pathlib import Path
@@ -15,7 +15,81 @@ console = Console()
 @click.group()
 @click.version_option(version=__version__)
 def main() -> None:
-    """Gloss benchmark grader — ECMA-376 slide generation fidelity testing."""
+    """Gloss — the open challenge for native AI-made presentations."""
+
+
+@main.command()
+@click.argument(
+    "submission",
+    type=click.Path(exists=True, dir_okay=False, readable=True, path_type=Path),
+)
+@click.option(
+    "--reference",
+    type=click.Path(exists=True, dir_okay=False, readable=True, path_type=Path),
+    default=None,
+    help="Reference .pptx; defaults to the bundled Gloss v1 deck",
+)
+@click.option(
+    "--format",
+    "fmt",
+    type=click.Choice(["text", "json"]),
+    default="text",
+    show_default=True,
+)
+def check(submission: Path, reference: Path | None, fmt: str) -> None:
+    """Report native objects changed from the public Gloss deck."""
+    import zipfile
+
+    from lxml import etree
+
+    from gloss.compare import compare_native_decks
+    from gloss.mce import MCEProfileError
+    from gloss.resources import BenchmarkDataError, resolve_benchmark_dir
+
+    try:
+        resolved_reference = reference
+        if resolved_reference is None:
+            resolved_reference = resolve_benchmark_dir() / "deck" / "gold" / "gloss-v1-gold.pptx"
+        if not resolved_reference.is_file():
+            raise FileNotFoundError(f"Reference deck is missing: {resolved_reference}")
+        changes = compare_native_decks(submission, resolved_reference)
+    except (
+        BenchmarkDataError,
+        FileNotFoundError,
+        MCEProfileError,
+        OSError,
+        ValueError,
+        zipfile.BadZipFile,
+        etree.XMLSyntaxError,
+    ) as exc:
+        console.print(f"[red]Check could not run:[/red] {exc}")
+        raise click.exceptions.Exit(2) from exc
+
+    if fmt == "json":
+        click.echo(
+            json.dumps(
+                {
+                    "status": "exact" if not changes else "changed",
+                    "changed_objects": len(changes),
+                    "changes": [change.as_dict() for change in changes],
+                },
+                indent=2,
+            )
+        )
+    elif not changes:
+        console.print("[green]Exact match.[/green] No native objects changed.")
+    else:
+        noun = "object" if len(changes) == 1 else "objects"
+        console.print(f"[yellow]{len(changes)} native {noun} changed:[/yellow]")
+        for change in changes:
+            location = "Deck" if change.slide_number == 0 else f"Slide {change.slide_number:02d}"
+            fields = ", ".join(change.changed_fields)
+            console.print(
+                f"  [bold]{location}[/bold] · {change.label} · {change.change_type}: {fields}"
+            )
+
+    if changes:
+        raise click.exceptions.Exit(1)
 
 
 @main.command("build-environment-candidate")
