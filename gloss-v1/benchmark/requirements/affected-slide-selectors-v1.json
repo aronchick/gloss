@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "registry_id": "gloss-affected-slide-selectors-v1",
+  "selectors": [
+    {
+      "selector_id": "gloss.affected-slides.non-bundled-font.v1",
+      "selector_sha256": "sha256:5bfb1f0992a59d6ae8db4fe83d27ec8f8dc3f0ed7b3a4b0a9d3f7c0980af0c14",
+      "descriptor": {
+        "selector_id": "gloss.affected-slides.non-bundled-font.v1",
+        "implementation_symbol": "gloss.affected_slides._non_bundled_font_slides",
+        "input_contract": "DeckGraph.slides[].objects[].text_runs[].font_family",
+        "algorithm": "Return each slide containing a rendered text run with a nonempty, non-theme font family outside the bundled font allowlist.",
+        "output_contract": "Sorted unique slide numbers from the submitted deck."
+      }
+    },
+    {
+      "selector_id": "gloss.affected-slides.notes-comments.v1",
+      "selector_sha256": "sha256:92d94c284e6352ee4128c9635856bbc52b14cdaba7d7f240f2f0fda69470962c",
+      "descriptor": {
+        "selector_id": "gloss.affected-slides.notes-comments.v1",
+        "implementation_symbol": "gloss.affected_slides._notes_or_comment_slides",
+        "input_contract": "DeckGraph.notes_slides and DeckGraph.comment_slides",
+        "algorithm": "Return the union of slides related to speaker-note or comment parts.",
+        "output_contract": "Sorted unique slide numbers from the submitted deck."
+      }
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gloss.dev/schemas/checklist-item.schema.json",
+  "title": "Gloss Checklist Item",
+  "description": "Fail-closed contract for one candidate or frozen Gloss checklist item. Pending provenance or evidence is explicit and is not release evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "lifecycle_state",
+    "id",
+    "scope",
+    "tier",
+    "title",
+    "description",
+    "assertion_id",
+    "provenance",
+    "kind",
+    "severity",
+    "source_of_truth",
+    "verification",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "lifecycle_state": { "enum": ["candidate", "frozen"] },
+    "id": {
+      "type": "string",
+      "pattern": "^(slide-\\d{2}|deck)\\.[a-z0-9][a-z0-9.-]*$"
+    },
+    "scope": { "enum": ["slide", "deck"] },
+    "slide": { "type": "integer", "minimum": 1, "maximum": 20 },
+    "tier": { "type": "integer", "enum": [1, 2, 3] },
+    "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "description": { "type": "string", "minLength": 1 },
+    "prompt_requirement_id": {
+      "type": ["string", "null"],
+      "pattern": "^(slide-\\d{2}|deck)\\.req-[a-z0-9][a-z0-9.-]*$"
+    },
+    "assertion_id": {
+      "type": "string",
+      "pattern": "^(slide-\\d{2}|deck)\\.assert-[a-z0-9][a-z0-9.-]*$"
+    },
+    "provenance": { "$ref": "#/$defs/provenance" },
+    "kind": {
+      "enum": [
+        "visual",
+        "structure",
+        "text",
+        "typography",
+        "master-layout",
+        "image-asset",
+        "chart",
+        "table",
+        "fields",
+        "grouping",
+        "z-order",
+        "overflow",
+        "multilingual",
+        "theme-consistency",
+        "bullet-paragraph",
+        "spacing-autofit",
+        "gradient-pattern"
+      ]
+    },
+    "severity": { "enum": ["critical", "major", "minor", "informational"] },
+    "source_of_truth": { "enum": ["ooxml", "render", "both"] },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method"],
+      "properties": {
+        "method": {
+          "enum": [
+            "object_compare",
+            "visual_ssim",
+            "text_match",
+            "hash_match",
+            "field_check",
+            "layout_check",
+            "anti_cheat"
+          ]
+        },
+        "selector": { "type": "string", "minLength": 1 },
+        "matching_policy": { "type": "string", "minLength": 1 },
+        "expectation": { "type": "object" },
+        "tolerance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["bbox_px", "units"],
+          "properties": {
+            "bbox_px": { "type": "integer", "minimum": 0 },
+            "units": { "const": "pixels_at_1920x1080" }
+          }
+        },
+        "semantic_equivalence": { "type": "object" }
+      }
+    },
+    "failure_mode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["automatic_fail_if", "propagation", "affected_slides"],
+      "properties": {
+        "automatic_fail_if": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/rule_id" }
+        },
+        "propagation": { "enum": ["zero_slide", "zero_affected_slides"] },
+        "affected_slides": { "$ref": "#/$defs/affected_slides" }
+      }
+    },
+    "evidence": { "$ref": "#/$defs/evidence" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "scope": { "const": "slide" } }, "required": ["scope"] },
+      "then": { "required": ["slide"] },
+      "else": { "not": { "required": ["slide"] } }
+    },
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": { "status": { "const": "complete" }, "kind": { "const": "prompt" } },
+            "required": ["status", "kind"]
+          }
+        },
+        "required": ["provenance"]
+      },
+      "then": {
+        "required": ["prompt_requirement_id"],
+        "properties": { "prompt_requirement_id": { "type": "string" } }
+      }
+    },
+    {
+      "if": { "properties": { "lifecycle_state": { "const": "frozen" } }, "required": ["lifecycle_state"] },
+      "then": {
+        "properties": {
+          "provenance": { "$ref": "#/$defs/complete_provenance" },
+          "evidence": { "$ref": "#/$defs/complete_evidence" },
+          "failure_mode": {
+            "properties": { "affected_slides": { "$ref": "#/$defs/complete_affected_slides" } }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "prefixed_sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "rule_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$" },
+    "provenance": {
+      "oneOf": [
+        { "$ref": "#/$defs/pending_provenance" },
+        { "$ref": "#/$defs/complete_provenance" }
+      ]
+    },
+    "pending_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason"],
+      "properties": {
+        "status": { "const": "pending" },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "complete_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "kind", "source_hash", "locator"],
+      "properties": {
+        "status": { "const": "complete" },
+        "kind": { "enum": ["prompt", "reference_image", "asset_manifest"] },
+        "source_hash": { "$ref": "#/$defs/prefixed_sha256" },
+        "locator": { "type": "string", "minLength": 1 },
+        "reference_image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["slide", "region"],
+          "properties": {
+            "slide": { "type": "integer", "minimum": 1, "maximum": 20 },
+            "region": { "$ref": "#/$defs/reference_region" }
+          }
+        },
+        "asset_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,127}$" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "reference_image" } }, "required": ["kind"] },
+          "then": { "required": ["reference_image"] },
+          "else": { "not": { "required": ["reference_image"] } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "asset_manifest" } }, "required": ["kind"] },
+          "then": { "required": ["asset_id"] },
+          "else": { "not": { "required": ["asset_id"] } }
+        }
+      ]
+    },
+    "reference_region": {
+      "$comment": "The semantic validator additionally requires x + width <= 1920 and y + height <= 1080.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height", "units"],
+      "properties": {
+        "x": { "type": "integer", "minimum": 0, "maximum": 1919 },
+        "y": { "type": "integer", "minimum": 0, "maximum": 1079 },
+        "width": { "type": "integer", "minimum": 1, "maximum": 1920 },
+        "height": { "type": "integer", "minimum": 1, "maximum": 1080 },
+        "units": { "const": "pixels_at_1920x1080" }
+      }
+    },
+    "affected_slides": {
+      "oneOf": [
+        { "$ref": "#/$defs/pending_affected_slides" },
+        { "$ref": "#/$defs/complete_affected_slides" }
+      ]
+    },
+    "pending_affected_slides": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason"],
+      "properties": {
+        "status": { "const": "pending" },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "complete_affected_slides": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "mode", "slides", "selector_id", "selector_sha256"],
+      "properties": {
+        "status": { "const": "complete" },
+        "mode": { "enum": ["current_slide", "explicit", "named_selector"] },
+        "slides": { "type": "array", "uniqueItems": true, "items": { "type": "integer", "minimum": 1, "maximum": 20 } },
+        "selector_id": { "type": ["string", "null"], "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$" },
+        "selector_sha256": { "oneOf": [{ "$ref": "#/$defs/prefixed_sha256" }, { "type": "null" }] }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "mode": { "enum": ["current_slide", "explicit"] } }, "required": ["mode"] },
+          "then": { "properties": { "slides": { "minItems": 1 }, "selector_id": { "type": "null" }, "selector_sha256": { "type": "null" } } }
+        },
+        {
+          "if": { "properties": { "mode": { "const": "named_selector" } }, "required": ["mode"] },
+          "then": { "properties": { "slides": { "maxItems": 0 }, "selector_id": { "type": "string" }, "selector_sha256": { "$ref": "#/$defs/prefixed_sha256" } } }
+        }
+      ]
+    },
+    "evidence": {
+      "oneOf": [
+        { "$ref": "#/$defs/pending_evidence" },
+        { "$ref": "#/$defs/complete_evidence" }
+      ]
+    },
+    "pending_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason", "positive_fixture_ids", "single_fault_negative_fixture_ids", "mutation_expectation_ids"],
+      "properties": {
+        "status": { "const": "pending" },
+        "reason": { "type": "string", "minLength": 1 },
+        "positive_fixture_ids": { "type": "array", "maxItems": 0 },
+        "single_fault_negative_fixture_ids": { "type": "array", "maxItems": 0 },
+        "mutation_expectation_ids": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "complete_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "positive_fixture_ids", "single_fault_negative_fixture_ids", "mutation_expectation_ids"],
+      "properties": {
+        "status": { "const": "complete" },
+        "positive_fixture_ids": { "$ref": "#/$defs/nonempty_fixture_ids" },
+        "single_fault_negative_fixture_ids": { "$ref": "#/$defs/nonempty_fixture_ids" },
+        "mutation_expectation_ids": { "$ref": "#/$defs/nonempty_mutation_ids" }
+      }
+    },
+    "nonempty_fixture_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^fixture\\.[a-z0-9][a-z0-9._-]*$" }
+    },
+    "nonempty_mutation_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^mutation\\.[a-z0-9][a-z0-9._-]*$" }
+    }
+  }
+}

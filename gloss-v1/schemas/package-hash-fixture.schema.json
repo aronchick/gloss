@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gloss.dev/schemas/package-hash-fixture.schema.json",
+  "title": "Gloss Canonical Package Hash Fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "fixture_id", "gold_parts", "cases", "expected_canonical_sha256"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "fixture_id": { "const": "synthetic-gold-copy-rejection-v1" },
+    "gold_parts": {
+      "type": "object",
+      "minProperties": 2,
+      "additionalProperties": { "type": "string", "contentEncoding": "base64" }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "recipe", "expect_byte_match", "expect_package_match", "expected_decision"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "recipe": {
+            "enum": ["exact_bytes", "repacked", "volatile_core_changed", "content_changed"]
+          },
+          "expect_byte_match": { "type": "boolean" },
+          "expect_package_match": { "type": "boolean" },
+          "expected_decision": { "enum": ["gold_artifact_copy", "not_a_gold_copy"] }
+        }
+      }
+    },
+    "expected_canonical_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}

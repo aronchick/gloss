@@ -1,0 +1,19 @@
+{
+  "external_resources_used": false,
+  "full_detail": false,
+  "generation_attribution": "repository-owned path; no model attribution",
+  "generator_kind": "deterministic_repository_baseline",
+  "generator_sha256": "sha256:a4b9a1bfc282ff9d64a6416e0df3f6219646b595e81f8b8037f5a967fdd582cb",
+  "human_intervention": false,
+  "native_objects": false,
+  "path_id": "visual-fast",
+  "path_label": "Visual fast",
+  "post_processing": false,
+  "precise_geometry": false,
+  "prompt_variant": "paraphrase-a",
+  "run": 2,
+  "schema_version": "1.0",
+  "seed": 2207,
+  "source_entrypoint": "generate_baselines.py",
+  "verification_label": "local artifact score; self-reported"
+}

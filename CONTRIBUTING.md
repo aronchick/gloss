@@ -17,7 +17,7 @@ Start with an [issue](https://github.com/aronchick/gloss/issues/new/choose). Thi
 
 1. Keep public claims traceable to committed evidence.
 2. Do not add invented model results, scores, costs, or generation provenance.
-3. Keep the public name **Gloss** and the protocol identifier `acidslide-v1` distinct.
+3. Keep the public name **Gloss** and the protocol identifier `gloss-v1` distinct.
 4. Treat the OpenSpec as Draft until the release validator passes and maintainers freeze it.
 5. Add or update tests for grader behavior changes.
 6. Never commit private slide decks, credentials, customer data, or proprietary fonts.
@@ -28,7 +28,7 @@ Install [uv](https://docs.astral.sh/uv/), Python 3.12, LibreOffice Impress, and 
 
 ```bash
 git clone https://github.com/aronchick/gloss.git
-cd gloss/acidslide-v1/grader
+cd gloss/gloss-v1/grader
 uv sync --extra dev --locked
 uv run ../benchmark/validate_corpus.py
 uv run pytest tests/test_mutation_fixtures.py -q
@@ -39,8 +39,8 @@ Run the full grader checks before opening a pull request:
 ```bash
 uv run ruff check .
 uv run ruff format --check .
-uv run mypy acidslide tests
-uv run pytest --cov=acidslide --cov-fail-under=85
+uv run mypy gloss tests
+uv run pytest --cov=gloss --cov-fail-under=85
 uv build
 uv run pip-audit
 ```
@@ -52,8 +52,8 @@ cd ../service
 uv sync --extra dev --locked
 uv run ruff check .
 uv run ruff format --check .
-uv run mypy acidslide_service tests
-uv run pytest --cov=acidslide_service --cov-fail-under=85
+uv run mypy gloss_service tests
+uv run pytest --cov=gloss_service --cov-fail-under=85
 uv run pip-audit
 ```
 
@@ -87,7 +87,7 @@ CI must pass. Maintainers may ask for a smaller fixture, clearer provenance, or 
 
 The static site lives in `site/`. Harness counts come from
 `site/evidence/preview-v1.json`; comparative bars come from the byte-equivalent
-public copy of `acidslide-v1/benchmark/comparative-v1/summary.json`. Verify both
+public copy of `gloss-v1/benchmark/comparative-v1/summary.json`. Verify both
 sources, local assets, copy, and media metadata with:
 
 ```bash

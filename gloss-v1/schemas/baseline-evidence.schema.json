@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gloss.dev/schemas/baseline-evidence.schema.json",
+  "title": "Gloss Descriptive Baseline Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "baseline_kind",
+    "benchmark_version",
+    "official_inputs",
+    "methodology",
+    "artifact",
+    "generation_seed",
+    "control_authorization_sha256",
+    "report_sha256",
+    "score_semantic_report_sha256",
+    "fidelity_score",
+    "gold_duplicate_check",
+    "run_kind",
+    "verification_label",
+    "eligible",
+    "campaign_id"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "evidence_id": { "type": "string", "pattern": "^baseline\\.[a-z0-9][a-z0-9._-]{2,127}$" },
+    "baseline_kind": { "enum": ["human_expert", "programmatic_copy", "naive_llm"] },
+    "benchmark_version": { "const": "gloss-v1.0.0" },
+    "official_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt_bundle_sha256", "reference_image_bundle_sha256", "asset_manifest_sha256", "scoring_manifest_sha256"],
+      "properties": {
+        "prompt_bundle_sha256": { "$ref": "#/$defs/hash" },
+        "reference_image_bundle_sha256": { "$ref": "#/$defs/hash" },
+        "asset_manifest_sha256": { "$ref": "#/$defs/hash" },
+        "scoring_manifest_sha256": { "$ref": "#/$defs/hash" }
+      }
+    },
+    "methodology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "method_artifact_sha256", "generation_transcript_hashes"],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "method_artifact_sha256": { "$ref": "#/$defs/hash" },
+        "generation_transcript_hashes": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/hash" } },
+        "provider": { "type": "string", "minLength": 1 },
+        "model_identifier": { "type": "string", "minLength": 1 },
+        "immutable_model_revision": { "type": "string", "minLength": 1 },
+        "api_configuration_sha256": { "$ref": "#/$defs/hash" },
+        "temperature": { "oneOf": [{ "type": "number", "minimum": 0 }, { "type": "null" }] }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["submission_sha256", "mce_resolved_package_sha256", "canonical_package_hash_profile_sha256", "canonical_package_hash_v1"],
+      "properties": {
+        "submission_sha256": { "$ref": "#/$defs/hash" },
+        "mce_resolved_package_sha256": { "$ref": "#/$defs/hash" },
+        "canonical_package_hash_profile_sha256": { "$ref": "#/$defs/hash" },
+        "canonical_package_hash_v1": { "$ref": "#/$defs/hash" }
+      }
+    },
+    "generation_seed": { "oneOf": [{ "type": "string", "maxLength": 256, "x-utf8-maxBytes": 256 }, { "type": "null" }] },
+    "control_authorization_sha256": { "$ref": "#/$defs/hash" },
+    "report_sha256": { "$ref": "#/$defs/hash" },
+    "score_semantic_report_sha256": { "$ref": "#/$defs/hash" },
+    "fidelity_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "gold_duplicate_check": { "enum": ["clear", "byte_match", "canonical_match"] },
+    "run_kind": { "const": "baseline_control" },
+    "verification_label": { "const": "grading-verified baseline control; not a leaderboard result" },
+    "eligible": { "const": false },
+    "campaign_id": { "type": "null" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "baseline_kind": { "const": "naive_llm" } }, "required": ["baseline_kind"] },
+      "then": {
+        "properties": {
+          "methodology": {
+            "required": ["provider", "model_identifier", "immutable_model_revision", "api_configuration_sha256", "temperature"]
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "baseline_kind": { "const": "programmatic_copy" } }, "required": ["baseline_kind"] },
+      "then": { "properties": { "methodology": { "properties": { "method_artifact_sha256": { "$ref": "#/$defs/hash" } } } } }
+    }
+  ],
+  "$defs": {
+    "hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+  }
+}

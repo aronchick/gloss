@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gloss.dev/schemas/png-profile.schema.json",
+  "title": "Gloss v1 PDF to PNG Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "rasterizer",
+    "pdftoppm_command",
+    "width_px",
+    "height_px",
+    "color_mode",
+    "page_naming",
+    "encoder"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "profile_id": { "const": "gloss-png-profile-v1" },
+    "rasterizer": { "const": "poppler-pdftoppm" },
+    "pdftoppm_command": {
+      "const": [
+        "pdftoppm",
+        "-png",
+        "-scale-to-x",
+        "1920",
+        "-scale-to-y",
+        "1080",
+        "/work/submission.pdf",
+        "/work/gloss-render"
+      ]
+    },
+    "width_px": { "const": 1920 },
+    "height_px": { "const": 1080 },
+    "color_mode": { "const": "RGB" },
+    "page_naming": { "const": "slide-%02d.png" },
+    "encoder": {
+      "const": {
+        "implementation": "Pillow",
+        "format": "PNG",
+        "conversion": "RGB",
+        "optimize": false,
+        "compress_level": 9
+      }
+    }
+  }
+}

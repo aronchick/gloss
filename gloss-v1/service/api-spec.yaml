@@ -1,0 +1,774 @@
+openapi: 3.1.0
+info:
+  title: Gloss hosted service
+  version: 1.0.0
+  description: Controlled grading and the public grading-verified Gloss leaderboard.
+servers:
+  - url: https://api.gloss.dev/v1
+  - url: http://localhost:8000/v1
+tags:
+  - name: identity
+  - name: campaigns
+  - name: submissions
+  - name: leaderboard
+  - name: benchmark
+  - name: admin
+paths:
+  /versions:
+    get:
+      tags: [benchmark]
+      operationId: listVersions
+      responses:
+        "200":
+          description: Active and frozen benchmark versions.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [active, frozen, active_scoring_cohort_id, scoring_manifest_sha256, grader_source_tree_sha256, environment_attestation_sha256]
+                properties:
+                  active: {type: array, items: {type: string}}
+                  frozen: {type: array, items: {type: string}}
+                  active_scoring_cohort_id: {$ref: "#/components/schemas/Sha256"}
+                  scoring_manifest_sha256: {$ref: "#/components/schemas/Sha256"}
+                  grader_source_tree_sha256: {$ref: "#/components/schemas/Sha256"}
+                  environment_attestation_sha256: {$ref: "#/components/schemas/Sha256"}
+  /models:
+    post:
+      tags: [identity]
+      operationId: createModelIdentity
+      security: [{apiKey: []}]
+      requestBody:
+        required: true
+        content:
+          application/json: {schema: {$ref: "#/components/schemas/ModelCreate"}}
+      responses:
+        "201":
+          description: Server-issued immutable model identity.
+          content:
+            application/json: {schema: {$ref: "#/components/schemas/ModelIdentity"}}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+  /models/{model_key}/revisions:
+    post:
+      tags: [identity]
+      operationId: createModelRevision
+      security: [{apiKey: []}]
+      parameters:
+        - name: model_key
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      requestBody:
+        required: true
+        content:
+          application/json: {schema: {$ref: "#/components/schemas/ModelRevisionCreate"}}
+      responses:
+        "201":
+          description: Server-issued immutable model revision.
+          content:
+            application/json: {schema: {$ref: "#/components/schemas/ModelRevision"}}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "404": {$ref: "#/components/responses/NotFound"}
+  /generation-profiles:
+    post:
+      tags: [identity]
+      operationId: createGenerationProfile
+      description: Validate, RFC 8785 hash, and immutably register a generation profile.
+      security: [{apiKey: []}]
+      requestBody:
+        required: true
+        content:
+          application/json: {schema: {$ref: "#/components/schemas/GenerationProfileCreate"}}
+      responses:
+        "201":
+          description: Immutable tenant/revision-scoped generation profile.
+          content:
+            application/json: {schema: {$ref: "#/components/schemas/GenerationProfile"}}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "404": {$ref: "#/components/responses/NotFound"}
+        "409": {description: Digest is already registered in another scope.}
+        "422": {$ref: "#/components/responses/Rejected"}
+  /campaigns:
+    post:
+      tags: [campaigns]
+      operationId: createCampaign
+      security: [{apiKey: []}]
+      requestBody:
+        required: true
+        content:
+          application/json: {schema: {$ref: "#/components/schemas/CampaignCreate"}}
+      responses:
+        "201":
+          description: Immutable seven-day single-variant campaign.
+          content:
+            application/json: {schema: {$ref: "#/components/schemas/Campaign"}}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "409": {description: Campaign already exists in the active window.}
+        "422": {$ref: "#/components/responses/Rejected"}
+  /campaigns/{campaign_id}:
+    get:
+      tags: [campaigns]
+      operationId: getCampaign
+      security: [{apiKey: []}, {}]
+      parameters:
+        - name: campaign_id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        "200":
+          description: Immutable campaign binding and ordered slot state.
+          content:
+            application/json: {schema: {$ref: "#/components/schemas/Campaign"}}
+        "404": {$ref: "#/components/responses/NotFound"}
+  /robustness-groups:
+    post:
+      tags: [campaigns]
+      operationId: createRobustnessGroup
+      security: [{apiKey: []}]
+      requestBody:
+        required: true
+        content:
+          application/json: {schema: {$ref: "#/components/schemas/RobustnessGroupCreate"}}
+      responses:
+        "201":
+          description: Atomic three-variant campaign group.
+          content:
+            application/json: {schema: {$ref: "#/components/schemas/RobustnessGroup"}}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "409": {description: A child campaign already exists in the active window.}
+        "422": {$ref: "#/components/responses/Rejected"}
+  /robustness-groups/{robustness_group_id}:
+    get:
+      tags: [campaigns]
+      operationId: getRobustnessGroup
+      parameters:
+        - name: robustness_group_id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        "200":
+          description: Three child campaign statuses and robustness result.
+          content:
+            application/json: {schema: {$ref: "#/components/schemas/RobustnessGroup"}}
+        "404": {$ref: "#/components/responses/NotFound"}
+  /submissions:
+    post:
+      tags: [submissions]
+      operationId: createSubmission
+      security: [{apiKey: []}]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [metadata, file]
+              properties:
+                metadata:
+                  type: string
+                  contentMediaType: application/json
+                  description: JSON-encoded SubmissionMetadata.
+                file:
+                  type: string
+                  format: binary
+                  description: OOXML PowerPoint deck, at most 100 MB.
+      responses:
+        "202":
+          description: Opaque upload stored and reserved for disposable quarantine.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/SubmissionAccepted"}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "413": {$ref: "#/components/responses/FileTooLarge"}
+        "422": {$ref: "#/components/responses/Rejected"}
+        "429":
+          description: Submission rate or quota limit reached.
+          headers:
+            Retry-After:
+              schema: {type: integer}
+              description: Seconds until the limiting window releases.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/ErrorEnvelope"}
+  /submissions/{submission_id}:
+    parameters:
+      - $ref: "#/components/parameters/SubmissionId"
+    get:
+      tags: [submissions]
+      operationId: getSubmission
+      security: [{apiKey: []}]
+      responses:
+        "200":
+          description: Current job state and the result when completed.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/SubmissionStatus"}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "404": {$ref: "#/components/responses/NotFound"}
+  /submissions/{submission_id}/report:
+    parameters:
+      - $ref: "#/components/parameters/SubmissionId"
+      - name: format
+        in: query
+        schema: {type: string, enum: [json, html], default: json}
+    get:
+      tags: [submissions]
+      operationId: getReport
+      description: Private to the submitting organization unless permanently published.
+      security: [{apiKey: []}, {}]
+      responses:
+        "200":
+          description: Full grading report.
+          content:
+            application/json: {schema: {type: object}}
+            text/html: {schema: {type: string}}
+        "404": {$ref: "#/components/responses/NotFound"}
+  /submissions/{submission_id}/publish-report:
+    parameters:
+      - $ref: "#/components/parameters/SubmissionId"
+    post:
+      tags: [submissions]
+      operationId: publishReport
+      description: Permanently make a completed full report public. This cannot be reversed.
+      security: [{apiKey: []}]
+      responses:
+        "200":
+          description: Report is public.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [submission_id, report_public, report_url]
+                properties:
+                  submission_id: {type: string, format: uuid}
+                  report_public: {const: true}
+                  report_url: {type: string}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "404": {$ref: "#/components/responses/NotFound"}
+  /submissions/{submission_id}/artifacts:
+    parameters:
+      - $ref: "#/components/parameters/SubmissionId"
+    get:
+      tags: [submissions]
+      operationId: listSubmissionArtifacts
+      description: List private per-slide diff artifacts retained for 90 days.
+      security: [{apiKey: []}]
+      responses:
+        "200": {description: Private artifact metadata and authenticated URLs.}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+  /submissions/{submission_id}/artifacts/{artifact_name}:
+    parameters:
+      - $ref: "#/components/parameters/SubmissionId"
+      - name: artifact_name
+        in: path
+        required: true
+        schema: {type: string, pattern: '^diff-slide-[0-9]{2}\\.png$'}
+    get:
+      tags: [submissions]
+      operationId: getSubmissionArtifact
+      description: Download one private per-slide PNG diff before its retention expiry.
+      security: [{apiKey: []}]
+      responses:
+        "200":
+          description: PNG diff artifact.
+          content:
+            image/png: {schema: {type: string, format: binary}}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "404": {$ref: "#/components/responses/NotFound"}
+  /leaderboard:
+    get:
+      tags: [leaderboard]
+      operationId: getLeaderboard
+      parameters:
+        - name: view
+          in: query
+          schema: {type: string, enum: [summary, detail], default: summary}
+        - name: benchmark_version
+          in: query
+          schema: {type: string}
+      responses:
+        "200":
+          description: Public grading-verified score aggregates.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Leaderboard"}
+        "404": {$ref: "#/components/responses/NotFound"}
+  /leaderboard/history:
+    get:
+      tags: [leaderboard]
+      operationId: getLeaderboardHistory
+      parameters:
+        - name: benchmark_version
+          in: query
+          schema: {type: string}
+        - name: limit
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 100, default: 30}
+        - name: offset
+          in: query
+          schema: {type: integer, minimum: 0, default: 0}
+      responses:
+        "200":
+          description: Historical immutable leaderboard snapshots.
+          content:
+            application/json: {schema: {type: object}}
+  /leaderboard/runs:
+    get:
+      tags: [leaderboard]
+      operationId: getLeaderboardRuns
+      parameters:
+        - name: benchmark_version
+          in: query
+          schema: {type: string}
+        - name: limit
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 500, default: 100}
+        - name: offset
+          in: query
+          schema: {type: integer, minimum: 0, default: 0}
+      responses:
+        "200":
+          description: Append-only public completed grading-run ledger.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/PublicRunLedger"}
+  /admin/organizations:
+    get:
+      tags: [admin]
+      operationId: listOrganizations
+      security: [{adminKey: []}]
+      responses:
+        "200": {description: Organizations without secret material.}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+    post:
+      tags: [admin]
+      operationId: createOrganization
+      description: The generated API key is returned once.
+      security: [{adminKey: []}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: {type: string, minLength: 1, maxLength: 160}
+                monthly_quota: {type: integer, minimum: 1, default: 30}
+                is_paid: {type: boolean, default: false}
+      responses:
+        "201": {description: Organization and one-time API key.}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "409": {description: Organization name already exists.}
+  /admin/organizations/{organization_id}:
+    parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema: {type: string, format: uuid}
+    patch:
+      tags: [admin]
+      operationId: updateOrganization
+      security: [{adminKey: []}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                is_suspended: {type: boolean}
+                monthly_quota: {type: integer, minimum: 1}
+      responses:
+        "200": {description: Updated organization controls.}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+        "404": {$ref: "#/components/responses/NotFound"}
+  /admin/jobs:
+    get:
+      tags: [admin]
+      operationId: getJobCounts
+      security: [{adminKey: []}]
+      responses:
+        "200": {description: Queue counts by status.}
+        "401": {$ref: "#/components/responses/Unauthorized"}
+components:
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer
+      bearerFormat: Gloss API key
+    adminKey:
+      type: apiKey
+      in: header
+      name: X-Admin-Key
+  parameters:
+    SubmissionId:
+      name: submission_id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+  responses:
+    Unauthorized:
+      description: Authentication failed.
+      content:
+        application/json: {schema: {$ref: "#/components/schemas/ErrorEnvelope"}}
+    NotFound:
+      description: Resource not found or not visible to this principal.
+      content:
+        application/json: {schema: {$ref: "#/components/schemas/ErrorEnvelope"}}
+    FileTooLarge:
+      description: File exceeds 100 MB.
+      content:
+        application/json: {schema: {$ref: "#/components/schemas/ErrorEnvelope"}}
+    Rejected:
+      description: Invalid metadata, benchmark version, tier, webhook, or quarantine failure.
+      content:
+        application/json: {schema: {$ref: "#/components/schemas/ErrorEnvelope"}}
+  schemas:
+    Sha256:
+      type: string
+      pattern: '^sha256:[0-9a-f]{64}$'
+    VerificationScope:
+      const: artifact_conformance
+    VerificationLabel:
+      const: grading-verified artifact score; generation-attested
+    ErrorEnvelope:
+      type: object
+      required: [detail]
+      properties:
+        detail:
+          oneOf:
+            - type: string
+            - type: object
+              properties:
+                code: {type: string}
+                message: {type: string}
+                retryable: {type: boolean}
+    ModelCreate:
+      type: object
+      additionalProperties: false
+      required: [display_name]
+      properties:
+        display_name: {type: string, minLength: 1, maxLength: 160}
+        owner_attribution:
+          type: string
+          enum: [owner-verified, submitter-attested]
+          default: submitter-attested
+    ModelIdentity:
+      type: object
+      required: [submitter_id, model_key, display_name, owner_attribution, created_at]
+      properties:
+        submitter_id: {type: string, format: uuid}
+        model_key: {type: string, format: uuid}
+        display_name: {type: string}
+        owner_attribution: {type: string, enum: [owner-verified, submitter-attested]}
+        created_at: {type: string, format: date-time}
+    ModelRevisionCreate:
+      type: object
+      additionalProperties: false
+      required: [display_version, revision_note]
+      properties:
+        display_version: {type: string, minLength: 1, maxLength: 160}
+        revision_note: {type: string, minLength: 1, maxLength: 4000}
+        provider_revision: {type: [string, "null"], minLength: 1, maxLength: 320}
+    ModelRevision:
+      type: object
+      required: [model_key, model_revision_key, display_version, revision_note, created_at]
+      properties:
+        model_key: {type: string, format: uuid}
+        model_revision_key: {type: string, format: uuid}
+        display_version: {type: string}
+        revision_note: {type: string}
+        created_at: {type: string, format: date-time}
+    GenerationProfileCreate:
+      type: object
+      additionalProperties: false
+      required: [model_revision_key, profile]
+      properties:
+        model_revision_key: {type: string, format: uuid}
+        profile: {type: object}
+    GenerationProfile:
+      type: object
+      required: [generation_profile_sha256, submitter_id, model_revision_key, profile, created_at]
+      properties:
+        generation_profile_sha256: {$ref: "#/components/schemas/Sha256"}
+        submitter_id: {type: string, format: uuid}
+        model_revision_key: {type: string, format: uuid}
+        profile: {type: object}
+        created_at: {type: string, format: date-time}
+    CampaignCreate:
+      type: object
+      additionalProperties: false
+      required: [model_revision_key, scoring_cohort_id, tier, prompt_variant, assistance_class, generation_profile_sha256]
+      properties:
+        model_revision_key: {type: string, format: uuid}
+        scoring_cohort_id: {$ref: "#/components/schemas/Sha256"}
+        tier: {type: integer, enum: [1, 2, 3]}
+        prompt_variant: {type: string, enum: [canonical, paraphrase-a, paraphrase-b]}
+        assistance_class: {type: string, enum: [unassisted, human-assisted]}
+        generation_profile_sha256: {$ref: "#/components/schemas/Sha256"}
+    CampaignSlot:
+      type: object
+      required: [campaign_slot, submission_id, status]
+      properties:
+        campaign_slot: {type: integer, enum: [1, 2, 3]}
+        submission_id: {type: string, format: uuid}
+        status: {type: string, enum: [queued, grading, completed]}
+        run_id: {type: [string, "null"], format: uuid}
+        campaign_score: {type: [number, "null"], minimum: 0, maximum: 1}
+    Campaign:
+      type: object
+      required: [campaign_id, submitter_id, model_key, model_revision_key, tier, benchmark_version, prompt_variant, assistance_class, generation_profile_sha256, scoring_cohort_id, scoring_manifest_sha256, grader_source_tree_sha256, environment_attestation_sha256, window_id, opens_at, closes_at, slot_count, occupied_slots, status, slots, public_run_ids]
+      properties:
+        campaign_id: {type: string, format: uuid}
+        robustness_group_id: {type: [string, "null"], format: uuid}
+        submitter_id: {type: string, format: uuid}
+        model_key: {type: string, format: uuid}
+        model_revision_key: {type: string, format: uuid}
+        tier: {type: integer, enum: [1, 2, 3]}
+        benchmark_version: {type: string}
+        prompt_variant: {type: string, enum: [canonical, paraphrase-a, paraphrase-b]}
+        assistance_class: {type: string, enum: [unassisted, human-assisted]}
+        generation_profile_sha256: {$ref: "#/components/schemas/Sha256"}
+        scoring_cohort_id: {$ref: "#/components/schemas/Sha256"}
+        scoring_manifest_sha256: {$ref: "#/components/schemas/Sha256"}
+        grader_source_tree_sha256: {$ref: "#/components/schemas/Sha256"}
+        environment_attestation_sha256: {$ref: "#/components/schemas/Sha256"}
+        window_id: {type: string, format: uuid}
+        opens_at: {type: string, format: date-time}
+        closes_at: {type: string, format: date-time}
+        slot_count: {const: 3}
+        occupied_slots: {type: integer, minimum: 0, maximum: 3}
+        status: {type: string, enum: [open, provisional, closed-incomplete, completed]}
+        slots: {type: array, items: {$ref: "#/components/schemas/CampaignSlot"}}
+        public_run_ids: {type: array, items: {type: string, format: uuid}}
+        official_score: {type: [number, "null"], minimum: 0, maximum: 1}
+        best_score: {type: [number, "null"], minimum: 0, maximum: 1}
+        worst_score: {type: [number, "null"], minimum: 0, maximum: 1}
+        standard_deviation: {type: [number, "null"], minimum: 0}
+        verification_scope:
+          oneOf: [{$ref: "#/components/schemas/VerificationScope"}, {type: "null"}]
+        verification_label:
+          oneOf: [{$ref: "#/components/schemas/VerificationLabel"}, {type: "null"}]
+    RobustnessGroupCreate:
+      type: object
+      additionalProperties: false
+      required: [model_revision_key, scoring_cohort_id, tier, assistance_class, generation_profile_sha256]
+      properties:
+        model_revision_key: {type: string, format: uuid}
+        scoring_cohort_id: {$ref: "#/components/schemas/Sha256"}
+        tier: {type: integer, enum: [1, 2, 3]}
+        assistance_class: {type: string, enum: [unassisted, human-assisted]}
+        generation_profile_sha256: {$ref: "#/components/schemas/Sha256"}
+    RobustnessGroup:
+      type: object
+      required: [robustness_group_id, submitter_id, model_key, model_revision_key, tier, assistance_class, generation_profile_sha256, benchmark_version, scoring_cohort_id, scoring_manifest_sha256, grader_source_tree_sha256, environment_attestation_sha256, window_id, opens_at, closes_at, campaigns, campaign_statuses, status]
+      properties:
+        robustness_group_id: {type: string, format: uuid}
+        submitter_id: {type: string, format: uuid}
+        model_key: {type: string, format: uuid}
+        model_revision_key: {type: string, format: uuid}
+        tier: {type: integer, enum: [1, 2, 3]}
+        assistance_class: {type: string, enum: [unassisted, human-assisted]}
+        generation_profile_sha256: {$ref: "#/components/schemas/Sha256"}
+        benchmark_version: {type: string}
+        scoring_cohort_id: {$ref: "#/components/schemas/Sha256"}
+        scoring_manifest_sha256: {$ref: "#/components/schemas/Sha256"}
+        grader_source_tree_sha256: {$ref: "#/components/schemas/Sha256"}
+        environment_attestation_sha256: {$ref: "#/components/schemas/Sha256"}
+        window_id: {type: string, format: uuid}
+        opens_at: {type: string, format: date-time}
+        closes_at: {type: string, format: date-time}
+        campaigns:
+          type: object
+          required: [canonical, paraphrase-a, paraphrase-b]
+          additionalProperties: {type: string, format: uuid}
+        campaign_statuses: {type: object, additionalProperties: {type: string}}
+        status: {type: string, enum: [open, provisional, closed-incomplete, completed]}
+        robustness_score: {type: [number, "null"], minimum: 0, maximum: 1}
+        cross_variant_mean: {type: [number, "null"], minimum: 0, maximum: 1}
+        cross_variant_standard_deviation: {type: [number, "null"], minimum: 0}
+    SubmissionAccepted:
+      type: object
+      required: [submission_id, campaign_id, campaign_slot, status, estimated_wait_seconds, status_url]
+      properties:
+        submission_id: {type: string, format: uuid}
+        campaign_id: {type: string, format: uuid}
+        campaign_slot: {type: integer, enum: [1, 2, 3]}
+        status: {const: quarantining}
+        estimated_wait_seconds: {type: integer, minimum: 0}
+        status_url: {type: string}
+    SubmissionStatus:
+      type: object
+      required: [submission_id, campaign_id, campaign_slot, status, created_at]
+      properties:
+        submission_id: {type: string, format: uuid}
+        campaign_id: {type: string, format: uuid}
+        campaign_slot: {type: [integer, "null"], minimum: 1, maximum: 3}
+        status: {type: string, enum: [quarantining, queued, grading, completed, failed, rejected]}
+        result: {$ref: "#/components/schemas/SubmissionResult"}
+        error:
+          type: object
+          properties:
+            code: {type: string}
+            message: {type: string}
+            retryable: {type: boolean}
+        created_at: {type: string, format: date-time}
+        grading_started_at: {type: [string, "null"], format: date-time}
+        grading_completed_at: {type: [string, "null"], format: date-time}
+    SubmissionResult:
+      type: object
+      required: [fidelity_score, passed_items, total_items, deck_passed, eligible, anti_cheat_flags, repair_triggered, tier_scores, report_url, campaign_id, campaign_slot, campaign_score, verification_scope, verification_label, scoring_cohort_id, scoring_manifest_sha256, grader_source_tree_sha256, environment_attestation_sha256]
+      properties:
+        fidelity_score: {type: [number, "null"], minimum: 0, maximum: 1}
+        passed_items: {type: integer, minimum: 0}
+        total_items: {type: integer, minimum: 0}
+        deck_passed: {type: boolean}
+        eligible: {type: boolean}
+        anti_cheat_flags: {type: array}
+        repair_triggered: {type: boolean}
+        tier_scores: {type: object}
+        report_url: {type: string}
+        environment_hash: {type: string}
+        campaign_id: {type: string, format: uuid}
+        campaign_slot: {type: integer, enum: [1, 2, 3]}
+        campaign_score: {type: number, minimum: 0, maximum: 1}
+        verification_scope: {$ref: "#/components/schemas/VerificationScope"}
+        verification_label: {$ref: "#/components/schemas/VerificationLabel"}
+        scoring_cohort_id: {$ref: "#/components/schemas/Sha256"}
+        scoring_manifest_sha256: {$ref: "#/components/schemas/Sha256"}
+        grader_source_tree_sha256: {$ref: "#/components/schemas/Sha256"}
+        environment_attestation_sha256: {$ref: "#/components/schemas/Sha256"}
+    TierScore:
+      type: [object, "null"]
+      properties:
+        official_score: {type: [number, "null"]}
+        provisional_score: {type: [number, "null"]}
+        record_score: {type: [number, "null"]}
+        best_score: {type: [number, "null"]}
+        mean_score: {type: number}
+        worst_score: {type: number}
+        submission_count: {type: integer}
+        robustness_score: {type: [number, "null"]}
+        standard_deviation: {type: [number, "null"]}
+    LeaderboardEntry:
+      type: object
+      required: [verification_scope, verification_label, submitter_id, model_key, model_revision_key, campaign_id, model_display_name, model_revision_display, owner_attribution, tier, benchmark_version, prompt_variant, tier_scores, aggregate_score, provisional, ranked, stale, human_assisted, scoring_cohort_id, scoring_manifest_sha256, grader_source_tree_sha256, environment_attestation_sha256]
+      properties:
+        verification_scope: {$ref: "#/components/schemas/VerificationScope"}
+        verification_label: {$ref: "#/components/schemas/VerificationLabel"}
+        submitter_id: {type: string, format: uuid}
+        model_key: {type: string, format: uuid}
+        model_revision_key: {type: string, format: uuid}
+        campaign_id: {type: string, format: uuid}
+        model_display_name: {type: string}
+        model_revision_display: {type: string}
+        owner_attribution: {type: string, enum: [owner-verified, submitter-attested]}
+        tier: {type: integer, enum: [1, 2, 3]}
+        benchmark_version: {type: string}
+        prompt_variant: {type: string, enum: [canonical, paraphrase-a, paraphrase-b]}
+        tier_scores:
+          type: object
+          properties:
+            level_1: {$ref: "#/components/schemas/TierScore"}
+            level_2: {$ref: "#/components/schemas/TierScore"}
+            level_3: {$ref: "#/components/schemas/TierScore"}
+        aggregate_score: {type: [number, "null"], minimum: 0, maximum: 1}
+        provisional: {type: boolean}
+        ranked: {type: boolean}
+        stale: {type: boolean}
+        human_assisted: {type: boolean}
+        scoring_cohort_id: {$ref: "#/components/schemas/Sha256"}
+        scoring_manifest_sha256: {$ref: "#/components/schemas/Sha256"}
+        grader_source_tree_sha256: {$ref: "#/components/schemas/Sha256"}
+        environment_attestation_sha256: {$ref: "#/components/schemas/Sha256"}
+    Leaderboard:
+      type: object
+      required: [benchmark_version, verification_scope, verification_label, scoring_cohort_id, scoring_manifest_sha256, grader_source_tree_sha256, environment_attestation_sha256, updated_at, view, entries, human_assisted_entries, comparability_notice]
+      properties:
+        benchmark_version: {type: string}
+        verification_scope: {$ref: "#/components/schemas/VerificationScope"}
+        verification_label: {$ref: "#/components/schemas/VerificationLabel"}
+        scoring_cohort_id: {$ref: "#/components/schemas/Sha256"}
+        scoring_manifest_sha256: {$ref: "#/components/schemas/Sha256"}
+        grader_source_tree_sha256: {$ref: "#/components/schemas/Sha256"}
+        environment_attestation_sha256: {$ref: "#/components/schemas/Sha256"}
+        updated_at: {type: string, format: date-time}
+        view: {type: string, enum: [summary, detail]}
+        entries: {type: array, items: {$ref: "#/components/schemas/LeaderboardEntry"}}
+        human_assisted_entries: {type: array, items: {$ref: "#/components/schemas/LeaderboardEntry"}}
+        comparability_notice: {type: string}
+    PublicRunLedger:
+      type: object
+      required: [benchmark_version, verification_scope, verification_label, total, runs]
+      properties:
+        benchmark_version: {type: string}
+        verification_scope: {$ref: "#/components/schemas/VerificationScope"}
+        verification_label: {$ref: "#/components/schemas/VerificationLabel"}
+        total: {type: integer, minimum: 0}
+        runs: {type: array, items: {$ref: "#/components/schemas/PublicRun"}}
+    PublicRun:
+      type: object
+      required: [verification_scope, verification_label, grading_mode, run_kind, submission_id, run_id, submitter_id, model_key, model_revision_key, campaign_id, campaign_slot, tier, benchmark_version, prompt_variant, assistance_class, generation_profile_sha256, scoring_cohort_id, scoring_manifest_sha256, grader_source_tree_sha256, environment_attestation_sha256, grader_package_sha256, oci_image_digest, prompt_bundle_sha256, scored_assertion_inventory_sha256, checklist_bundle_sha256, schema_bundle_sha256, schema_root_map_sha256, mce_profile_sha256, asset_manifest_sha256, font_manifest_sha256, submission_sha256, mce_resolved_package_sha256, canonical_package_hash_profile_sha256, canonical_package_hash_v1, gold_submission_sha256, gold_mce_resolved_package_sha256, gold_canonical_package_hash_v1, gold_duplicate_check, fidelity_score, campaign_score, campaign_contribution, eligible, schema_validation_performed, schema_valid, verification_complete, scoring_completed, report_sha256, environment_attestation, generation_attestation, attested_efficiency, submitted_at, grading_started_at, grading_completed_at]
+      properties:
+        verification_scope: {$ref: "#/components/schemas/VerificationScope"}
+        verification_label: {$ref: "#/components/schemas/VerificationLabel"}
+        grading_mode: {const: hosted}
+        run_kind: {const: submission}
+        submission_id: {type: string, format: uuid}
+        run_id: {type: string, format: uuid}
+        submitter_id: {type: string, format: uuid}
+        model_key: {type: string, format: uuid}
+        model_revision_key: {type: string, format: uuid}
+        campaign_id: {type: string, format: uuid}
+        robustness_group_id: {type: [string, "null"], format: uuid}
+        campaign_slot: {type: integer, enum: [1, 2, 3]}
+        tier: {type: integer, enum: [1, 2, 3]}
+        benchmark_version: {type: string}
+        prompt_variant: {type: string, enum: [canonical, paraphrase-a, paraphrase-b]}
+        assistance_class: {type: string, enum: [unassisted, human-assisted]}
+        generation_profile_sha256: {$ref: "#/components/schemas/Sha256"}
+        generation_seed: {type: [string, "null"]}
+        scoring_cohort_id: {$ref: "#/components/schemas/Sha256"}
+        scoring_manifest_sha256: {$ref: "#/components/schemas/Sha256"}
+        grader_source_tree_sha256: {$ref: "#/components/schemas/Sha256"}
+        environment_attestation_sha256: {$ref: "#/components/schemas/Sha256"}
+        grader_package_sha256: {$ref: "#/components/schemas/Sha256"}
+        oci_image_digest: {$ref: "#/components/schemas/Sha256"}
+        prompt_bundle_sha256: {$ref: "#/components/schemas/Sha256"}
+        scored_assertion_inventory_sha256: {$ref: "#/components/schemas/Sha256"}
+        checklist_bundle_sha256: {$ref: "#/components/schemas/Sha256"}
+        schema_bundle_sha256: {$ref: "#/components/schemas/Sha256"}
+        schema_root_map_sha256: {$ref: "#/components/schemas/Sha256"}
+        mce_profile_sha256: {$ref: "#/components/schemas/Sha256"}
+        asset_manifest_sha256: {$ref: "#/components/schemas/Sha256"}
+        font_manifest_sha256: {$ref: "#/components/schemas/Sha256"}
+        submission_sha256: {$ref: "#/components/schemas/Sha256"}
+        mce_resolved_package_sha256: {$ref: "#/components/schemas/Sha256"}
+        canonical_package_hash_profile_sha256: {$ref: "#/components/schemas/Sha256"}
+        canonical_package_hash_v1: {$ref: "#/components/schemas/Sha256"}
+        gold_submission_sha256: {$ref: "#/components/schemas/Sha256"}
+        gold_mce_resolved_package_sha256: {$ref: "#/components/schemas/Sha256"}
+        gold_canonical_package_hash_v1: {$ref: "#/components/schemas/Sha256"}
+        gold_duplicate_check: {type: string, enum: [clear, byte_match, canonical_match, incomplete]}
+        fidelity_score: {type: [number, "null"], minimum: 0, maximum: 1}
+        campaign_score: {type: number, minimum: 0, maximum: 1}
+        campaign_contribution: {type: number, minimum: 0, maximum: 1}
+        eligible: {type: boolean}
+        schema_validation_performed: {type: boolean}
+        schema_valid: {type: boolean}
+        visual_verification_performed: {type: [boolean, "null"]}
+        verification_complete: {type: boolean}
+        scoring_completed: {type: boolean}
+        disqualification_state: {type: [string, "null"]}
+        ineligibility_reasons: {type: array, items: {type: string}}
+        score_semantic_report_sha256: {type: [string, "null"], pattern: '^sha256:[0-9a-f]{64}$'}
+        report_sha256: {$ref: "#/components/schemas/Sha256"}
+        environment_attestation: {type: object}
+        generation_attestation: {type: object}
+        attested_efficiency: {type: object}
+        submitted_at: {type: string, format: date-time}
+        grading_started_at: {type: string, format: date-time}
+        grading_completed_at: {type: string, format: date-time}

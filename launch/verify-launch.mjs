@@ -12,14 +12,14 @@ const root = resolve(launchDir, "..");
 const site = join(root, "site");
 const evidencePath = join(site, "evidence/preview-v1.json");
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-const comparativePath = join(root, "acidslide-v1/benchmark/comparative-v1/summary.json");
+const comparativePath = join(root, "gloss-v1/benchmark/comparative-v1/summary.json");
 const publicComparativePath = join(site, "evidence/comparative-v1-summary.json");
 const comparative = JSON.parse(readFileSync(comparativePath, "utf8"));
 const publicComparative = JSON.parse(readFileSync(publicComparativePath, "utf8"));
-const reportPath = join(root, "acidslide-v1/benchmark/fixtures/mutations/execution-report-v1.json");
-const indexPath = join(root, "acidslide-v1/benchmark/fixtures/mutations/fixture-index-v1.json");
-const expectationsPath = join(root, "acidslide-v1/benchmark/fixtures/mutations/mutation-expectations-v1.json");
-const requirementsPath = join(root, "acidslide-v1/benchmark/requirements/prompt-requirements.json");
+const reportPath = join(root, "gloss-v1/benchmark/fixtures/mutations/execution-report-v1.json");
+const indexPath = join(root, "gloss-v1/benchmark/fixtures/mutations/fixture-index-v1.json");
+const expectationsPath = join(root, "gloss-v1/benchmark/fixtures/mutations/mutation-expectations-v1.json");
+const requirementsPath = join(root, "gloss-v1/benchmark/requirements/prompt-requirements.json");
 const report = JSON.parse(readFileSync(reportPath, "utf8"));
 const index = JSON.parse(readFileSync(indexPath, "utf8"));
 const requirements = JSON.parse(readFileSync(requirementsPath, "utf8"));
@@ -83,10 +83,10 @@ for (const method of evidence.verification_methods) {
 }
 
 const sourcePaths = new Map([
-  ["acidslide-v1/benchmark/fixtures/mutations/execution-report-v1.json", reportPath],
-  ["acidslide-v1/benchmark/fixtures/mutations/fixture-index-v1.json", indexPath],
-  ["acidslide-v1/benchmark/fixtures/mutations/mutation-expectations-v1.json", expectationsPath],
-  ["acidslide-v1/benchmark/requirements/prompt-requirements.json", requirementsPath],
+  ["gloss-v1/benchmark/fixtures/mutations/execution-report-v1.json", reportPath],
+  ["gloss-v1/benchmark/fixtures/mutations/fixture-index-v1.json", indexPath],
+  ["gloss-v1/benchmark/fixtures/mutations/mutation-expectations-v1.json", expectationsPath],
+  ["gloss-v1/benchmark/requirements/prompt-requirements.json", requirementsPath],
 ]);
 for (const source of evidence.sources) {
   const sourcePath = sourcePaths.get(source.path);
@@ -109,7 +109,7 @@ assert(html.includes("https://github.com/aronchick/gloss"), "Homepage must lead 
 assert(html.includes('<link rel="canonical" href="https://gloss.tools/">'), "Homepage canonical URL is missing");
 assert(html.includes('"codeRepository": "https://github.com/aronchick/gloss"'), "Homepage structured data must lead to GitHub");
 assert(siteScript.includes('fetch("/evidence/comparative-v1-summary.json")'), "Homepage chart must load the frozen comparative summary");
-assert(videoRenderer.includes("acidslide-v1/benchmark/comparative-v1/summary.json"), "Launch video must load the frozen comparative summary");
+assert(videoRenderer.includes("gloss-v1/benchmark/comparative-v1/summary.json"), "Launch video must load the frozen comparative summary");
 assert(!videoRenderer.includes("site/evidence/preview-v1.json"), "Launch video must not source comparative claims from preview evidence");
 assert(robots.includes("Allow: /") && robots.includes("Sitemap: https://gloss.tools/sitemap.xml"), "robots.txt must expose the public site map");
 assert(sitemap.includes("<loc>https://gloss.tools/</loc>"), "sitemap.xml must contain the production homepage");

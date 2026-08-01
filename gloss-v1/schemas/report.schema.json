@@ -1,0 +1,627 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gloss.dev/schemas/report.schema.json",
+  "title": "Gloss Grade Report",
+  "description": "Fail-closed full grading/diagnostic report. Equality of campaign_contribution and fidelity_score for eligible reports, array sort order, and cross-field hash recomputation are mandatory runtime checks in addition to this schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark_version",
+    "grader_version",
+    "run_kind",
+    "grading_mode",
+    "verification_scope",
+    "verification_label",
+    "scoring_cohort_id",
+    "scoring_manifest_sha256",
+    "grader_source_tree_sha256",
+    "environment_attestation_sha256",
+    "grader_package_sha256",
+    "oci_image_digest",
+    "prompt_bundle_sha256",
+    "scored_assertion_inventory_sha256",
+    "checklist_bundle_sha256",
+    "schema_bundle_sha256",
+    "schema_root_map_sha256",
+    "mce_profile_sha256",
+    "asset_manifest_sha256",
+    "font_manifest_sha256",
+    "canonical_package_hash_profile_sha256",
+    "canonical_package_hash_v1",
+    "gold_duplicate_check",
+    "generation_seed",
+    "submission_id",
+    "campaign_id",
+    "campaign_slot",
+    "robustness_group_id",
+    "submitter_id",
+    "model_key",
+    "model_revision_key",
+    "targeted_tier",
+    "prompt_variant",
+    "assistance_class",
+    "generation_profile_sha256",
+    "submission_sha256",
+    "mce_resolved_package_sha256",
+    "gold_submission_sha256",
+    "gold_mce_resolved_package_sha256",
+    "gold_canonical_package_hash_v1",
+    "schema_valid",
+    "schema_validation_performed",
+    "visual_verification_performed",
+    "verification_complete",
+    "scoring_completed",
+    "disqualification_state",
+    "ineligibility_reasons",
+    "repair_triggered",
+    "grading_duration_seconds",
+    "fidelity_score",
+    "campaign_contribution",
+    "passed_items",
+    "total_items",
+    "deck_passed",
+    "eligible",
+    "score_semantic_report_sha256",
+    "environment_attestation",
+    "tier_scores",
+    "verified_metrics",
+    "attested_metrics",
+    "attestation",
+    "slides",
+    "deck_items",
+    "anti_cheat_flags",
+    "schema_violations",
+    "verification_errors"
+  ],
+  "properties": {
+    "benchmark_version": { "type": "string", "pattern": "^gloss-v[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "grader_version": { "type": "string", "minLength": 1 },
+    "run_kind": { "enum": ["submission", "reference_control", "baseline_control"] },
+    "grading_mode": { "enum": ["local", "hosted"] },
+    "verification_scope": { "const": "artifact_conformance" },
+    "verification_label": {
+      "enum": [
+        "grading-verified artifact score; generation-attested",
+        "local artifact score; self-reported",
+        "grading-verified reference control; no generation attribution",
+        "grading-verified baseline control; not a leaderboard result"
+      ]
+    },
+    "scoring_cohort_id": { "$ref": "#/$defs/prefixed_sha256" },
+    "scoring_manifest_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "grader_source_tree_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "environment_attestation_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "grader_package_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "oci_image_digest": { "$ref": "#/$defs/prefixed_sha256" },
+    "prompt_bundle_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "scored_assertion_inventory_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "checklist_bundle_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "schema_bundle_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "schema_root_map_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "mce_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "asset_manifest_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "font_manifest_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "canonical_package_hash_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "submission_id": { "$ref": "#/$defs/uuid_or_null" },
+    "campaign_id": { "$ref": "#/$defs/uuid_or_null" },
+    "campaign_slot": {
+      "oneOf": [{ "type": "integer", "enum": [1, 2, 3] }, { "type": "null" }]
+    },
+    "robustness_group_id": { "$ref": "#/$defs/uuid_or_null" },
+    "submitter_id": { "$ref": "#/$defs/uuid_or_null" },
+    "model_key": { "$ref": "#/$defs/uuid_or_null" },
+    "model_revision_key": { "$ref": "#/$defs/uuid_or_null" },
+    "targeted_tier": { "type": "integer", "enum": [1, 2, 3] },
+    "prompt_variant": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$" },
+    "assistance_class": {
+      "oneOf": [{ "enum": ["unassisted", "human-assisted"] }, { "type": "null" }]
+    },
+    "generation_profile_sha256": {
+      "oneOf": [{ "$ref": "#/$defs/prefixed_sha256" }, { "type": "null" }]
+    },
+    "generation_seed": { "$ref": "#/$defs/generation_seed" },
+    "submission_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "mce_resolved_package_sha256": {
+      "oneOf": [{ "$ref": "#/$defs/prefixed_sha256" }, { "type": "null" }]
+    },
+    "canonical_package_hash_v1": {
+      "oneOf": [{ "$ref": "#/$defs/prefixed_sha256" }, { "type": "null" }]
+    },
+    "gold_submission_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "gold_mce_resolved_package_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "gold_canonical_package_hash_v1": { "$ref": "#/$defs/prefixed_sha256" },
+    "gold_duplicate_check": { "enum": ["clear", "byte_match", "canonical_match", "incomplete"] },
+    "schema_valid": { "type": "boolean" },
+    "schema_validation_performed": { "type": "boolean" },
+    "visual_verification_performed": { "type": "boolean" },
+    "verification_complete": { "type": "boolean" },
+    "scoring_completed": { "type": "boolean" },
+    "disqualification_state": { "enum": ["none", "completed_ineligible", "non_official_local"] },
+    "ineligibility_reasons": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/stable_code" }
+    },
+    "repair_triggered": { "type": "boolean" },
+    "grading_duration_seconds": { "type": "number", "minimum": 0 },
+    "fidelity_score": { "$ref": "#/$defs/score_or_null" },
+    "campaign_contribution": { "type": "number", "minimum": 0, "maximum": 1 },
+    "passed_items": { "type": "integer", "minimum": 0 },
+    "total_items": { "type": "integer", "minimum": 0 },
+    "deck_passed": { "type": "boolean" },
+    "eligible": { "type": "boolean" },
+    "score_semantic_report_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "environment_attestation": { "$ref": "environment-attestation.schema.json" },
+    "tier_scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level_1", "level_2", "level_3"],
+      "properties": {
+        "level_1": { "$ref": "#/$defs/tier_score_or_null" },
+        "level_2": { "$ref": "#/$defs/tier_score_or_null" },
+        "level_3": { "$ref": "#/$defs/tier_score_or_null" }
+      }
+    },
+    "verified_metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "submission_file_size_bytes",
+        "grading_duration_seconds",
+        "schema_valid",
+        "schema_validation_performed",
+        "visual_verification_performed",
+        "verification_complete"
+      ],
+      "properties": {
+        "submission_file_size_bytes": { "type": "integer", "minimum": 0 },
+        "grading_duration_seconds": { "type": "number", "minimum": 0 },
+        "schema_valid": { "type": "boolean" },
+        "schema_validation_performed": { "type": "boolean" },
+        "visual_verification_performed": { "type": "boolean" },
+        "verification_complete": { "type": "boolean" },
+        "renderer_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "attested_metrics": {
+      "oneOf": [
+        { "$ref": "#/$defs/attested_metrics" },
+        { "type": "null" }
+      ]
+    },
+    "attestation": {
+      "oneOf": [
+        { "$ref": "#/$defs/attestation" },
+        { "type": "null" }
+      ]
+    },
+    "anti_cheat_flags": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/anti_cheat_flag" }
+    },
+    "schema_violations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/stable_error" }
+    },
+    "verification_errors": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/stable_error" }
+    },
+    "slides": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/slide_result" }
+    },
+    "deck_items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/checklist_item_result" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "run_kind": { "const": "submission" }, "grading_mode": { "const": "hosted" } }, "required": ["run_kind", "grading_mode"] },
+      "then": {
+        "properties": {
+          "verification_label": { "const": "grading-verified artifact score; generation-attested" },
+          "submission_id": { "type": "string", "format": "uuid" },
+          "campaign_id": { "type": "string", "format": "uuid" },
+          "campaign_slot": { "type": "integer", "enum": [1, 2, 3] },
+          "submitter_id": { "type": "string", "format": "uuid" },
+          "model_key": { "type": "string", "format": "uuid" },
+          "model_revision_key": { "type": "string", "format": "uuid" },
+          "assistance_class": { "enum": ["unassisted", "human-assisted"] },
+          "generation_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+          "attested_metrics": { "$ref": "#/$defs/attested_metrics" },
+          "attestation": { "$ref": "#/$defs/attestation" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "run_kind": { "const": "submission" }, "grading_mode": { "const": "local" } }, "required": ["run_kind", "grading_mode"] },
+      "then": {
+        "properties": {
+          "verification_label": { "const": "local artifact score; self-reported" },
+          "eligible": { "const": false },
+          "campaign_contribution": { "const": 0.0 },
+          "submission_id": { "type": "null" },
+          "campaign_id": { "type": "null" },
+          "campaign_slot": { "type": "null" },
+          "robustness_group_id": { "type": "null" },
+          "submitter_id": { "type": "null" },
+          "model_key": { "type": "null" },
+          "model_revision_key": { "type": "null" },
+          "assistance_class": { "enum": ["unassisted", "human-assisted"] },
+          "attested_metrics": { "$ref": "#/$defs/attested_metrics" },
+          "attestation": { "$ref": "#/$defs/attestation" },
+          "disqualification_state": { "const": "non_official_local" },
+          "ineligibility_reasons": { "const": ["local_mode"] }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "run_kind": { "const": "reference_control" } }, "required": ["run_kind"] },
+      "then": {
+        "properties": {
+          "grading_mode": { "const": "hosted" },
+          "verification_label": { "const": "grading-verified reference control; no generation attribution" },
+          "eligible": { "const": false },
+          "campaign_contribution": { "const": 0.0 },
+          "generation_seed": { "type": "null" },
+          "mce_resolved_package_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+          "canonical_package_hash_v1": { "$ref": "#/$defs/prefixed_sha256" },
+          "gold_duplicate_check": { "const": "byte_match" },
+          "submission_id": { "type": "null" },
+          "campaign_id": { "type": "null" },
+          "campaign_slot": { "type": "null" },
+          "robustness_group_id": { "type": "null" },
+          "submitter_id": { "type": "null" },
+          "model_key": { "type": "null" },
+          "model_revision_key": { "type": "null" },
+          "assistance_class": { "type": "null" },
+          "generation_profile_sha256": { "type": "null" },
+          "attested_metrics": { "type": "null" },
+          "attestation": { "type": "null" },
+          "schema_valid": { "const": true },
+          "schema_validation_performed": { "const": true },
+          "visual_verification_performed": { "const": true },
+          "verification_complete": { "const": true },
+          "scoring_completed": { "const": true },
+          "repair_triggered": { "const": false },
+          "fidelity_score": { "const": 1.0 },
+          "deck_passed": { "const": true },
+          "disqualification_state": { "const": "none" },
+          "ineligibility_reasons": { "maxItems": 0 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "run_kind": { "const": "reference_control" }, "targeted_tier": { "const": 1 } },
+        "required": ["run_kind", "targeted_tier"]
+      },
+      "then": {
+        "properties": {
+          "tier_scores": { "properties": { "level_1": { "$ref": "#/$defs/perfect_tier_score" } } }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "run_kind": { "const": "reference_control" }, "targeted_tier": { "const": 2 } },
+        "required": ["run_kind", "targeted_tier"]
+      },
+      "then": {
+        "properties": {
+          "tier_scores": { "properties": { "level_2": { "$ref": "#/$defs/perfect_tier_score" } } }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "run_kind": { "const": "reference_control" }, "targeted_tier": { "const": 3 } },
+        "required": ["run_kind", "targeted_tier"]
+      },
+      "then": {
+        "properties": {
+          "tier_scores": { "properties": { "level_3": { "$ref": "#/$defs/perfect_tier_score" } } }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "run_kind": { "const": "baseline_control" } }, "required": ["run_kind"] },
+      "then": {
+        "properties": {
+          "grading_mode": { "const": "hosted" },
+          "verification_label": { "const": "grading-verified baseline control; not a leaderboard result" },
+          "eligible": { "const": false },
+          "campaign_contribution": { "const": 0.0 },
+          "submission_id": { "type": "null" },
+          "campaign_id": { "type": "null" },
+          "campaign_slot": { "type": "null" },
+          "robustness_group_id": { "type": "null" },
+          "submitter_id": { "type": "null" },
+          "model_key": { "type": "null" },
+          "model_revision_key": { "type": "null" },
+          "assistance_class": { "type": "null" },
+          "generation_profile_sha256": { "type": "null" },
+          "attested_metrics": { "type": "null" },
+          "attestation": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "scoring_completed": { "const": true } }, "required": ["scoring_completed"] },
+      "then": {
+        "properties": { "fidelity_score": { "$ref": "#/$defs/score" } }
+      },
+      "else": {
+        "properties": {
+          "fidelity_score": { "type": "null" },
+          "tier_scores": {
+            "properties": {
+              "level_1": { "type": "null" },
+              "level_2": { "type": "null" },
+              "level_3": { "type": "null" }
+            }
+          },
+          "eligible": { "const": false },
+          "deck_passed": { "const": false },
+          "campaign_contribution": { "const": 0.0 }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "targeted_tier": { "const": 1 }, "scoring_completed": { "const": true } }, "required": ["targeted_tier", "scoring_completed"] },
+      "then": { "properties": { "tier_scores": { "properties": { "level_1": { "$ref": "#/$defs/tier_score" }, "level_2": { "type": "null" }, "level_3": { "type": "null" } } } } }
+    },
+    {
+      "if": { "properties": { "targeted_tier": { "const": 2 }, "scoring_completed": { "const": true } }, "required": ["targeted_tier", "scoring_completed"] },
+      "then": { "properties": { "tier_scores": { "properties": { "level_1": { "type": "null" }, "level_2": { "$ref": "#/$defs/tier_score" }, "level_3": { "type": "null" } } } } }
+    },
+    {
+      "if": { "properties": { "targeted_tier": { "const": 3 }, "scoring_completed": { "const": true } }, "required": ["targeted_tier", "scoring_completed"] },
+      "then": { "properties": { "tier_scores": { "properties": { "level_1": { "type": "null" }, "level_2": { "type": "null" }, "level_3": { "$ref": "#/$defs/tier_score" } } } } }
+    },
+    {
+      "if": { "properties": { "eligible": { "const": true } }, "required": ["eligible"] },
+      "then": {
+        "properties": {
+          "run_kind": { "const": "submission" },
+          "grading_mode": { "const": "hosted" },
+          "scoring_completed": { "const": true },
+          "verification_complete": { "const": true },
+          "schema_validation_performed": { "const": true },
+          "schema_valid": { "const": true },
+          "visual_verification_performed": { "const": true },
+          "repair_triggered": { "const": false },
+          "gold_duplicate_check": { "const": "clear" },
+          "disqualification_state": { "const": "none" },
+          "ineligibility_reasons": { "maxItems": 0 },
+          "fidelity_score": { "$ref": "#/$defs/score" }
+        }
+      },
+      "else": {
+        "properties": {
+          "campaign_contribution": { "const": 0.0 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "run_kind": { "const": "submission" }, "grading_mode": { "const": "hosted" }, "eligible": { "const": false } },
+        "required": ["run_kind", "grading_mode", "eligible"]
+      },
+      "then": { "properties": { "deck_passed": { "const": false } } }
+    },
+    {
+      "if": {
+        "properties": {
+          "run_kind": { "const": "submission" },
+          "grading_mode": { "const": "hosted" },
+          "scoring_completed": { "const": true },
+          "verification_complete": { "const": true },
+          "schema_validation_performed": { "const": true },
+          "schema_valid": { "const": true },
+          "visual_verification_performed": { "const": true },
+          "repair_triggered": { "const": false },
+          "gold_duplicate_check": { "const": "clear" },
+          "disqualification_state": { "const": "none" },
+          "ineligibility_reasons": { "maxItems": 0 }
+        },
+        "required": [
+          "run_kind",
+          "grading_mode",
+          "scoring_completed",
+          "verification_complete",
+          "schema_validation_performed",
+          "schema_valid",
+          "visual_verification_performed",
+          "repair_triggered",
+          "gold_duplicate_check",
+          "disqualification_state",
+          "ineligibility_reasons"
+        ]
+      },
+      "then": { "properties": { "eligible": { "const": true } } }
+    },
+    {
+      "if": { "properties": { "disqualification_state": { "const": "none" } }, "required": ["disqualification_state"] },
+      "then": { "properties": { "ineligibility_reasons": { "maxItems": 0 } } },
+      "else": { "properties": { "ineligibility_reasons": { "minItems": 1 } } }
+    },
+    {
+      "if": { "properties": { "schema_validation_performed": { "const": false } }, "required": ["schema_validation_performed"] },
+      "then": { "properties": { "schema_valid": { "const": false }, "verification_complete": { "const": false }, "scoring_completed": { "const": false } } }
+    },
+    {
+      "if": { "properties": { "schema_valid": { "const": false } }, "required": ["schema_valid"] },
+      "then": { "properties": { "verification_complete": { "const": false }, "scoring_completed": { "const": false } } }
+    },
+    {
+      "if": { "properties": { "visual_verification_performed": { "const": false } }, "required": ["visual_verification_performed"] },
+      "then": { "properties": { "verification_complete": { "const": false }, "scoring_completed": { "const": false } } }
+    },
+    {
+      "if": { "properties": { "scoring_completed": { "const": false } }, "required": ["scoring_completed"] },
+      "then": { "properties": { "verification_complete": { "const": false } } }
+    },
+    {
+      "if": { "properties": { "repair_triggered": { "const": true } }, "required": ["repair_triggered"] },
+      "then": {
+        "properties": {
+          "verification_complete": { "const": false },
+          "eligible": { "const": false },
+          "deck_passed": { "const": false }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "run_kind": { "const": "submission" }, "gold_duplicate_check": { "enum": ["byte_match", "canonical_match", "incomplete"] } }, "required": ["run_kind", "gold_duplicate_check"] },
+      "then": {
+        "properties": {
+          "verification_complete": { "const": false },
+          "scoring_completed": { "const": false },
+          "eligible": { "const": false },
+          "deck_passed": { "const": false }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "prefixed_sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "uuid_or_null": { "oneOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }] },
+    "generation_seed": {
+      "oneOf": [
+        { "type": "string", "maxLength": 256, "x-utf8-maxBytes": 256 },
+        { "type": "null" }
+      ]
+    },
+    "attested_metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generation_strategy"],
+      "properties": {
+        "generation_strategy": { "enum": ["direct", "code", "hybrid", "template-edit"] },
+        "generation_wall_clock_seconds": { "type": "number", "minimum": 0 },
+        "generation_token_count": { "type": "integer", "minimum": 0 },
+        "generation_cost_usd": { "type": "number", "minimum": 0 },
+        "retry_count": { "type": "integer", "minimum": 0 },
+        "code_language": { "type": "string", "minLength": 1 },
+        "code_line_count": { "type": "integer", "minimum": 0 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "generation_strategy": { "enum": ["code", "hybrid"] } },
+            "required": ["generation_strategy"]
+          },
+          "else": {
+            "not": {
+              "anyOf": [
+                { "required": ["code_language"] },
+                { "required": ["code_line_count"] }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "attestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "human_intervention", "post_processing", "external_resources_used"],
+      "properties": {
+        "method": { "type": "string", "minLength": 1 },
+        "human_intervention": { "type": "boolean" },
+        "post_processing": { "type": "boolean" },
+        "external_resources_used": { "type": "boolean" },
+        "external_resources_description": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "external_resources_used": { "const": true } }, "required": ["external_resources_used"] },
+          "then": { "required": ["external_resources_description"] },
+          "else": { "not": { "required": ["external_resources_description"] } }
+        }
+      ]
+    },
+    "score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "score_or_null": { "oneOf": [{ "$ref": "#/$defs/score" }, { "type": "null" }] },
+    "stable_code": { "type": "string", "pattern": "^[a-z][a-z0-9_]{2,127}$" },
+    "tier_score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fidelity_score", "passed", "total"],
+      "properties": {
+        "fidelity_score": { "$ref": "#/$defs/score" },
+        "passed": { "type": "integer", "minimum": 0 },
+        "total": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "perfect_tier_score": {
+      "allOf": [
+        { "$ref": "#/$defs/tier_score" },
+        { "properties": { "fidelity_score": { "const": 1.0 } } }
+      ]
+    },
+    "tier_score_or_null": { "oneOf": [{ "$ref": "#/$defs/tier_score" }, { "type": "null" }] },
+    "anti_cheat_flag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule_id", "disposition", "affected_slides", "tier_affected_slides"],
+      "properties": {
+        "rule_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$" },
+        "disposition": { "enum": ["warning", "zero_slide", "zero_affected_slides", "reject"] },
+        "affected_slides": { "$ref": "#/$defs/slide_numbers" },
+        "tier_affected_slides": { "$ref": "#/$defs/slide_numbers" },
+        "outcome_code": { "$ref": "#/$defs/stable_code" },
+        "details": { "type": "string" }
+      }
+    },
+    "stable_error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "part", "location"],
+      "properties": {
+        "code": { "$ref": "#/$defs/stable_code" },
+        "part": { "type": ["string", "null"] },
+        "location": { "type": ["string", "null"] },
+        "details": { "type": "string" }
+      }
+    },
+    "slide_numbers": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "integer", "minimum": 1, "maximum": 20 }
+    },
+    "slide_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slide", "tier", "visual_ssim", "visual_pixel_exact", "passed_items", "total_items", "items"],
+      "properties": {
+        "slide": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "tier": { "type": "integer", "enum": [1, 2, 3] },
+        "visual_ssim": { "oneOf": [{ "$ref": "#/$defs/score" }, { "type": "null" }] },
+        "visual_pixel_exact": { "type": ["boolean", "null"] },
+        "passed_items": { "type": "integer", "minimum": 0 },
+        "total_items": { "type": "integer", "minimum": 0 },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/checklist_item_result" } }
+      }
+    },
+    "checklist_item_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "assertion_id", "passed", "severity", "weight", "source_of_truth", "outcome_code", "tier_affected_slides"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^(slide-\\d{2}|deck)\\.[a-z0-9][a-z0-9.-]*$" },
+        "assertion_id": { "type": "string", "pattern": "^(slide-\\d{2}|deck)\\.assert-[a-z0-9][a-z0-9.-]*$" },
+        "passed": { "type": "boolean" },
+        "severity": { "enum": ["critical", "major", "minor", "informational"] },
+        "weight": { "type": "integer", "enum": [0, 1, 2, 3] },
+        "source_of_truth": { "enum": ["ooxml", "render", "both"] },
+        "outcome_code": { "$ref": "#/$defs/stable_code" },
+        "tier_affected_slides": { "$ref": "#/$defs/slide_numbers" },
+        "details": { "type": "string" }
+      }
+    }
+  }
+}

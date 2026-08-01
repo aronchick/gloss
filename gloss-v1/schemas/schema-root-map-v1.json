@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "mapping_id": "gloss-schema-root-map-v1",
+  "relevant_part_globs": ["ppt/**/*.xml", "ppt/*.xml"],
+  "excluded_part_globs": ["ppt/**/_rels/*.rels"],
+  "entries": [
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/presentationml/2006/main}presentation",
+      "xsd": "pml.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.slide+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/presentationml/2006/main}sld",
+      "xsd": "pml.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/presentationml/2006/main}sldLayout",
+      "xsd": "pml.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/presentationml/2006/main}sldMaster",
+      "xsd": "pml.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.notesSlide+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/presentationml/2006/main}notes",
+      "xsd": "pml.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.notesMaster+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/presentationml/2006/main}notesMaster",
+      "xsd": "pml.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.handoutMaster+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/presentationml/2006/main}handoutMaster",
+      "xsd": "pml.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.presProps+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/presentationml/2006/main}presentationPr",
+      "xsd": "pml.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.viewProps+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/presentationml/2006/main}viewPr",
+      "xsd": "pml.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.presentationml.tableStyles+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/drawingml/2006/main}tblStyleLst",
+      "xsd": "dml-main.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.theme+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/drawingml/2006/main}theme",
+      "xsd": "dml-main.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.drawingml.chart+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/drawingml/2006/chart}chartSpace",
+      "xsd": "dml-chart.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.drawingml.chartshapes+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/drawingml/2006/chart}userShapes",
+      "xsd": "dml-chart.xsd"
+    },
+    {
+      "content_type": "application/vnd.ms-office.chartstyle+xml",
+      "root_qname": "{http://schemas.microsoft.com/office/drawing/2012/chartStyle}chartStyle",
+      "xsd": "ms-odrawxml-chartstyle-2012.xsd"
+    },
+    {
+      "content_type": "application/vnd.ms-office.chartcolorstyle+xml",
+      "root_qname": "{http://schemas.microsoft.com/office/drawing/2012/chartStyle}colorStyle",
+      "xsd": "ms-odrawxml-chartstyle-2012.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.drawingml.diagramData+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/drawingml/2006/diagram}dataModel",
+      "xsd": "dml-diagram.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.drawingml.diagramLayout+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/drawingml/2006/diagram}layoutDef",
+      "xsd": "dml-diagram.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.drawingml.diagramStyle+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/drawingml/2006/diagram}styleDef",
+      "xsd": "dml-diagram.xsd"
+    },
+    {
+      "content_type": "application/vnd.openxmlformats-officedocument.drawingml.diagramColors+xml",
+      "root_qname": "{http://schemas.openxmlformats.org/drawingml/2006/diagram}colorsDef",
+      "xsd": "dml-diagram.xsd"
+    }
+  ]
+}

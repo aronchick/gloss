@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gloss.dev/schemas/mce-profile.schema.json",
+  "title": "Gloss MCE Consumer Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "markup_compatibility_namespace",
+    "understood_namespaces",
+    "rules"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "profile_id": { "const": "gloss-mce-profile-v1" },
+    "markup_compatibility_namespace": {
+      "const": "http://schemas.openxmlformats.org/markup-compatibility/2006"
+    },
+    "understood_namespaces": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "format": "uri" }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "undeclared_prefix",
+        "malformed_qname",
+        "unsupported_must_understand",
+        "alternate_content_without_branch",
+        "unsupported_ignorable_element",
+        "unsupported_ignorable_attribute",
+        "process_content",
+        "preserve_elements",
+        "preserve_attributes",
+        "preserved_evidence"
+      ],
+      "properties": {
+        "undeclared_prefix": { "const": "error" },
+        "malformed_qname": { "const": "error" },
+        "unsupported_must_understand": { "const": "error" },
+        "alternate_content_without_branch": { "const": "error" },
+        "unsupported_ignorable_element": { "const": "remove" },
+        "unsupported_ignorable_attribute": { "const": "remove" },
+        "process_content": { "const": "splice_children" },
+        "preserve_elements": { "const": "record_then_remove" },
+        "preserve_attributes": { "const": "record_then_remove" },
+        "preserved_evidence": { "const": "original_part_bytes_with_xpath" }
+      }
+    }
+  }
+}

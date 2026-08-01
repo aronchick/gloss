@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gloss.dev/schemas/environment-attestation.schema.json",
+  "title": "Gloss Frozen Environment Attestation",
+  "description": "RFC 8785-canonicalized, self-hash-free payload used to derive environment_attestation_sha256. The digest is SHA-256 over the exact JCS bytes of a schema-valid instance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "attestation_id",
+    "canonicalization",
+    "attestation_state",
+    "attested_at",
+    "platform",
+    "oci_image_digest",
+    "build_inputs",
+    "runtime_versions",
+    "binary_inventory",
+    "font_environment",
+    "process_environment",
+    "export_contract",
+    "profile_hashes",
+    "grader_source_tree_sha256",
+    "canary",
+    "verification"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "attestation_id": { "const": "gloss-environment-attestation-v1" },
+    "canonicalization": { "const": "RFC8785-JCS" },
+    "attestation_state": { "const": "verified" },
+    "attested_at": { "type": "string", "format": "date-time" },
+    "platform": { "const": "linux/amd64" },
+    "oci_image_digest": { "$ref": "#/$defs/prefixed_sha256" },
+    "build_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dockerfile_sha256",
+        "grader_lockfile_sha256",
+        "base_image_digest",
+        "uv_image_digest"
+      ],
+      "properties": {
+        "dockerfile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "grader_lockfile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "base_image_digest": { "$ref": "#/$defs/prefixed_sha256" },
+        "uv_image_digest": { "$ref": "#/$defs/prefixed_sha256" }
+      }
+    },
+    "runtime_versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "libreoffice",
+        "poppler",
+        "python",
+        "pillow",
+        "numpy",
+        "scikit_image",
+        "lxml",
+        "grader",
+        "libfaketime",
+        "fontconfig"
+      ],
+      "properties": {
+        "libreoffice": { "$ref": "#/$defs/nonempty_version" },
+        "poppler": { "$ref": "#/$defs/nonempty_version" },
+        "python": { "$ref": "#/$defs/nonempty_version" },
+        "pillow": { "$ref": "#/$defs/nonempty_version" },
+        "numpy": { "$ref": "#/$defs/nonempty_version" },
+        "scikit_image": { "$ref": "#/$defs/nonempty_version" },
+        "lxml": { "$ref": "#/$defs/nonempty_version" },
+        "grader": { "$ref": "#/$defs/nonempty_version" },
+        "libfaketime": { "$ref": "#/$defs/nonempty_version" },
+        "fontconfig": { "$ref": "#/$defs/nonempty_version" }
+      }
+    },
+    "binary_inventory": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "allOf": [
+        { "contains": { "type": "object", "properties": { "name": { "const": "fontconfig" } }, "required": ["name"] }, "minContains": 1, "maxContains": 1 },
+        { "contains": { "type": "object", "properties": { "name": { "const": "libfaketime" } }, "required": ["name"] }, "minContains": 1, "maxContains": 1 },
+        { "contains": { "type": "object", "properties": { "name": { "const": "libreoffice" } }, "required": ["name"] }, "minContains": 1, "maxContains": 1 },
+        { "contains": { "type": "object", "properties": { "name": { "const": "pdftoppm" } }, "required": ["name"] }, "minContains": 1, "maxContains": 1 },
+        { "contains": { "type": "object", "properties": { "name": { "const": "python" } }, "required": ["name"] }, "minContains": 1, "maxContains": 1 }
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "path", "sha256"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._+-]*$" },
+          "path": { "$ref": "#/$defs/absolute_path" },
+          "sha256": { "$ref": "#/$defs/prefixed_sha256" }
+        }
+      }
+    },
+    "font_environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fontconfig_file",
+        "fontconfig_config_sha256",
+        "font_manifest_sha256",
+        "discovered_fonts",
+        "exact_manifest_match"
+      ],
+      "properties": {
+        "fontconfig_file": { "$ref": "#/$defs/absolute_path" },
+        "fontconfig_config_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "font_manifest_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "discovered_fonts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": { "$ref": "#/$defs/absolute_path" },
+              "sha256": { "$ref": "#/$defs/prefixed_sha256" }
+            }
+          }
+        },
+        "exact_manifest_match": { "const": true }
+      }
+    },
+    "process_environment": {
+      "const": {
+        "FAKETIME": "@2025-01-01 00:00:00",
+        "FAKETIME_DONT_FAKE_MONOTONIC": "1",
+        "FAKETIME_NO_CACHE": "1",
+        "LD_PRELOAD": "/usr/lib/x86_64-linux-gnu/faketime/libfaketime.so.1",
+        "TZ": "UTC",
+        "LANG": "en_US.UTF-8",
+        "LC_ALL": "en_US.UTF-8"
+      }
+    },
+    "export_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "libreoffice_command",
+        "pdftoppm_command",
+        "presentation_size_emu",
+        "allowed_page_counts",
+        "width_px",
+        "height_px",
+        "color_mode",
+        "reference_datetime",
+        "pdf_page_geometry"
+      ],
+      "properties": {
+        "libreoffice_command": {
+          "const": ["libreoffice", "--headless", "-env:UserInstallation=file://<isolated-temporary-profile>", "--convert-to", "pdf", "--outdir", "/work", "/input/submission.pptx"]
+        },
+        "pdftoppm_command": {
+          "const": ["pdftoppm", "-png", "-scale-to-x", "1920", "-scale-to-y", "1080", "/work/submission.pdf", "/work/gloss-render"]
+        },
+        "presentation_size_emu": { "const": { "cx": 12192000, "cy": 6858000 } },
+        "allowed_page_counts": { "const": [5, 12, 20] },
+        "width_px": { "const": 1920 },
+        "height_px": { "const": 1080 },
+        "color_mode": { "const": "RGB" },
+        "reference_datetime": { "const": "2025-01-01T00:00:00Z" },
+        "pdf_page_geometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["numeric_parser", "media_box", "crop_box", "rotate"],
+          "properties": {
+            "numeric_parser": { "const": "exact-decimal-string" },
+            "media_box": {
+              "const": ["0", "0", "960.009448818898", "540"]
+            },
+            "crop_box": { "const": "absent-or-exactly-equal-to-media-box" },
+            "rotate": { "const": "absent-or-zero" }
+          }
+        }
+      }
+    },
+    "profile_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "export_profile_sha256",
+        "png_profile_sha256",
+        "ssim_profile_sha256",
+        "json_schema_bundle_sha256",
+        "xsd_bundle_sha256",
+        "schema_root_map_sha256",
+        "mce_profile_sha256",
+        "scene_graph_profile_sha256",
+        "canonical_package_hash_profile_sha256"
+      ],
+      "properties": {
+        "export_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "png_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "ssim_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "json_schema_bundle_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "xsd_bundle_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "schema_root_map_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "mce_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "scene_graph_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "canonical_package_hash_profile_sha256": { "$ref": "#/$defs/prefixed_sha256" }
+      }
+    },
+    "grader_source_tree_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+    "canary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canary_id", "input_sha256", "score_semantic_report_sha256"],
+      "properties": {
+        "canary_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$" },
+        "input_sha256": { "$ref": "#/$defs/prefixed_sha256" },
+        "score_semantic_report_sha256": { "$ref": "#/$defs/prefixed_sha256" }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "architecture_verified",
+        "binary_hashes_verified",
+        "font_inventory_verified",
+        "clock_fixture_verified",
+        "network_disabled_verified"
+      ],
+      "properties": {
+        "architecture_verified": { "const": true },
+        "binary_hashes_verified": { "const": true },
+        "font_inventory_verified": { "const": true },
+        "clock_fixture_verified": { "const": true },
+        "network_disabled_verified": { "const": true }
+      }
+    }
+  },
+  "$defs": {
+    "prefixed_sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "absolute_path": { "type": "string", "pattern": "^/[^\\u0000]+$" },
+    "nonempty_version": {
+      "type": "string",
+      "minLength": 1,
+      "not": { "enum": ["unknown", "pending", "latest"] }
+    }
+  }
+}

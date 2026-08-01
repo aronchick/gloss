@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "gloss-grader-source-tree-v1",
+  "root": "gloss-v1/grader",
+  "manifest_canonicalization": "RFC8785-JCS",
+  "manifest_digest": "SHA-256-lowercase-hex-prefixed",
+  "path_normalization": {
+    "encoding": "UTF-8",
+    "unicode": "NFC",
+    "separator": "/",
+    "reject_absolute": true,
+    "reject_empty_segment": true,
+    "reject_dot_segments": true,
+    "reject_backslash": true,
+    "reject_nul": true
+  },
+  "path_order": "ascending-Unicode-code-point",
+  "entry_content": {
+    "byte_length": "exact-file-byte-length",
+    "sha256": "SHA-256-of-exact-file-bytes",
+    "executable": "any-POSIX-execute-bit-set"
+  },
+  "collision_policy": {
+    "duplicate_path": "reject",
+    "case_fold_collision": "reject"
+  },
+  "filesystem_entry_policy": {
+    "regular_file": "enumerate",
+    "symlink": "reject",
+    "hard_link": "reject",
+    "directory": "traverse",
+    "device": "reject",
+    "socket": "reject",
+    "fifo": "reject"
+  },
+  "inventory_policy": {
+    "implicit_ignores": false,
+    "extra_entry": "reject",
+    "missing_entry": "reject"
+  }
+}

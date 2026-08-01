@@ -1,0 +1,4338 @@
+{
+  "benchmark_version": "gloss-v1.0.0",
+  "grading_mode": "local",
+  "run_kind": "submission",
+  "verification_scope": "artifact_conformance",
+  "verification_label": "local artifact score; self-reported",
+  "grader_version": "1.0.0a1",
+  "scoring_cohort_id": "sha256:783dff67c40867c1091d52c73fac8b4fb6c3164e3c62a6dbefb188d4d3cc8808",
+  "scoring_manifest_sha256": "sha256:25d211020e39ece5ca4a9f8a5b78356391bee6f70281f75948e1498fcddc4111",
+  "grader_source_tree_sha256": "sha256:e07dee11eaec82eed021fcea2d9048552b3052e4aaf426cf66012e2aa804b422",
+  "environment_attestation_sha256": "sha256:343be52916e17b64dedb57e4975641e07d87c328666ad17bca12d18befd3aae7",
+  "grader_package_sha256": "sha256:e07dee11eaec82eed021fcea2d9048552b3052e4aaf426cf66012e2aa804b422",
+  "oci_image_digest": "sha256:5697ac422f8d31d1689fe0f56059b90d7b08ae15f701a6424b6c1664b1811cd4",
+  "prompt_bundle_sha256": "sha256:39370107180d15c2de613597eb7cc34328381def2b0a1fd809cd2c220ecf344d",
+  "scored_assertion_inventory_sha256": "sha256:91b4d45850c68676698ab361281531542569d37b43fdd905909de0e2f83f8ed3",
+  "checklist_bundle_sha256": "sha256:fd316e148ac05b5b2d06244e2f03dc4d79824b906f0604a5b5f6960d4e674287",
+  "schema_bundle_sha256": "sha256:f124053d1e8d9ec2ec7ed3ba9a96048a1203575501e931707d66d675513b67ac",
+  "schema_root_map_sha256": "sha256:af07a14656a958046f8ac42347de3fea77536ec793aff537586a1a817abae2e3",
+  "mce_profile_sha256": "sha256:99928e2122004986dcd2cb4ce898a95045d8cde558d3d0084b0ce19fa712aa33",
+  "asset_manifest_sha256": "sha256:ef7cf071026f30bd5631231bb03918d541bb05766d980f4150374b4a5f392ea9",
+  "font_manifest_sha256": "sha256:a770fe1f2a127a532da82dd8f9063c43dcc51523b91575c676db4fac80bc7c55",
+  "canonical_package_hash_profile_sha256": "sha256:3f6985c6498c2aeb4822898250d83f51a6279d4c664b5a500021ebbb95943b85",
+  "canonical_package_hash_v1": "sha256:33489a948e307cb7272f7c0ea8802e1ed562fffbc2f3c360586c85e10fb847e9",
+  "gold_duplicate_check": "clear",
+  "generation_seed": "2207",
+  "submission_id": null,
+  "campaign_id": null,
+  "campaign_slot": null,
+  "robustness_group_id": null,
+  "submitter_id": null,
+  "model_key": null,
+  "model_revision_key": null,
+  "targeted_tier": 3,
+  "prompt_variant": "paraphrase-a",
+  "assistance_class": "human-assisted",
+  "generation_profile_sha256": "sha256:7444101f01fd698b06ea6079c5efba10f2159ff27400e0aac9e1da1b9c9f5c5d",
+  "submission_sha256": "sha256:858055f3d91fcfcff9e80ef9f9c32c8af96107fedafb0acb4137fbc455fc36b4",
+  "mce_resolved_package_sha256": null,
+  "gold_submission_sha256": "sha256:165ff5a5cf61b3d910d94cae2876a2d88f92cb725491752cddbdd66a6990da1b",
+  "gold_mce_resolved_package_sha256": "sha256:165ff5a5cf61b3d910d94cae2876a2d88f92cb725491752cddbdd66a6990da1b",
+  "gold_canonical_package_hash_v1": "sha256:ab74e5b4985945b09b7a55d31d7b03cff204a84250342ef1b9f923ec8497e2b9",
+  "schema_valid": true,
+  "schema_validation_performed": true,
+  "visual_verification_performed": true,
+  "verification_complete": true,
+  "scoring_completed": true,
+  "disqualification_state": "non_official_local",
+  "ineligibility_reasons": [
+    "local_mode"
+  ],
+  "repair_triggered": false,
+  "grading_duration_seconds": 15.35,
+  "fidelity_score": 0.6232,
+  "campaign_contribution": 0.0,
+  "passed_items": 146,
+  "total_items": 280,
+  "deck_passed": false,
+  "eligible": false,
+  "score_semantic_report_sha256": "sha256:3df8b56a3ab6ea9921976a1cc54a607381a5dd836f6cc99c75e70eb710fd0917",
+  "environment_attestation": {
+    "container_image_digest": "sha256:5697ac422f8d31d1689fe0f56059b90d7b08ae15f701a6424b6c1664b1811cd4",
+    "local_cohort": true,
+    "render_runtime": {
+      "grader_version": "1.0.0a1",
+      "python": "3.12.11",
+      "python_implementation": "CPython",
+      "platform": "Linux-6.12.76-linuxkit-x86_64-with-glibc2.35",
+      "machine": "x86_64",
+      "locale": "LC_CTYPE=en_US.UTF-8;LC_NUMERIC=C;LC_TIME=C;LC_COLLATE=C;LC_MONETARY=C;LC_MESSAGES=C;LC_PAPER=C;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=C;LC_IDENTIFICATION=C",
+      "timezone": "UTC",
+      "export_width": 1920,
+      "export_height": 1080,
+      "dependencies": {
+        "lxml": "6.1.1",
+        "numpy": "2.4.4",
+        "Pillow": "12.3.0",
+        "scikit-image": "0.26.0"
+      },
+      "libreoffice": "LibreOffice 7.3.7.2 30(Build:2)"
+    },
+    "schema_version": "1.0"
+  },
+  "tier_scores": {
+    "level_1": null,
+    "level_2": null,
+    "level_3": {
+      "fidelity_score": 0.6232,
+      "passed": 146,
+      "total": 280
+    }
+  },
+  "verified_metrics": {
+    "submission_file_size_bytes": 310550,
+    "grading_duration_seconds": 15.35,
+    "schema_valid": true,
+    "schema_validation_performed": true,
+    "visual_verification_performed": true,
+    "verification_complete": true,
+    "renderer_version": "LibreOffice 7.3.7.2 30(Build:2)"
+  },
+  "attested_metrics": {
+    "external_resources_used": false,
+    "human_intervention": false,
+    "post_processing": false
+  },
+  "attestation": {
+    "attribution": "repository-owned path; no model attribution",
+    "generator_kind": "deterministic_repository_baseline",
+    "generator_sha256": "sha256:a4b9a1bfc282ff9d64a6416e0df3f6219646b595e81f8b8037f5a967fdd582cb"
+  },
+  "anti_cheat_flags": [],
+  "schema_violations": [],
+  "verification_errors": [],
+  "slides": [
+    {
+      "slide": 1,
+      "tier": 1,
+      "visual_ssim": 0.9038736819069016,
+      "visual_pixel_exact": false,
+      "passed_items": 7,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-01.composition",
+          "assertion_id": "slide-01.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-01.decorative-detail",
+          "assertion_id": "slide-01.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-01.focal-fidelity",
+          "assertion_id": "slide-01.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "SSIM=0.903874 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-01.font-policy",
+          "assertion_id": "slide-01.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-01.full-slide-fidelity",
+          "assertion_id": "slide-01.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "SSIM=0.903874 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-01.hierarchy-z-order",
+          "assertion_id": "slide-01.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-01.key-text",
+          "assertion_id": "slide-01.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-01.layout-binding",
+          "assertion_id": "slide-01.assert-layout-binding",
+          "passed": false,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "Found 0 'title' placeholder(s), need 1"
+        },
+        {
+          "id": "slide-01.native-primary",
+          "assertion_id": "slide-01.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "Asset hash matched: hero-abstract"
+        },
+        {
+          "id": "slide-01.palette",
+          "assertion_id": "slide-01.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "SSIM=0.903874 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-01.semantic-structure",
+          "assertion_id": "slide-01.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "Found 1 picture object(s)"
+        },
+        {
+          "id": "slide-01.spacing",
+          "assertion_id": "slide-01.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "SSIM=0.903874 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-01.typography",
+          "assertion_id": "slide-01.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            1
+          ],
+          "details": "SSIM=0.903874 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 2,
+      "tier": 1,
+      "visual_ssim": 0.9116271247938226,
+      "visual_pixel_exact": false,
+      "passed_items": 6,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-02.composition",
+          "assertion_id": "slide-02.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "Found 11 shape object(s)"
+        },
+        {
+          "id": "slide-02.decorative-detail",
+          "assertion_id": "slide-02.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "Found 11 shape object(s)"
+        },
+        {
+          "id": "slide-02.focal-fidelity",
+          "assertion_id": "slide-02.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "SSIM=0.911627 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-02.font-policy",
+          "assertion_id": "slide-02.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-02.full-slide-fidelity",
+          "assertion_id": "slide-02.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "SSIM=0.911627 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-02.hierarchy-z-order",
+          "assertion_id": "slide-02.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "Found 11 shape object(s)"
+        },
+        {
+          "id": "slide-02.key-text",
+          "assertion_id": "slide-02.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-02.layout-binding",
+          "assertion_id": "slide-02.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "Found 1 'title' placeholder(s), need 1"
+        },
+        {
+          "id": "slide-02.native-primary",
+          "assertion_id": "slide-02.assert-native-primary",
+          "passed": false,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "Required group not found"
+        },
+        {
+          "id": "slide-02.palette",
+          "assertion_id": "slide-02.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "SSIM=0.911627 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-02.semantic-structure",
+          "assertion_id": "slide-02.assert-semantic-structure",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "Expected at least 1 group, found 0"
+        },
+        {
+          "id": "slide-02.spacing",
+          "assertion_id": "slide-02.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "SSIM=0.911627 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-02.typography",
+          "assertion_id": "slide-02.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            2
+          ],
+          "details": "SSIM=0.911627 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 3,
+      "tier": 1,
+      "visual_ssim": 0.8339494217508482,
+      "visual_pixel_exact": false,
+      "passed_items": 6,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-03.composition",
+          "assertion_id": "slide-03.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "Found 40 shape object(s)"
+        },
+        {
+          "id": "slide-03.decorative-detail",
+          "assertion_id": "slide-03.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "Found 40 shape object(s)"
+        },
+        {
+          "id": "slide-03.focal-fidelity",
+          "assertion_id": "slide-03.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "SSIM=0.833949 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-03.font-policy",
+          "assertion_id": "slide-03.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-03.full-slide-fidelity",
+          "assertion_id": "slide-03.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "SSIM=0.833949 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-03.hierarchy-z-order",
+          "assertion_id": "slide-03.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "Found 40 shape object(s)"
+        },
+        {
+          "id": "slide-03.key-text",
+          "assertion_id": "slide-03.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-03.layout-binding",
+          "assertion_id": "slide-03.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-03.native-primary",
+          "assertion_id": "slide-03.assert-native-primary",
+          "passed": false,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "Required table not found"
+        },
+        {
+          "id": "slide-03.palette",
+          "assertion_id": "slide-03.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "SSIM=0.833949 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-03.semantic-structure",
+          "assertion_id": "slide-03.assert-semantic-structure",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "Expected at least 1 table, found 0"
+        },
+        {
+          "id": "slide-03.spacing",
+          "assertion_id": "slide-03.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "SSIM=0.833949 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-03.typography",
+          "assertion_id": "slide-03.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            3
+          ],
+          "details": "SSIM=0.833949 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 4,
+      "tier": 1,
+      "visual_ssim": 0.6534510690853116,
+      "visual_pixel_exact": false,
+      "passed_items": 6,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-04.composition",
+          "assertion_id": "slide-04.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "Found 23 shape object(s)"
+        },
+        {
+          "id": "slide-04.decorative-detail",
+          "assertion_id": "slide-04.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "Found 23 shape object(s)"
+        },
+        {
+          "id": "slide-04.focal-fidelity",
+          "assertion_id": "slide-04.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "SSIM=0.653451 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-04.font-policy",
+          "assertion_id": "slide-04.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-04.full-slide-fidelity",
+          "assertion_id": "slide-04.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "SSIM=0.653451 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-04.hierarchy-z-order",
+          "assertion_id": "slide-04.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "Found 23 shape object(s)"
+        },
+        {
+          "id": "slide-04.key-text",
+          "assertion_id": "slide-04.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-04.layout-binding",
+          "assertion_id": "slide-04.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "Found 1 'title' placeholder(s), need 1"
+        },
+        {
+          "id": "slide-04.native-primary",
+          "assertion_id": "slide-04.assert-native-primary",
+          "passed": false,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "Required chart not found"
+        },
+        {
+          "id": "slide-04.palette",
+          "assertion_id": "slide-04.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "SSIM=0.653451 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-04.semantic-structure",
+          "assertion_id": "slide-04.assert-semantic-structure",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "Expected at least 1 chart, found 0"
+        },
+        {
+          "id": "slide-04.spacing",
+          "assertion_id": "slide-04.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "SSIM=0.653451 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-04.typography",
+          "assertion_id": "slide-04.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            4
+          ],
+          "details": "SSIM=0.653451 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 5,
+      "tier": 1,
+      "visual_ssim": 0.8958156771365705,
+      "visual_pixel_exact": false,
+      "passed_items": 6,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-05.composition",
+          "assertion_id": "slide-05.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "Found 20 shape object(s)"
+        },
+        {
+          "id": "slide-05.decorative-detail",
+          "assertion_id": "slide-05.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "Found 20 shape object(s)"
+        },
+        {
+          "id": "slide-05.focal-fidelity",
+          "assertion_id": "slide-05.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "SSIM=0.895816 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-05.font-policy",
+          "assertion_id": "slide-05.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-05.full-slide-fidelity",
+          "assertion_id": "slide-05.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "SSIM=0.895816 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-05.hierarchy-z-order",
+          "assertion_id": "slide-05.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "Found 20 shape object(s)"
+        },
+        {
+          "id": "slide-05.key-text",
+          "assertion_id": "slide-05.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-05.layout-binding",
+          "assertion_id": "slide-05.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "Found 1 'title' placeholder(s), need 1"
+        },
+        {
+          "id": "slide-05.native-primary",
+          "assertion_id": "slide-05.assert-native-primary",
+          "passed": false,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "Required group not found"
+        },
+        {
+          "id": "slide-05.palette",
+          "assertion_id": "slide-05.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "SSIM=0.895816 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-05.semantic-structure",
+          "assertion_id": "slide-05.assert-semantic-structure",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "Expected at least 3 group, found 0"
+        },
+        {
+          "id": "slide-05.spacing",
+          "assertion_id": "slide-05.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "SSIM=0.895816 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-05.typography",
+          "assertion_id": "slide-05.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            5
+          ],
+          "details": "SSIM=0.895816 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 6,
+      "tier": 2,
+      "visual_ssim": 0.8560398040274678,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-06.composition",
+          "assertion_id": "slide-06.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "Found 12 shape object(s)"
+        },
+        {
+          "id": "slide-06.decorative-detail",
+          "assertion_id": "slide-06.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "Found 12 shape object(s)"
+        },
+        {
+          "id": "slide-06.focal-fidelity",
+          "assertion_id": "slide-06.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "SSIM=0.856040 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-06.font-policy",
+          "assertion_id": "slide-06.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-06.full-slide-fidelity",
+          "assertion_id": "slide-06.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "SSIM=0.856040 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-06.hierarchy-z-order",
+          "assertion_id": "slide-06.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "Found 12 shape object(s)"
+        },
+        {
+          "id": "slide-06.key-text",
+          "assertion_id": "slide-06.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-06.layout-binding",
+          "assertion_id": "slide-06.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-06.native-primary",
+          "assertion_id": "slide-06.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "Found 12 shape object(s)"
+        },
+        {
+          "id": "slide-06.palette",
+          "assertion_id": "slide-06.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "SSIM=0.856040 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-06.semantic-structure",
+          "assertion_id": "slide-06.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "Found 12 shape object(s)"
+        },
+        {
+          "id": "slide-06.spacing",
+          "assertion_id": "slide-06.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "SSIM=0.856040 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-06.typography",
+          "assertion_id": "slide-06.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            6
+          ],
+          "details": "SSIM=0.856040 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 7,
+      "tier": 2,
+      "visual_ssim": 0.849475760144692,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-07.composition",
+          "assertion_id": "slide-07.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "Found 11 shape object(s)"
+        },
+        {
+          "id": "slide-07.decorative-detail",
+          "assertion_id": "slide-07.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "Found 11 shape object(s)"
+        },
+        {
+          "id": "slide-07.focal-fidelity",
+          "assertion_id": "slide-07.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "SSIM=0.849476 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-07.font-policy",
+          "assertion_id": "slide-07.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-07.full-slide-fidelity",
+          "assertion_id": "slide-07.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "SSIM=0.849476 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-07.hierarchy-z-order",
+          "assertion_id": "slide-07.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "Found 11 shape object(s)"
+        },
+        {
+          "id": "slide-07.key-text",
+          "assertion_id": "slide-07.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-07.layout-binding",
+          "assertion_id": "slide-07.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-07.native-primary",
+          "assertion_id": "slide-07.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "Asset hash matched: cityscape"
+        },
+        {
+          "id": "slide-07.palette",
+          "assertion_id": "slide-07.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "SSIM=0.849476 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-07.semantic-structure",
+          "assertion_id": "slide-07.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "Found 3 picture object(s)"
+        },
+        {
+          "id": "slide-07.spacing",
+          "assertion_id": "slide-07.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "SSIM=0.849476 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-07.typography",
+          "assertion_id": "slide-07.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            7
+          ],
+          "details": "SSIM=0.849476 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "tier": 2,
+      "visual_ssim": 0.959304577203889,
+      "visual_pixel_exact": false,
+      "passed_items": 6,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-08.composition",
+          "assertion_id": "slide-08.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "Found 10 shape object(s)"
+        },
+        {
+          "id": "slide-08.decorative-detail",
+          "assertion_id": "slide-08.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "Found 10 shape object(s)"
+        },
+        {
+          "id": "slide-08.focal-fidelity",
+          "assertion_id": "slide-08.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "SSIM=0.959305 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-08.font-policy",
+          "assertion_id": "slide-08.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-08.full-slide-fidelity",
+          "assertion_id": "slide-08.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "SSIM=0.959305 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-08.hierarchy-z-order",
+          "assertion_id": "slide-08.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "Found 10 shape object(s)"
+        },
+        {
+          "id": "slide-08.key-text",
+          "assertion_id": "slide-08.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-08.layout-binding",
+          "assertion_id": "slide-08.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-08.native-primary",
+          "assertion_id": "slide-08.assert-native-primary",
+          "passed": false,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "Required group not found"
+        },
+        {
+          "id": "slide-08.palette",
+          "assertion_id": "slide-08.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "SSIM=0.959305 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-08.semantic-structure",
+          "assertion_id": "slide-08.assert-semantic-structure",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "Expected at least 2 group, found 0"
+        },
+        {
+          "id": "slide-08.spacing",
+          "assertion_id": "slide-08.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "SSIM=0.959305 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-08.typography",
+          "assertion_id": "slide-08.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            8
+          ],
+          "details": "SSIM=0.959305 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 9,
+      "tier": 2,
+      "visual_ssim": 0.7805823589957673,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-09.composition",
+          "assertion_id": "slide-09.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-09.decorative-detail",
+          "assertion_id": "slide-09.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-09.focal-fidelity",
+          "assertion_id": "slide-09.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "SSIM=0.780582 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-09.font-policy",
+          "assertion_id": "slide-09.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-09.full-slide-fidelity",
+          "assertion_id": "slide-09.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "SSIM=0.780582 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-09.hierarchy-z-order",
+          "assertion_id": "slide-09.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-09.key-text",
+          "assertion_id": "slide-09.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-09.layout-binding",
+          "assertion_id": "slide-09.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "Found 1 'title' placeholder(s), need 1"
+        },
+        {
+          "id": "slide-09.native-primary",
+          "assertion_id": "slide-09.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-09.palette",
+          "assertion_id": "slide-09.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "SSIM=0.780582 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-09.semantic-structure",
+          "assertion_id": "slide-09.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-09.spacing",
+          "assertion_id": "slide-09.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "SSIM=0.780582 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-09.typography",
+          "assertion_id": "slide-09.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            9
+          ],
+          "details": "SSIM=0.780582 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 10,
+      "tier": 2,
+      "visual_ssim": 0.887161997272978,
+      "visual_pixel_exact": false,
+      "passed_items": 5,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-10.composition",
+          "assertion_id": "slide-10.assert-composition",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "Expected at least 3 group, found 0"
+        },
+        {
+          "id": "slide-10.decorative-detail",
+          "assertion_id": "slide-10.assert-decorative-detail",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "Expected at least 3 group, found 0"
+        },
+        {
+          "id": "slide-10.focal-fidelity",
+          "assertion_id": "slide-10.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "SSIM=0.887162 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-10.font-policy",
+          "assertion_id": "slide-10.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-10.full-slide-fidelity",
+          "assertion_id": "slide-10.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "SSIM=0.887162 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-10.hierarchy-z-order",
+          "assertion_id": "slide-10.assert-hierarchy-z-order",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "Expected at least 3 group, found 0"
+        },
+        {
+          "id": "slide-10.key-text",
+          "assertion_id": "slide-10.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-10.layout-binding",
+          "assertion_id": "slide-10.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-10.native-primary",
+          "assertion_id": "slide-10.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "Found 8 connector object(s)"
+        },
+        {
+          "id": "slide-10.palette",
+          "assertion_id": "slide-10.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "SSIM=0.887162 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-10.semantic-structure",
+          "assertion_id": "slide-10.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "Found 8 connector object(s)"
+        },
+        {
+          "id": "slide-10.spacing",
+          "assertion_id": "slide-10.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "SSIM=0.887162 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-10.typography",
+          "assertion_id": "slide-10.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            10
+          ],
+          "details": "SSIM=0.887162 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 11,
+      "tier": 2,
+      "visual_ssim": 0.8632562178307582,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-11.composition",
+          "assertion_id": "slide-11.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "Found 18 shape object(s)"
+        },
+        {
+          "id": "slide-11.decorative-detail",
+          "assertion_id": "slide-11.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "Found 18 shape object(s)"
+        },
+        {
+          "id": "slide-11.focal-fidelity",
+          "assertion_id": "slide-11.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "SSIM=0.863256 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-11.font-policy",
+          "assertion_id": "slide-11.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-11.full-slide-fidelity",
+          "assertion_id": "slide-11.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "SSIM=0.863256 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-11.hierarchy-z-order",
+          "assertion_id": "slide-11.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "Found 18 shape object(s)"
+        },
+        {
+          "id": "slide-11.key-text",
+          "assertion_id": "slide-11.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-11.layout-binding",
+          "assertion_id": "slide-11.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "Found 1 'title' placeholder(s), need 1"
+        },
+        {
+          "id": "slide-11.native-primary",
+          "assertion_id": "slide-11.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "Found 18 shape object(s)"
+        },
+        {
+          "id": "slide-11.palette",
+          "assertion_id": "slide-11.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "SSIM=0.863256 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-11.semantic-structure",
+          "assertion_id": "slide-11.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "Found 18 shape object(s)"
+        },
+        {
+          "id": "slide-11.spacing",
+          "assertion_id": "slide-11.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "SSIM=0.863256 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-11.typography",
+          "assertion_id": "slide-11.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            11
+          ],
+          "details": "SSIM=0.863256 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 12,
+      "tier": 2,
+      "visual_ssim": 0.935639537683642,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-12.composition",
+          "assertion_id": "slide-12.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "Found 12 shape object(s)"
+        },
+        {
+          "id": "slide-12.decorative-detail",
+          "assertion_id": "slide-12.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "Found 12 shape object(s)"
+        },
+        {
+          "id": "slide-12.focal-fidelity",
+          "assertion_id": "slide-12.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "SSIM=0.935640 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-12.font-policy",
+          "assertion_id": "slide-12.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-12.full-slide-fidelity",
+          "assertion_id": "slide-12.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "SSIM=0.935640 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-12.hierarchy-z-order",
+          "assertion_id": "slide-12.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "Found 12 shape object(s)"
+        },
+        {
+          "id": "slide-12.key-text",
+          "assertion_id": "slide-12.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-12.layout-binding",
+          "assertion_id": "slide-12.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "Found 1 'title' placeholder(s), need 1"
+        },
+        {
+          "id": "slide-12.native-primary",
+          "assertion_id": "slide-12.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "Found 2 field object(s)"
+        },
+        {
+          "id": "slide-12.palette",
+          "assertion_id": "slide-12.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "SSIM=0.935640 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-12.semantic-structure",
+          "assertion_id": "slide-12.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "Found 2 field object(s)"
+        },
+        {
+          "id": "slide-12.spacing",
+          "assertion_id": "slide-12.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "SSIM=0.935640 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-12.typography",
+          "assertion_id": "slide-12.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            12
+          ],
+          "details": "SSIM=0.935640 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 13,
+      "tier": 3,
+      "visual_ssim": 0.7723385199508627,
+      "visual_pixel_exact": false,
+      "passed_items": 3,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-13.composition",
+          "assertion_id": "slide-13.assert-composition",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "Expected at least 1 table, found 0"
+        },
+        {
+          "id": "slide-13.decorative-detail",
+          "assertion_id": "slide-13.assert-decorative-detail",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "Expected at least 1 table, found 0"
+        },
+        {
+          "id": "slide-13.focal-fidelity",
+          "assertion_id": "slide-13.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "SSIM=0.772339 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-13.font-policy",
+          "assertion_id": "slide-13.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-13.full-slide-fidelity",
+          "assertion_id": "slide-13.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "SSIM=0.772339 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-13.hierarchy-z-order",
+          "assertion_id": "slide-13.assert-hierarchy-z-order",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "Expected at least 1 table, found 0"
+        },
+        {
+          "id": "slide-13.key-text",
+          "assertion_id": "slide-13.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-13.layout-binding",
+          "assertion_id": "slide-13.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-13.native-primary",
+          "assertion_id": "slide-13.assert-native-primary",
+          "passed": false,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "Required chart not found"
+        },
+        {
+          "id": "slide-13.palette",
+          "assertion_id": "slide-13.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "SSIM=0.772339 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-13.semantic-structure",
+          "assertion_id": "slide-13.assert-semantic-structure",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "Expected at least 1 chart, found 0"
+        },
+        {
+          "id": "slide-13.spacing",
+          "assertion_id": "slide-13.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "SSIM=0.772339 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-13.typography",
+          "assertion_id": "slide-13.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            13
+          ],
+          "details": "SSIM=0.772339 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 14,
+      "tier": 3,
+      "visual_ssim": 0.8703937149793113,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-14.composition",
+          "assertion_id": "slide-14.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-14.decorative-detail",
+          "assertion_id": "slide-14.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-14.focal-fidelity",
+          "assertion_id": "slide-14.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "SSIM=0.870394 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-14.font-policy",
+          "assertion_id": "slide-14.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-14.full-slide-fidelity",
+          "assertion_id": "slide-14.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "SSIM=0.870394 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-14.hierarchy-z-order",
+          "assertion_id": "slide-14.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-14.key-text",
+          "assertion_id": "slide-14.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-14.layout-binding",
+          "assertion_id": "slide-14.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "Found 1 'title' placeholder(s), need 1"
+        },
+        {
+          "id": "slide-14.native-primary",
+          "assertion_id": "slide-14.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-14.palette",
+          "assertion_id": "slide-14.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "SSIM=0.870394 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-14.semantic-structure",
+          "assertion_id": "slide-14.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-14.spacing",
+          "assertion_id": "slide-14.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "SSIM=0.870394 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-14.typography",
+          "assertion_id": "slide-14.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            14
+          ],
+          "details": "SSIM=0.870394 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 15,
+      "tier": 3,
+      "visual_ssim": 0.9135590077592362,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-15.composition",
+          "assertion_id": "slide-15.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "Found 14 shape object(s)"
+        },
+        {
+          "id": "slide-15.decorative-detail",
+          "assertion_id": "slide-15.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "Found 14 shape object(s)"
+        },
+        {
+          "id": "slide-15.focal-fidelity",
+          "assertion_id": "slide-15.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "SSIM=0.913559 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-15.font-policy",
+          "assertion_id": "slide-15.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-15.full-slide-fidelity",
+          "assertion_id": "slide-15.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "SSIM=0.913559 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-15.hierarchy-z-order",
+          "assertion_id": "slide-15.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "Found 14 shape object(s)"
+        },
+        {
+          "id": "slide-15.key-text",
+          "assertion_id": "slide-15.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-15.layout-binding",
+          "assertion_id": "slide-15.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-15.native-primary",
+          "assertion_id": "slide-15.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "Found 14 shape object(s)"
+        },
+        {
+          "id": "slide-15.palette",
+          "assertion_id": "slide-15.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "SSIM=0.913559 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-15.semantic-structure",
+          "assertion_id": "slide-15.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "Found 14 shape object(s)"
+        },
+        {
+          "id": "slide-15.spacing",
+          "assertion_id": "slide-15.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "SSIM=0.913559 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-15.typography",
+          "assertion_id": "slide-15.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            15
+          ],
+          "details": "SSIM=0.913559 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 16,
+      "tier": 3,
+      "visual_ssim": 0.9469154737412474,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-16.composition",
+          "assertion_id": "slide-16.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-16.decorative-detail",
+          "assertion_id": "slide-16.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-16.focal-fidelity",
+          "assertion_id": "slide-16.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "SSIM=0.946915 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-16.font-policy",
+          "assertion_id": "slide-16.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-16.full-slide-fidelity",
+          "assertion_id": "slide-16.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "SSIM=0.946915 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-16.hierarchy-z-order",
+          "assertion_id": "slide-16.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-16.key-text",
+          "assertion_id": "slide-16.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-16.layout-binding",
+          "assertion_id": "slide-16.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-16.native-primary",
+          "assertion_id": "slide-16.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-16.palette",
+          "assertion_id": "slide-16.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "SSIM=0.946915 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-16.semantic-structure",
+          "assertion_id": "slide-16.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "Found 9 shape object(s)"
+        },
+        {
+          "id": "slide-16.spacing",
+          "assertion_id": "slide-16.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "SSIM=0.946915 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-16.typography",
+          "assertion_id": "slide-16.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            16
+          ],
+          "details": "SSIM=0.946915 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 17,
+      "tier": 3,
+      "visual_ssim": 0.8506818664298538,
+      "visual_pixel_exact": false,
+      "passed_items": 6,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-17.composition",
+          "assertion_id": "slide-17.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "Found 25 shape object(s)"
+        },
+        {
+          "id": "slide-17.decorative-detail",
+          "assertion_id": "slide-17.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "Found 25 shape object(s)"
+        },
+        {
+          "id": "slide-17.focal-fidelity",
+          "assertion_id": "slide-17.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "SSIM=0.850682 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-17.font-policy",
+          "assertion_id": "slide-17.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-17.full-slide-fidelity",
+          "assertion_id": "slide-17.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "SSIM=0.850682 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-17.hierarchy-z-order",
+          "assertion_id": "slide-17.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "Found 25 shape object(s)"
+        },
+        {
+          "id": "slide-17.key-text",
+          "assertion_id": "slide-17.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-17.layout-binding",
+          "assertion_id": "slide-17.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-17.native-primary",
+          "assertion_id": "slide-17.assert-native-primary",
+          "passed": false,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "Required group not found"
+        },
+        {
+          "id": "slide-17.palette",
+          "assertion_id": "slide-17.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "SSIM=0.850682 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-17.semantic-structure",
+          "assertion_id": "slide-17.assert-semantic-structure",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "Expected at least 6 group, found 0"
+        },
+        {
+          "id": "slide-17.spacing",
+          "assertion_id": "slide-17.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "SSIM=0.850682 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-17.typography",
+          "assertion_id": "slide-17.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            17
+          ],
+          "details": "SSIM=0.850682 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 18,
+      "tier": 3,
+      "visual_ssim": 0.7345599483026731,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-18.composition",
+          "assertion_id": "slide-18.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "Found 17 shape object(s)"
+        },
+        {
+          "id": "slide-18.decorative-detail",
+          "assertion_id": "slide-18.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "Found 17 shape object(s)"
+        },
+        {
+          "id": "slide-18.focal-fidelity",
+          "assertion_id": "slide-18.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "SSIM=0.734560 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-18.font-policy",
+          "assertion_id": "slide-18.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-18.full-slide-fidelity",
+          "assertion_id": "slide-18.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "SSIM=0.734560 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-18.hierarchy-z-order",
+          "assertion_id": "slide-18.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "Found 17 shape object(s)"
+        },
+        {
+          "id": "slide-18.key-text",
+          "assertion_id": "slide-18.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-18.layout-binding",
+          "assertion_id": "slide-18.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-18.native-primary",
+          "assertion_id": "slide-18.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "Asset hash matched: texture-pattern"
+        },
+        {
+          "id": "slide-18.palette",
+          "assertion_id": "slide-18.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "SSIM=0.734560 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-18.semantic-structure",
+          "assertion_id": "slide-18.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "Found 4 picture object(s)"
+        },
+        {
+          "id": "slide-18.spacing",
+          "assertion_id": "slide-18.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "SSIM=0.734560 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-18.typography",
+          "assertion_id": "slide-18.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            18
+          ],
+          "details": "SSIM=0.734560 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 19,
+      "tier": 3,
+      "visual_ssim": 0.8929656811571878,
+      "visual_pixel_exact": false,
+      "passed_items": 8,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-19.composition",
+          "assertion_id": "slide-19.assert-composition",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "Found 17 shape object(s)"
+        },
+        {
+          "id": "slide-19.decorative-detail",
+          "assertion_id": "slide-19.assert-decorative-detail",
+          "passed": true,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "Found 17 shape object(s)"
+        },
+        {
+          "id": "slide-19.focal-fidelity",
+          "assertion_id": "slide-19.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "SSIM=0.892966 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-19.font-policy",
+          "assertion_id": "slide-19.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-19.full-slide-fidelity",
+          "assertion_id": "slide-19.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "SSIM=0.892966 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-19.hierarchy-z-order",
+          "assertion_id": "slide-19.assert-hierarchy-z-order",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "Found 17 shape object(s)"
+        },
+        {
+          "id": "slide-19.key-text",
+          "assertion_id": "slide-19.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-19.layout-binding",
+          "assertion_id": "slide-19.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "Found 1 'title' placeholder(s), need 1"
+        },
+        {
+          "id": "slide-19.native-primary",
+          "assertion_id": "slide-19.assert-native-primary",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "Found 17 shape object(s)"
+        },
+        {
+          "id": "slide-19.palette",
+          "assertion_id": "slide-19.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "SSIM=0.892966 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-19.semantic-structure",
+          "assertion_id": "slide-19.assert-semantic-structure",
+          "passed": true,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "Found 17 shape object(s)"
+        },
+        {
+          "id": "slide-19.spacing",
+          "assertion_id": "slide-19.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "SSIM=0.892966 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-19.typography",
+          "assertion_id": "slide-19.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            19
+          ],
+          "details": "SSIM=0.892966 (threshold=0.9999)"
+        }
+      ]
+    },
+    {
+      "slide": 20,
+      "tier": 3,
+      "visual_ssim": 0.7428531497852666,
+      "visual_pixel_exact": false,
+      "passed_items": 3,
+      "total_items": 13,
+      "items": [
+        {
+          "id": "slide-20.composition",
+          "assertion_id": "slide-20.assert-composition",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "Expected at least 1 table, found 0"
+        },
+        {
+          "id": "slide-20.decorative-detail",
+          "assertion_id": "slide-20.assert-decorative-detail",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "Expected at least 1 table, found 0"
+        },
+        {
+          "id": "slide-20.focal-fidelity",
+          "assertion_id": "slide-20.assert-focal-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "SSIM=0.742853 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-20.font-policy",
+          "assertion_id": "slide-20.assert-font-policy",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "All fonts in bundled set"
+        },
+        {
+          "id": "slide-20.full-slide-fidelity",
+          "assertion_id": "slide-20.assert-full-slide-fidelity",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "SSIM=0.742853 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-20.hierarchy-z-order",
+          "assertion_id": "slide-20.assert-hierarchy-z-order",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "Expected at least 1 table, found 0"
+        },
+        {
+          "id": "slide-20.key-text",
+          "assertion_id": "slide-20.assert-key-text",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "Text match passed"
+        },
+        {
+          "id": "slide-20.layout-binding",
+          "assertion_id": "slide-20.assert-layout-binding",
+          "passed": true,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "passed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "Layout ref: ../slideLayouts/slideLayout7.xml"
+        },
+        {
+          "id": "slide-20.native-primary",
+          "assertion_id": "slide-20.assert-native-primary",
+          "passed": false,
+          "severity": "critical",
+          "weight": 3,
+          "source_of_truth": "ooxml",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "Required chart not found"
+        },
+        {
+          "id": "slide-20.palette",
+          "assertion_id": "slide-20.assert-palette",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "SSIM=0.742853 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-20.semantic-structure",
+          "assertion_id": "slide-20.assert-semantic-structure",
+          "passed": false,
+          "severity": "major",
+          "weight": 2,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "Expected at least 1 chart, found 0"
+        },
+        {
+          "id": "slide-20.spacing",
+          "assertion_id": "slide-20.assert-spacing",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "both",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "SSIM=0.742853 (threshold=0.9999)"
+        },
+        {
+          "id": "slide-20.typography",
+          "assertion_id": "slide-20.assert-typography",
+          "passed": false,
+          "severity": "minor",
+          "weight": 1,
+          "source_of_truth": "render",
+          "outcome_code": "failed",
+          "tier_affected_slides": [
+            20
+          ],
+          "details": "SSIM=0.742853 (threshold=0.9999)"
+        }
+      ]
+    }
+  ],
+  "deck_items": [
+    {
+      "id": "deck.alignment-detail",
+      "assertion_id": "deck.assert-alignment-detail",
+      "passed": false,
+      "severity": "minor",
+      "weight": 1,
+      "source_of_truth": "both",
+      "outcome_code": "failed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "0/20 slides meet SSIM 0.9999; minimum=0.6535, mean=0.8527"
+    },
+    {
+      "id": "deck.approved-assets",
+      "assertion_id": "deck.assert-approved-assets",
+      "passed": true,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "All asset hashes matched"
+    },
+    {
+      "id": "deck.cross-slide-hierarchy",
+      "assertion_id": "deck.assert-cross-slide-hierarchy",
+      "passed": true,
+      "severity": "minor",
+      "weight": 1,
+      "source_of_truth": "both",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Master count: 1 (need >= 1)"
+    },
+    {
+      "id": "deck.effect-detail",
+      "assertion_id": "deck.assert-effect-detail",
+      "passed": false,
+      "severity": "minor",
+      "weight": 1,
+      "source_of_truth": "both",
+      "outcome_code": "failed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "0/20 slides meet SSIM 0.9999; minimum=0.6535, mean=0.8527"
+    },
+    {
+      "id": "deck.font-policy",
+      "assertion_id": "deck.assert-font-policy",
+      "passed": true,
+      "severity": "critical",
+      "weight": 3,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Non-bundled theme fallbacks (informational): 32"
+    },
+    {
+      "id": "deck.layouts-defined",
+      "assertion_id": "deck.assert-layouts-defined",
+      "passed": true,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Layout count: 11 (need >= 4)"
+    },
+    {
+      "id": "deck.line-weight-detail",
+      "assertion_id": "deck.assert-line-weight-detail",
+      "passed": false,
+      "severity": "minor",
+      "weight": 1,
+      "source_of_truth": "both",
+      "outcome_code": "failed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "0/20 slides meet SSIM 0.9999; minimum=0.6535, mean=0.8527"
+    },
+    {
+      "id": "deck.master-present",
+      "assertion_id": "deck.assert-master-present",
+      "passed": true,
+      "severity": "critical",
+      "weight": 3,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Master count: 1 (need >= 1)"
+    },
+    {
+      "id": "deck.master-visual-consistency",
+      "assertion_id": "deck.assert-master-visual-consistency",
+      "passed": false,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "render",
+      "outcome_code": "failed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "0/20 slides meet SSIM 0.9999; minimum=0.6535, mean=0.8527"
+    },
+    {
+      "id": "deck.native-object-coverage",
+      "assertion_id": "deck.assert-native-object-coverage",
+      "passed": true,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Slide count: 20 (expected 20)"
+    },
+    {
+      "id": "deck.native-slide-numbers",
+      "assertion_id": "deck.assert-native-slide-numbers",
+      "passed": true,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Master count: 1 (need >= 1)"
+    },
+    {
+      "id": "deck.no-notes",
+      "assertion_id": "deck.assert-no-notes",
+      "passed": true,
+      "severity": "critical",
+      "weight": 3,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "No slide notes or comments detected"
+    },
+    {
+      "id": "deck.ordered-tier-prefix",
+      "assertion_id": "deck.assert-ordered-tier-prefix",
+      "passed": true,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Slide count: 20 (expected 20)"
+    },
+    {
+      "id": "deck.palette-consistency",
+      "assertion_id": "deck.assert-palette-consistency",
+      "passed": false,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "render",
+      "outcome_code": "failed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "0/20 slides meet SSIM 0.9999; minimum=0.6535, mean=0.8527"
+    },
+    {
+      "id": "deck.render-consistency",
+      "assertion_id": "deck.assert-render-consistency",
+      "passed": false,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "render",
+      "outcome_code": "failed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "0/20 slides meet SSIM 0.9999; minimum=0.6535, mean=0.8527"
+    },
+    {
+      "id": "deck.rtl-cjk-coverage",
+      "assertion_id": "deck.assert-rtl-cjk-coverage",
+      "passed": true,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Slide count: 20 (expected 20)"
+    },
+    {
+      "id": "deck.slide-count",
+      "assertion_id": "deck.assert-slide-count",
+      "passed": true,
+      "severity": "critical",
+      "weight": 3,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Slide count: 20 (expected 20)"
+    },
+    {
+      "id": "deck.spacing-consistency",
+      "assertion_id": "deck.assert-spacing-consistency",
+      "passed": false,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "render",
+      "outcome_code": "failed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "0/20 slides meet SSIM 0.9999; minimum=0.6535, mean=0.8527"
+    },
+    {
+      "id": "deck.theme-structure",
+      "assertion_id": "deck.assert-theme-structure",
+      "passed": true,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "ooxml",
+      "outcome_code": "passed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "Master count: 1 (need >= 1)"
+    },
+    {
+      "id": "deck.typography-consistency",
+      "assertion_id": "deck.assert-typography-consistency",
+      "passed": false,
+      "severity": "major",
+      "weight": 2,
+      "source_of_truth": "render",
+      "outcome_code": "failed",
+      "tier_affected_slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "details": "0/20 slides meet SSIM 0.9999; minimum=0.6535, mean=0.8527"
+    }
+  ]
+}

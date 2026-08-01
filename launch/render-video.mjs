@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 
 const launchDir = dirname(fileURLToPath(import.meta.url));
 const root = resolve(launchDir, "..");
-const summaryPath = join(root, "acidslide-v1/benchmark/comparative-v1/summary.json");
+const summaryPath = join(root, "gloss-v1/benchmark/comparative-v1/summary.json");
 const outputPath = join(root, "site/media/gloss-launch.mp4");
 const posterPath = join(root, "site/media/gloss-launch-poster.png");
 const summary = JSON.parse(readFileSync(summaryPath, "utf8"));
