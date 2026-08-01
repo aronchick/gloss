@@ -212,7 +212,7 @@ h1 span { display: inline-block; color: var(--orange); }
   font-weight: 760;
   line-height: .92;
 }
-.section-heading > p:last-child, .method-copy > p:not(.eyebrow), .status-intro > p:last-child { max-width: 43rem; color: #59616e; font-size: 1.08rem; }
+.section-heading > p:last-child, .method-copy > p:not(.eyebrow):not(.acid-origin), .status-intro > p:last-child { max-width: 43rem; color: #59616e; font-size: 1.08rem; }
 
 .comparison { padding: clamp(7rem, 11vw, 11rem) 0 0; }
 .comparison-intro {
@@ -295,6 +295,8 @@ h1 span { display: inline-block; color: var(--orange); }
 
 .method { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(4rem, 9vw, 10rem); align-items: start; padding: 2rem 0 clamp(8rem, 13vw, 14rem); }
 .method h2 { font-size: clamp(3.2rem, 5.4vw, 6rem); }
+.acid-origin { max-width: 36rem; margin: 2rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--rule); color: var(--ink); font: 650 1.15rem/1.35 var(--display); }
+.acid-origin a { color: var(--package); text-decoration-thickness: 1px; text-underline-offset: .2em; }
 .text-link { display: inline-flex; gap: .5rem; margin-top: 1rem; color: var(--package); font: 700 .75rem var(--mono); text-underline-offset: .25rem; }
 .method-list { padding-top: .8rem; }
 .method-row { display: grid; grid-template-columns: 10rem 1fr 2.6rem; gap: 1rem; align-items: center; min-height: 3.5rem; border-bottom: 1px solid var(--rule); font: .72rem var(--mono); }

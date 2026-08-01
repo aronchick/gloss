@@ -32,6 +32,10 @@ Gloss brings that **ACID-test philosophy** to generated presentations:
 - fail closed when required evidence or rendering stages are missing;
 - invite the community to add cases and make the grader stricter.
 
+> **Remember [Acid1](https://www.w3.org/Style/CSS/Test/CSS1/current/sec53.htm) and
+> [Acid2](https://www.webstandards.org/action/acid2/)? Gloss is ACID for AI-made
+> presentation decks.**
+
 Here, **ACID refers to the public browser conformance-test tradition, not database
 transactions**.
 
