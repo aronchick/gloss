@@ -26,7 +26,7 @@ that layout is visible, while object structure is what keeps a presentation real
 
 [Acid1](https://www.w3.org/Style/CSS/Test/CSS1/current/sec53.htm),
 [Acid2](https://www.webstandards.org/action/acid2/), and
-[Acid3](https://acid3.acidtests.org/) gave every browser the same hostile public
+[Acid3](https://wpt.live/acid/acid3/test.html) gave every browser the same hostile public
 artifact. You did not need a white paper to see what the browser understood and
 what it did not.
 
