@@ -24,7 +24,7 @@ jobs:
         working-directory: gloss-v1/grader
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v9
+      - uses: astral-sh/setup-uv@v6
         with:
           version: "0.8.4"
           enable-cache: true
@@ -47,7 +47,7 @@ jobs:
         working-directory: gloss-v1/grader
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v9
+      - uses: astral-sh/setup-uv@v6
         with:
           version: "0.8.4"
           enable-cache: true
@@ -102,7 +102,7 @@ jobs:
         working-directory: gloss-v1/service
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v9
+      - uses: astral-sh/setup-uv@v6
         with:
           version: "0.8.4"
           enable-cache: true
