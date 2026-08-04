@@ -6,6 +6,13 @@ on:
     tags: ["gloss-v*"]
   pull_request:
 
+# Keep only the newest validation for a pull request.  A newer commit makes
+# earlier runs obsolete; cancelling them preserves runner capacity and avoids
+# stale success/failure notifications.  Main and tag runs always finish.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 permissions:
   contents: read
 
@@ -16,8 +23,8 @@ jobs:
       run:
         working-directory: gloss-v1/grader
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v9
         with:
           version: "0.8.4"
           enable-cache: true
@@ -39,8 +46,8 @@ jobs:
       run:
         working-directory: gloss-v1/grader
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v9
         with:
           version: "0.8.4"
           enable-cache: true
@@ -55,8 +62,8 @@ jobs:
   launch:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
       - name: Install launch media inspector
@@ -68,7 +75,7 @@ jobs:
   container:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: docker build --platform linux/amd64 --tag gloss-ci gloss-v1
       - name: Verify frozen runtime and font inventory
         run: |
@@ -94,8 +101,8 @@ jobs:
       run:
         working-directory: gloss-v1/service
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v9
         with:
           version: "0.8.4"
           enable-cache: true
